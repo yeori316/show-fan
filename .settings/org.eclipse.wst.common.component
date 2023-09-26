@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="show-fan">
-        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/show-fan/src/main/java"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/show-fan/src/test/java"/>
-        <property name="context-root" value="show-fan"/>
-        <property name="java-output-path" value="/show-fan/bin"/>
-    </wb-module>
-</project-modules>
