@@ -26,7 +26,7 @@
 }
 
 #header-search-input {
-  width: 20vw;
+  width: 25vw;
   height: 30px;
   margin-right: 20px;
 
@@ -37,6 +37,8 @@
   width: 60px;
 
   font-size: 1.25rem;
+
+  cursor: pointer;
 
   border: none;
   background-color: var(--main2-color);
