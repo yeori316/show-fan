@@ -16,7 +16,7 @@ on:
     
 env:
   S3_BUCKET_NAME: showfan-war
-  APP_NAME: ROOT
+  APP_NAME: showfan
 
 jobs:
   build:
