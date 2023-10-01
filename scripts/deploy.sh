@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "> #############################################################################"
-tar xvf tomcat9/webapps/showfan.tar
+cp showfan/target/showfan.war tomcat9/webapps/showfan.war
 
 echo "> tomcat stop #################################################################"
 tomcat9/bin/shutdown.sh
