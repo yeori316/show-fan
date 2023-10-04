@@ -9,8 +9,8 @@ export const handleXhttps = (method, url, target) => {
   });
 };
 
-// carousel image slide - parameter(이미지 클래스들을 담고 있는 요소)
-export const carouselSlider = (imageWrapper) => {
+// carousel image slide - parameter(이미지 클래스들을 담고 있는 요소, 왼쪽 클릭 버튼, 오른쪽 클릭 버튼)
+export const carouselSlider = (imageWrapper, prevArrow, nextArrow) => {
   $(imageWrapper).slick({
     dots: false,
     infinite: true,
@@ -32,15 +32,8 @@ export const carouselSlider = (imageWrapper) => {
           slidesToScroll: 3,
         },
       },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-        },
-      },
     ],
-    prevArrow: $('#left-arrow-icon'),
-    nextArrow: $('#right-arrow-icon'),
+    prevArrow: prevArrow,
+    nextArrow: nextArrow,
   });
 };
