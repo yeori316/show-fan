@@ -6,20 +6,28 @@
   <settings>
     <setting name="mapUnderscoreToCamelCase" value="true"/>
   </settings>
-
+  <typeAliases>
+  	<typeAlias type="com.my.customer.dto.Customer" alias="Customer"/>
+  	<typeAlias type="com.my.product.dto.Product" alias="Product"/>
+  	<typeAlias type="com.my.order.dto.OrderInfo" alias="OrderInfo"/>
+  	<typeAlias type="com.my.order.dto.OrderLine" alias="OrderLine"/>
+  </typeAliases>
   <environments default="development">
     <environment id="development">
       <transactionManager type="JDBC"/>
       <dataSource type="POOLED">
         <property name="driver" value="oracle.jdbc.OracleDriver"/>
-        <property name="url" value="jdbc:oracle:thin:@showfan_high?TNS_ADMIN=C:\\Wallet_SHOWFAN"/>
-        <property name="username" value="ADMIN"/>
-        <property name="password" value="vEobQ63py8caBs6"/>
+        <property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
+        <property name="username" value="hr"/>
+        <property name="password" value="hr"/>
       </dataSource>
     </environment>
   </environments>
   
   <mappers>
+    <mapper resource="com/my/sql/Customer.xml"/>
+    <mapper resource="com/my/sql/Product.xml"/>
+    <mapper resource="com/my/sql/Order.xml"/>
   </mappers> 
 
 </configuration>
