@@ -1,0 +1,23 @@
+section{
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+section>input.radio{
+    display: block;
+}
+div.container{
+    width: 40%;
+    margin: auto;
+    margin-left: 30%;
+    margin-top: 50px;
+    border-style: solid;
+    border-color: #b0d9b1;
+    padding: 50px;
+}
+
+button[type="submit"] {
+    width: 100%;
+}
