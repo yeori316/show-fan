@@ -6,5 +6,5 @@ $(() => {
   handleXhttps('GET', '../html/footer.html', $('footer'));
 
   // if 마이페이지 link clicked
-  handleXhttps('GET', '../html/mypage.html', $('main'));
+  // handleXhttps('GET', '../html/mypage.html', $('main'));
 });
