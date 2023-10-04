@@ -1,64 +1,20 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="../css/header.css" />
-        <link rel="stylesheet" href="../css/footer.css" />
-        <link rel="stylesheet" href="../css/navigation.css" />
         <link rel="stylesheet" href="../css/login.css">
         <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
         <script src="../js/login.js"></script>
     </head>
     <body>
-        <header>
-            <div id="header-layout">
-                <a id="header-logo-link" href="../index.html">
-                  <img
-                    id="header-logo-icon"
-                    src="../images/logo-icon.png"
-                  ></img>
-                  <h1>쇼팬</h1>
-                </a>
-                <div id="header-search-container">
-                  <input id="header-search-input" type="text" />
-                  <button type="button" id="header-search-button">검색</button>
-                </div>
-                <div id="header-menu-container">
-                  <a href="login.html" class="header-menu-link">로그인</a>
-                  <i id="header-menu-line-icon" class="fa-solid fa-slash"></i>
-                  <a href="#" class="header-menu-link">회원가입</a>
-                </div>
-              </div>
-        </header>
-        <nav>
-            <div id="navigation-layout">
-                <ol id="navigation-genre-container">
-                  <li><a href="#">콘서트</a></li>
-                  <li><a href="#">뮤지컬</a></li>
-                  <li><a href="#">연극</a></li>
-                  <li><a href="#">축제</a></li>
-                  <li><a href="#">클래식</a></li>
-                </ol>
-                <ol id="navigation-menu-container">
-                  <li><a href="#">공연 캘린더</a></li>
-                </ol>
-              </div>
-        </nav>
-        <section>
-            <div id="section-layout">
-                <form class="login">
-                    <label for="e">이메일 :</label><input type="email" name="email" id="e" class="form-control" required><br>
-                    <label for="p">비밀번호 :</label> <input type="password" name="pwd" id="p" class="form-control" required><br>
-                    <button type="submit" class="btn btn-outline-success">로그인</button><br>
-                    <input type="checkbox">아이디 저장
-                    <input type="checkbox">자동 로그인
-                </form>
-            </div>
-        </section>
-        <footer>
-            <div id="footer-layout">
-                <p>COPYRIGHT ⓒ 쇼팬하이머 ALL RIGHTS RESERVED.</p>
-            </div>
-        </footer>
+      <div id="section-layout">
+        <form class="login">
+          <label for="e">이메일 :</label><input type="email" name="email" id="e" class="form-control" required><br>
+          <label for="p">비밀번호 :</label> <input type="password" name="pwd" id="p" class="form-control" required><br>
+          <button type="submit" class="btn btn-outline-success">로그인</button><br>
+          <input type="checkbox">아이디 저장
+          <input type="checkbox">자동 로그인
+        </form>
+      </div>
     </body>
 </html>
