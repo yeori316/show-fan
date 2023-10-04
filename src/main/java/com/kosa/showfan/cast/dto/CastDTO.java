@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class CastDTO {
-	private String showId;
-	private String artistId;
+	private Long artistId;
+	private Long showId;
 }

@@ -6,14 +6,14 @@ import lombok.Data;
 
 @Data
 public class MemberDTO {
-	private Long id;
-	private String email;
-	private String pwd;
-	private String nickName;
-	private String image;
-	private Integer emailAlert;
-	private Integer statusId;
-	private Date createdAt;
-	private Date deletedAt;
-	private Integer avg_price;
+	private Long MemberId;
+	private String MemberEmail;
+	private String MemberPwd;
+	private String MemberNickName;
+	private String MemberImage;
+	private String MemberEmailAlert;
+	private Date MemberCreatedAt;
+	private Date MemberDeletedAt;
+	private Integer MemberTotalPrice;
+	private Integer MemberStatusId;
 }

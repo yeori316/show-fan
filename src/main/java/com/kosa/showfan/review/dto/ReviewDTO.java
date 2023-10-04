@@ -1,15 +1,21 @@
 package com.kosa.showfan.review.dto;
 
 import java.util.Date;
+import java.util.List;
+
+import com.kosa.showfan.reply.dto.ReplyDTO;
 
 import lombok.Data;
 
 @Data
 public class ReviewDTO {
-	private Long id;
-	private Long showId;
+	private Long reviewId;
 	private Long memberId;
-	private Integer grade;
-	private String content;
-	private Date createdAt;
+	private Long showId;
+	private Integer reviewGrade;
+	private String reviewContent;
+	private Date reviewCreatedAt;
+	private String reviewIsModified;
+	private Integer reviewSeatPriceId;
+	private List<ReplyDTO> reviewReply;
 }

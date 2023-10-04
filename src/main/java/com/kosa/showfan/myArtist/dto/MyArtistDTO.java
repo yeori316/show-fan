@@ -6,6 +6,6 @@ import lombok.Data;
 public class MyArtistDTO {
 	private Long artistId;
 	private Long memberId;
-	private Long viewCount;
-	private Integer avgCount;
+	private Integer myArtistViewCount;
+	private Double myArtistAvgGrade;
 }
