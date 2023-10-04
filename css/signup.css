@@ -8,7 +8,7 @@ section{
 section>input.radio{
     display: block;
 }
-div.container{
+#signup-layout{
     width: 40%;
     margin: auto;
     margin-left: 30%;
