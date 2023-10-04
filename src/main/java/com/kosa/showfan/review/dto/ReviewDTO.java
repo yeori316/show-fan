@@ -16,6 +16,6 @@ public class ReviewDTO {
 	private String reviewContent;
 	private Date reviewCreatedAt;
 	private String reviewIsModified;
-	private Integer reviewSeatPriceId;
+	private Integer SeatId;
 	private List<ReplyDTO> reviewReply;
 }

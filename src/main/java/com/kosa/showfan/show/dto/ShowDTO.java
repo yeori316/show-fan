@@ -27,5 +27,6 @@ public class ShowDTO {
 	private String showStatus;
 	private Double showLatitude;
 	private Double showLongitude;
+	private String showRuntime;
 	private List<ReviewDTO> showReveiws;
 }
