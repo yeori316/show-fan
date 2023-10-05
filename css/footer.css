@@ -1,0 +1,10 @@
+#footer-layout {
+  height: 20px;
+  margin-top: 40px;
+  padding: 12px 0;
+
+  display: flex;
+  justify-content: center;
+
+  background-color: var(--main1-color);
+}

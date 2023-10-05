@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="../css/mypage.css" />
+    <script type="module" src="../js/mypage.js"></script>
+  </head>
+  <body>
+    <div id="mypage-layout">
+      <div id="mypage-profile-container">
+        <div id="mypage-profile">
+          <div class="mypage-profile-icon">
+            <i class="fa-solid fa-user fa-2xl"></i>
+          </div>
+          <img class="hide-image" src="" alt="profile-image" />
+          <div class="mypage-main-text">nickname</div>
+        </div>
+        <div id="update-profile">
+          <div class="mypage-main-text">내 정보 수정</div>
+          <i id="update-profile-icon" class="fa-solid fa-gear fa-2xl"></i>
+        </div>
+      </div>
+      <div class="mypage-line"></div>
+      <div class="mypage-main-text" id="my-show-title-container">
+        <div>나의 찜 목록&nbsp;</div>
+        <div id="my-show-count">(10)</div>
+      </div>
+      <div id="my-show-slide-container">
+        <i
+          id="my-show-left-arrow-icon"
+          class="fa-solid fa-circle-chevron-left fa-2xl"
+        ></i>
+        <div id="my-show-slide">
+          <ul id="my-show-container">
+            <li class="my-show">
+              <img
+                src="https://www.kopis.or.kr/upload/pfmPoster/PF_PF223598_230809_130057.gif"
+                alt="show-post"
+              />
+              <div>show-name1</div>
+            </li>
+            <li class="my-show">
+              <img
+                src="https://www.kopis.or.kr/upload/pfmPoster/PF_PF226509_230922_150323.gif"
+                alt="show-post"
+              />
+              <div>show-name2</div>
+            </li>
+            <li class="my-show">
+              <img
+                src="https://www.kopis.or.kr/upload/pfmPoster/PF_PF223598_230809_130057.gif"
+                alt="show-post"
+              />
+              <div>show-name3show-name3show-name3show-name3</div>
+            </li>
+            <li class="my-show">
+              <img
+                src="https://www.kopis.or.kr/upload/pfmPoster/PF_PF223598_230809_130057.gif"
+                alt="show-post"
+              />
+              <div>show-name4</div>
+            </li>
+            <li class="my-show">
+              <img
+                src="https://www.kopis.or.kr/upload/pfmPoster/PF_PF223598_230809_130057.gif"
+                alt="show-post"
+              />
+              <div>show-name5</div>
+            </li>
+            <li class="my-show">
+              <img
+                src="https://www.kopis.or.kr/upload/pfmPoster/PF_PF223598_230809_130057.gif"
+                alt="show-post"
+              />
+              <div>show-name6</div>
+            </li>
+            <li class="my-show">
+              <img
+                src="https://www.kopis.or.kr/upload/pfmPoster/PF_PF223598_230809_130057.gif"
+                alt="show-post"
+              />
+              <div>show-name7</div>
+            </li>
+            <li class="my-show">
+              <img
+                src="https://www.kopis.or.kr/upload/pfmPoster/PF_PF223598_230809_130057.gif"
+                alt="show-post"
+              />
+              <div>show-name8</div>
+            </li>
+            <li class="my-show">
+              <img
+                src="https://www.kopis.or.kr/upload/pfmPoster/PF_PF223598_230809_130057.gif"
+                alt="show-post"
+              />
+              <div>show-name9</div>
+            </li>
+            <li class="my-show">
+              <img
+                src="https://www.kopis.or.kr/upload/pfmPoster/PF_PF226593_230925_115421.jpg"
+                alt="show-post"
+              />
+              <div>show-name10</div>
+            </li>
+          </ul>
+        </div>
+        <i
+          id="my-show-right-arrow-icon"
+          class="fa-solid fa-circle-chevron-right fa-2xl"
+        ></i>
+      </div>
+      <div class="mypage-line"></div>
+      <div class="mypage-main-text">나의 평가</div>
+      <div id="mypage-evaluation-containers">
+        <div class="mypage-evaluation-container">
+          <div class="mypage-evaluation-count-text">0</div>
+          <div>평가 수</div>
+        </div>
+        <i id="mypage-evaluation-line-icon" class="fa-solid fa-slash"></i>
+        <div class="mypage-evaluation-container">
+          <div class="mypage-evaluation-count-text">0</div>
+          <div>콘서트</div>
+        </div>
+        <div class="mypage-evaluation-container">
+          <div class="mypage-evaluation-count-text">0</div>
+          <div>뮤지컬</div>
+        </div>
+        <div class="mypage-evaluation-container">
+          <div class="mypage-evaluation-count-text">0</div>
+          <div>연극</div>
+        </div>
+        <div class="mypage-evaluation-container">
+          <div class="mypage-evaluation-count-text">0</div>
+          <div>축제</div>
+        </div>
+        <div class="mypage-evaluation-container">
+          <div class="mypage-evaluation-count-text">0</div>
+          <div>클래식</div>
+        </div>
+      </div>
+      <div class="mypage-line"></div>
+      <div class="mypage-main-text">내가 쓴 리뷰</div>
+      <div id="mypage-review-containers">
+        <div class="mypage-review-container">
+          <img
+            src="https://www.kopis.or.kr/upload/pfmPoster/PF_PF223598_230809_130057.gif"
+            alt="review-show-post"
+            class="mypage-review-post"
+          />
+          <div id="mypage-review-info">
+            <div id="mypage-review-show-info">
+              <div>작품 제목</div>
+              <i class="fa-solid fa-slash mypage-review-line-icon"></i>
+              <div>2023.09.23</div>
+              <i class="fa-solid fa-slash mypage-review-line-icon"></i>
+              <div>R석(64,000원)</div>
+              <i class="fa-solid fa-slash mypage-review-line-icon"></i>
+              <div>예술의 전당</div>
+            </div>
+            <div id="mypage-review-evaluation-info">
+              <i id="mypage-review-star-icon" class="fa-solid fa-star"></i>
+              <div>5.0</div>
+              <i class="fa-solid fa-slash mypage-review-line-icon"></i>
+              <div id="mypage-review-content">
+                진짜 인생 최고의 콘서트였습니다.진짜 인생 최고의
+                콘서트였습니다.진짜 인생 최고의 콘서트였습니다.진짜 인생 최고의
+                콘서트였습니다.진짜 인생 최고의 콘서트였습니다.진짜 인생 최고의
+                콘서트였습니다.진짜 인생 최고의 콘서트였습니다.
+              </div>
+            </div>
+          </div>
+          <div id="mypage-review-button">
+            <a href="#">수정</a>
+            <i class="fa-solid fa-slash mypage-review-line-icon"></i>
+            <a href="#">삭제</a>
+          </div>
+        </div>
+      </div>
+      <div class="mypage-review-line"></div>
+      <div class="mypage-review-container">
+        <img
+          src="https://www.kopis.or.kr/upload/pfmPoster/PF_PF223598_230809_130057.gif"
+          alt="review-show-post"
+          class="mypage-review-post"
+        />
+        <div id="mypage-review-info">
+          <div id="mypage-review-show-info">
+            <div>작품 제목</div>
+            <i class="fa-solid fa-slash mypage-review-line-icon"></i>
+            <div>2023.09.23</div>
+            <i class="fa-solid fa-slash mypage-review-line-icon"></i>
+            <div>R석(64,000원)</div>
+            <i class="fa-solid fa-slash mypage-review-line-icon"></i>
+            <div>예술의 전당</div>
+          </div>
+          <div id="mypage-review-evaluation-info">
+            <i id="mypage-review-star-icon" class="fa-solid fa-star"></i>
+            <div>5.0</div>
+            <i class="fa-solid fa-slash mypage-review-line-icon"></i>
+            <div id="mypage-review-content">
+              진짜 인생 최고의 콘서트였습니다.
+            </div>
+          </div>
+        </div>
+        <div id="mypage-review-button">
+          <a href="#">수정</a>
+          <i class="fa-solid fa-slash mypage-review-line-icon"></i>
+          <a href="#">삭제</a>
+        </div>
+      </div>
+      <div class="mypage-review-line"></div>
+      <a id="mypage-view-more-review" href="#">리뷰 더보기</a>
+      <div class="mypage-line"></div>
+      <div class="mypage-main-text">선호하는 출연진</div>
+      <div id="mypage-my-artist-containers">
+        <div id="mypage-my-artist-container">
+          <div class="mypage-artist-icon">
+            <i class="fa-solid fa-user fa-2xl"></i>
+          </div>
+          <img class="hide-image" src="" alt="artist-image" />
+          <div class="my-artist-info">
+            <div class="my-artist-count">
+              <div>0점</div>
+              <div>&nbsp;|&nbsp;</div>
+              <div>2회</div>
+            </div>
+            <div class="mypage-my-artist-name">이름</div>
+          </div>
+        </div>
+        <div id="mypage-my-artist-container">
+          <div class="mypage-artist-icon">
+            <i class="fa-solid fa-user fa-2xl"></i>
+          </div>
+          <img class="hide-image" src="" alt="artist-image" />
+          <div class="my-artist-info">
+            <div class="my-artist-count">
+              <div>0점</div>
+              <div>&nbsp;|&nbsp;</div>
+              <div>2회</div>
+            </div>
+            <div class="mypage-my-artist-name">이름</div>
+          </div>
+        </div>
+        <div id="mypage-my-artist-container">
+          <div class="mypage-artist-icon">
+            <i class="fa-solid fa-user fa-2xl"></i>
+          </div>
+          <img class="hide-image" src="" alt="artist-image" />
+          <div class="my-artist-info">
+            <div class="my-artist-count">
+              <div>0점</div>
+              <div>&nbsp;|&nbsp;</div>
+              <div>2회</div>
+            </div>
+            <div class="mypage-my-artist-name">이름</div>
+          </div>
+        </div>
+        <div id="mypage-my-artist-container">
+          <div class="mypage-artist-icon">
+            <i class="fa-solid fa-user fa-2xl"></i>
+          </div>
+          <img class="hide-image" src="" alt="artist-image" />
+          <div class="my-artist-info">
+            <div class="my-artist-count">
+              <div>0점</div>
+              <div>&nbsp;|&nbsp;</div>
+              <div>2회</div>
+            </div>
+            <div class="mypage-my-artist-name">이름</div>
+          </div>
+        </div>
+      </div>
+      <div class="mypage-line"></div>
+      <div id="mypage-accumulated-amount" class="mypage-main-text">
+        지금까지 작품 관람에 총&nbsp;<span>1,230,000</span>원을 썼어요!
+      </div>
+    </div>
+  </body>
+</html>
