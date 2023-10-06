@@ -9,6 +9,21 @@ $(() => {
   handleXhttps("GET", "../html/mypage.html", $("main"));
 });
 
+// 검색 페이지
 export const searchhandleXhttps = () => {
   handleXhttps("GET", "../html/search.html", $("main"));
+};
+
+// 달력 페이지
+export const calendarhandleXhttps = () => {
+  var calendar = new FullCalendar.Calendar(
+    document.querySelector("#calendar"),
+    {
+      initialView: "dayGridMonth",
+
+      // events: JSON.parse(data),
+      eventClick: function (info) {},
+    }
+  );
+  calendar.render();
 };
