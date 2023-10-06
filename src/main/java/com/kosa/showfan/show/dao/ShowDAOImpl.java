@@ -34,7 +34,7 @@ public class ShowDAOImpl implements ShowDAO {
 			if(c != null) { 
 				System.out.println(c);
 			}else {
-				throw new Exception("고객이 없습니다");
+				throw new Exception("공연정보가 없습니다");
 			}
 
 		} catch (Exception e) {
@@ -57,7 +57,7 @@ public class ShowDAOImpl implements ShowDAO {
 			if(result != null) { 
 				return result;
 			}else {
-				throw new Exception("고객이 없습니다");
+				throw new Exception("공연정보가 없습니다");
 			}
 
 		} catch (Exception e) {
