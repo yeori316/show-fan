@@ -13,6 +13,12 @@ import com.kosa.showfan.show.dto.ShowDTO;
 
 
 public class ShowDAOImpl implements ShowDAO {
+	private static final ShowDAO showDAO= new ShowDAOImpl();
+	
+	public static ShowDAO getInstance() {
+		return showDAO;
+	}
+	
 	private SqlSessionFactory sqlSessionFactory;
 	public ShowDAOImpl() {
 		String resource = "com/kosa/showfan/sql/mybatis-config.xml";
