@@ -12,7 +12,7 @@ import com.kosa.showfan.show.service.ShowService;
 /**
  * Servlet implementation class ShowDetailServlet
  */
-@WebServlet("/showDetail")
+@WebServlet("/showdetail")
 public class ShowDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ShowService showService;
