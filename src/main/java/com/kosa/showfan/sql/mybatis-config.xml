@@ -3,16 +3,11 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-  <properties resources="db.properties"/>
+  <properties resource="db.properties"/>
   <settings>
     <setting name="mapUnderscoreToCamelCase" value="true"/>
   </settings>
-  <typeAliases>
-  	<typeAlias type="com.my.customer.dto.Customer" alias="Customer"/>
-  	<typeAlias type="com.my.product.dto.Product" alias="Product"/>
-  	<typeAlias type="com.my.order.dto.OrderInfo" alias="OrderInfo"/>
-  	<typeAlias type="com.my.order.dto.OrderLine" alias="OrderLine"/>
-  </typeAliases>
+ 
   <environments default="development">
     <environment id="development">
       <transactionManager type="JDBC"/>
@@ -26,9 +21,7 @@
   </environments>
   
   <mappers>
-    <mapper resource="com/my/sql/Customer.xml"/>
-    <mapper resource="com/my/sql/Product.xml"/>
-    <mapper resource="com/my/sql/Order.xml"/>
+    <mapper resource="com/kosa/showfan/sql/show.xml"/>
   </mappers> 
 
 </configuration>
