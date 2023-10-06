@@ -20,7 +20,7 @@ $(() => {
             xhrFields:{
                 withCredentials: true
             },
-            url: 'http://192.168.1.112:8888/showfan/loginmem',
+            url: 'http://ec2-52-79-82-77.ap-northeast-2.compute.amazonaws.com:8080/showfan/',
             method: 'post',
             data: data,
             success: (responseJSONObj) => {
