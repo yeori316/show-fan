@@ -5,6 +5,9 @@ $(() => {
   handleXhttps('GET', '../html/navigation.html', $('nav'));
   handleXhttps('GET', '../html/footer.html', $('footer'));
 
+  // if 마이페이지 link clicked
+  handleXhttps('GET', '../html/mypage.html', $('main'));
+
   $('body').on('click', '.header-menu-link[href="signup.html"]', function(e) {
     e.preventDefault();
     handleXhttps('GET', '../html/signup.html', $('main'));
