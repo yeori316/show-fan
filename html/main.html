@@ -1,0 +1,512 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="../css/main.css" />
+    <script type="module" src="../js/main.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
+    />
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
+    ></script>
+    <script>
+      $(() => {
+        $.ajax({
+          type: "get",
+          url: "http://192.168.1.37:8888/showfan/show",
+          dataType: "json",
+          success: function (data) {
+            let idx_five = 1;
+            let idx_four = 1;
+            let idx_three = 1;
+            let idx_two = 1;
+            let idx_ine = 1;
+            let totalCnt = 0;
+            $.each(data, function (key, value) {
+              if (value.genreId == 5) {
+                $(".show_name" + value.genreId + "" + idx_five).text(
+                  value.showName
+                );
+                idx_five += 1;
+                if (idx_five == 11) {
+                  totalCnt += 1;
+                }
+              } else if (value.genreId == 4) {
+                $(".show_name" + value.genreId + "" + idx_four).text(
+                  value.showName
+                );
+                idx_four += 1;
+                if (idx_four == 11) {
+                  totalCnt += 1;
+                }
+              } else if (value.genreId == 3) {
+                $(".show_name" + value.genreId + "" + idx_four).text(
+                  value.showName
+                );
+                idx_three += 1;
+                if (idx_three == 11) {
+                  totalCnt += 1;
+                }
+              } else if (value.genreId == 2) {
+                $(".show_name" + value.genreId + "" + idx_four).text(
+                  value.showName
+                );
+                idx_two += 1;
+                if (idx_two == 11) {
+                  totalCnt += 1;
+                }
+              } else if (value.genreId == 1) {
+                $(".show_name" + value.genreId + "" + idx_four).text(
+                  value.showName
+                );
+                idx_one += 1;
+                if (idx_one == 11) {
+                  totalCnt += 1;
+                }
+              }
+
+              if (totalCnt == 4) {
+                return false;
+              }
+
+              console.log(totalCnt);
+            });
+          },
+          error: function () {
+            console.log("통신에러");
+          },
+        });
+      });
+    </script>
+  </head>
+
+  <body>
+    <div class="my-show-slide-container">
+      <i
+        id="my-show-left-arrow-icon1"
+        class="my-show-left-arrow-icon fa-solid fa-circle-chevron-left fa-2xl"
+      ></i>
+      <div class="my-show-slide">
+        <ul id="my-show-container1">
+          <li class="my-show">
+            <img
+              class="my-show-img"
+              src="https://www.kopis.or.kr/upload/pfmPoster/PF_PF223598_230809_130057.gif"
+              alt="show-post"
+            />
+            <div class="show_name51">show-name1</div>
+          </li>
+          <li class="my-show">
+            <img
+              src="https://www.kopis.or.kr/upload/pfmPoster/PF_PF226509_230922_150323.gif"
+              alt="show-post"
+            />
+            <div class="show_name52">show-name2</div>
+          </li>
+          <li class="my-show">
+            <img
+              src="https://www.kopis.or.kr/upload/pfmPoster/PF_PF223598_230809_130057.gif"
+              alt="show-post"
+            />
+            <div class="show_name53">show-name3</div>
+          </li>
+          <li class="my-show">
+            <img
+              src="https://www.kopis.or.kr/upload/pfmPoster/PF_PF223598_230809_130057.gif"
+              alt="show-post"
+            />
+            <div class="show_name54">show-name4</div>
+          </li>
+          <li class="my-show">
+            <img
+              src="https://www.kopis.or.kr/upload/pfmPoster/PF_PF223598_230809_130057.gif"
+              alt="show-post"
+            />
+            <div class="show_name55">show-name5</div>
+          </li>
+          <li class="my-show">
+            <img
+              src="https://www.kopis.or.kr/upload/pfmPoster/PF_PF223598_230809_130057.gif"
+              alt="show-post"
+            />
+            <div class="show_name56">show-name6</div>
+          </li>
+          <li class="my-show">
+            <img
+              src="https://www.kopis.or.kr/upload/pfmPoster/PF_PF223598_230809_130057.gif"
+              alt="show-post"
+            />
+            <div class="show_name57">show-name7</div>
+          </li>
+          <li class="my-show">
+            <img
+              src="https://www.kopis.or.kr/upload/pfmPoster/PF_PF223598_230809_130057.gif"
+              alt="show-post"
+            />
+            <div class="show_name58">show-name8</div>
+          </li>
+          <li class="my-show">
+            <img
+              src="https://www.kopis.or.kr/upload/pfmPoster/PF_PF223598_230809_130057.gif"
+              alt="show-post"
+            />
+            <div class="show_name59">show-name9</div>
+          </li>
+          <li class="my-show">
+            <img
+              src="https://www.kopis.or.kr/upload/pfmPoster/PF_PF226593_230925_115421.jpg"
+              alt="show-post"
+            />
+            <div class="show_name510">show-name10</div>
+          </li>
+        </ul>
+      </div>
+      <i
+        id="my-show-right-arrow-icon1"
+        class="my-show-right-arrow-icon fa-solid fa-circle-chevron-right fa-2xl"
+      ></i>
+    </div>
+    <div class="my-show-slide-container">
+      <i
+        id="my-show-left-arrow-icon2"
+        class="my-show-left-arrow-icon fa-solid fa-circle-chevron-left fa-2xl"
+      ></i>
+      <div class="my-show-slide">
+        <ul id="my-show-container2">
+          <li class="my-show">
+            <img
+              src="https://www.kopis.or.kr/upload/pfmPoster/PF_PF223598_230809_130057.gif"
+              alt="show-post"
+            />
+            <div class="show_name41">show-name1</div>
+          </li>
+          <li class="my-show">
+            <img
+              src="https://www.kopis.or.kr/upload/pfmPoster/PF_PF226509_230922_150323.gif"
+              alt="show-post"
+            />
+            <div class="show_name42">show-name2</div>
+          </li>
+          <li class="my-show">
+            <img
+              src="https://www.kopis.or.kr/upload/pfmPoster/PF_PF223598_230809_130057.gif"
+              alt="show-post"
+            />
+            <div class="show_name43">show-name3</div>
+          </li>
+          <li class="my-show">
+            <img
+              src="https://www.kopis.or.kr/upload/pfmPoster/PF_PF223598_230809_130057.gif"
+              alt="show-post"
+            />
+            <div class="show_name44">show-name4</div>
+          </li>
+          <li class="my-show">
+            <img
+              src="https://www.kopis.or.kr/upload/pfmPoster/PF_PF223598_230809_130057.gif"
+              alt="show-post"
+            />
+            <div class="show_name45">show-name5</div>
+          </li>
+          <li class="my-show">
+            <img
+              src="https://www.kopis.or.kr/upload/pfmPoster/PF_PF223598_230809_130057.gif"
+              alt="show-post"
+            />
+            <div class="show_name46">show-name6</div>
+          </li>
+          <li class="my-show">
+            <img
+              src="https://www.kopis.or.kr/upload/pfmPoster/PF_PF223598_230809_130057.gif"
+              alt="show-post"
+            />
+            <div class="show_name47">show-name7</div>
+          </li>
+          <li class="my-show">
+            <img
+              src="https://www.kopis.or.kr/upload/pfmPoster/PF_PF223598_230809_130057.gif"
+              alt="show-post"
+            />
+            <div class="show_name48">show-name8</div>
+          </li>
+          <li class="my-show">
+            <img
+              src="https://www.kopis.or.kr/upload/pfmPoster/PF_PF223598_230809_130057.gif"
+              alt="show-post"
+            />
+            <div class="show_name49">show-name9</div>
+          </li>
+          <li class="my-show">
+            <img
+              src="https://www.kopis.or.kr/upload/pfmPoster/PF_PF226593_230925_115421.jpg"
+              alt="show-post"
+            />
+            <div class="show_name410">show-name10</div>
+          </li>
+        </ul>
+      </div>
+      <i
+        id="my-show-right-arrow-icon2"
+        class="my-show-right-arrow-icon fa-solid fa-circle-chevron-right fa-2xl"
+      ></i>
+    </div>
+
+    <div class="my-show-slide-container">
+      <i
+        id="my-show-left-arrow-icon3"
+        class="my-show-left-arrow-icon fa-solid fa-circle-chevron-left fa-2xl"
+      ></i>
+      <div class="my-show-slide">
+        <ul id="my-show-container3">
+          <li class="my-show">
+            <img
+              src="https://www.kopis.or.kr/upload/pfmPoster/PF_PF223598_230809_130057.gif"
+              alt="show-post"
+            />
+            <div class="show_name31">show-name1</div>
+          </li>
+          <li class="my-show">
+            <img
+              src="https://www.kopis.or.kr/upload/pfmPoster/PF_PF226509_230922_150323.gif"
+              alt="show-post"
+            />
+            <div class="show_name32">show-name2</div>
+          </li>
+          <li class="my-show">
+            <img
+              src="https://www.kopis.or.kr/upload/pfmPoster/PF_PF223598_230809_130057.gif"
+              alt="show-post"
+            />
+            <div class="show_name33">show-name3</div>
+          </li>
+          <li class="my-show">
+            <img
+              src="https://www.kopis.or.kr/upload/pfmPoster/PF_PF223598_230809_130057.gif"
+              alt="show-post"
+            />
+            <div class="show_name34">show-name4</div>
+          </li>
+          <li class="my-show">
+            <img
+              src="https://www.kopis.or.kr/upload/pfmPoster/PF_PF223598_230809_130057.gif"
+              alt="show-post"
+            />
+            <div class="show_name35">show-name5</div>
+          </li>
+          <li class="my-show">
+            <img
+              src="https://www.kopis.or.kr/upload/pfmPoster/PF_PF223598_230809_130057.gif"
+              alt="show-post"
+            />
+            <div class="show_name36">show-name6</div>
+          </li>
+          <li class="my-show">
+            <img
+              src="https://www.kopis.or.kr/upload/pfmPoster/PF_PF223598_230809_130057.gif"
+              alt="show-post"
+            />
+            <div class="show_name37">show-name7</div>
+          </li>
+          <li class="my-show">
+            <img
+              src="https://www.kopis.or.kr/upload/pfmPoster/PF_PF223598_230809_130057.gif"
+              alt="show-post"
+            />
+            <div class="show_name38">show-name8</div>
+          </li>
+          <li class="my-show">
+            <img
+              src="https://www.kopis.or.kr/upload/pfmPoster/PF_PF223598_230809_130057.gif"
+              alt="show-post"
+            />
+            <div class="show_name39">show-name9</div>
+          </li>
+          <li class="my-show">
+            <img
+              src="https://www.kopis.or.kr/upload/pfmPoster/PF_PF226593_230925_115421.jpg"
+              alt="show-post"
+            />
+            <div class="show_name310">show-name10</div>
+          </li>
+        </ul>
+      </div>
+      <i
+        id="my-show-right-arrow-icon3"
+        class="my-show-right-arrow-icon fa-solid fa-circle-chevron-right fa-2xl"
+      ></i>
+    </div>
+
+    <div class="my-show-slide-container">
+      <i
+        id="my-show-left-arrow-icon4"
+        class="my-show-left-arrow-icon fa-solid fa-circle-chevron-left fa-2xl"
+      ></i>
+      <div class="my-show-slide">
+        <ul id="my-show-container4">
+          <li class="my-show">
+            <img
+              src="https://www.kopis.or.kr/upload/pfmPoster/PF_PF223598_230809_130057.gif"
+              alt="show-post"
+            />
+            <div class="show_name21">show-name1</div>
+          </li>
+          <li class="my-show">
+            <img
+              src="https://www.kopis.or.kr/upload/pfmPoster/PF_PF226509_230922_150323.gif"
+              alt="show-post"
+            />
+            <div class="show_name22">show-name2</div>
+          </li>
+          <li class="my-show">
+            <img
+              src="https://www.kopis.or.kr/upload/pfmPoster/PF_PF223598_230809_130057.gif"
+              alt="show-post"
+            />
+            <div class="show_name23">show-name3</div>
+          </li>
+          <li class="my-show">
+            <img
+              src="https://www.kopis.or.kr/upload/pfmPoster/PF_PF223598_230809_130057.gif"
+              alt="show-post"
+            />
+            <div class="show_name24">show-name4</div>
+          </li>
+          <li class="my-show">
+            <img
+              src="https://www.kopis.or.kr/upload/pfmPoster/PF_PF223598_230809_130057.gif"
+              alt="show-post"
+            />
+            <div class="show_name25">show-name5</div>
+          </li>
+          <li class="my-show">
+            <img
+              src="https://www.kopis.or.kr/upload/pfmPoster/PF_PF223598_230809_130057.gif"
+              alt="show-post"
+            />
+            <div class="show_name26">show-name6</div>
+          </li>
+          <li class="my-show">
+            <img
+              src="https://www.kopis.or.kr/upload/pfmPoster/PF_PF223598_230809_130057.gif"
+              alt="show-post"
+            />
+            <div class="show_name27">show-name7</div>
+          </li>
+          <li class="my-show">
+            <img
+              src="https://www.kopis.or.kr/upload/pfmPoster/PF_PF223598_230809_130057.gif"
+              alt="show-post"
+            />
+            <div class="show_name28">show-name8</div>
+          </li>
+          <li class="my-show">
+            <img
+              src="https://www.kopis.or.kr/upload/pfmPoster/PF_PF223598_230809_130057.gif"
+              alt="show-post"
+            />
+            <div class="show_name29">show-name9</div>
+          </li>
+          <li class="my-show">
+            <img
+              src="https://www.kopis.or.kr/upload/pfmPoster/PF_PF226593_230925_115421.jpg"
+              alt="show-post"
+            />
+            <div class="show_name210">show-name10</div>
+          </li>
+        </ul>
+      </div>
+      <i
+        id="my-show-right-arrow-icon4"
+        class="my-show-right-arrow-icon fa-solid fa-circle-chevron-right fa-2xl"
+      ></i>
+    </div>
+
+    <div class="my-show-slide-container">
+      <i
+        id="my-show-left-arrow-icon5"
+        class="my-show-left-arrow-icon fa-solid fa-circle-chevron-left fa-2xl"
+      ></i>
+      <div class="my-show-slide">
+        <ul id="my-show-container5">
+          <li class="my-show">
+            <img
+              src="https://www.kopis.or.kr/upload/pfmPoster/PF_PF223598_230809_130057.gif"
+              alt="show-post"
+            />
+            <div class="show_name11">show-name1</div>
+          </li>
+          <li class="my-show">
+            <img
+              src="https://www.kopis.or.kr/upload/pfmPoster/PF_PF226509_230922_150323.gif"
+              alt="show-post"
+            />
+            <div class="show_name12">show-name2</div>
+          </li>
+          <li class="my-show">
+            <img
+              src="https://www.kopis.or.kr/upload/pfmPoster/PF_PF223598_230809_130057.gif"
+              alt="show-post"
+            />
+            <div class="show_name13">show-name3</div>
+          </li>
+          <li class="my-show">
+            <img
+              src="https://www.kopis.or.kr/upload/pfmPoster/PF_PF223598_230809_130057.gif"
+              alt="show-post"
+            />
+            <div class="show_name14">show-name4</div>
+          </li>
+          <li class="my-show">
+            <img
+              src="https://www.kopis.or.kr/upload/pfmPoster/PF_PF223598_230809_130057.gif"
+              alt="show-post"
+            />
+            <div class="show_name15">show-name5</div>
+          </li>
+          <li class="my-show">
+            <img
+              src="https://www.kopis.or.kr/upload/pfmPoster/PF_PF223598_230809_130057.gif"
+              alt="show-post"
+            />
+            <div class="show_name16">show-name6</div>
+          </li>
+          <li class="my-show">
+            <img
+              src="https://www.kopis.or.kr/upload/pfmPoster/PF_PF223598_230809_130057.gif"
+              alt="show-post"
+            />
+            <div class="show_name17">show-name7</div>
+          </li>
+          <li class="my-show">
+            <img
+              src="https://www.kopis.or.kr/upload/pfmPoster/PF_PF223598_230809_130057.gif"
+              alt="show-post"
+            />
+            <div class="show_name18">show-name8</div>
+          </li>
+          <li class="my-show">
+            <img
+              src="https://www.kopis.or.kr/upload/pfmPoster/PF_PF223598_230809_130057.gif"
+              alt="show-post"
+            />
+            <div class="show_name19">show-name9</div>
+          </li>
+          <li class="my-show">
+            <img
+              src="https://www.kopis.or.kr/upload/pfmPoster/PF_PF226593_230925_115421.jpg"
+              alt="show-post"
+            />
+            <div class="show_name110">show-name10</div>
+          </li>
+        </ul>
+      </div>
+      <i
+        id="my-show-right-arrow-icon5"
+        class="my-show-right-arrow-icon fa-solid fa-circle-chevron-right fa-2xl"
+      ></i>
+    </div>
+  </body>
+</html>
