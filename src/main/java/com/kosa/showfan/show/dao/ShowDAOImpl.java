@@ -1,6 +1,5 @@
 package com.kosa.showfan.show.dao;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
@@ -9,7 +8,10 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+import com.kosa.showfan.exception.FindException;
+import com.kosa.showfan.show.dto.ShowCalendarDTO;
 import com.kosa.showfan.show.dto.ShowDTO;
+import com.kosa.showfan.show.dto.ShowSearchDTO;
 
 
 public class ShowDAOImpl implements ShowDAO {
@@ -20,6 +22,7 @@ public class ShowDAOImpl implements ShowDAO {
 	}
 	
 	private SqlSessionFactory sqlSessionFactory;
+	
 	public ShowDAOImpl() {
 		String resource = "com/kosa/showfan/sql/mybatis-config.xml";
 		InputStream inputStream;
@@ -30,6 +33,7 @@ public class ShowDAOImpl implements ShowDAO {
 			e.printStackTrace();
 		}
 	}
+	
 	@Override
 	public void selectById() throws Exception {
 		SqlSession session = null;
@@ -77,8 +81,39 @@ public class ShowDAOImpl implements ShowDAO {
 		return null;
 		
 	}
-	
-	
-	
-	
+
+	@Override
+	public List<ShowSearchDTO> selectByString(String value) throws FindException {
+		SqlSession session = null;
+		
+		try {
+			session = sqlSessionFactory.openSession();
+//			System.out.println(value);
+			return session.selectList("com.kosa.show.ShowMapper.selectByString", value);
+		} catch (Exception e) {
+			throw new FindException("검색된 결과가 없습니다.");
+		} finally {
+			if (session != null) {
+				session.close();
+			}
+		}
+	}
+
+	@Override
+	public List<ShowCalendarDTO> selectByDate() throws FindException {
+		SqlSession session = null;
+		
+		try {
+			session = sqlSessionFactory.openSession();
+//			System.out.println(value);
+			return session.selectList("com.kosa.show.ShowMapper.selectByDate");
+		} catch (Exception e) {
+			throw new FindException("검색된 결과가 없습니다.");
+		} finally {
+			if (session != null) {
+				session.close();
+			}
+		}
+	}
+
 }
