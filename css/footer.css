@@ -9,4 +9,5 @@
   justify-content: center;
 
   background-color: var(--main1-color);
+  box-sizing: unset;
 }

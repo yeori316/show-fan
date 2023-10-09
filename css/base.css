@@ -1,4 +1,4 @@
-@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
 :root {
   --main1-color: #f8f0e5;
   --main2-color: #eadbc8;
@@ -19,11 +19,12 @@
 
 body {
   min-width: 480px;
+  line-height: unset !important;
 }
 
 a {
-  text-decoration: none;
-  color: var(--black-color);
+  text-decoration: none !important;
+  color: var(--black-color) !important;
 }
 
 a:link {
@@ -36,4 +37,11 @@ input:focus {
 
 main {
   margin: 20px;
+}
+
+h1 {
+  font-size: 2em !important;
+  font-weight: bold !important;
+  margin-bottom: unset !important;
+  color: var(--main4-color) !important;
 }

@@ -30,8 +30,9 @@
   width: 25vw;
   height: 30px;
   margin-right: 20px;
-
+  font-size: inherit;
   border: 5px solid var(--main2-color);
+  box-sizing: unset;
 }
 
 #header-search-button {
