@@ -1,4 +1,4 @@
-package com.kosa.showfan.show;
+package com.kosa.showfan.show.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
