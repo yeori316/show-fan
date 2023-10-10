@@ -7,6 +7,7 @@ import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -30,7 +31,7 @@ public class LoginController extends HttpServlet {
 		
 		//크로스오리진 문제 해결
 		response.setHeader("Access-Control-Allow-Origin", 
-						    "http://192.168.1.112:5500");
+						    "http://192.168.1.112:5502");
 		response.setHeader("Access-Control-Allow-Credentials" , "true");
 		
 		//응답출력스트림얻기
@@ -38,17 +39,32 @@ public class LoginController extends HttpServlet {
 		
 		String email = request.getParameter("email");
 		String pwd = request.getParameter("pwd");
+		String auto = request.getParameter("autoLogin");
+		
 		ObjectMapper mapper = new ObjectMapper();
 		Map<String, Object> map = new HashMap<>();
 		
 		HttpSession session = request.getSession();
 		
 		try {
-			service.login(email, pwd);
-			map.put("status", 1);
-			map.put("msg", "로그인 성공");
-			session.setAttribute("loginedEmail", email);
-			session.setAttribute("loginedPwd", pwd);
+			if(auto == "true") {
+				service.login(email, pwd);
+				map.put("status", 1);
+				map.put("msg", "로그인 성공");
+				session.setAttribute("loginedEmail", email);
+				session.setAttribute("loginedPwd", pwd);
+				Cookie cookie = new Cookie("loginCookie", (String) session.getAttribute("loginedEmail"));
+				cookie.setMaxAge(60*60*24*7); // 단위는 (초)임으로 7일정도로 유효시간을 설정해 준다.
+				// 쿠키 적용
+				response.addCookie(cookie);
+			}
+			else {
+				service.login(email, pwd);
+				map.put("status", 1);
+				map.put("msg", "로그인 성공");
+				session.setAttribute("loginedEmail", email);
+				session.setAttribute("loginedPwd", pwd);
+			}
 		} catch (FindException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
