@@ -25,9 +25,9 @@ public class ReplyService {
 		}
 	}
 
-	public void deleteReply(Long reviewId) {
+	public void deleteReply(ReplyDTO replyDTO) {
 		try {
-			replyDAO.deleteReply(reviewId);
+			replyDAO.deleteReply(replyDTO);
 		} catch (RemoveException e) {
 			e.printStackTrace();
 		}

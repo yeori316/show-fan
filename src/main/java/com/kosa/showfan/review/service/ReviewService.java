@@ -32,9 +32,9 @@ public class ReviewService {
 		}
 	}
 
-	public void deleteReview(Long reviewId) {
+	public void deleteReview(ReviewDTO reviewDTO) {
 		try {
-			reviewDAO.deleteReview(reviewId);
+			reviewDAO.deleteReview(reviewDTO);
 		} catch (RemoveException e) {
 			e.printStackTrace();
 		}

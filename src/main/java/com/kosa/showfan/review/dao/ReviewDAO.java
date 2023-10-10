@@ -37,8 +37,8 @@ public interface ReviewDAO {
 	/**
 	 * 리뷰 삭제
 	 * 
-	 * @param reviewId
+	 * @param reviewDTO
 	 * @throws RemoveException
 	 */
-	void deleteReview(Long reviewId) throws RemoveException;
+	void deleteReview(ReviewDTO reviewDTO) throws RemoveException;
 }

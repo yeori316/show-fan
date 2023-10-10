@@ -28,5 +28,5 @@ public interface ReplyDAO {
 	 * @param reply
 	 * @throws RemoveException
 	 */
-	void deleteReply(Long replyId) throws RemoveException;
+	void deleteReply(ReplyDTO replyDTO) throws RemoveException;
 }
