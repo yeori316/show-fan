@@ -41,29 +41,34 @@ public class LoginController extends HttpServlet {
 		String pwd = request.getParameter("pwd");
 		String auto = request.getParameter("autoLogin");
 		
+		System.out.println("자동로그인 체크 여부 " + auto);
+		
 		ObjectMapper mapper = new ObjectMapper();
 		Map<String, Object> map = new HashMap<>();
 		
 		HttpSession session = request.getSession();
 		
 		try {
-			if(auto == "true") {
-				service.login(email, pwd);
-				map.put("status", 1);
-				map.put("msg", "로그인 성공");
-				session.setAttribute("loginedEmail", email);
-				session.setAttribute("loginedPwd", pwd);
+			service.login(email, pwd);
+			map.put("status", 1);
+			map.put("msg", "로그인 성공");
+			session.setAttribute("loginedEmail", email);
+			session.setAttribute("loginedPwd", pwd);
+
+			if(auto.equals("true")) {   //자동로그인을 체크한 경우
 				Cookie cookie = new Cookie("loginCookie", (String) session.getAttribute("loginedEmail"));
 				cookie.setMaxAge(60*60*24*7); // 단위는 (초)임으로 7일정도로 유효시간을 설정해 준다.
+				cookie.setPath("/"); //모든 경로에서 접근 가능하도록 설정
 				// 쿠키 적용
 				response.addCookie(cookie);
-			}
-			else {
-				service.login(email, pwd);
-				map.put("status", 1);
-				map.put("msg", "로그인 성공");
-				session.setAttribute("loginedEmail", email);
-				session.setAttribute("loginedPwd", pwd);
+				 
+			}else { //자동로그인을 체크 안한 경우
+				Cookie cookie = new Cookie("loginCookie", (String) session.getAttribute("loginedEmail"));
+//				cookie.setMaxAge(60*60*24*7); // 단위는 (초)임으로 7일정도로 유효시간을 설정해 준다.
+				cookie.setPath("/"); //모든 경로에서 접근 가능하도록 설정
+				// 쿠키 적용
+				response.addCookie(cookie);
+				
 			}
 		} catch (FindException e) {
 			// TODO Auto-generated catch block

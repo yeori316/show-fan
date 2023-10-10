@@ -17,7 +17,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kosa.showfan.exception.FindException;
 
 
-@WebServlet("/cookie")
+@WebServlet("/cookiemem")
 public class CookieServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -50,26 +50,27 @@ public class CookieServlet extends HttpServlet {
 		String logincookie = "loginCookie";
 
 		Cookie[] cookies = request.getCookies();
+		
 		//1. 쿠키가 있는지 확인
 		if(cookies != null) {
 			for(int i=0; i<cookies.length; i++) {
-				
-				//2. 있다면 우리쪽 쿠키인지 확인 그리고 맞다면 로그인 진행
+
+				//3. 있다면 우리쪽 쿠키인지 확인 그리고 맞다면 로그인 진행
 				boolean ck = cookies[i].getName().equals(logincookie);
+
 				if(ck == true) {
 					String cookieEmail = cookies[i].getValue();
 					session.setAttribute("loginedEmail", cookieEmail);
-					map.put("status", 2);
-					map.put("msg", "자동 로그인 성공");
-					break;
-				}
-				//3. 우리쪽 쿠키가 없다면(쿠키가 없다면) 로그인 실패
-				else {
-					map.put("status",  0);
-					map.put("msg", "로그인 실패");
+					map.put("status", 1);
+					map.put("msg", "로그인 성공");
 					break;
 				}
 			}
+			
+		//2. 쿠키가 없다
+		}else {
+			map.put("status",  0);
+			map.put("msg", "로그인 실패");
 		}
 				
 		String jsonStr = mapper.writeValueAsString(map);

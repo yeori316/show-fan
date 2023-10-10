@@ -37,14 +37,11 @@ public class MemberDAOImpl implements MemberDAO {
 		SqlSession session = null;
 		try {
 			session = sqlSessionFactory.openSession();
-			System.out.println("sdf1");
 			Map<String, String> map = new HashMap<>();
 			map.put("email", email);
 			map.put("pwd", pwd);
-			System.out.println("sdf2");
 			MemberDTO m = session.selectOne("com.kosa.showfan.MemberMapper.selectById", map);
-			System.out.println("sdf3");
-			
+	
 			if(m!=null) {
 				return m;
 			}else {
