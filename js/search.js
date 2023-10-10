@@ -1,4 +1,5 @@
 $(() => {
+  // 체크 박스 전체 선택 시
   const $genreAll = $("#genreAll");
   const $statusAll = $("#statusAll");
   const $localAll = $("#localAll");

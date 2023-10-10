@@ -28,12 +28,49 @@ $(() => {
     handleXhttps("GET", "../html/modify.html", $("main"));
   });
 
-});
+  // 검색 시
+  $("body").on("click", "#header-search-button", function (e) {
+    e.preventDefault();
+    console.log($("#header-search-input").val()); // 검색어
+    handleXhttps("GET", "../html/search.html", $("main"));
+  });
 
-// 검색 페이지
-export const searchhandleXhttps = () => {
-  handleXhttps("GET", "../html/search.html", $("main"));
-};
+  // 달력 test
+  // $("body").on("click", "#navigation-calendar-button", function (e) {
+  //   e.preventDefault();
+
+  //   var calendar = new FullCalendar.Calendar(
+  //     // document.querySelector("#calendar"),
+  //     document.querySelector("main"),
+  //     {
+  //       initialView: "dayGridMonth",
+
+  //       // events: JSON.parse(data),
+  //       eventClick: function (info) {},
+  //     }
+  //   );
+  //   calendar.render();
+  // });
+
+  const $calendar = $("#navigation-calendar-button");
+
+  $calendar.click(() => {
+    console.log("click");
+    $("main").html("<div id='calendar'></div>");
+    // calendarhandleXhttps();
+
+    var calendar = new FullCalendar.Calendar(
+      document.querySelector("#calendar"),
+      {
+        initialView: "dayGridMonth",
+
+        // events: JSON.parse(data),
+        eventClick: function (info) {},
+      }
+    );
+    calendar.render();
+  });
+});
 
 // 달력 페이지
 export const calendarhandleXhttps = () => {
