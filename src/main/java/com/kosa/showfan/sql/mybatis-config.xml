@@ -7,6 +7,12 @@
   <settings>
     <setting name="mapUnderscoreToCamelCase" value="true"/>
   </settings>
+  
+  <typeAliases>
+	<typeAlias alias="ShowDTO" type="com.kosa.showfan.show.dto.ShowDTO"/>
+	<typeAlias alias="ShowSearchDTO" type="com.kosa.showfan.show.dto.ShowSearchDTO"/>
+	<typeAlias alias="ShowCalendarDTO" type="com.kosa.showfan.show.dto.ShowCalendarDTO"/>
+  </typeAliases>
  
   <environments default="development">
     <environment id="development">

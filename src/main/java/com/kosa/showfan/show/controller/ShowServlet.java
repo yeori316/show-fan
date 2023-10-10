@@ -1,4 +1,4 @@
-package com.kosa.showfan.show;
+package com.kosa.showfan.show.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -20,6 +20,7 @@ import com.kosa.showfan.show.service.ShowService;
  */
 @WebServlet("/show")
 public class ShowServlet extends HttpServlet {
+//public class ShowServlet extends ShowController {	
 	private static final long serialVersionUID = 1L;
 	private ShowService showService = ShowService.getInstance();
 	
@@ -40,5 +41,12 @@ public class ShowServlet extends HttpServlet {
 		}
 	}
 
+//	@Override
+//	public void execute(HttpServletRequest request, HttpServletResponse response)
+//			throws ServletException, IOException {
+//
+//		PrintWriter out = response.getWriter();
+//		out.print("/show test");
+//	}
 
 }
