@@ -3,29 +3,37 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-	<settings>
-		<setting name="mapUnderscoreToCamelCase" value="true" />
-	</settings>
-	<typeAliases>
-		<typeAlias type="com.kosa.showfan.review.dto.ReviewDTO"
+  <properties resource="db.properties"/>
+  <settings>
+    <setting name="mapUnderscoreToCamelCase" value="true"/>
+  </settings>
+  
+  <typeAliases>
+	<typeAlias alias="ShowDTO" type="com.kosa.showfan.show.dto.ShowDTO"/>
+	<typeAlias alias="ShowSearchDTO" type="com.kosa.showfan.show.dto.ShowSearchDTO"/>
+	<typeAlias alias="ShowCalendarDTO" type="com.kosa.showfan.show.dto.ShowCalendarDTO"/>
+  	<typeAlias type="com.kosa.showfan.review.dto.ReviewDTO"
 			alias="ReviewDTO" />
-		<typeAlias type="com.kosa.showfan.reply.dto.ReplyDTO"
+	<typeAlias type="com.kosa.showfan.reply.dto.ReplyDTO"
 			alias="ReplyDTO" />
-	</typeAliases>
-	<environments default="development">
-		<environment id="development">
-			<transactionManager type="JDBC" />
-			<dataSource type="POOLED">
-				<property name="driver" value="oracle.jdbc.OracleDriver" />
-				<property name="url"
-					value="jdbc:oracle:thin:@showfan_high?TNS_ADMIN=C:\etcFiles\Wallet_SHOWFAN" />
-				<property name="username" value="ADMIN" />
-				<property name="password" value="vEobQ63py8caBs6" />
-			</dataSource>
-		</environment>
-	</environments>
-	<mappers>
-		<mapper resource="com/kosa/showfan/sql/Review.xml"></mapper>
-		<mapper resource="com/kosa/showfan/sql/Reply.xml"></mapper>
-	</mappers>
+  </typeAliases>
+ 
+  <environments default="development">
+    <environment id="development">
+      <transactionManager type="JDBC"/>
+      <dataSource type="POOLED">
+        <property name="driver" value="${driver}"/>
+        <property name="url" value="${url}"/>
+        <property name="username" value="${username}"/>
+        <property name="password" value="${password}"/>
+      </dataSource>
+    </environment>
+  </environments>
+  
+  <mappers>
+    <mapper resource="com/kosa/showfan/sql/show.xml"/>
+    <mapper resource="com/kosa/showfan/sql/Review.xml"></mapper>
+	<mapper resource="com/kosa/showfan/sql/Reply.xml"></mapper>
+  </mappers> 
+
 </configuration>

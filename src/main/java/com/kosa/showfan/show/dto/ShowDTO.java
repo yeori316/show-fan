@@ -9,7 +9,7 @@ import lombok.Data;
 
 @Data
 public class ShowDTO {
-	private Long showId;
+	private String showId;
 	private Long genreId;
 	private String showName;
 	private Date showStartDay;
@@ -29,4 +29,5 @@ public class ShowDTO {
 	private Double showLongitude;
 	private String showRuntime;
 	private List<ReviewDTO> showReveiws;
+	private String showPoster;
 }
