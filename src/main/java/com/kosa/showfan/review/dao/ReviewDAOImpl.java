@@ -53,10 +53,10 @@ public class ReviewDAOImpl implements ReviewDAO {
 	}
 
 	@Override
-	public void deleteReview(Long reviewId) throws RemoveException {
+	public void deleteReview(ReviewDTO review) throws RemoveException {
 		SqlSession session = sqlSessionFactory.openSession();
 		try {
-			session.delete("com.kosa.showfan.review.ReviewMapper.deleteReview", reviewId);
+			session.delete("com.kosa.showfan.review.ReviewMapper.deleteReview", review);
 			session.commit();
 		} catch (Exception e) {
 			session.rollback();

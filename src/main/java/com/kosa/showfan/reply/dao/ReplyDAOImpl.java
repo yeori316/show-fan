@@ -47,10 +47,10 @@ public class ReplyDAOImpl implements ReplyDAO {
 	}
 
 	@Override
-	public void deleteReply(Long replyId) throws RemoveException {
+	public void deleteReply(ReplyDTO replyDTO) throws RemoveException {
 		SqlSession session = sqlSessionFactory.openSession();
 		try {
-			session.delete("com.kosa.showfan.reply.ReplyMapper.deleteReply", replyId);
+			session.delete("com.kosa.showfan.reply.ReplyMapper.deleteReply", replyDTO);
 			session.commit();
 		} catch (Exception e) {
 			session.rollback();
