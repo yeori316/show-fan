@@ -33,7 +33,6 @@
                 />
                 <label class="form-check-label" for="concert"> 콘서트 </label>
               </div>
-              &nbsp;
               <div class="form-check">
                 <input
                   class="form-check-input"
@@ -44,7 +43,6 @@
                 />
                 <label class="form-check-label" for="musical"> 뮤지컬 </label>
               </div>
-              &nbsp;
               <div class="form-check">
                 <input
                   class="form-check-input"
@@ -55,7 +53,6 @@
                 />
                 <label class="form-check-label" for="theater"> 연극 </label>
               </div>
-              &nbsp;
               <div class="form-check">
                 <input
                   class="form-check-input"
@@ -66,7 +63,6 @@
                 />
                 <label class="form-check-label" for="festival"> 축제 </label>
               </div>
-              &nbsp;
               <div class="form-check">
                 <input
                   class="form-check-input"
@@ -103,7 +99,6 @@
                 />
                 <label class="form-check-label" for="coming"> 공연 예정 </label>
               </div>
-              &nbsp;
               <div class="form-check">
                 <input
                   class="form-check-input"
@@ -114,7 +109,6 @@
                 />
                 <label class="form-check-label" for="during"> 공연 중 </label>
               </div>
-              &nbsp;
               <div class="form-check">
                 <input
                   class="form-check-input"
@@ -151,95 +145,66 @@
                 />
                 <label class="form-check-label" for="seoul"> 서울 </label>
               </div>
-              &nbsp;
               <div class="form-check">
                 <input
                   class="form-check-input"
                   type="checkbox"
-                  value="gyeonggi"
-                  id="gyeonggi"
+                  value="incheon"
+                  id="incheon"
                   name="local"
                 />
-                <label class="form-check-label" for="gyeonggi"> 경기 </label>
+                <label class="form-check-label" for="incheon"> 인천 </label>
               </div>
-              &nbsp;
               <div class="form-check">
                 <input
                   class="form-check-input"
                   type="checkbox"
-                  value="gangwon"
-                  id="gangwon"
+                  value="daejeon"
+                  id="daejeon"
                   name="local"
                 />
-                <label class="form-check-label" for="gangwon"> 강원 </label>
+                <label class="form-check-label" for="daejeon"> 대전 </label>
               </div>
-              &nbsp;
               <div class="form-check">
                 <input
                   class="form-check-input"
                   type="checkbox"
-                  value="gyeongbuk"
-                  id="gyeongbuk"
+                  value="daegu"
+                  id="daegu"
                   name="local"
                 />
-                <label class="form-check-label" for="gyeongbuk"> 경북 </label>
+                <label class="form-check-label" for="daegu"> 대구 </label>
               </div>
-              &nbsp;
               <div class="form-check">
                 <input
                   class="form-check-input"
                   type="checkbox"
-                  value="gyeongnam"
-                  id="gyeongnam"
+                  value="gwangju"
+                  id="gwangju"
                   name="local"
                 />
-                <label class="form-check-label" for="gyeongnam"> 경남 </label>
+                <label class="form-check-label" for="gwangju"> 광주 </label>
               </div>
-              &nbsp;
               <div class="form-check">
                 <input
                   class="form-check-input"
                   type="checkbox"
-                  value="chungbuk"
-                  id="chungbuk"
+                  value="ulsan"
+                  id="ulsan"
                   name="local"
                 />
-                <label class="form-check-label" for="chungbuk"> 충북 </label>
+                <label class="form-check-label" for="ulsan"> 울산 </label>
               </div>
-              &nbsp;
               <div class="form-check">
                 <input
                   class="form-check-input"
                   type="checkbox"
-                  value="chungnam"
-                  id="chungnam"
+                  value="busan"
+                  id="busan"
                   name="local"
                 />
-                <label class="form-check-label" for="chungnam"> 충남 </label>
+                <label class="form-check-label" for="busan"> 부산 </label>
               </div>
-              &nbsp;
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value="jeonbuk"
-                  id="jeonbuk"
-                  name="local"
-                />
-                <label class="form-check-label" for="jeonbuk"> 전북 </label>
-              </div>
-              &nbsp;
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value="jeonnam"
-                  id="jeonnam"
-                  name="local"
-                />
-                <label class="form-check-label" for="jeonnam"> 전남 </label>
-              </div>
-              &nbsp;
               <div class="form-check">
                 <input
                   class="form-check-input"
@@ -268,116 +233,25 @@
       -->
       <div id="search-result-container">
         <div id="search-result-count" class="container text-right">
-          <b>검색 결과 (총 갯수)</b>
+          <b>검색 결과 (0)</b>
         </div>
         <br />
         <div class="container-sm">
-          <div class="row row-cols-10 row-cols-md-5 g-3">
+          <div class="row row-cols-10 row-cols-md-5 g-3" id="showCardList">
             <div class="col">
               <div class="card h-100">
                 <img
-                  src="https://showfan.s3.ap-northeast-2.amazonaws.com/PF154190.jpg"
                   class="card-img-top"
+                  src="https://showfan.s3.ap-northeast-2.amazonaws.com/PF154190.jpg"
                   alt="..."
                 />
                 <div class="status"><b>공연중</b></div>
                 <div class="card-body">
                   <h5 class="card-title">Card title</h5>
                   <p class="card-text">
-                    <br />
-                    2023.01.01 ~ 2023.01.01 <br />
-                    예술의 전당 <br /><br />
-                    평점 3.5 (리뷰갯수)
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card h-100">
-                <img
-                  src="https://showfan.s3.ap-northeast-2.amazonaws.com/PF154190.jpg"
-                  class="card-img-top"
-                  alt="..."
-                />
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">
-                    이미지에 공연상태 표시<br />
-                    2023.01.01 ~ 2023.01.01 <br />
-                    예술의 전당 <br /><br />
-                    평점 3.5 (리뷰갯수)
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card h-100">
-                <img
-                  src="https://showfan.s3.ap-northeast-2.amazonaws.com/PF154190.jpg"
-                  class="card-img-top"
-                  alt="..."
-                />
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">
-                    이미지에 공연상태 표시<br />
-                    2023.01.01 ~ 2023.01.01 <br />
-                    예술의 전당 <br /><br />
-                    평점 3.5 (리뷰갯수)
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card h-100">
-                <img
-                  src="https://showfan.s3.ap-northeast-2.amazonaws.com/PF154190.jpg"
-                  class="card-img-top"
-                  alt="..."
-                />
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">
-                    이미지에 공연상태 표시<br />
-                    2023.01.01 ~ 2023.01.01 <br />
-                    예술의 전당 <br /><br />
-                    평점 3.5 (리뷰갯수)
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card h-100">
-                <img
-                  src="https://showfan.s3.ap-northeast-2.amazonaws.com/PF154190.jpg"
-                  class="card-img-top"
-                  alt="..."
-                />
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">
-                    이미지에 공연상태 표시<br />
-                    2023.01.01 ~ 2023.01.01 <br />
-                    예술의 전당 <br /><br />
-                    평점 3.5 (리뷰갯수)
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card h-100">
-                <img
-                  src="https://showfan.s3.ap-northeast-2.amazonaws.com/PF154190.jpg"
-                  class="card-img-top"
-                  alt="..."
-                />
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">
-                    이미지에 공연상태 표시<br />
-                    2023.01.01 ~ 2023.01.01 <br />
-                    예술의 전당 <br /><br />
-                    평점 3.5 (리뷰갯수)
+                    <div id="period">2023.01.01 ~ 2023.01.01</div>
+                    <div id="venues">예술의 전당</div><br>
+                    <div id="grade">평점 3.5 (리뷰갯수)</div>
                   </p>
                 </div>
               </div>

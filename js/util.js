@@ -1,5 +1,5 @@
-export const frontURL = "http://127.0.0.1:5500/showfan";
-export const backURL = "http://127.0.0.1:8888/showfan";
+export const frontURL = "http://127.0.0.1:5501/showfan";
+export const backURL = "http://127.0.0.1:8080/showfan";
 
 // api call(ajax) function
 export const handleXhttps = (method, url, target) => {

@@ -30,9 +30,12 @@ $(() => {
 
   // 검색 시
   $("body").on("click", "#header-search-button", function (e) {
-    e.preventDefault();
-    console.log($("#header-search-input").val()); // 검색어
+    // e.preventDefault();
     handleXhttps("GET", "../html/search.html", $("main"));
+
+    console.log("123");
+    // const value = $("#header-search-input").val();
+    // location.href = `../html/search?v=${value}`;
   });
 
   // 달력 test

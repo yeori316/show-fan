@@ -1,4 +1,4 @@
-import { carouselSlider } from "./util.js";
+import { carouselSlider, backURL } from "./util.js";
 
 $(() => {
   carouselSlider(
@@ -31,7 +31,7 @@ $(() => {
 $(() => {
   $.ajax({
     type: "get",
-    url: "http://192.168.1.37:8888/showfan/show",
+    url: `${backURL}/show`,
     dataType: "json",
     success: function (data) {
       let idx_five = 1;
@@ -96,8 +96,6 @@ $(() => {
         if (totalCnt == 4) {
           return false;
         }
-
-        console.log(totalCnt);
       });
     },
     error: function () {
