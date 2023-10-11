@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class MyShowDTO {
-	private Long memberId;
-	private Long showId;
+    private Long memberId;
+    private String showId;
 }
