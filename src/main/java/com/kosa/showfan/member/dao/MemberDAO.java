@@ -1,5 +1,8 @@
 package com.kosa.showfan.member.dao;
 
-public interface MemberDAO {
+import com.kosa.showfan.exception.FindException;
+import com.kosa.showfan.member.dto.MemberDTO;
 
+public interface MemberDAO {
+    MemberDTO select(Long memberId) throws FindException;
 }
