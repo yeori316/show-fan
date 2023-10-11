@@ -5,21 +5,21 @@
 <configuration>
 
   <properties resource="db.properties"/>
-  
   <settings>
     <setting name="mapUnderscoreToCamelCase" value="true"/>
   </settings>
   
   <typeAliases>
   	<typeAlias type="com.kosa.showfan.member.dto.MemberDTO" alias="MemberDTO"/>
-
+	<typeAlias alias="ShowDTO" type="com.kosa.showfan.show.dto.ShowDTO"/>
+	<typeAlias alias="ShowSearchDTO" type="com.kosa.showfan.show.dto.ShowSearchDTO"/>
+	<typeAlias alias="ShowCalendarDTO" type="com.kosa.showfan.show.dto.ShowCalendarDTO"/>
   </typeAliases>
-
+ 
   <environments default="development">
     <environment id="development">
       <transactionManager type="JDBC"/>
       <dataSource type="POOLED">
-      
         <property name="driver" value="${driver}"/>
         <property name="url" value="${url}"/>
         <property name="username" value="${username}"/>
@@ -30,6 +30,7 @@
   
   <mappers>
   	<mapper resource="com/kosa/showfan/sql/Member.xml"/>
+    <mapper resource="com/kosa/showfan/sql/show.xml"/>
   </mappers> 
 
 </configuration>

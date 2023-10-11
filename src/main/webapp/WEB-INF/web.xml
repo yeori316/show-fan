@@ -28,6 +28,18 @@
 		<description></description>
 		<servlet-class>com.kosa.showfan.member.service.LogoutServlet</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>ShowServlet</servlet-name>
+		<display-name>ShowServlet</display-name>
+		<description></description>
+		<servlet-class>com.kosa.showfan.show.ShowServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ShowDetailServlet</servlet-name>
+		<display-name>ShowDetailServlet</display-name>
+		<description></description>
+		<servlet-class>com.kosa.showfan.show.ShowDetailServlet</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>LoginController</servlet-name>
 		<url-pattern>/login</url-pattern>
@@ -46,6 +58,14 @@
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>LogoutServlet</servlet-name>
-		<url-pattern>/logoutmem</url-pattern>
+		<url-pattern>/logoutmemm</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ShowServlet</servlet-name>
+		<url-pattern>/ShowServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ShowDetailServlet</servlet-name>
+		<url-pattern>/ShowDetailServlet</url-pattern>
 	</servlet-mapping>
 </web-app>
