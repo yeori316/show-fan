@@ -13,6 +13,7 @@
         <typeAlias alias="ShowSearchDTO" type="com.kosa.showfan.show.dto.ShowSearchDTO"/>
         <typeAlias alias="ShowCalendarDTO" type="com.kosa.showfan.show.dto.ShowCalendarDTO"/>
         <typeAlias alias="MyShowDTO" type="com.kosa.showfan.myShow.dto.MyShowDTO"/>
+        <typeAlias alias="MyArtistDTO" type="com.kosa.showfan.myArtist.dto.MyArtistDTO"/>
     </typeAliases>
 
     <environments default="development">
@@ -30,6 +31,7 @@
     <mappers>
         <mapper resource="com/kosa/showfan/sql/show.xml"/>
         <mapper resource="com/kosa/showfan/sql/my-show.xml"/>
+        <mapper resource="com/kosa/showfan/sql/my-artist.xml"/>
     </mappers>
 
 </configuration>
