@@ -1,25 +1,39 @@
 $(() => {
     const savedId = localStorage.getItem('savedId')
+
+    //로컬 스토리지에 저장한 아이디 값이 있으면 
     if (savedId != null) {
+        //아이디입력란에 자동 입력
         $('input[name=email]').val(savedId)
+        //아이디 저장 체크박스 체크
+        $('input:checkbox[id=saveemail]').attr('checked', true)
     }
-    //DOM트리에서 form객체찾기
-    //----form객체에서 submit이벤트가 발생했을 때 할 일 START----
+
+    const saveEmailCheckbox = $('#saveemail').val()
+    //----form객체에서 submit이벤트가 발생했을 때
     $('form').submit((e) => {
-        //checkbox객체의 checked속성값확인 jQuery용 메서드 : $( ).prop('checked')
+
+
+        //아이디 저장 체크시
         if ($('#saveemail').prop('checked')) {
             localStorage.setItem('savedId', $('input[name=email]').val())
+            
         } else {
             localStorage.removeItem('savedId')
         }
-        const idValue = $('input[name=email]').val()
-        const pwdValue = $('input[name=pwd]').val()
-        const data = `email=${idValue}&pwd=${pwdValue}`
+
+
+        const idValue = $('input[name=email]').val() //입력한 아이디 저장
+        const pwdValue = $('input[name=pwd]').val() //입력한 비밀번호 저장
+        const autoValue = $('#autologin').is(':checked') //자동로그인 체크 여부 저장
+
+        const data = `email=${idValue}&pwd=${pwdValue}&autoLogin=${autoValue}`
 
         $.ajax({
             xhrFields:{
                 withCredentials: true
             },
+            // url: 'http://192.168.1.112:8888/showfan/loginmem',
             url: 'http://ec2-52-79-82-77.ap-northeast-2.compute.amazonaws.com:8080/showfan/',
             method: 'post',
             data: data,
@@ -27,8 +41,6 @@ $(() => {
                 if(responseJSONObj.status == 0){ //로그인실패인 경우
                     alert(responseJSONObj.msg)
                 }else if(responseJSONObj.status == 1){ //로그인성공인 경우
-                    alert("로그인 성공")
-                    alert(responseJSONObj.msg)
                     location.href="./index.html"
                 }
             },
