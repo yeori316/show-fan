@@ -3,12 +3,14 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+
   <properties resource="db.properties"/>
   <settings>
     <setting name="mapUnderscoreToCamelCase" value="true"/>
   </settings>
   
   <typeAliases>
+  	<typeAlias type="com.kosa.showfan.member.dto.MemberDTO" alias="MemberDTO"/>
 	<typeAlias alias="ShowDTO" type="com.kosa.showfan.show.dto.ShowDTO"/>
 	<typeAlias alias="ShowSearchDTO" type="com.kosa.showfan.show.dto.ShowSearchDTO"/>
 	<typeAlias alias="ShowCalendarDTO" type="com.kosa.showfan.show.dto.ShowCalendarDTO"/>
@@ -31,6 +33,7 @@
   </environments>
   
   <mappers>
+  	<mapper resource="com/kosa/showfan/sql/Member.xml"/>
     <mapper resource="com/kosa/showfan/sql/show.xml"/>
     <mapper resource="com/kosa/showfan/sql/Review.xml"></mapper>
 	<mapper resource="com/kosa/showfan/sql/Reply.xml"></mapper>
