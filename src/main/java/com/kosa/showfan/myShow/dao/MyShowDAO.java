@@ -10,6 +10,7 @@ import java.util.List;
 public interface MyShowDAO {
     /**
      * 찜 목록 추가
+     *
      * @param myShowDTO
      * @throws AddException
      */
@@ -17,6 +18,7 @@ public interface MyShowDAO {
 
     /**
      * 찜 목록 삭제
+     *
      * @param myShowDTO
      * @throws RemoveException
      */
@@ -24,8 +26,9 @@ public interface MyShowDAO {
 
     /**
      * 회원의 찜 목록 검색
+     *
      * @param memberId
-     * @return
+     * @return 작품 리스트
      * @throws FindException
      */
     List<MyShowDTO> selectAllByMemberId(Long memberId) throws FindException;
