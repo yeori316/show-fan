@@ -18,7 +18,7 @@
                    alias="ReplyDTO"/>
         <typeAlias alias="MyShowDTO" type="com.kosa.showfan.myShow.dto.MyShowDTO"/>
         <typeAlias alias="MyArtistDTO" type="com.kosa.showfan.myArtist.dto.MyArtistDTO"/>
-        <typeAlias alias="MemberDTO" type="com.kosa.showfan.myArtist.dto.MemberDTO"/>
+        <typeAlias alias="MemberDTO" type="com.kosa.showfan.member.dto.MemberDTO"/>
     </typeAliases>
 
     <environments default="development">
@@ -39,6 +39,6 @@
         <mapper resource="com/kosa/showfan/sql/Reply.xml"></mapper>
         <mapper resource="com/kosa/showfan/sql/my-show.xml"/>
         <mapper resource="com/kosa/showfan/sql/my-artist.xml"/>
-        <mapper resource="com/kosa/showfan/sql/member.xml"/>
+        <mapper resource="com/kosa/showfan/sql/Member.xml"/>
     </mappers>
 </configuration>
