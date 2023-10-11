@@ -33,6 +33,12 @@
         <description></description>
         <servlet-class>com.kosa.showfan.show.ShowDetailServlet</servlet-class>
     </servlet>
+    <servlet>
+    	<servlet-name>ShowReviewController</servlet-name>
+    	<display-name>ShowReviewController</display-name>
+    	<description></description>
+    	<servlet-class>com.kosa.showfan.review.controller.ShowReviewController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/loginmem</url-pattern>
@@ -52,5 +58,9 @@
     <servlet-mapping>
         <servlet-name>ShowDetailServlet</servlet-name>
         <url-pattern>/ShowDetailServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+    	<servlet-name>ShowReviewController</servlet-name>
+    	<url-pattern>/showreview</url-pattern>
     </servlet-mapping>
 </web-app>
