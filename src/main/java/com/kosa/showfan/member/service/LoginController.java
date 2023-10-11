@@ -31,7 +31,7 @@ public class LoginController extends HttpServlet {
 		
 		//크로스오리진 문제 해결
 		response.setHeader("Access-Control-Allow-Origin", 
-						    "http://192.168.1.112:5502");
+						    "*");
 		response.setHeader("Access-Control-Allow-Credentials" , "true");
 		
 		//응답출력스트림얻기
@@ -40,8 +40,6 @@ public class LoginController extends HttpServlet {
 		String email = request.getParameter("email");
 		String pwd = request.getParameter("pwd");
 		String auto = request.getParameter("autoLogin");
-		
-		System.out.println("자동로그인 체크 여부 " + auto);
 		
 		ObjectMapper mapper = new ObjectMapper();
 		Map<String, Object> map = new HashMap<>();
@@ -72,7 +70,8 @@ public class LoginController extends HttpServlet {
 			}
 		} catch (FindException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			e.printStackTrace
+			();
 			map.put("status",  0);
 			map.put("msg", "로그인 실패");
 		}
