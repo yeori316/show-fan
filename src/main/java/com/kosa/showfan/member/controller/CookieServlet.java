@@ -3,7 +3,6 @@ package com.kosa.showfan.member.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -11,7 +10,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-@WebServlet("/cookiemem")
 public class CookieServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 

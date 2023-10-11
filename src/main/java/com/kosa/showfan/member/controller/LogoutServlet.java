@@ -3,7 +3,6 @@ package com.kosa.showfan.member.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -13,7 +12,6 @@ import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
-@WebServlet("/logoutmemm")
 public class LogoutServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
