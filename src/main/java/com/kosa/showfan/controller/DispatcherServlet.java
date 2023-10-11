@@ -25,11 +25,11 @@ public class DispatcherServlet extends HttpServlet {
 	@Override
 	public void init() throws ServletException {
 		super.init();
-		
 		env = new Properties();
 		ServletContext sc = this.getServletContext();
 		String realPath = sc.getRealPath("WEB-INF\\classes\\" + envFileName);
 //		System.out.println(">>>" + realPath);
+
     	try {
 			env.load(new FileInputStream(realPath));
 		} catch (IOException e) {
@@ -66,5 +66,4 @@ public class DispatcherServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
-	
 }
