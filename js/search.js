@@ -10,19 +10,12 @@ $(() => {
   const queryStr = location.search.substring(1); // v=value
   const value = queryStr.substring(2); // value
 
-  var showCnt;
-  var showList;
+  let showCnt;
+  let showList;
 
   handleXhttps("GET", "../html/header.html", $("header"));
   handleXhttps("GET", "../html/navigation.html", $("nav"));
   handleXhttps("GET", "../html/footer.html", $("footer"));
-
-  // $(document).ready(function () {
-  // $("#header-search-input").val(value);
-  // $("#header-search-input").attr("value", value);
-  // $("#header-search-input").prop("value", value);
-  $("#header-search-input").prop("defaultValue", value);
-  // });
 
   // 회원가입 클릭 시
   $("body").on("click", '.header-menu-link[href="signup.html"]', function (e) {
@@ -45,16 +38,36 @@ $(() => {
     handleXhttps("GET", "../html/modify.html", $("main"));
   });
 
-  console.log(value);
-  // $("#header-search-input").attr("value", value);
-  $("#header-search-input").prop("value", value);
-  console.log($("#header-search-input").val());
+  // console.log(value);
+  $("#header-search-input").attr("value", value);
+  // console.log($("#header-search-input").val());
+  // console.dir($("#header-search-input").attr("value"));
 
-  // 검색 시
+  // if ($("#header-search-input").length) {
+  //   console.log("#header-search-input 요소가 존재합니다.");
+  // } else {
+  //   console.log("#header-search-input 요소가 존재하지 않습니다.");
+  // }
+
+  // if ($("header").length) {
+  //   console.log("#header 요소가 존재합니다.");
+  // } else {
+  //   console.log("#header 요소가 존재하지 않습니다.");
+  // }
+
+  // 검색 버튼 클릭 시
   $("body").on("click", "#header-search-button", function (e) {
-    e.preventDefault();
+    // e.preventDefault();
     const value = $("#header-search-input").val();
-    location.href = `../html/search.html?v=${value}`;
+    location.href = `../html/search.html?q=${value}`;
+  });
+
+  // 검색 입력 후 엔터
+  $("body").on("keydown", "#header-search-input", function (e) {
+    if (e.key == "Enter" || e.keyCode == "13") {
+      const value = $("#header-search-input").val();
+      location.href = `../html/search.html?q=${value}`;
+    }
   });
 
   // 캘린더 조회 시
@@ -369,7 +382,11 @@ $(() => {
           $("#jeju").prop("checked", true);
         }
 
-        $copyShow.find("img").attr("src", showImage).attr("alt", showName);
+        $copyShow
+          .find("img")
+          .attr("src", showImage)
+          .attr("alt", showName)
+          .attr("title", showName);
         if (showStatus == "공연완료") {
           $copyShow.find(".status > b").html("공연종료");
         } else {
