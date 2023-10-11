@@ -17,6 +17,13 @@ $(() => {
   handleXhttps("GET", "../html/navigation.html", $("nav"));
   handleXhttps("GET", "../html/footer.html", $("footer"));
 
+  // $(document).ready(function () {
+  // $("#header-search-input").val(value);
+  // $("#header-search-input").attr("value", value);
+  // $("#header-search-input").prop("value", value);
+  $("#header-search-input").prop("defaultValue", value);
+  // });
+
   // 회원가입 클릭 시
   $("body").on("click", '.header-menu-link[href="signup.html"]', function (e) {
     e.preventDefault();
@@ -39,11 +46,13 @@ $(() => {
   });
 
   console.log(value);
-  $("#header-search-input").attr("value", value);
+  // $("#header-search-input").attr("value", value);
+  $("#header-search-input").prop("value", value);
   console.log($("#header-search-input").val());
 
   // 검색 시
   $("body").on("click", "#header-search-button", function (e) {
+    e.preventDefault();
     const value = $("#header-search-input").val();
     location.href = `../html/search.html?v=${value}`;
   });
@@ -283,12 +292,13 @@ $(() => {
   // show list handler
   function showListHandler(showCnt, showList) {
     if (showCnt == 0) {
+      $("#search-result-count > b").html(`검색 결과 (${showCnt})`);
       $("#showCardList").html(
-        '<div id="search-result-count" class="container text-right"><b>검색된 공연이 없습니다.</b></div>'
+        '<div class="col"><div class="card h-100"><img class="card-img-top" src="https://showfan.s3.ap-northeast-2.amazonaws.com/PF154190.jpg" alt="..."/><div class="status"><b>공연중</b></div><div class="card-body"><h5 class="card-title">Card title</h5><p class="card-text"><div id="period">2023.01.01 ~ 2023.01.01</div><div id="venues">예술의 전당</div><br><div id="grade">평점 3.5 (리뷰갯수)</div></p></div></div></div><div id="search-result-count" class="container text-right"><b>검색된 공연이 없습니다.</b></div>'
       );
+      $("div.col").first().hide();
     } else {
-      const $resultCnt = $("#search-result-count > b");
-      $resultCnt.html(`검색 결과 (${showCnt})`);
+      $("#search-result-count > b").html(`검색 결과 (${showCnt})`);
 
       const $originShow = $("div.col").first();
       $originShow.siblings().remove();
