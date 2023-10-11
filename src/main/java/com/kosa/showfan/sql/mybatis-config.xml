@@ -1,39 +1,44 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE configuration
-  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
-  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-  <properties resource="db.properties"/>
-  <settings>
-    <setting name="mapUnderscoreToCamelCase" value="true"/>
-  </settings>
-  
-  <typeAliases>
-	<typeAlias alias="ShowDTO" type="com.kosa.showfan.show.dto.ShowDTO"/>
-	<typeAlias alias="ShowSearchDTO" type="com.kosa.showfan.show.dto.ShowSearchDTO"/>
-	<typeAlias alias="ShowCalendarDTO" type="com.kosa.showfan.show.dto.ShowCalendarDTO"/>
-  	<typeAlias type="com.kosa.showfan.review.dto.ReviewDTO"
-			alias="ReviewDTO" />
-	<typeAlias type="com.kosa.showfan.reply.dto.ReplyDTO"
-			alias="ReplyDTO" />
-  </typeAliases>
- 
-  <environments default="development">
-    <environment id="development">
-      <transactionManager type="JDBC"/>
-      <dataSource type="POOLED">
-        <property name="driver" value="${driver}"/>
-        <property name="url" value="${url}"/>
-        <property name="username" value="${username}"/>
-        <property name="password" value="${password}"/>
-      </dataSource>
-    </environment>
-  </environments>
-  
-  <mappers>
-    <mapper resource="com/kosa/showfan/sql/show.xml"/>
-    <mapper resource="com/kosa/showfan/sql/Review.xml"></mapper>
-	<mapper resource="com/kosa/showfan/sql/Reply.xml"></mapper>
-  </mappers> 
+    <properties resource="db.properties"/>
+    <settings>
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
 
+    <typeAliases>
+        <typeAlias alias="ShowDTO" type="com.kosa.showfan.show.dto.ShowDTO"/>
+        <typeAlias alias="ShowSearchDTO" type="com.kosa.showfan.show.dto.ShowSearchDTO"/>
+        <typeAlias alias="ShowCalendarDTO" type="com.kosa.showfan.show.dto.ShowCalendarDTO"/>
+        <typeAlias type="com.kosa.showfan.review.dto.ReviewDTO"
+                   alias="ReviewDTO"/>
+        <typeAlias type="com.kosa.showfan.reply.dto.ReplyDTO"
+                   alias="ReplyDTO"/>
+        <typeAlias alias="MyShowDTO" type="com.kosa.showfan.myShow.dto.MyShowDTO"/>
+        <typeAlias alias="MyArtistDTO" type="com.kosa.showfan.myArtist.dto.MyArtistDTO"/>
+        <typeAlias alias="MemberDTO" type="com.kosa.showfan.member.dto.MemberDTO"/>
+    </typeAliases>
+
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+        <mapper resource="com/kosa/showfan/sql/show.xml"/>
+        <mapper resource="com/kosa/showfan/sql/Review.xml"></mapper>
+        <mapper resource="com/kosa/showfan/sql/Reply.xml"></mapper>
+        <mapper resource="com/kosa/showfan/sql/my-show.xml"/>
+        <mapper resource="com/kosa/showfan/sql/my-artist.xml"/>
+        <mapper resource="com/kosa/showfan/sql/Member.xml"/>
+    </mappers>
 </configuration>
