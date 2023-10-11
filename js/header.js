@@ -5,7 +5,9 @@ $(() => {
         if (parts.length === 2) return parts.pop().split(';').shift();
       }
       
+    //해당 쿠키값 얻어오기
     const loginCookie = getCookie('loginCookie');
+
     const $login = $('#login')
     const $logout = $('#logout')
     const $signup = $('#signup')
@@ -33,12 +35,39 @@ $(() => {
     }
 
     $logout.click((e)=>{
-        $.ajax({
-            xhrFields: {
-                withCredentials: true
-            },
-            url: 'http://192.168.1.112:8888/showfan/logoutmem',
-            method: 'get',
-        })
+        //로그아웃 alert에서 확인 눌렀을때
+        if(confirm("로그아웃 하시겠어요?") == true){
+            $.ajax({
+                xhrFields: {
+                    withCredentials: true
+                },
+                // url: 'http://192.168.1.112:8888/showfan/logoutmemm',
+                url: 'http://ec2-52-79-82-77.ap-northeast-2.compute.amazonaws.com:8080/showfan/',
+                method: 'get',
+                success: (responseJSONObj) => {
+                    responseJSONObj = JSON.parse(responseJSONObj)
+                    //로그아웃 성공시
+                    if(responseJSONObj.status == 1){
+                        location.href="./index.html"
+                    }
+                    else if(responseJSONObj.status == 0){
+                        alert("쿠키 삭제 실패")
+                    }else{
+                        alert("알 수 없는 상태: " + responseJSONObj.status);
+                    }
+                    //로그아웃 실패시
+                }
+            })
+            alert("로그아웃 되었습니다.");
+        }
+        //로그아웃 alert에서 취소 눌렀을때
+        else{
+            return ;
+        }
+
+
+
     })
+
+
 })
