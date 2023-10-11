@@ -7,21 +7,27 @@ import com.kosa.showfan.exception.FindException;
 import com.kosa.showfan.exception.ModifyException;
 import com.kosa.showfan.exception.RemoveException;
 import com.kosa.showfan.review.dao.ReviewDAO;
+import com.kosa.showfan.review.dao.ReviewDAOImpl;
 import com.kosa.showfan.review.dto.ReviewDTO;
 
 public class ReviewService {
-	private ReviewDAO reviewDAO;
-
-	public List<ReviewDTO> getSelectByShowId(ReviewDTO review) throws FindException {
-		return reviewDAO.selectByShowId(review);
+	private static final ReviewService service = new ReviewService();
+	private ReviewDAO reviewDAO = ReviewDAOImpl.getInstance();
+	
+	public static ReviewService getInstance() {
+		return service;
 	}
 
-	public void insertReview(ReviewDTO reviewDTO) {
-		try {
+	public List<ReviewDTO> getSelectByShowId(String showId) throws FindException {
+		return reviewDAO.selectByShowId(showId);
+	}
+
+	public void insertReview(ReviewDTO reviewDTO) throws AddException {
+//		try {
 			reviewDAO.insertReview(reviewDTO);
-		} catch (AddException e) {
-			e.printStackTrace();
-		}
+//		} catch (AddException e) {
+//			e.printStackTrace();
+//		}
 	}
 
 	public void updateReview(ReviewDTO reviewDTO) {
@@ -38,9 +44,5 @@ public class ReviewService {
 		} catch (RemoveException e) {
 			e.printStackTrace();
 		}
-	}
-
-	public static ReviewService getInstance() {
-		return null;
 	}
 }
