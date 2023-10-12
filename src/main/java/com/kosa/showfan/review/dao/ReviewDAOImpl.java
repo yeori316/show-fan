@@ -13,6 +13,7 @@ import com.kosa.showfan.exception.FindException;
 import com.kosa.showfan.exception.ModifyException;
 import com.kosa.showfan.exception.RemoveException;
 import com.kosa.showfan.review.dto.ReviewDTO;
+import com.kosa.showfan.review.dto.ReviewResponseDTO;
 
 public class ReviewDAOImpl implements ReviewDAO {
 	private static final ReviewDAO reviewDAO = new ReviewDAOImpl();
@@ -34,16 +35,18 @@ public class ReviewDAOImpl implements ReviewDAO {
 	}
 
 	@Override
-	public List<ReviewDTO> selectByShowId(String showId) throws FindException {
+	public List<ReviewResponseDTO> selectByShowId(String showId) throws FindException {
 		SqlSession session = sqlSessionFactory.openSession();
-		List<ReviewDTO> list = session.selectList("com.kosa.showfan.review.ReviewMapper.selectByShowId", showId);
+		List<ReviewResponseDTO> list = session.selectList("com.kosa.showfan.review.ReviewMapper.selectByShowId",
+				showId);
 		return list;
 	}
 
 	@Override
-	public List<ReviewDTO> selectByMemberId(Long memberId) throws FindException {
+	public List<ReviewResponseDTO> selectByMemberId(Long memberId) throws FindException {
 		SqlSession session = sqlSessionFactory.openSession();
-		List<ReviewDTO> list = session.selectList("com.kosa.showfan.review.ReviewMapper.selectByMemberId", memberId);
+		List<ReviewResponseDTO> list = session.selectList("com.kosa.showfan.review.ReviewMapper.selectByMemberId",
+				memberId);
 		return list;
 	}
 
@@ -51,6 +54,13 @@ public class ReviewDAOImpl implements ReviewDAO {
 	public void insertReview(ReviewDTO review) throws AddException {
 		SqlSession session = null;
 		try {
+			System.out.println(review.getReviewId());
+			System.out.println(review.getMemberId());
+			System.out.println(review.getShowId());
+			System.out.println(review.getReviewGrade());
+			System.out.println(review.getSeatId());
+			System.out.println(review.getReviewContent());
+
 			session = sqlSessionFactory.openSession();
 			session.insert("com.kosa.showfan.review.ReviewMapper.insertReview", review);
 			session.commit();
@@ -79,7 +89,7 @@ public class ReviewDAOImpl implements ReviewDAO {
 	}
 
 	@Override
-	public void deleteReview(ReviewDTO review) throws RemoveException {
+	public void deleteReview(Long review) throws RemoveException {
 		SqlSession session = sqlSessionFactory.openSession();
 		try {
 			session.delete("com.kosa.showfan.review.ReviewMapper.deleteReview", review);
@@ -91,5 +101,4 @@ public class ReviewDAOImpl implements ReviewDAO {
 			session.close();
 		}
 	}
-
 }

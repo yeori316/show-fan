@@ -6,7 +6,7 @@
 	<insert id="insertReply" parameterType="ReplyDTO">
 		INSERT INTO
 		reply(reply_id, review_id, member_id, reply_content, reply_created_at) 
-		VALUES (reply_seq, #{reviewId}, #{memberId}, #{replyContent}, sysdate)
+		VALUES (reply_seq.NEXTVAL, #{reviewId}, #{memberId}, #{replyContent}, sysdate)
 	</insert>
 	<update id="updateReply" parameterType="ReplyDTO">
 		UPDATE reply 
@@ -15,6 +15,6 @@
 	</update>
 	<delete id="deleteReply" parameterType="ReplyDTO">
 		DELETE FROM reply 
-		WHERE reply_id=#{replyId}
+		WHERE reply_id = #{replyId}
 	</delete>
 </mapper>
