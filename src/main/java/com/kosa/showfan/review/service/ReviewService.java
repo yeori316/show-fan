@@ -13,7 +13,7 @@ import com.kosa.showfan.review.dto.ReviewDTO;
 public class ReviewService {
 	private static final ReviewService service = new ReviewService();
 	private ReviewDAO reviewDAO = ReviewDAOImpl.getInstance();
-	
+
 	public static ReviewService getInstance() {
 		return service;
 	}
@@ -22,9 +22,13 @@ public class ReviewService {
 		return reviewDAO.selectByShowId(showId);
 	}
 
+	public List<ReviewDTO> getSelectByMemberId(Long memberId) throws FindException {
+		return reviewDAO.selectByMemberId(memberId);
+	}
+
 	public void insertReview(ReviewDTO reviewDTO) throws AddException {
 //		try {
-			reviewDAO.insertReview(reviewDTO);
+		reviewDAO.insertReview(reviewDTO);
 //		} catch (AddException e) {
 //			e.printStackTrace();
 //		}

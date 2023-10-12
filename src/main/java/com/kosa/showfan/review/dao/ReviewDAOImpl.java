@@ -41,6 +41,13 @@ public class ReviewDAOImpl implements ReviewDAO {
 	}
 
 	@Override
+	public List<ReviewDTO> selectByMemberId(Long memberId) throws FindException {
+		SqlSession session = sqlSessionFactory.openSession();
+		List<ReviewDTO> list = session.selectList("com.kosa.showfan.review.ReviewMapper.selectByMemberId", memberId);
+		return list;
+	}
+
+	@Override
 	public void insertReview(ReviewDTO review) throws AddException {
 		SqlSession session = null;
 		try {
@@ -84,4 +91,5 @@ public class ReviewDAOImpl implements ReviewDAO {
 			session.close();
 		}
 	}
+
 }
