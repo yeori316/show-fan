@@ -9,28 +9,29 @@
 			autoMapping="true">
 		</collection>
 	</resultMap>
-	<select id="selectByShowId" parameterType="int"
+	<select id="selectByShowId" parameterType="string"
 		resultMap="ReviewMap">
 	SELECT
 		r.REVIEW_ID,
 		r.MEMBER_ID,
+        r.SHOW_ID,
 		r.REVIEW_GRADE,
 		r.REVIEW_CONTENT,
-		r.REPLY_CREATED_AT,
+		r.REVIEW_CREATED_AT,
 		r.REVIEW_IS_MODIFIED,
 		r.SEAT_ID,
 		rep.reply_ID,
 		rep.REPLY_CONTENT,
 		rep.MEMBER_ID,
 		rep.REPLY_CREATED_AT
-	FROM review r JOIN
+	FROM review r LEFT JOIN
 		reply rep ON (r.REVIEW_ID = rep.REVIEW_ID)
-	WHERE r.SHOW_ID = #{showId};
+	WHERE r.SHOW_ID = #{showId}
 	</select>
 	<insert id="insertReview" parameterType="ReviewDTO">
 		INSERT INTO
-		review(review_id, member_id, show_id, review_grade, review_content, REVIEW_IS_MODIFIED, REVIEW_CREATED_AT) 
-		VALUES (review_seq, #{memberId}, #{showId}, #{reviewGrade}, #{reviewContent}, '0', sysdate)
+		review(review_id, member_id, show_id, review_grade, review_content, seat_id)  
+		VALUES (review_seq.NEXTVAL, #{memberId}, #{showId}, #{reviewGrade}, #{reviewContent}, #{seatId})
 	</insert>
 	<!-- 수정됨 추가, 작성시간은 최초 작성시간 -->
 	<update id="updateReview" parameterType="ReviewDTO">

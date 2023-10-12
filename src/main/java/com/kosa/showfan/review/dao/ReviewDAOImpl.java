@@ -1,9 +1,12 @@
 package com.kosa.showfan.review.dao;
 
+import java.io.InputStream;
 import java.util.List;
 
+import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import com.kosa.showfan.exception.AddException;
 import com.kosa.showfan.exception.FindException;
@@ -12,12 +15,35 @@ import com.kosa.showfan.exception.RemoveException;
 import com.kosa.showfan.review.dto.ReviewDTO;
 
 public class ReviewDAOImpl implements ReviewDAO {
+	private static final ReviewDAO reviewDAO = new ReviewDAOImpl();
 	private SqlSessionFactory sqlSessionFactory;
 
+	public static ReviewDAO getInstance() {
+		return reviewDAO;
+	}
+
+	public ReviewDAOImpl() {
+		String resource = "com/kosa/showfan/sql/mybatis-config.xml";
+		InputStream inputStream;
+		try {
+			inputStream = Resources.getResourceAsStream(resource);
+			sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 	@Override
-	public List<ReviewDTO> selectByShowId(ReviewDTO review) throws FindException {
+	public List<ReviewDTO> selectByShowId(String showId) throws FindException {
 		SqlSession session = sqlSessionFactory.openSession();
-		List<ReviewDTO> list = session.selectList("com.kosa.showfan.review.ReviewMapper.selectByShowId", review);
+		List<ReviewDTO> list = session.selectList("com.kosa.showfan.review.ReviewMapper.selectByShowId", showId);
+		return list;
+	}
+
+	@Override
+	public List<ReviewDTO> selectByMemberId(Long memberId) throws FindException {
+		SqlSession session = sqlSessionFactory.openSession();
+		List<ReviewDTO> list = session.selectList("com.kosa.showfan.review.ReviewMapper.selectByMemberId", memberId);
 		return list;
 	}
 
@@ -65,4 +91,5 @@ public class ReviewDAOImpl implements ReviewDAO {
 			session.close();
 		}
 	}
+
 }
