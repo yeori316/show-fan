@@ -8,5 +8,16 @@
 	from member
 	where member_email=#{email} and member_pwd=#{pwd}
   </select>
+  
+  <insert id="insertMember" parameterType="hashmap">
+  	insert into member(member_id, member_email, member_pwd, member_nickname, member_email_alert)
+  	values (member_seq.NEXTVAL, #{email}, #{pwd}, #{nickname}, #{emailr})
+  </insert>
+  
+  <select id="selectByNickName" resultType="string">
+  	select member_nickname
+	from member
+	where member_nickname = #{nickname}
+  </select>
 
 </mapper>

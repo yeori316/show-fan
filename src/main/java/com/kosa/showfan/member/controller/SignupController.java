@@ -1,0 +1,98 @@
+package com.kosa.showfan.member.controller;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.kosa.showfan.exception.AddException;
+import com.kosa.showfan.exception.FindException;
+import com.kosa.showfan.member.dto.MemberDTO;
+import com.kosa.showfan.member.service.MemberService;
+import com.kosa.showfan.myGenre.dto.MyGenreDTO;
+
+
+public class SignupController extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	private MemberService service;
+	
+	public SignupController() {
+		service = new MemberService();
+	}
+
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        
+        //크로스오리진 문제 해결
+        response.setHeader("Access-Control-Allow-Origin",
+//        	"*");
+        		"http://192.168.1.112:5502");
+        response.setHeader("Access-Control-Allow-Credentials", "true");
+        
+        //응답형식
+        response.setContentType("application/json;charset=utf-8");
+        //응답출력스트림얻기
+        PrintWriter out = response.getWriter();
+        
+        ObjectMapper mapper = new ObjectMapper();
+        Map<String, Object> map = new HashMap<>();
+        
+        //MemberDTO
+        String email = request.getParameter("email");
+        String pwd = request.getParameter("pwd");
+        String nickname = request.getParameter("nickname");
+        String emailr = request.getParameter("emailr");
+        
+        //선호장르 얻어오기
+        //MyGenreDTO
+        String[] selectedGenres = request.getParameterValues("genre");
+        List<Long> genreList = new ArrayList<>();
+        if (selectedGenres != null) {
+
+            for (String genre : selectedGenres) {
+                genreList.add(Long.parseLong(genre));
+            }
+            
+            //genreList의 내용 출력하기
+            for (Long genreId : genreList) {
+                System.out.println(genreId);
+            }
+        }
+        
+//		Long memberId = Long.parseLong(request.getParameter("memberId"));
+
+
+       
+        
+//        HttpSession session = request.getSession();
+        MemberDTO m = new MemberDTO();
+        MyGenreDTO mg = new MyGenreDTO();
+        
+        
+        m.setMemberEmail(email);
+        m.setMemberPwd(pwd);
+        m.setMemberNickName(nickname);
+        m.setMemberEmailAlert(emailr);
+        
+//        mg.setGenreId(genreList);
+        
+        
+        try {
+			service.signup(m, genreList);
+		} catch (AddException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
+        
+	}
+
+}
