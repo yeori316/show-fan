@@ -12,7 +12,7 @@ public class ReviewDTO {
 	private Long reviewId;
 	private Long memberId;
 	private Long showId;
-	private Integer reviewGrade;
+	private Float reviewGrade;
 	private String reviewContent;
 	private Date reviewCreatedAt;
 	private String reviewIsModified;
