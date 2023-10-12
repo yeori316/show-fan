@@ -27,7 +27,6 @@ $(() => {
     e.preventDefault();
     handleXhttps("GET", "../html/modify.html", $("main"));
   });
-
 });
 
 // 검색 페이지
