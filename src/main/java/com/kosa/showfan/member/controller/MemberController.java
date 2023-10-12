@@ -1,4 +1,4 @@
-#package com.kosa.showfan.member.controller;
+package com.kosa.showfan.member.controller;
 
 import com.google.gson.Gson;
 import com.kosa.showfan.controller.Controller;
