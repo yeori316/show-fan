@@ -1,4 +1,4 @@
-package com.kosa.showfan.member.controller;
+#package com.kosa.showfan.member.controller;
 
 import com.google.gson.Gson;
 import com.kosa.showfan.controller.Controller;
@@ -27,12 +27,12 @@ public class MemberController implements Controller {
         try {
             MemberDTO member = service.select(request.getParameter("email"));
             out.print(gson.toJson(member));
-        } catch (AddException e) {
+        } catch (FindException e) {
             e.printStackTrace();
             response.setStatus(404);
-		} catch (Exception e) {
+		    } catch (Exception e) {
             e.printStackTrace();
             response.setStatus(500);
-		}
+		    }
     }
 }
