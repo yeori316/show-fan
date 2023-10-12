@@ -19,7 +19,7 @@ public class MemberController implements Controller {
     }
 
     @Override
-    public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, FindException {
+    public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("application/json;charset=utf-8");
         
         PrintWriter out = response.getWriter();
@@ -27,8 +27,12 @@ public class MemberController implements Controller {
         try {
             MemberDTO member = service.select(request.getParameter("email"));
             out.print(gson.toJson(member));
-        } catch (FindException e) {
-            throw new FindException("멤버 검색에 실패했습니다.");
-        }
+        } catch (AddException e) {
+            e.printStackTrace();
+            response.setStatus(404);
+		} catch (Exception e) {
+            e.printStackTrace();
+            response.setStatus(500);
+		}
     }
 }
