@@ -44,15 +44,6 @@ $(() => {
 
   // 캘린더 조회 시
   $("body").on("click", "#navigation-calendar-button", function (e) {
-    e.preventDefault();
-    $("main").html("");
-
-    var calendar = new FullCalendar.Calendar(document.querySelector("main"), {
-      initialView: "dayGridMonth",
-
-      // events: JSON.parse(data),
-      eventClick: function (info) {},
-    });
-    calendar.render();
+    location.href = "../html/calendar.html";
   });
 });

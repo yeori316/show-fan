@@ -1,11 +1,11 @@
 import { handleXhttps, backURL } from "./util.js";
 
 $(() => {
-  const theaterId = 1;
-  const musicalId = 2;
-  const classicId = 3;
-  const concertId = 4;
-  const festivalId = 5;
+  const theaterId = 1; // 연극
+  const musicalId = 2; // 뮤지컬
+  const classicId = 3; // 클래식
+  const concertId = 4; // 콘서트
+  const festivalId = 5; // 축제
 
   const queryStr = location.search.substring(1); // v=value
   const value = queryStr.substring(2); // value
@@ -72,16 +72,7 @@ $(() => {
 
   // 캘린더 조회 시
   $("body").on("click", "#navigation-calendar-button", function (e) {
-    e.preventDefault();
-    $("main").html("");
-
-    var calendar = new FullCalendar.Calendar(document.querySelector("main"), {
-      initialView: "dayGridMonth",
-
-      // events: JSON.parse(data),
-      eventClick: function (info) {},
-    });
-    calendar.render();
+    location.href = "../html/calendar.html";
   });
 
   // 장르 전체 선택
@@ -109,11 +100,11 @@ $(() => {
   // 체크박스 필터 끝
 
   // 검색 기능 호출
-  ajaxHandler(value);
+  ajaxHandler();
   // 검색 기능 호출 끝
 
   // 검색 기능
-  function ajaxHandler(value) {
+  function ajaxHandler() {
     $.ajax({
       url: `${backURL}/search?${queryStr}`,
       method: "GET",
@@ -144,8 +135,8 @@ $(() => {
     var showFilterList = showList;
 
     if (!$filterChk.is(":checked")) {
-      showFilterList = showFilterList.filter(function (show) {
-        return show.genreId != genreId;
+      showFilterList = showFilterList.filter(function (s) {
+        return s.genreId != genreId;
       });
     }
     return showFilterList;
@@ -157,8 +148,8 @@ $(() => {
     var showFilterList = showList;
 
     if (!$filterChk.is(":checked")) {
-      showFilterList = showFilterList.filter(function (show) {
-        return show.showStatus != status;
+      showFilterList = showFilterList.filter(function (s) {
+        return s.showStatus != status;
       });
     }
     return showFilterList;
@@ -170,8 +161,8 @@ $(() => {
     var showFilterList = showList;
 
     if (!$filterChk.is(":checked")) {
-      showFilterList = showFilterList.filter(function (show) {
-        return show.showAddress.indexOf(local) == -1;
+      showFilterList = showFilterList.filter(function (s) {
+        return s.showAddress.indexOf(local) == -1;
       });
     }
     return showFilterList;
@@ -180,11 +171,11 @@ $(() => {
 
   // show list 체크 필터
   function showListFilterHandler(showList) {
-    var showFilterList;
+    var showFilterList = showList;
 
     // show list 장르체크 필터
     showFilterList = showListFilterGenreHandler(
-      showList,
+      showFilterList,
       $("#theater"),
       theaterId
     );
@@ -233,6 +224,11 @@ $(() => {
       showFilterList,
       $("#seoul"),
       "서울"
+    );
+    showFilterList = showListFilterLocalHandler(
+      showFilterList,
+      $("#sejong"),
+      "세종"
     );
     showFilterList = showListFilterLocalHandler(
       showFilterList,
@@ -321,9 +317,7 @@ $(() => {
         const $copyShow = $originShow.clone();
 
         const showId = s.showId;
-        // const showImage = s.showPoster;
-        const showImage =
-          "https://showfan.s3.ap-northeast-2.amazonaws.com/PF154190.jpg";
+        const showImage = s.showPoster;
         const genreId = s.genreId;
         const showName = s.showName;
         const showVenues = s.showVenues;
@@ -356,6 +350,8 @@ $(() => {
 
         if (showAddress.indexOf("서울") != -1) {
           $("#seoul").prop("checked", true);
+        } else if (showAddress.indexOf("세종") != -1) {
+          $("#sejong").prop("checked", true);
         } else if (showAddress.indexOf("인천") != -1) {
           $("#incheon").prop("checked", true);
         } else if (showAddress.indexOf("대전") != -1) {
@@ -385,7 +381,7 @@ $(() => {
         $copyShow
           .find("img")
           .attr("src", showImage)
-          .attr("alt", showName)
+          .attr("alt", showId)
           .attr("title", showName);
         if (showStatus == "공연완료") {
           $copyShow.find(".status > b").html("공연종료");

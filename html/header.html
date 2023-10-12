@@ -6,9 +6,11 @@
       const enValue = location.search.substring(3);
       const deValue = decodeURI(enValue);
 
-      document
-        .querySelector("#header-search-input")
-        .setAttribute("value", deValue);
+      if (deValue != "") {
+        document
+          .querySelector("#header-search-input")
+          .setAttribute("value", deValue);
+      }
     </script>
   </head>
   <body>
