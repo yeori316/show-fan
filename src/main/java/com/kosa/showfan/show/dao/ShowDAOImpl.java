@@ -16,12 +16,11 @@ import com.kosa.showfan.show.dto.showAllInfoDTO;
 
 public class ShowDAOImpl implements ShowDAO {
 	private static final ShowDAO showDAO = new ShowDAOImpl();
+	private SqlSessionFactory sqlSessionFactory;
 
 	public static ShowDAO getInstance() {
 		return showDAO;
 	}
-
-	private SqlSessionFactory sqlSessionFactory;
 
 	public ShowDAOImpl() {
 		String resource = "com/kosa/showfan/sql/mybatis-config.xml";
@@ -88,7 +87,6 @@ public class ShowDAOImpl implements ShowDAO {
 
 		try {
 			session = sqlSessionFactory.openSession();
-//			System.out.println(value);
 			return session.selectList("com.kosa.show.ShowMapper.selectByString", value);
 		} catch (Exception e) {
 			throw new FindException("검색된 결과가 없습니다.");
@@ -118,12 +116,12 @@ public class ShowDAOImpl implements ShowDAO {
 	}
 
 	@Override
-	public List<ShowCalendarDTO> selectByDate() throws FindException {
+	public List<ShowCalendarDTO> selectByDate(String yymm) throws FindException {
 		SqlSession session = null;
 
 		try {
 			session = sqlSessionFactory.openSession();
-			return session.selectList("com.kosa.show.ShowMapper.selectByDate");
+			return session.selectList("com.kosa.show.ShowMapper.selectByDate", yymm);
 		} catch (Exception e) {
 			throw new FindException("검색된 결과가 없습니다.");
 		} finally {

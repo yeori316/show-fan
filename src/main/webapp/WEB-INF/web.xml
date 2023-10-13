@@ -69,8 +69,4 @@
 		<servlet-name>ShowReviewController</servlet-name>
 		<url-pattern>/showreview</url-pattern>
 	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>MemberReviewController</servlet-name>
-		<url-pattern>/memberreview</url-pattern>
-	</servlet-mapping>
 </web-app>

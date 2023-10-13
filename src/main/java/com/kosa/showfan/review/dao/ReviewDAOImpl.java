@@ -44,6 +44,7 @@ public class ReviewDAOImpl implements ReviewDAO {
 
 	@Override
 	public List<ReviewResponseDTO> selectByMemberId(Long memberId) throws FindException {
+		System.out.println("selectByMemberId");
 		SqlSession session = sqlSessionFactory.openSession();
 		List<ReviewResponseDTO> list = session.selectList("com.kosa.showfan.review.ReviewMapper.selectByMemberId",
 				memberId);
