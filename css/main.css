@@ -100,6 +100,7 @@ img.hide-image {
   height: 60%;
   padding: 10px;
   aspect-ratio: 83/121;
+  border-radius: 20px;
 }
 
 .my-show > div {

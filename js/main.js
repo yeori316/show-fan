@@ -1,5 +1,12 @@
 import { carouselSlider, backURL } from "./util.js";
 
+$(".my-show").click(function () {
+  let name = $(".my-show > .name").html();
+  window.localStorage.setItem("param", window.localStorage.getItem(name));
+  location.href =
+    "./html/show_detail.html?showid=" + window.localStorage.getItem(name);
+});
+
 $(() => {
   carouselSlider(
     $("#my-show-container1"),
@@ -38,9 +45,10 @@ $(() => {
       let idx_four = 1;
       let idx_three = 1;
       let idx_two = 1;
-      let idx_ine = 1;
+      let idx_one = 1;
       let totalCnt = 0;
       $.each(data, function (key, value) {
+        window.localStorage.setItem(value.showName, value.showId);
         if (value.genreId == 5) {
           $(".show_name" + value.genreId + "" + idx_five).text(value.showName);
           $(".my-show-img" + value.genreId + "" + idx_five).attr(
