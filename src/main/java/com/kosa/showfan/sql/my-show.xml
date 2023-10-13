@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kosa.show.MyShowMapper">
+    <insert id="insertMyShow" parameterType="MyShowDTO">
+        INSERT INTO my_show VALUES (#{memberId}, #{showId})
+    </insert>
+
+    <delete id="deleteMyShow" parameterType="MyShowDTO">
+        DELETE FROM my_show WHERE member_id=#{memberId} AND show_id=#{showId}
+    </delete>
+
+    <select id="selectAllByMemberId" parameterType="Long" resultType="MyShowDTO">
+        SELECT member_id, show_id
+        FROM my_show
+        WHERE member_id=#{memberId}
+    </select>
+
+</mapper>

@@ -25,11 +25,11 @@ public class DispatcherServlet extends HttpServlet {
 	@Override
 	public void init() throws ServletException {
 		super.init();
-		
 		env = new Properties();
 		ServletContext sc = this.getServletContext();
 		String realPath = sc.getRealPath("WEB-INF\\classes\\" + envFileName);
 //		System.out.println(">>>" + realPath);
+
     	try {
 			env.load(new FileInputStream(realPath));
 		} catch (IOException e) {
@@ -38,14 +38,14 @@ public class DispatcherServlet extends HttpServlet {
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		System.out.println("request.getServletPath()=" + request.getServletPath());
+		System.out.println("request.getServletPath()=" + request.getServletPath());
 		
 //		if (request.getServletPath().equals("/productjson")) {
 //			ProductJsonController control = new ProductJsonControler();
 //			control.execute(request, response);
 //		}
 		
-		response.setHeader("Access-Control-Allow-Origin", "*");//"http://127.0.0.1:5500");
+		response.setHeader("Access-Control-Allow-Origin", "http://192.168.1.103:5501");//"http://127.0.0.1:5500");
 		response.setHeader("Access-Control-Allow-Credentials", "true");
 		
 		//DispatcherServlet의service()입니다
@@ -66,5 +66,4 @@ public class DispatcherServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
-	
 }

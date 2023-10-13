@@ -4,8 +4,8 @@ import lombok.Data;
 
 @Data
 public class SeatDTO {
-	private Long seatId;
+	private Long seatPriceId;
 	private Long showId;
-	private String seatName;
-	private Integer seatPrice;
+	private String seatPriceSeatName;
+	private Integer seatPricePrice;
 }

@@ -3,7 +3,7 @@ package com.kosa.showfan.show.dto;
 import java.sql.Date;
 import java.util.List;
 
-import com.kosa.showfan.review.dto.ReviewDTO;
+import com.kosa.showfan.review.dto.ReviewResponseDTO;
 
 import lombok.Data;
 
@@ -28,6 +28,6 @@ public class ShowDTO {
 	private Double showLatitude;
 	private Double showLongitude;
 	private String showRuntime;
-	private List<ReviewDTO> showReveiws;
+	private List<ReviewResponseDTO> showReveiws;
 	private String showPoster;
 }
