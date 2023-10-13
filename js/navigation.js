@@ -1,4 +1,3 @@
-import { handleXhttps } from "./util.js";
 import { calendarhandleXhttps } from "./index.js";
 
 document.querySelector(".classic").addEventListener("click", classic);
