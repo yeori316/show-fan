@@ -9,6 +9,7 @@ import com.kosa.showfan.exception.RemoveException;
 import com.kosa.showfan.review.dao.ReviewDAO;
 import com.kosa.showfan.review.dao.ReviewDAOImpl;
 import com.kosa.showfan.review.dto.ReviewDTO;
+import com.kosa.showfan.review.dto.ReviewResponseDTO;
 
 public class ReviewService {
 	private static final ReviewService service = new ReviewService();
@@ -18,20 +19,16 @@ public class ReviewService {
 		return service;
 	}
 
-	public List<ReviewDTO> getSelectByShowId(String showId) throws FindException {
+	public List<ReviewResponseDTO> getSelectByShowId(String showId) throws FindException {
 		return reviewDAO.selectByShowId(showId);
 	}
 
-	public List<ReviewDTO> getSelectByMemberId(Long memberId) throws FindException {
+	public List<ReviewResponseDTO> getSelectByMemberId(Long memberId) throws FindException {
 		return reviewDAO.selectByMemberId(memberId);
 	}
 
 	public void insertReview(ReviewDTO reviewDTO) throws AddException {
-//		try {
 		reviewDAO.insertReview(reviewDTO);
-//		} catch (AddException e) {
-//			e.printStackTrace();
-//		}
 	}
 
 	public void updateReview(ReviewDTO reviewDTO) {
@@ -42,9 +39,9 @@ public class ReviewService {
 		}
 	}
 
-	public void deleteReview(ReviewDTO reviewDTO) {
+	public void deleteReview(Long reviewId) {
 		try {
-			reviewDAO.deleteReview(reviewDTO);
+			reviewDAO.deleteReview(reviewId);
 		} catch (RemoveException e) {
 			e.printStackTrace();
 		}

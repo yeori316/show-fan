@@ -19,6 +19,7 @@ public class InsertReviewController extends ReviewController {
 		response.setHeader("Access-Control-Allow-Origin", "*");
 		response.setHeader("Access-Control-Allow-Credentials", "true");
 		response.setContentType("application/json;charset=utf-8");
+
 		String showId = request.getParameter("showId");
 		Long memberId = Long.parseLong(request.getParameter("memberId"));
 		Float reviewGrade = Float.parseFloat(request.getParameter("reviewGrade"));
@@ -31,11 +32,11 @@ public class InsertReviewController extends ReviewController {
 		reviewDTO.setReviewGrade(reviewGrade);
 		reviewDTO.setReviewContent(reviewContent);
 		reviewDTO.setSeatId(seatId);
-		
+
 		PrintWriter out = response.getWriter();
 		Gson gson = new Gson();
 		Map<String, String> map = new HashMap<>();
-		
+
 		try {
 			service.insertReview(reviewDTO);
 			map.put("msg", "리뷰 작성 완료");

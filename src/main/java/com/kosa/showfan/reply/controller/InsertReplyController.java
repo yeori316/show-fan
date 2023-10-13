@@ -1,11 +1,16 @@
 package com.kosa.showfan.reply.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+import com.kosa.showfan.exception.AddException;
 import com.kosa.showfan.reply.dto.ReplyDTO;
 
 public class InsertReplyController extends ReplyController {
@@ -23,6 +28,19 @@ public class InsertReplyController extends ReplyController {
 		replyDTO.setReviewId(reviewId);
 		replyDTO.setMemberId(memberId);
 		replyDTO.setReplyContent(replyContent);
-		service.insertReply(replyDTO);
+
+		PrintWriter out = response.getWriter();
+		Gson gson = new Gson();
+		Map<String, String> map = new HashMap<>();
+
+		try {
+			service.insertReply(replyDTO);
+			map.put("msg", "댓글 작성 완료");
+		} catch (AddException e) {
+			e.printStackTrace();
+			response.setStatus(500);
+			map.put("msg", "댓글 작성 실패");
+		}
+		out.print(gson.toJson(map));
 	}
 }

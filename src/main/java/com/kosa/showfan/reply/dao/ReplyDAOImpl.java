@@ -1,7 +1,11 @@
 package com.kosa.showfan.reply.dao;
 
+import java.io.InputStream;
+
+import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import com.kosa.showfan.exception.AddException;
 import com.kosa.showfan.exception.ModifyException;
@@ -9,10 +13,22 @@ import com.kosa.showfan.exception.RemoveException;
 import com.kosa.showfan.reply.dto.ReplyDTO;
 
 public class ReplyDAOImpl implements ReplyDAO {
+	private static final ReplyDAO replyDAO = new ReplyDAOImpl();
 	private SqlSessionFactory sqlSessionFactory;
 
-	public ReplyDAOImpl(SqlSessionFactory sqlSessionFactory) {
-		this.sqlSessionFactory = sqlSessionFactory;
+	public static ReplyDAO getInstance() {
+		return replyDAO;
+	}
+
+	public ReplyDAOImpl() {
+		String resource = "com/kosa/showfan/sql/mybatis-config.xml";
+		InputStream inputStream;
+		try {
+			inputStream = Resources.getResourceAsStream(resource);
+			sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
@@ -34,8 +50,9 @@ public class ReplyDAOImpl implements ReplyDAO {
 
 	@Override
 	public void updateReply(ReplyDTO reply) throws ModifyException {
-		SqlSession session = sqlSessionFactory.openSession();
+		SqlSession session = null;
 		try {
+			session = sqlSessionFactory.openSession();
 			session.update("com.kosa.showfan.reply.ReplyMapper.updateReply", reply);
 			session.commit();
 		} catch (Exception e) {
@@ -47,10 +64,11 @@ public class ReplyDAOImpl implements ReplyDAO {
 	}
 
 	@Override
-	public void deleteReply(ReplyDTO replyDTO) throws RemoveException {
-		SqlSession session = sqlSessionFactory.openSession();
+	public void deleteReply(Long replyId) throws RemoveException {
+		SqlSession session = null;
 		try {
-			session.delete("com.kosa.showfan.reply.ReplyMapper.deleteReply", replyDTO);
+			session = sqlSessionFactory.openSession();
+			session.delete("com.kosa.showfan.reply.ReplyMapper.deleteReply", replyId);
 			session.commit();
 		} catch (Exception e) {
 			session.rollback();

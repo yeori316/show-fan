@@ -4,17 +4,19 @@ import com.kosa.showfan.exception.AddException;
 import com.kosa.showfan.exception.ModifyException;
 import com.kosa.showfan.exception.RemoveException;
 import com.kosa.showfan.reply.dao.ReplyDAO;
+import com.kosa.showfan.reply.dao.ReplyDAOImpl;
 import com.kosa.showfan.reply.dto.ReplyDTO;
 
 public class ReplyService {
-	private ReplyDAO replyDAO;
+	private static final ReplyService service = new ReplyService();
+	private ReplyDAO replyDAO = ReplyDAOImpl.getInstance();
 
-	public void insertReply(ReplyDTO replyDTO) {
-		try {
-			replyDAO.insertReply(replyDTO);
-		} catch (AddException e) {
-			e.printStackTrace();
-		}
+	public static ReplyService getInstance() {
+		return service;
+	}
+
+	public void insertReply(ReplyDTO replyDTO) throws AddException {
+		replyDAO.insertReply(replyDTO);
 	}
 
 	public void updateReply(ReplyDTO replyDTO) {
@@ -25,15 +27,11 @@ public class ReplyService {
 		}
 	}
 
-	public void deleteReply(ReplyDTO replyDTO) {
+	public void deleteReply(Long replyId) {
 		try {
-			replyDAO.deleteReply(replyDTO);
+			replyDAO.deleteReply(replyId);
 		} catch (RemoveException e) {
 			e.printStackTrace();
 		}
-	}
-
-	public ReplyService getInstance() {
-		return null;
 	}
 }

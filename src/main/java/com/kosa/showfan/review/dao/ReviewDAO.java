@@ -7,6 +7,7 @@ import com.kosa.showfan.exception.FindException;
 import com.kosa.showfan.exception.ModifyException;
 import com.kosa.showfan.exception.RemoveException;
 import com.kosa.showfan.review.dto.ReviewDTO;
+import com.kosa.showfan.review.dto.ReviewResponseDTO;
 
 public interface ReviewDAO {
 	/**
@@ -16,7 +17,7 @@ public interface ReviewDAO {
 	 * @return 리뷰들
 	 * @throws FindException
 	 */
-	List<ReviewDTO> selectByShowId(String showId) throws FindException;
+	List<ReviewResponseDTO> selectByShowId(String showId) throws FindException;
 
 	/**
 	 * 
@@ -24,7 +25,7 @@ public interface ReviewDAO {
 	 * @return
 	 * @throws FindException
 	 */
-	List<ReviewDTO> selectByMemberId(Long memberId) throws FindException;
+	List<ReviewResponseDTO> selectByMemberId(Long memberId) throws FindException;
 
 	/**
 	 * 리뷰 추가
@@ -48,5 +49,5 @@ public interface ReviewDAO {
 	 * @param reviewDTO
 	 * @throws RemoveException
 	 */
-	void deleteReview(ReviewDTO reviewDTO) throws RemoveException;
+	void deleteReview(Long reviewId) throws RemoveException;
 }
