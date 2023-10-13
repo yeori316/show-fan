@@ -29,6 +29,7 @@ public class ShowDAOImpl implements ShowDAO {
 		try {
 			inputStream = Resources.getResourceAsStream(resource);
 			sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+			System.out.println(sqlSessionFactory);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

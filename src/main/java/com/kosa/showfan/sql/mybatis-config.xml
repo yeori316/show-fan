@@ -35,10 +35,8 @@
 
     <mappers>
         <mapper resource="com/kosa/showfan/sql/show.xml"/>
-        <mapper resource="com/kosa/showfan/sql/Review.xml"></mapper>
-        <mapper resource="com/kosa/showfan/sql/Reply.xml"></mapper>
         <mapper resource="com/kosa/showfan/sql/my-show.xml"/>
         <mapper resource="com/kosa/showfan/sql/my-artist.xml"/>
-        <mapper resource="com/kosa/showfan/sql/Member.xml"/>
+        <mapper resource="com/kosa/showfan/sql/member.xml"/>
     </mappers>
 </configuration>
