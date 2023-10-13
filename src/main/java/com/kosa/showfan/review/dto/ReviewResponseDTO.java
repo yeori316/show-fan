@@ -20,4 +20,8 @@ public class ReviewResponseDTO {
 	private String seatName;
 	private Integer seatPrice;
 	private List<ReplyResponseDTO> reviewReply;
+	
+	public void setReviewId(Long reviewId) {
+		this.reviewId = reviewId;
+	}
 }
