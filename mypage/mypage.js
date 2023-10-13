@@ -39,7 +39,8 @@ $(() => {
           let showIdList = JSON.parse(myShowResponseText);
           showIdList = showIdList.map((showId) => showId.showId);
           $('#my-show-count').text(`(${showIdList.length})`);
-          showIdList.forEach((showId) => {
+          const $myShowContainer = $('#my-show-container');
+          $.each(showIdList, (index, showId) => {
             $.ajax({
               url: backURL + '/showdetail',
               method: 'GET',
@@ -48,14 +49,15 @@ $(() => {
                 const myShowName = detailShowResponseText[0].showName;
                 const myShowPoster = detailShowResponseText[0].showPoster;
 
-                const $myShowContainer = $('#my-show-container');
                 const $liMyShow = $(
                   `<li id="my-show-${showId}" class="my-show"></li>`
                 );
                 $liMyShow.css('list-style', 'none');
-                $liMyShow.css('max-width', '20%');
+                // $liMyShow.css('width', '20%');
+                // $liMyShow.css('max-height', '300px');
+
                 $liMyShow.append(
-                  `<button id="my-show-delete-button-${showId}</button>`
+                  `<button id="my-show-delete-button-${showId}">X</button>`
                 );
                 $liMyShow.append(`<img
                   src=${myShowPoster}
@@ -63,62 +65,71 @@ $(() => {
                 />`);
                 $liMyShow.append(`<div>${myShowName}</div>`);
                 $myShowContainer.append($liMyShow);
+                $liMyShow.click(() => {
+                  location.href = `/html/show_detail.html?showname=${myShowName}`;
+                });
 
                 // 찜 목록
-                $('.my-show').mouseenter(() => {
-                  $('.my-show > button').css('display', 'block');
+                $(`#my-show-${showId}`).mouseenter(() => {
+                  $(`#my-show-delete-button-${showId}`).css('display', 'block');
                   const imageSize = Number(
                     $('.my-show > img').css('width').replace('px', '')
                   );
+                  let confirmed = false;
+                  let isDelete = false;
+                  $(`#my-show-delete-button-${showId}`).click((e) => {
+                    e.stopPropagation();
+                    if (!confirmed) {
+                      confirmed = true;
+                      console.log(confirmed);
+                      isDelete = confirm('찜한 작품을 삭제하시겠어요?');
+                    }
+                    if (isDelete) {
+                      $.ajax({
+                        url:
+                          backURL +
+                          `/myshow?showId=${showId}&memberId=${window.localStorage.getItem(
+                            'memberId'
+                          )}`,
+                        method: 'DELETE',
+                        success: () => {
+                          alert('삭제되었습니다.');
+                          location.reload();
+                        },
+                      });
+                    }
+                  });
                   $('.my-show > button').css('width', imageSize / 8 + 'px');
                   $('.my-show > button').css('height', imageSize / 8 + 'px');
                   $('.my-show > button').css(
                     'font-size',
                     imageSize / 10 + 'px'
                   );
-                  $('.my-show > button').css('margin-left', imageSize + 'px');
                 });
                 $('.my-show').mouseleave(() => {
                   $('.my-show > button').css('display', 'none');
                 });
+                $;
+                if (index == showIdList.length - 1) {
+                  $(`my-show-${showId}`).ready(() => {
+                    if (showIdList.length > 5) {
+                      $('#my-show-left-arrow-icon').css('display', 'block');
+                      $('#my-show-right-arrow-icon').css('display', 'block');
+                      // 찜 목록 슬라이드
+                      initSlick();
+                      $('#my-show-right-arrow-icon').css('padding-left', '8px');
+                    } else {
+                      $('#my-show-container').css('display', 'flex');
+                      $('.my-show').css('display', 'flex');
+                      $('.my-show').css('flex-direction', 'column');
+                      $('.my-show').css('justify-content', 'center');
+                      $('.my-show').css('max-width', '20%');
+                    }
+                  });
+                }
               },
             });
           });
-          if (showIdList.length > 5) {
-            // 찜 목록 슬라이드
-            $('#my-show-container').slick({
-              dots: false,
-              infinite: true,
-              speed: 300,
-              slidesToShow: 5,
-              slidesToScroll: 5,
-              responsive: [
-                {
-                  breakpoint: 1024,
-                  settings: {
-                    slidesToShow: 4,
-                    slidesToScroll: 4,
-                  },
-                },
-                {
-                  breakpoint: 768,
-                  settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 3,
-                  },
-                },
-              ],
-              prevArrow: '#my-show-left-arrow-icon',
-              nextArrow: '#my-show-right-arrow-icon',
-            });
-          } else {
-            $('#my-show-container').css('display', 'flex');
-            $('.my-show').css('display', 'flex');
-            $('.my-show').css('flex-direction', 'column');
-            $('.my-show').css('justify-content', 'center');
-            $('#my-show-left-arrow-icon').css('display', 'none');
-            $('#my-show-right-arrow-icon').css('display', 'none');
-          }
         },
       });
 
@@ -188,3 +199,31 @@ $(() => {
     },
   });
 });
+
+function initSlick() {
+  $('#my-show-container').slick({
+    dots: false,
+    infinite: true,
+    speed: 300,
+    slidesToShow: 5,
+    slidesToScroll: 5,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 4,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+        },
+      },
+    ],
+    prevArrow: '#my-show-left-arrow-icon',
+    nextArrow: '#my-show-right-arrow-icon',
+  });
+}

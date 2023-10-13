@@ -81,11 +81,15 @@ div.mypage-line {
 }
 
 #my-show-slide {
+  width: 100vw;
+
   overflow: hidden;
 }
 
 #my-show-left-arrow-icon,
 #my-show-right-arrow-icon {
+  display: none;
+
   color: var(--main3-color);
 }
 
@@ -99,11 +103,16 @@ div.mypage-line {
 .my-show {
   margin: 12px;
 
+  position: relative;
+  display: inline-block;
+
   cursor: pointer;
 }
 
 .my-show > button {
   display: none;
+  top: 8px;
+  right: -8px;
   position: absolute;
   z-index: 999;
 
@@ -112,7 +121,6 @@ div.mypage-line {
   background-color: var(--red-color);
   color: white;
   border: none;
-  border-radius: 50%;
 }
 
 .my-show > img {
@@ -120,7 +128,6 @@ div.mypage-line {
   height: 80%;
   margin: 8px;
 
-  position: relative;
   display: inline-block;
 
   aspect-ratio: 83/121;
