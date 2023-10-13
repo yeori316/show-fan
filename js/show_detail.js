@@ -1,4 +1,4 @@
-import { handleXhttps } from "./util.js";
+import { backURL, handleXhttps } from "./util.js";
 
 $(() => {
   handleXhttps("GET", "../html/header.html", $("header"));
@@ -6,14 +6,12 @@ $(() => {
   let name = window.localStorage.getItem("param");
   $.ajax({
     type: "get",
-    url:
-      "http://192.168.1.37:8888/showfan/findshow?showname=" +
-      window.localStorage.getItem("param"),
+    url: `${backURL}/findshow?showname=` + window.localStorage.getItem("param"),
     dataType: "json",
     success: function (data) {
       $.ajax({
         type: "get",
-        url: "http://192.168.1.37:8888/showfan/showdetail?showid=" + data,
+        url: `${backURL}/showdetail?showid=` + data,
         dataType: "json",
         success: function (data) {
           if (data[0].genreId == 5) {

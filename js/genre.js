@@ -5,7 +5,7 @@ $(() => {
   $.ajax({
     type: "get",
     url:
-      "http://192.168.1.37:8888/showfan/showconcept?genreId=" +
+      `${backURL}/showconcept?genreId=` +
       window.localStorage.getItem("show_genre"),
     dataType: "json",
     success: function (data) {

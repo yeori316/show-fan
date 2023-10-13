@@ -30,24 +30,23 @@ $(() => {
     e.preventDefault();
     handleXhttps('GET', '../html/modify.html', $('main'));
   });
-  // handleXhttps('GET', '../html/mypage.html', $('main'));
-});
 
-// 검색 페이지
-export const searchhandleXhttps = () => {
-  handleXhttps('GET', '../html/search.html', $('main'));
-};
+  // 검색 시
+  $('body').on('click', '#header-search-button', function (e) {
+    const value = $('#header-search-input').val();
+    location.href = `../html/search.html?q=${value}`;
+  });
 
-// 달력 페이지
-export const calendarhandleXhttps = () => {
-  var calendar = new FullCalendar.Calendar(
-    document.querySelector('#calendar'),
-    {
-      initialView: 'dayGridMonth',
-
-      // events: JSON.parse(data),
-      eventClick: function (info) {},
+  // 검색 입력 후 엔터
+  $('body').on('keydown', '#header-search-input', function (e) {
+    if (e.key == 'Enter' || e.keyCode == '13') {
+      const value = $('#header-search-input').val();
+      location.href = `../html/search.html?q=${value}`;
     }
-  );
-  calendar.render();
-};
+  });
+
+  // 캘린더 조회 시
+  $('body').on('click', '#navigation-calendar-button', function (e) {
+    location.href = '../html/calendar.html';
+  });
+});
