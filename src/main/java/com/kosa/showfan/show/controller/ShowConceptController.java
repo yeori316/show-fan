@@ -24,7 +24,7 @@ public class ShowConceptController extends ShowController {
 		Long genreId = Long.parseLong(request.getParameter("genreId"));
 		try {
 			List<ShowDTO> result = service.selectByConcept(genreId);
-			System.out.println(result.get(0));
+			System.out.println("asd");
 			Gson gson = new Gson();
 			String jsonResult = gson.toJson(result);
 			out.print(jsonResult);
