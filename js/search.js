@@ -1,4 +1,4 @@
-import { handleXhttps, backURL } from "./util.js";
+import { handleXhttps, backURL, frontURL } from "./util.js";
 
 $(() => {
   const theaterId = 1; // 연극
@@ -381,7 +381,7 @@ $(() => {
 
         $copyShow
           .find("a")
-          .attr("href", `${backURL}/showdetail?showId=${showId}`);
+          .attr("href", `${frontURL}/show_detail.html?showId=${showId}`);
         $copyShow.find("img").attr("src", showImage).attr("title", showName);
 
         if (showStatus == "공연완료") {

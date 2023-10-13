@@ -1,9 +1,6 @@
 import { handleXhttps, backURL } from "./util.js";
 
 $(() => {
-  //   if 마이페이지 link clicked
-  handleXhttps("GET", "../html/mypage.html", $("main"));
-
   function getCookie(name) {
     const value = `; ${document.cookie}`;
     const parts = value.split(`; ${name}=`);
