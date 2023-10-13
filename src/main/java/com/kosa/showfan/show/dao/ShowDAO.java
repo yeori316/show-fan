@@ -6,10 +6,10 @@ import com.kosa.showfan.exception.FindException;
 import com.kosa.showfan.show.dto.ShowCalendarDTO;
 import com.kosa.showfan.show.dto.ShowDTO;
 import com.kosa.showfan.show.dto.ShowSearchDTO;
+import com.kosa.showfan.show.dto.showAllInfoDTO;
 
 public interface ShowDAO {
-	public void selectById() throws Exception;
-
+	List<showAllInfoDTO> selectById(String id) throws Exception;
 	List<ShowDTO> selectAll() throws Exception;
 	
 	/**
@@ -26,4 +26,9 @@ public interface ShowDAO {
 	 * @throws FindException
 	 */
 	List<ShowCalendarDTO> selectByDate() throws FindException;
+	
+	List<ShowDTO> selectByConcept(Long genreId) throws Exception;
+	String selectByName(String name) throws FindException;
+
+
 }

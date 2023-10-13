@@ -11,8 +11,8 @@ import lombok.Data;
 public class ReviewDTO {
 	private Long reviewId;
 	private Long memberId;
-	private Long showId;
-	private Integer reviewGrade;
+	private String showId;
+	private Float reviewGrade;
 	private String reviewContent;
 	private Date reviewCreatedAt;
 	private String reviewIsModified;
