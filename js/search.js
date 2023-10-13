@@ -379,15 +379,16 @@ $(() => {
         }
 
         $copyShow
-          .find("img")
-          .attr("src", showImage)
-          .attr("alt", showId)
-          .attr("title", showName);
+          .find("a")
+          .attr("href", `${backURL}/showdetail?showId=${showId}`);
+        $copyShow.find("img").attr("src", showImage).attr("title", showName);
+
         if (showStatus == "공연완료") {
           $copyShow.find(".status > b").html("공연종료");
         } else {
           $copyShow.find(".status > b").html(showStatus);
         }
+
         $copyShow.find(".card-title").html(showName);
         $copyShow.find("#period").html(showStartDay + " ~ " + showEndDay);
         $copyShow.find("#venues").html(showVenues);

@@ -71,23 +71,8 @@ $(() => {
   //   });
   // 체크박스 필터 끝
 
-  $("button.fc-today-button").click((e) => {
-    console.log("today bt");
-  });
-
-  $("button.fc-prev-button").click((e) => {
-    console.log("pre bt");
-  });
-
-  $("button.fc-next-button").click((e) => {
-    console.log("nxt bt");
-  });
-
-  //   const date = new Date(calendar.getDate());
-  //   const year = date.getFullYear();
-  //   const month = date.getMonth() + 1;
-  //   ajaxHandler(year - 2000, month);
   ajaxHandler("23", "10");
+  // calendarHandler();
 
   // event list 장르체크 필터
   function eventListFilterGenreHandler(showList, $filterChk, genreId) {
@@ -131,16 +116,18 @@ $(() => {
       festivalId
     );
 
-    calendarAddEventHandler(eventFilterList);
+    // calendarAddEventHandler(eventFilterList);
   }
 
   function ajaxHandler(year, month) {
     $.ajax({
       url: `${backURL}/calendar?y=${year}&m=${month}`,
+      // url: `${backURL}/calendar?y=23&m=10`,
       method: "GET",
       success: (responseJSONObj) => {
         showList = responseJSONObj.show;
 
+        console.log("ajaxHandler call");
         console.log(showList);
         calendarHandler();
       },
@@ -151,6 +138,7 @@ $(() => {
   }
 
   function calendarHandler() {
+    $("#calendar-container").html("");
     calendar = new FullCalendar.Calendar(
       document.querySelector("#calendar-container"),
       {
@@ -176,13 +164,14 @@ $(() => {
         },
       }
     );
-    calendarAddEventHandler(showList);
-  }
+    //   calendarAddEventHandler(showList);
+    // }
 
-  function calendarAddEventHandler(showList) {
-    const addEventList = showList;
+    // function calendarAddEventHandler(showList) {
+    //   const addEventList = showList;
 
-    $(addEventList).each((index, s) => {
+    // $(addEventList).each((index, s) => {
+    $(showList).each((index, s) => {
       const showId = s.showId;
       const genreId = s.genreId;
       const showName = s.showName;
@@ -229,6 +218,7 @@ $(() => {
         // color: showColor,
       });
     });
+    calendar.render();
 
     // calendar.addEvent({
     //   id: "showId",
@@ -240,6 +230,37 @@ $(() => {
     //   url: "../index.html?q=test1",
     // });
 
-    calendar.render();
+    $("button.fc-today-button").click((e) => {
+      const date = new Date(calendar.getDate());
+      const year = date.getFullYear();
+      const month = date.getMonth() + 1;
+      console.log(year);
+      console.log(month);
+      ajaxHandler(year - 2000, month);
+
+      console.log("today bt");
+    });
+
+    $("button.fc-prev-button").click((e) => {
+      const date = new Date(calendar.getDate());
+      const year = date.getFullYear();
+      const month = date.getMonth() + 1;
+      console.log(year);
+      console.log(month);
+      ajaxHandler(year - 2000, month);
+
+      console.log("pre bt");
+    });
+
+    $("button.fc-next-button").click((e) => {
+      const date = new Date(calendar.getDate());
+      const year = date.getFullYear();
+      const month = date.getMonth() + 1;
+      console.log(year);
+      console.log(month);
+      ajaxHandler(year - 2000, month);
+
+      console.log("nxt bt");
+    });
   }
 });
