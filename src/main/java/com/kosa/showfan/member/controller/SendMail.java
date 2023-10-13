@@ -33,7 +33,8 @@ public class SendMail extends HttpServlet {
 
         //크로스오리진 문제 해결
         response.setHeader("Access-Control-Allow-Origin",
-                "*");
+//                "*");
+    				"http://192.168.1.112:5502");
         response.setHeader("Access-Control-Allow-Credentials", "true");
 
         //응답형식
@@ -98,9 +99,9 @@ public class SendMail extends HttpServlet {
  
 
             System.out.println("메일 보내기 성공");
-            Transport.send(message);    // send message
             map.put("status", 1);
             map.put("msg", code);
+            Transport.send(message);    // send message
 
         } catch (AddressException e) {
         		map.put("status", 0);
@@ -111,7 +112,9 @@ public class SendMail extends HttpServlet {
         		map.put("msg", "이메일 전송 실패");
             e.printStackTrace();
         }
-        
+        String jsonStr = mapper.writeValueAsString(map);
+        System.out.println(jsonStr);
+        out.print(jsonStr);
         
         
 	}

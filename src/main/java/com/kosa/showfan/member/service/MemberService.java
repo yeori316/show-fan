@@ -50,8 +50,10 @@ public class MemberService {
      * @param nickname
      * @throws FindException
      */
-	public void nickNameDupChk(String nickname) throws FindException {
-		member.selectByNickName(nickname);
+	public String nickNameDupChk(String nickname) throws FindException {
+		String num = member.selectByNickName(nickname);
+		return num;
+		
 		
 	}
     

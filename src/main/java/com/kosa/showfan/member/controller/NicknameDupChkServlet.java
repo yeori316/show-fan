@@ -23,7 +23,7 @@ public class NicknameDupChkServlet extends HttpServlet {
 		service = new MemberService();
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		 
         //크로스오리진 문제 해결
         response.setHeader("Access-Control-Allow-Origin",
@@ -42,14 +42,19 @@ public class NicknameDupChkServlet extends HttpServlet {
         String nickname = request.getParameter("nickname");
         
         try {
-			service.nickNameDupChk(nickname);
-			System.out.println("닉네임 사용 가능!");
-			map.put("status", 1);
-		} catch (FindException e) {
-			System.out.println("닉네임 사용 불가!");
-			map.put("status", 0);
+        		String num = service.nickNameDupChk(nickname);
+        		if(num.equals("1")) {
+        			System.out.println("닉네임 사용 가능!");
+        			map.put("status", 1);        			
+        		}else if(num.equals("0")) {
+        			System.out.println("닉네임 사용 불가!");
+        			map.put("status", 0);
+        		}
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
+        String jsonStr = mapper.writeValueAsString(map);
+        out.print(jsonStr);
 		
 		
 	}

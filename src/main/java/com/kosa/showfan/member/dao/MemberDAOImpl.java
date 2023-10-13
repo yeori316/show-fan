@@ -123,10 +123,12 @@ public class MemberDAOImpl implements MemberDAO {
 	        }
 			session = sqlSessionFactory.openSession();
 			String nick = session.selectOne("com.kosa.showfan.MemberMapper.selectByNickName", nickname);
+			//중복된 닉네임이 있는경우
 			if(nick != null) {
-				return nick;
+				return "0";
+			//중복된 닉네임이 없는 경우
 			}else {
-				return "사용할 수 있는 닉네임입니다";
+				return "1";
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
