@@ -1,3 +1,5 @@
+@import url('../css/base.css');
+
 #mypage-layout {
   margin: 48px;
 }
@@ -29,17 +31,16 @@ div.mypage-line {
   white-space: nowrap;
 }
 
-#mypage-profile > div,
-#update-profile > div {
+#update-profile > a {
   margin-right: 12px;
 }
 
-i.hide-icon {
+.hide-image {
   display: none;
 }
 
-img.hide-image {
-  display: none;
+#mypage-profile-nickname {
+  margin-left: 12px;
 }
 
 #mypage-profile > img {
@@ -97,11 +98,30 @@ img.hide-image {
 
 .my-show {
   margin: 12px;
+
+  cursor: pointer;
+}
+
+.my-show > button {
+  display: none;
+  position: absolute;
+  z-index: 999;
+
+  cursor: pointer;
+
+  background-color: var(--red-color);
+  color: white;
+  border: none;
+  border-radius: 50%;
 }
 
 .my-show > img {
   width: 100%;
   height: 80%;
+  margin: 8px;
+
+  position: relative;
+  display: inline-block;
 
   aspect-ratio: 83/121;
 }
@@ -236,7 +256,7 @@ img.hide-image {
   grid-template-columns: 1fr 1fr 1fr;
 }
 
-#mypage-my-artist-container {
+.mypage-my-artist-container {
   margin-top: 16px;
 
   display: flex;
