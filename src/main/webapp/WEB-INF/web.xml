@@ -7,19 +7,19 @@
         <servlet-name>LoginController</servlet-name>
         <display-name>LoginController</display-name>
         <description></description>
-        <servlet-class>com.kosa.showfan.member.service.LoginController</servlet-class>
+        <servlet-class>com.kosa.showfan.member.controller.LoginController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>CookieServlet</servlet-name>
         <display-name>CookieServlet</display-name>
         <description></description>
-        <servlet-class>com.kosa.showfan.member.service.Cookie</servlet-class>
+        <servlet-class>com.kosa.showfan.member.controller.Cookie</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>LogoutServlet</servlet-name>
         <display-name>LogoutServlet</display-name>
         <description></description>
-        <servlet-class>com.kosa.showfan.member.service.LogoutServlet</servlet-class>
+        <servlet-class>com.kosa.showfan.member.controller.LogoutServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ShowServlet</servlet-name>
