@@ -22,10 +22,12 @@ public class UpdateReviewController extends ReviewController {
 
 		Long reviewId = Long.parseLong(request.getParameter("reviewId"));
 		String reviewContent = request.getParameter("reviewContent");
+		Float reviewGrade = Float.parseFloat(request.getParameter("reviewGrade"));
 
 		ReviewDTO reviewDTO = new ReviewDTO();
 		reviewDTO.setReviewId(reviewId);
 		reviewDTO.setReviewContent(reviewContent);
+		reviewDTO.setReviewGrade(reviewGrade);
 
 		PrintWriter out = response.getWriter();
 		Gson gson = new Gson();

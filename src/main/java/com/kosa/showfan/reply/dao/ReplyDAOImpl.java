@@ -50,8 +50,9 @@ public class ReplyDAOImpl implements ReplyDAO {
 
 	@Override
 	public void updateReply(ReplyDTO reply) throws ModifyException {
-		SqlSession session = sqlSessionFactory.openSession();
+		SqlSession session = null;
 		try {
+			session = sqlSessionFactory.openSession();
 			session.update("com.kosa.showfan.reply.ReplyMapper.updateReply", reply);
 			session.commit();
 		} catch (Exception e) {
@@ -64,8 +65,9 @@ public class ReplyDAOImpl implements ReplyDAO {
 
 	@Override
 	public void deleteReply(Long replyId) throws RemoveException {
-		SqlSession session = sqlSessionFactory.openSession();
+		SqlSession session = null;
 		try {
+			session = sqlSessionFactory.openSession();
 			session.delete("com.kosa.showfan.reply.ReplyMapper.deleteReply", replyId);
 			session.commit();
 		} catch (Exception e) {
