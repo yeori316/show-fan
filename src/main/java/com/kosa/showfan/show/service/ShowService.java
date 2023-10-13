@@ -9,6 +9,7 @@ import com.kosa.showfan.show.dto.ShowCalendarDTO;
 import com.kosa.showfan.show.dto.ShowDTO;
 import com.kosa.showfan.show.dto.ShowListDTO;
 import com.kosa.showfan.show.dto.ShowSearchDTO;
+import com.kosa.showfan.show.dto.showAllInfoDTO;
 
 public class ShowService {
 	private static final ShowService instance = new ShowService();
@@ -30,5 +31,17 @@ public class ShowService {
 	public ShowListDTO calendar() throws FindException {
 		List<ShowCalendarDTO> list = showDAO.selectByDate();
 		return new ShowListDTO<>(list.size(), list);
+	}
+
+	public List<showAllInfoDTO> selectByShowId(String showId) throws Exception {
+		return showDAO.selectById(showId);
+	}
+	
+	public List<ShowDTO> selectByConcept(Long genreId) throws Exception{
+		return showDAO.selectByConcept(genreId);
+	}
+	
+	public String selectByName(String name) throws FindException{
+		return showDAO.selectByName(name);
 	}
 }

@@ -43,6 +43,7 @@
 		</environment>
 	</environments>
 
+
 	<mappers>
 		<mapper resource="com/kosa/showfan/sql/show.xml" />
 		<mapper resource="com/kosa/showfan/sql/review.xml" />
@@ -51,4 +52,5 @@
 		<mapper resource="com/kosa/showfan/sql/my-artist.xml" />
 		<mapper resource="com/kosa/showfan/sql/member.xml" />
 	</mappers>
+
 </configuration>
