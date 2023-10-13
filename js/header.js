@@ -57,8 +57,8 @@ $(() => {
                 xhrFields: {
                     withCredentials: true
                 },
-                // url: 'http://192.168.1.112:8888/showfan/logoutmemm',
-                url: 'http://ec2-52-79-82-77.ap-northeast-2.compute.amazonaws.com:8080/showfan/',
+                url: 'http://192.168.1.112:8888/showfan/logoutmem',
+                // url: 'http://ec2-52-79-82-77.ap-northeast-2.compute.amazonaws.com:8080/showfan/',
                 method: 'get',
                 success: (responseJSONObj) => {
                     responseJSONObj = JSON.parse(responseJSONObj)
