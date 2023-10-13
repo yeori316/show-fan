@@ -39,6 +39,7 @@ public class ShowDAOImpl implements ShowDAO {
 		SqlSession session = null;
 		try {
 			session = sqlSessionFactory.openSession();
+			System.out.println(id);
 			List<showAllInfoDTO> c = session.selectList("com.kosa.show.ShowMapper.selectById", id);
 			if (c != null) {
 				return c;

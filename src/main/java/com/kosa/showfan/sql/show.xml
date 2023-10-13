@@ -5,7 +5,7 @@
 <mapper namespace="com.kosa.show.ShowMapper">
 	<select id="selectById"
 		resultType="com.kosa.showfan.show.dto.showAllInfoDTO"
-		parameterType="java.util.List">
+		parameterType="List">
 		    select *
 		from show a
 		left join seat c on (a.show_id = c.show_id)

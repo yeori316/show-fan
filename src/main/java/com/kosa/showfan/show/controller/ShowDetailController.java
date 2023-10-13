@@ -21,7 +21,7 @@ public class ShowDetailController extends ShowController {
 		
 		PrintWriter out = response.getWriter();
 		
-		String showId = request.getParameter("showid");
+		String showId = request.getParameter("showId");
 
 		try {
 			List<showAllInfoDTO> result = service.selectByShowId(showId);

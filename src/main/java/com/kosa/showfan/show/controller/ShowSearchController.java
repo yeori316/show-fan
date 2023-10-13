@@ -16,7 +16,7 @@ public class ShowSearchController extends ShowController {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		response.setHeader("Access-Control-Allow-Origin", "http://127.0.0.1:5501"); // "http://127.0.0.1:5500"
+//		response.setHeader("Access-Control-Allow-Origin", "*"); // "http://127.0.0.1:5500"
 //		response.setHeader("Access-Control-Allow-Credentials", "true");
 		response.setContentType("application/json;charset=utf-8");
 		
