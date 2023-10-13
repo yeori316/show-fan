@@ -1,5 +1,3 @@
-import { calendarhandleXhttps } from "./index.js";
-
 document.querySelector(".classic").addEventListener("click", classic);
 document.querySelector(".festival").addEventListener("click", festival);
 document.querySelector(".concert").addEventListener("click", concert);
@@ -30,11 +28,3 @@ function show() {
 function all() {
   location.href = "../index.html";
 }
-$(() => {
-  const $calendar = $("#calendar-button");
-
-  $calendar.click(() => {
-    $("main").html("<div id='calendar'></div>");
-    calendarhandleXhttps();
-  });
-});
