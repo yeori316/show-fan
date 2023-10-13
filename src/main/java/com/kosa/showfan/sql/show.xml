@@ -12,7 +12,7 @@
 		SELECT * FROM SHOW ORDER BY SHOW_START_DAY DESC ,GENRE_ID ASC
 	</select>
 	
-	<select id="selectByString" resultType="ShowSearchDTO">
+	<select id="selectByString" resultType="ShowSearchDTO" parameterType="string">
 		SELECT s.show_id, s.show_poster, s.genre_id, s.show_name, s.show_venues, TO_CHAR(s.show_start_day, 'yyyy.mm.dd') show_start_day, TO_CHAR(s.show_end_day, 'yyyy.mm.dd') show_end_day, s.show_address, s.show_status, NVL(r.c, 0) review_cnt, NVL(r.a, 0) grade_avg
         FROM show s LEFT JOIN (SELECT show_id, COUNT(*) c, AVG(review_grade) a
                                FROM review
@@ -21,8 +21,16 @@
         ORDER BY show_end_day DESC
 	</select>
 	
-	<select id="selectByDate" resultType="showCalendarDTO" parameterType="hashmap">
-		SELECT show_id, genre_id, show_name, show_venues, show_address, show_start_day, show_end_day
-		FROM show 
+	<resultMap id="showCalendarMap" type="ShowCalendarDTO" autoMapping="true">
+		<id column="show_id" property="showId" />
+		<collection column="artist_name" property="artistList" ofType="string"></collection>
+	</resultMap>
+	
+	<select id="selectByDate" resultMap="showCalendarMap" parameterType="string">
+		SELECT a.artist_name, s.show_id, s.genre_id, s.show_name, s.show_venues, s.show_address, TO_CHAR(s.show_start_day, 'yyyy-mm-dd') show_start_day, TO_CHAR(s.show_end_day, 'yyyy-mm-dd') show_end_day
+   		FROM show s LEFT JOIN cast c ON s.show_id = c.show_id
+            		LEFT JOIN artist a ON c.artist_id = a.artist_id
+		WHERE TO_CHAR(s.show_start_day, 'yymm') = #{yymm} OR TO_CHAR(s.show_end_day, 'yymm') = #{yymm}
+		ORDER BY s.show_start_day
 	</select>
 </mapper>

@@ -27,8 +27,8 @@ public class ShowService {
 		return new ShowListDTO<>(list.size(), list);
 	}
 	
-	public ShowListDTO calendar() throws FindException {
-		List<ShowCalendarDTO> list = showDAO.selectByDate();
+	public ShowListDTO calendar(String yymm) throws FindException {
+		List<ShowCalendarDTO> list = showDAO.selectByDate(yymm);
 		return new ShowListDTO<>(list.size(), list);
 	}
 }
