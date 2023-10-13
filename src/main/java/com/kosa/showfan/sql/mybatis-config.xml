@@ -3,54 +3,57 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-	<properties resource="db.properties" />
-	<settings>
-		<setting name="mapUnderscoreToCamelCase" value="true" />
-	</settings>
+    <properties resource="db.properties"/>
+    <settings>
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
 
-	<typeAliases>
-		<typeAlias alias="ShowDTO"
-			type="com.kosa.showfan.show.dto.ShowDTO" />
-		<typeAlias alias="ShowSearchDTO"
-			type="com.kosa.showfan.show.dto.ShowSearchDTO" />
-		<typeAlias alias="ShowCalendarDTO"
-			type="com.kosa.showfan.show.dto.ShowCalendarDTO" />
-		<typeAlias alias="ReviewDTO"
-			type="com.kosa.showfan.review.dto.ReviewDTO" />
-		<typeAlias alias="ReplyDTO"
-			type="com.kosa.showfan.reply.dto.ReplyDTO" />
-		<typeAlias alias="MyShowDTO"
-			type="com.kosa.showfan.myShow.dto.MyShowDTO" />
-		<typeAlias alias="MyArtistDTO"
-			type="com.kosa.showfan.myArtist.dto.MyArtistDTO" />
-		<typeAlias alias="MemberDTO"
-			type="com.kosa.showfan.member.dto.MemberDTO" />
-		<typeAlias alias="ReviewResponseDTO"
-			type="com.kosa.showfan.review.dto.ReviewResponseDTO" />
-		<typeAlias alias="ReplyResponseDTO"
-			type="com.kosa.showfan.reply.dto.ReplyResponseDTO" />
-	</typeAliases>
+    <typeAliases>
+        <typeAlias alias="ShowDTO"
+                   type="com.kosa.showfan.show.dto.ShowDTO"/>
+        <typeAlias alias="ShowSearchDTO"
+                   type="com.kosa.showfan.show.dto.ShowSearchDTO"/>
+        <typeAlias alias="ShowCalendarDTO"
+                   type="com.kosa.showfan.show.dto.ShowCalendarDTO"/>
+        <typeAlias alias="ReviewDTO"
+                   type="com.kosa.showfan.review.dto.ReviewDTO"/>
+        <typeAlias alias="ReplyDTO"
+                   type="com.kosa.showfan.reply.dto.ReplyDTO"/>
+        <typeAlias alias="MyShowDTO"
+                   type="com.kosa.showfan.myShow.dto.MyShowDTO"/>
+        <typeAlias alias="MyArtistDTO"
+                   type="com.kosa.showfan.myArtist.dto.MyArtistDTO"/>
+        <typeAlias alias="MemberDTO"
+                   type="com.kosa.showfan.member.dto.MemberDTO"/>
+        <typeAlias alias="ReviewResponseDTO"
+                   type="com.kosa.showfan.review.dto.ReviewResponseDTO"/>
+        <typeAlias alias="ReplyResponseDTO"
+                   type="com.kosa.showfan.reply.dto.ReplyResponseDTO"/>
+        <typeAlias alias="ArtistDTO"
+                   type="com.kosa.showfan.artist.dto.ArtistDTO"/>
+    </typeAliases>
 
-	<environments default="development">
-		<environment id="development">
-			<transactionManager type="JDBC" />
-			<dataSource type="POOLED">
-				<property name="driver" value="${driver}" />
-				<property name="url" value="${url}" />
-				<property name="username" value="${username}" />
-				<property name="password" value="${password}" />
-			</dataSource>
-		</environment>
-	</environments>
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
 
 
-	<mappers>
-		<mapper resource="com/kosa/showfan/sql/show.xml" />
-		<mapper resource="com/kosa/showfan/sql/review.xml" />
-		<mapper resource="com/kosa/showfan/sql/reply.xml" />
-		<mapper resource="com/kosa/showfan/sql/my-show.xml" />
-		<mapper resource="com/kosa/showfan/sql/my-artist.xml" />
-		<mapper resource="com/kosa/showfan/sql/member.xml" />
-	</mappers>
+    <mappers>
+        <mapper resource="com/kosa/showfan/sql/show.xml"/>
+        <mapper resource="com/kosa/showfan/sql/review.xml"/>
+        <mapper resource="com/kosa/showfan/sql/reply.xml"/>
+        <mapper resource="com/kosa/showfan/sql/my-show.xml"/>
+        <mapper resource="com/kosa/showfan/sql/my-artist.xml"/>
+        <mapper resource="com/kosa/showfan/sql/member.xml"/>
+        <mapper resource="com/kosa/showfan/sql/artist.xml"/>
+    </mappers>
 
 </configuration>
