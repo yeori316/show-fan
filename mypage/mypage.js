@@ -43,7 +43,7 @@ $(() => {
             $.ajax({
               url: backURL + '/showdetail',
               method: 'GET',
-              data: `showid=${showId}`,
+              data: `showId=${showId}`,
               success: (detailShowResponseText) => {
                 const myShowName = detailShowResponseText[0].showName;
                 const myShowPoster = detailShowResponseText[0].showPoster;
