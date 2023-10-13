@@ -17,7 +17,7 @@
 	<select id="selectByConcept"
 		resultType="com.kosa.showfan.show.dto.ShowDTO"
 		parameterType="java.util.List">
-		SELECT * FROM SHOW WHERE GENRE_ID = #{GENRE}
+		SELECT * FROM SHOW WHERE GENRE_ID = #{GENRE} and <![CDATA[ rownum <= 10 ]]>
 	</select>
 	
 	<select id="selectByName"
