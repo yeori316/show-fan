@@ -1,4 +1,5 @@
-const backURL = 'http://localhost:8080/showfan/';
+import { backURL } from '../js/util.js';
+
 $(() => {
   const value = `; ${document.cookie}`;
   const parts = value.split(`; ${'loginCookie'}=`);
@@ -16,22 +17,22 @@ $(() => {
 
   // 회원 정보 출력
   $.ajax({
-    url: backURL + 'member',
+    url: backURL + '/member',
     method: 'GET',
     data: `email=${loginCookie}`,
     success: (memberResponseText) => {
-      window.localStorage.setItem('memberId', memberResponseText.MemberId);
-      const memberProfileImage = memberResponseText.MemberImage;
+      window.localStorage.setItem('memberId', memberResponseText.memberId);
+      const memberProfileImage = memberResponseText.memberImage;
       if (memberProfileImage !== undefined) {
         $('img[alt=profile-image]').attr('src', memberProfileImage);
         $('img[alt=profile-image]').removeClass('hide-image');
         $('div.mypage-profile-icon').addClass('hide-image');
       }
-      $('#mypage-profile-nickname').text(memberResponseText.MemberNickname);
+      $('#mypage-profile-nickname').text(memberResponseText.memberNickname);
 
       // 찜 목록 출력
       $.ajax({
-        url: backURL + 'myshow',
+        url: backURL + '/myshow',
         method: 'GET',
         data: `memberId=${window.localStorage.getItem('memberId')}`,
         success: (myShowResponseText) => {
@@ -40,7 +41,7 @@ $(() => {
           $('#my-show-count').text(`(${showIdList.length})`);
           showIdList.forEach((showId) => {
             $.ajax({
-              url: backURL + 'showdetail',
+              url: backURL + '/showdetail',
               method: 'GET',
               data: `showid=${showId}`,
               success: (detailShowResponseText) => {
@@ -57,9 +58,9 @@ $(() => {
                   `<button id="my-show-delete-button-${showId}</button>`
                 );
                 $liMyShow.append(`<img
-                src=${myShowPoster}
-                alt=${myShowName}-poster
-              />`);
+                  src=${myShowPoster}
+                  alt=${myShowName}-poster
+                />`);
                 $liMyShow.append(`<div>${myShowName}</div>`);
                 $myShowContainer.append($liMyShow);
 
@@ -123,7 +124,7 @@ $(() => {
 
       // 내 리뷰
       $.ajax({
-        url: backURL + 'memberreview ',
+        url: backURL + '/memberreview ',
         method: 'GET',
         data: `memberId=${window.localStorage.getItem('memberId')}`,
         success: (myShowResponseText) => {
@@ -137,7 +138,7 @@ $(() => {
 
       // 선호 아티스트
       $.ajax({
-        url: backURL + 'myartist',
+        url: backURL + '/myartist',
         method: 'GET',
         data: `memberId=${window.localStorage.getItem('memberId')}`,
         success: (myShowResponseText) => {
@@ -167,7 +168,7 @@ $(() => {
           myArtistList.forEach((myArtist) => {
             console.log(myArtist);
             $.ajax({
-              url: backURL + 'artist',
+              url: backURL + '/artist',
               method: 'GET',
               data: `memberId=${window.localStorage.getItem('memberId')}`,
               success: (artistResponseText) => {

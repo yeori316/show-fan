@@ -20,9 +20,9 @@ $(() => {
   });
 
   // if 마이페이지 link clicked
-  $('body').on('click', '.header-menu-link[href="mypage.html"]', function (e) {
+  $('body').on('click', '.header-menu-link[href="mypage"]', function (e) {
     e.preventDefault();
-    handleXhttps('GET', '../html/mypage.html', $('main'));
+    location.href = 'mypage';
   });
 
   // 내 정보 수정 클릭 시
