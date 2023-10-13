@@ -11,26 +11,23 @@ import com.google.gson.Gson;
 import com.kosa.showfan.exception.FindException;
 import com.kosa.showfan.show.dto.ShowListDTO;
 
-public class CalendarShowController extends ShowController {
+public class ShowCalendarController extends ShowController {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		response.setHeader("Access-Control-Allow-Origin", "*"); // "http://127.0.0.1:5500"
-//		response.setHeader("Access-Control-Allow-Credentials", "true");
+		response.setHeader("Access-Control-Allow-Origin", "http://127.0.0.1:5501");
 		response.setContentType("application/json;charset=utf-8");
 		
 		PrintWriter out = response.getWriter();	
 		String year = request.getParameter("y");
 		String month = request.getParameter("m");
-//		ObjectMapper mapper = new ObjectMapper();
+
 		Gson gson = new Gson();
 		ShowListDTO showList;
 		
 		try {
-			showList = service.calendar();
-//			String jsonStr = mapper.writeValueAsString(showList);
-//			out.print(jsonStr);
+			showList = service.calendar(year + month);
 			String jsonResult = gson.toJson(showList);
 			out.print(jsonResult);
 		} catch (FindException e) {
@@ -40,7 +37,6 @@ public class CalendarShowController extends ShowController {
 			e.printStackTrace();
 			response.setStatus(500);
 		}
-
 	}
 
 }

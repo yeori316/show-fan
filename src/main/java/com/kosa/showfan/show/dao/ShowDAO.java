@@ -25,10 +25,8 @@ public interface ShowDAO {
 	 * @return
 	 * @throws FindException
 	 */
-	List<ShowCalendarDTO> selectByDate() throws FindException;
-	
+	List<ShowCalendarDTO> selectByDate(String yymm) throws FindException;
+
 	List<ShowDTO> selectByConcept(Long genreId) throws Exception;
 	String selectByName(String name) throws FindException;
-
-
 }
