@@ -10,7 +10,7 @@ public class ReviewDTO {
 	private Float reviewGrade;
 	private String reviewContent;
 	private Integer seatId;
-	
+
 	public void setReviewId(Long reviewId) {
 		this.reviewId = reviewId;
 	}

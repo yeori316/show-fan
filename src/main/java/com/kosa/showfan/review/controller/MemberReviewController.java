@@ -15,10 +15,12 @@ public class MemberReviewController extends ReviewController {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("??");
 		response.setHeader("Access-Control-Allow-Origin", "*");
 		response.setHeader("Access-Control-Allow-Credentials", "true");
 		response.setContentType("application/json;charset=utf-8");
 
+		System.out.println("memberReviewController");
 		PrintWriter out = response.getWriter();
 		Long memberId = Long.parseLong(request.getParameter("memberId"));
 
