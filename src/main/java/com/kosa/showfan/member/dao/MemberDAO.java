@@ -15,4 +15,5 @@ public interface MemberDAO {
      */
     public MemberDTO selectById(String email, String pwd) throws FindException;
 
+    public MemberDTO selectByEmail(String email) throws FindException;
 }

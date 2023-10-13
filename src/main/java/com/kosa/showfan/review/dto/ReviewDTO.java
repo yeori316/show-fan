@@ -10,4 +10,3 @@ public class ReviewDTO {
 	private Float reviewGrade;
 	private String reviewContent;
 	private Integer seatId;
-}
