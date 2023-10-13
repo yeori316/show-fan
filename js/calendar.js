@@ -72,7 +72,7 @@ $(() => {
   // 체크박스 필터 끝
 
   ajaxHandler("23", "10");
-  // calendarHandler();
+  calendarHandler();
 
   // event list 장르체크 필터
   function eventListFilterGenreHandler(showList, $filterChk, genreId) {
@@ -85,6 +85,7 @@ $(() => {
     }
     return eventFilterList;
   }
+
   // event list 장르체크 필터 끝
 
   function eventListFilterHandler(showList) {
@@ -138,7 +139,6 @@ $(() => {
   }
 
   function calendarHandler() {
-    $("#calendar-container").html("");
     calendar = new FullCalendar.Calendar(
       document.querySelector("#calendar-container"),
       {
@@ -164,61 +164,88 @@ $(() => {
         },
       }
     );
-    //   calendarAddEventHandler(showList);
+
+    // function ajaxHandler(year, month) {
+    //   var eventList;
+
+    //   $.ajax({
+    //     url: `${backURL}/calendar?y=${year}&m=${month}`,
+    //     // url: `${backURL}/calendar?y=23&m=10`,
+    //     method: "GET",
+    //     success: (responseJSONObj) => {
+    //       eventList = responseJSONObj.show;
+
+    //       console.log("ajaxHandler call");
+    //       console.log(showList);
+    //       // calendarHandler();
+    //     },
+    //     error: (xhr, textStatus) => {
+    //       alert("err: " + xhr.status);
+    //     },
+    //   });
+
+    //   return eventList;
     // }
 
-    // function calendarAddEventHandler(showList) {
-    //   const addEventList = showList;
+    // showList = ajaxHandler("23", "10");
+    render(showList);
 
-    // $(addEventList).each((index, s) => {
-    $(showList).each((index, s) => {
-      const showId = s.showId;
-      const genreId = s.genreId;
-      const showName = s.showName;
-      const showVenuesAddress = s.showVenues + "\n(" + s.showAddress + ")";
-      const showStartDay = s.showStartDay;
-      const showEndDay = s.showEndDay;
-      const artistList = s.artistList;
-      const showDetailUrl = `../index.html?q=${showId}`;
-      let showColor;
+    // 캘린더 렌더링
+    function render(showList) {
+      const eventList = showList;
 
-      if (genreId == 1) {
-        showColor = "blue"; // 연극
-      } else if (genreId == 2) {
-        showColor = "purple"; // 뮤지컬
-      } else if (genreId == 3) {
-        showColor = "yello"; // 클래식
-      } else if (genreId == 4) {
-        showColor = "red"; // 콘서트
-      } else if (genreId == 5) {
-        showColor = "green"; // 축제
-      } else {
-        showColor = "black"; // 기타
-      }
+      calendar.render(
+        console.log("렌더링"),
+        $(eventList).each((index, s) => {
+          const showId = s.showId;
+          const genreId = s.genreId;
+          const showName = s.showName;
+          const showVenuesAddress = s.showVenues + "\n(" + s.showAddress + ")";
+          const showStartDay = s.showStartDay;
+          const showEndDay = s.showEndDay;
+          const artistList = s.artistList;
+          const showDetailUrl = `../index.html?q=${showId}`;
+          let showColor;
 
-      if (genreId == 1) {
-        $("#theater").prop("checked", true);
-      } else if (genreId == 2) {
-        $("#musical").prop("checked", true);
-      } else if (genreId == 3) {
-        $("#classic").prop("checked", true);
-      } else if (genreId == 4) {
-        $("#concert").prop("checked", true);
-      } else if (genreId == 5) {
-        $("#festival").prop("checked", true);
-      }
+          if (genreId == 1) {
+            showColor = "blue"; // 연극
+          } else if (genreId == 2) {
+            showColor = "purple"; // 뮤지컬
+          } else if (genreId == 3) {
+            showColor = "yello"; // 클래식
+          } else if (genreId == 4) {
+            showColor = "red"; // 콘서트
+          } else if (genreId == 5) {
+            showColor = "green"; // 축제
+          } else {
+            showColor = "black"; // 기타
+          }
 
-      calendar.addEvent({
-        id: showId,
-        title: showName,
-        start: showStartDay,
-        end: showEndDay,
-        description: showVenuesAddress,
-        url: showDetailUrl,
-        // color: showColor,
-      });
-    });
-    calendar.render();
+          if (genreId == 1) {
+            $("#theater").prop("checked", true);
+          } else if (genreId == 2) {
+            $("#musical").prop("checked", true);
+          } else if (genreId == 3) {
+            $("#classic").prop("checked", true);
+          } else if (genreId == 4) {
+            $("#concert").prop("checked", true);
+          } else if (genreId == 5) {
+            $("#festival").prop("checked", true);
+          }
+
+          calendar.addEvent({
+            id: showId,
+            title: showName,
+            start: showStartDay,
+            end: showEndDay,
+            description: showVenuesAddress,
+            url: showDetailUrl,
+            // color: showColor,
+          });
+        })
+      );
+    }
+    // 캘린더 렌더링 끝
 
     // calendar.addEvent({
     //   id: "showId",
@@ -237,6 +264,7 @@ $(() => {
       console.log(year);
       console.log(month);
       ajaxHandler(year - 2000, month);
+      render();
 
       console.log("today bt");
     });
@@ -248,6 +276,7 @@ $(() => {
       console.log(year);
       console.log(month);
       ajaxHandler(year - 2000, month);
+      render();
 
       console.log("pre bt");
     });
@@ -259,6 +288,7 @@ $(() => {
       console.log(year);
       console.log(month);
       ajaxHandler(year - 2000, month);
+      render();
 
       console.log("nxt bt");
     });

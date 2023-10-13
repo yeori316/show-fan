@@ -39,7 +39,8 @@ $(() => {
   });
 
   // console.log(value);
-  $("#header-search-input").attr("value", value);
+  // $("#header-search-input").attr("value", value);
+  // $("header").on($("#header-search-input").attr("value", value));
   // console.log($("#header-search-input").val());
   // console.dir($("#header-search-input").attr("value"));
 
@@ -402,5 +403,5 @@ $(() => {
       $originShow.hide();
     }
   }
-  // show list handler 끝
+  // show list handler
 });
