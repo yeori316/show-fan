@@ -1,4 +1,4 @@
-import { carouselSlider } from "./util.js";
+import { carouselSlider, backURL } from "./util.js";
 
 $(".m11").click(function () {
   let name = $(".m11 > .name").html();
@@ -282,7 +282,7 @@ $(() => {
 $(() => {
   $.ajax({
     type: "get",
-    url: "http://192.168.1.37:8888/showfan/show",
+    url: `${backURL}/show`,
     dataType: "json",
     success: function (data) {
       let idx_five = 1;
