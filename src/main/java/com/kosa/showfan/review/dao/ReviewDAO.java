@@ -16,7 +16,15 @@ public interface ReviewDAO {
 	 * @return 리뷰들
 	 * @throws FindException
 	 */
-	List<ReviewDTO> selectByShowId(ReviewDTO review) throws FindException;
+	List<ReviewDTO> selectByShowId(String showId) throws FindException;
+
+	/**
+	 * 
+	 * @param memberId
+	 * @return
+	 * @throws FindException
+	 */
+	List<ReviewDTO> selectByMemberId(Long memberId) throws FindException;
 
 	/**
 	 * 리뷰 추가
