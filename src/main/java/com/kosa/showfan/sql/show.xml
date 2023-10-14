@@ -17,7 +17,7 @@
 	<select id="selectByConcept"
 		resultType="com.kosa.showfan.show.dto.ShowDTO"
 		parameterType="java.util.List">
-		SELECT * FROM SHOW WHERE GENRE_ID = #{GENRE} and <![CDATA[ rownum <= 10 ]]>
+		SELECT * FROM SHOW WHERE GENRE_ID = #{GENRE} and <![CDATA[ rownum <= 30 ]]>
 	</select>
 	
 	<select id="selectByName"
@@ -28,7 +28,7 @@
 	<select id="selectAll"
 		resultType="com.kosa.showfan.show.dto.ShowDTO"
 		parameterType="java.util.List">
-		SELECT * FROM SHOW ORDER BY SHOW_START_DAY DESC
+		SELECT * FROM SHOW WHERE SHOW_STATUS ='공연중' ORDER BY SHOW_START_DAY DESC
 		,GENRE_ID ASC
 	</select>
 	
