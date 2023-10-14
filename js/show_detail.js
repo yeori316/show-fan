@@ -34,6 +34,7 @@ $(() => {
   });
 
   handleXhttps("GET", "../html/header.html", $("header"));
+  handleXhttps("GET", "../html/navigation.html", $("nav"));
   handleXhttps("GET", "../html/footer.html", $("footer"));
   let name = window.localStorage.getItem("param");
   $.ajax({
@@ -66,12 +67,12 @@ $(() => {
           $(".show_time").text("공연시간 : " + data[0].showTime);
           $(".show_place").text("공연장소 : " + data[0].showVenues);
           $(".show_age").text("관람가능연령 : " + data[0].showAge + "세 이상");
-          $(".show_price").text("가격 : " + data[0].seatPrice + "원");
+          $(".show_price").text("가격 : " + data[0].seatPrice + "원 ~");
           $(".show_run_time").text("런타임 : " + data[0].showRuntime);
           $(".info_photo_img").attr("src", data[0].showImage1);
           let total = 0;
           $.each(data, function (key, value) {
-            if (total == 3) {
+            if (total == 3 || value.artistName == null) {
               return false;
             }
             let div1 = document.createElement("div");
