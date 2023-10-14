@@ -4,7 +4,6 @@ export const backURL =
   "http://ec2-52-79-82-77.ap-northeast-2.compute.amazonaws.com:8080/showfan";
 // export const frontURL = "http://127.0.0.1:5500/html";
 // export const backURL = "http://127.0.0.1:8080/showfan";
-
 // api call(ajax) function
 export const handleXhttps = (method, url, target) => {
   $.ajax({
