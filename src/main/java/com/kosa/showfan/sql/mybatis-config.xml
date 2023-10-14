@@ -9,28 +9,24 @@
     </settings>
 
     <typeAliases>
-        <typeAlias alias="ShowDTO"
-                   type="com.kosa.showfan.show.dto.ShowDTO"/>
-        <typeAlias alias="ShowSearchDTO"
-                   type="com.kosa.showfan.show.dto.ShowSearchDTO"/>
-        <typeAlias alias="ShowCalendarDTO"
-                   type="com.kosa.showfan.show.dto.ShowCalendarDTO"/>
-        <typeAlias alias="ReviewDTO"
-                   type="com.kosa.showfan.review.dto.ReviewDTO"/>
-        <typeAlias alias="ReplyDTO"
-                   type="com.kosa.showfan.reply.dto.ReplyDTO"/>
-        <typeAlias alias="MyShowDTO"
-                   type="com.kosa.showfan.myShow.dto.MyShowDTO"/>
-        <typeAlias alias="MyArtistDTO"
-                   type="com.kosa.showfan.myArtist.dto.MyArtistDTO"/>
-        <typeAlias alias="MemberDTO"
-                   type="com.kosa.showfan.member.dto.MemberDTO"/>
-        <typeAlias alias="ReviewResponseDTO"
-                   type="com.kosa.showfan.review.dto.ReviewResponseDTO"/>
-        <typeAlias alias="ReplyResponseDTO"
-                   type="com.kosa.showfan.reply.dto.ReplyResponseDTO"/>
-        <typeAlias alias="ArtistDTO"
-                   type="com.kosa.showfan.artist.dto.ArtistDTO"/>
+        <typeAlias alias="MemberDTO" type="com.kosa.showfan.member.dto.MemberDTO"/>
+
+        <typeAlias alias="ShowDTO" type="com.kosa.showfan.show.dto.ShowDTO"/>
+        <typeAlias alias="ShowAllInfoDTO" type="com.kosa.showfan.show.dto.ShowAllInfoDTO"/>
+
+        <typeAlias alias="ShowSearchDTO" type="com.kosa.showfan.show.dto.ShowSearchDTO"/>
+        <typeAlias alias="ShowCalendarDTO" type="com.kosa.showfan.show.dto.ShowCalendarDTO"/>
+
+        <typeAlias alias="MyShowDTO" type="com.kosa.showfan.myShow.dto.MyShowDTO"/>
+
+        <typeAlias alias="ReviewDTO" type="com.kosa.showfan.review.dto.ReviewDTO"/>
+        <typeAlias alias="ReviewResponseDTO" type="com.kosa.showfan.review.dto.ReviewResponseDTO"/>
+        <typeAlias alias="ReviewShowResponseDTO" type="com.kosa.showfan.review.dto.ReviewShowResponseDTO"/>
+        <typeAlias alias="ReplyDTO" type="com.kosa.showfan.reply.dto.ReplyDTO"/>
+        <typeAlias alias="ReplyResponseDTO" type="com.kosa.showfan.reply.dto.ReplyResponseDTO"/>
+
+        <typeAlias alias="ArtistDTO" type="com.kosa.showfan.artist.dto.ArtistDTO"/>
+        <typeAlias alias="MyArtistDTO" type="com.kosa.showfan.myArtist.dto.MyArtistDTO"/>
     </typeAliases>
 
     <environments default="development">
@@ -44,7 +40,6 @@
             </dataSource>
         </environment>
     </environments>
-
 
     <mappers>
         <mapper resource="com/kosa/showfan/sql/show.xml"/>

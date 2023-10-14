@@ -6,7 +6,7 @@ import java.util.List;
 import com.kosa.showfan.reply.dto.ReplyDTO;
 import com.kosa.showfan.review.dto.ReviewDTO;
 
-public class showAllInfoDTO {
+public class ShowAllInfoDTO {
 	private String showId;
 	private Long genreId;
 	private String showName;
@@ -26,7 +26,7 @@ public class showAllInfoDTO {
 	private Double showLatitude;
 	private Double showLongitude;
 	private String showRuntime;
-	private List<ReviewDTO> showReveiws;
+//	private List<ReviewDTO> showReveiws;
 	private String showPoster;
 	private Long reviewId;
 	private Long memberId;
@@ -37,7 +37,7 @@ public class showAllInfoDTO {
 	private Long seatId;
 	private String seatName;
 	private Integer seatPrice;
-	private List<ReplyDTO> reviewReply;
+//	private List<ReplyDTO> reviewReply;
 	private Long artistId;
 	private String artistName;
 	private String artistImage;

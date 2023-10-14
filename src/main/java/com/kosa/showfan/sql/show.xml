@@ -4,8 +4,8 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kosa.show.ShowMapper">
 	<select id="selectById"
-		resultType="com.kosa.showfan.show.dto.showAllInfoDTO"
-		parameterType="java.util.List">
+		resultType="ShowAllInfoDTO"
+		parameterType="List">
 		    select *
 		from show a
 		left join seat c on (a.show_id = c.show_id)
@@ -15,7 +15,7 @@
 	</select>
 
 	<select id="selectByConcept"
-		resultType="com.kosa.showfan.show.dto.ShowDTO"
+		resultType="ShowDTO"
 		parameterType="java.util.List">
 		SELECT * FROM SHOW WHERE GENRE_ID = #{GENRE} and <![CDATA[ rownum <= 30 ]]>
 	</select>
@@ -26,19 +26,26 @@
 	</select>
 	
 	<select id="selectAll"
-		resultType="com.kosa.showfan.show.dto.ShowDTO"
+		resultType="ShowDTO"
 		parameterType="java.util.List">
 		SELECT * FROM SHOW WHERE SHOW_STATUS ='공연중' ORDER BY SHOW_START_DAY DESC
 		,GENRE_ID ASC
 	</select>
 	
-	<select id="selectByString" resultType="ShowSearchDTO" parameterType="string">
-		SELECT s.show_id, s.show_poster, s.genre_id, s.show_name, s.show_venues, TO_CHAR(s.show_start_day, 'yyyy.mm.dd') show_start_day, TO_CHAR(s.show_end_day, 'yyyy.mm.dd') show_end_day, s.show_address, s.show_status, NVL(r.c, 0) review_cnt, NVL(r.a, 0) grade_avg
-        FROM show s LEFT JOIN (SELECT show_id, COUNT(*) c, AVG(review_grade) a
-                               FROM review
-                               GROUP BY show_id) r ON s.show_id = r.show_id
-        WHERE INSTR(s.show_name, #{value}) !=0
-        ORDER BY show_end_day DESC
+	<select id="selectByStringCnt" resultType="int" parameterType="string">
+		SELECT COUNT(*) FROM show WHERE INSTR(show_name, #{value}) !=0
+	</select>
+	
+	<select id="selectByString" resultType="ShowSearchDTO" parameterType="hashmap">
+		SELECT *
+		FROM (
+			SELECT ROWNUM rn, s.show_id, s.show_poster, s.genre_id, s.show_name, s.show_venues, TO_CHAR(s.show_start_day, 'yyyy.mm.dd') show_start_day, TO_CHAR(s.show_end_day, 'yyyy.mm.dd') show_end_day, s.show_address, s.show_status, NVL(r.c, 0) review_cnt, NVL(r.a, 0) grade_avg
+        	FROM show s LEFT JOIN (SELECT show_id, COUNT(*) c, AVG(review_grade) a
+            	                   FROM review
+                	               GROUP BY show_id) r ON s.show_id = r.show_id
+        	WHERE INSTR(s.show_name, #{value}) !=0
+        	ORDER BY show_end_day DESC ) sap
+       	WHERE rn BETWEEN #{startRn} AND #{endRn}
 	</select>
 	
 	<resultMap id="showCalendarMap" type="ShowCalendarDTO" autoMapping="true">

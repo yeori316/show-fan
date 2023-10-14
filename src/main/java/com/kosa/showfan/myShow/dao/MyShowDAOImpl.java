@@ -51,11 +51,12 @@ public class MyShowDAOImpl implements MyShowDAO {
     }
 
     @Override
-    public void deleteMyShow(MyShowDTO myShowDTO) throws RemoveException {
+    public String deleteMyShow(MyShowDTO myShowDTO) throws RemoveException {
         SqlSession session = null;
         try {
             session = sqlSessionFactory.openSession();
             session.delete("com.kosa.show.MyShowMapper.deleteMyShow", myShowDTO);
+            return "OK";
         } catch (Exception e) {
             throw new RemoveException("찜 목록 삭제에 실패했습니다");
         } finally {

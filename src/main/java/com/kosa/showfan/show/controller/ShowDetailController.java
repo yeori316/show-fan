@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
-import com.kosa.showfan.show.dto.showAllInfoDTO;
+import com.kosa.showfan.show.dto.ShowAllInfoDTO;
 
 public class ShowDetailController extends ShowController {
 
@@ -21,10 +21,10 @@ public class ShowDetailController extends ShowController {
 		
 		PrintWriter out = response.getWriter();
 		
-		String showId = request.getParameter("showid");
+		String showId = request.getParameter("showId");
 
 		try {
-			List<showAllInfoDTO> result = service.selectByShowId(showId);
+			List<ShowAllInfoDTO> result = service.selectByShowId(showId);
 			System.out.println(result);
 			Gson gson = new Gson();
 			String jsonResult = gson.toJson(result);

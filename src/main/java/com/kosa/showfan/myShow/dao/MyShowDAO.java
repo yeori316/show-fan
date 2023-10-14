@@ -20,9 +20,10 @@ public interface MyShowDAO {
      * 찜 목록 삭제
      *
      * @param myShowDTO
+     * @return
      * @throws RemoveException
      */
-    void deleteMyShow(MyShowDTO myShowDTO) throws RemoveException;
+    String deleteMyShow(MyShowDTO myShowDTO) throws RemoveException;
 
     /**
      * 회원의 찜 목록 검색
