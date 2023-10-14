@@ -38,8 +38,8 @@ public class DispatcherServlet extends HttpServlet {
 
     protected void service(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-//        System.out.println("request.getServletPath()=" + request.getServletPath());
 
+//        System.out.println("request.getServletPath()=" + request.getServletPath());
         response.setHeader("Access-Control-Allow-Origin", "*");
         response.setHeader("Access-Control-Allow-Credentials", "true");
 

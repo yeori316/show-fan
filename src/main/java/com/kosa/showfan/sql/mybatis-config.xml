@@ -11,11 +11,11 @@
     <typeAliases>
         <typeAlias alias="MemberDTO" type="com.kosa.showfan.member.dto.MemberDTO"/>
         
-        <typeAlias alias="ShowDTO" type="com.kosa.showfan.show.show.dto.ShowDTO"/>
-        <typeAlias alias="ShowAllInfoDTO" type="com.kosa.showfan.show.show.dto.ShowAllInfoDTO"/>
+        <typeAlias alias="ShowDTO" type="com.kosa.showfan.show.dto.ShowDTO"/>
+        <typeAlias alias="ShowAllInfoDTO" type="com.kosa.showfan.show.dto.ShowAllInfoDTO"/>
         									    
-        <typeAlias alias="ShowSearchDTO" type="com.kosa.showfan.show.show.dto.ShowSearchDTO"/>
-        <typeAlias alias="ShowCalendarDTO" type="com.kosa.showfan.show.show.dto.ShowCalendarDTO"/>
+        <typeAlias alias="ShowSearchDTO" type="com.kosa.showfan.show.dto.ShowSearchDTO"/>
+        <typeAlias alias="ShowCalendarDTO" type="com.kosa.showfan.show.dto.ShowCalendarDTO"/>
 
         <typeAlias alias="MyShowDTO" type="com.kosa.showfan.myShow.dto.MyShowDTO"/>
         

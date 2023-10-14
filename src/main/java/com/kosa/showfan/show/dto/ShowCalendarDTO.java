@@ -1,4 +1,4 @@
-package com.kosa.showfan.show.show.dto;
+package com.kosa.showfan.show.dto;
 
 import java.util.List;
 

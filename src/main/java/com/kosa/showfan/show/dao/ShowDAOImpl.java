@@ -1,4 +1,4 @@
-package com.kosa.showfan.show.show.dao;
+package com.kosa.showfan.show.dao;
 
 import java.io.InputStream;
 import java.util.List;
@@ -9,10 +9,10 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import com.kosa.showfan.exception.FindException;
-import com.kosa.showfan.show.show.dto.ShowCalendarDTO;
-import com.kosa.showfan.show.show.dto.ShowDTO;
-import com.kosa.showfan.show.show.dto.ShowSearchDTO;
-import com.kosa.showfan.show.show.dto.ShowAllInfoDTO;
+import com.kosa.showfan.show.dto.ShowAllInfoDTO;
+import com.kosa.showfan.show.dto.ShowCalendarDTO;
+import com.kosa.showfan.show.dto.ShowDTO;
+import com.kosa.showfan.show.dto.ShowSearchDTO;
 
 public class ShowDAOImpl implements ShowDAO {
 	private static final ShowDAO showDAO = new ShowDAOImpl();

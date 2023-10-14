@@ -1,7 +1,7 @@
-package com.kosa.showfan.show.show.controller;
+package com.kosa.showfan.show.controller;
 
 import com.kosa.showfan.controller.Controller;
-import com.kosa.showfan.show.show.service.ShowService;
+import com.kosa.showfan.show.service.ShowService;
 
 public abstract class ShowController implements Controller {
 	protected ShowService service;
