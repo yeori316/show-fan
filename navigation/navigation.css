@@ -1,4 +1,4 @@
-@import url('../css/base.css');
+@import url("../util/base.css");
 #navigation-layout {
   height: 50px;
   padding: 0 12px;
