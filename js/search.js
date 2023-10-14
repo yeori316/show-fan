@@ -1,4 +1,4 @@
-import { handleXhttps, backURL } from "./util.js";
+import { handleXhttps, backURL, frontURL } from "./util.js";
 
 $(() => {
   const theaterId = 1; // 연극
@@ -304,7 +304,7 @@ $(() => {
     if (showCnt == 0) {
       $("#search-result-count > b").html(`검색 결과 (${showCnt})`);
       $("#showCardList").html(
-        '<div class="col"><div class="card h-100"><img class="card-img-top" src="https://showfan.s3.ap-northeast-2.amazonaws.com/PF154190.jpg" alt="..."/><div class="status"><b>공연중</b></div><div class="card-body"><h5 class="card-title">Card title</h5><p class="card-text"><div id="period">2023.01.01 ~ 2023.01.01</div><div id="venues">예술의 전당</div><br><div id="grade">평점 3.5 (리뷰갯수)</div></p></div></div></div><div id="search-result-count" class="container text-right"><b>검색된 공연이 없습니다.</b></div>'
+        '<div class="col"><a><div class="card h-100"><img class="card-img-top" src="https://showfan.s3.ap-northeast-2.amazonaws.com/PF154190.jpg" alt="..."/><div class="status"><b>공연중</b></div><div class="card-body"><h5 class="card-title">Card title</h5><p class="card-text"><div id="period">2023.01.01 ~ 2023.01.01</div><div id="venues">예술의 전당</div><br><div id="grade">평점 3.5 (리뷰갯수)</div></p></div></div></a></div><div id="search-result-count" class="container text-right"><b>검색된 공연이 없습니다.</b></div>'
       );
       $("div.col").first().hide();
     } else {
@@ -381,7 +381,7 @@ $(() => {
 
         $copyShow
           .find("a")
-          .attr("href", `${backURL}/showdetail?showId=${showId}`);
+          .attr("href", `${frontURL}/show_detail.html?showId=${showId}`);
         $copyShow.find("img").attr("src", showImage).attr("title", showName);
 
         if (showStatus == "공연완료") {

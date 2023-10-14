@@ -1,6 +1,7 @@
 import { handleXhttps, backURL } from "./util.js";
 $(() => {
   handleXhttps("GET", "../html/header.html", $("header"));
+  handleXhttps("GET", "../html/navigation.html", $("nav"));
   handleXhttps("GET", "../html/footer.html", $("footer"));
   $.ajax({
     type: "get",
@@ -9,6 +10,7 @@ $(() => {
       window.localStorage.getItem("show_genre"),
     dataType: "json",
     success: function (data) {
+      console.log(window.localStorage.getItem("show_genre"));
       $.each(data, function (key, value) {
         let div1 = document.createElement("div");
         let div2 = document.createElement("div");
