@@ -1,6 +1,8 @@
 package com.kosa.showfan.show.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.kosa.showfan.exception.FindException;
 import com.kosa.showfan.show.dao.ShowDAO;
@@ -23,9 +25,16 @@ public class ShowService {
 		return showDAO.selectAll();
 	}
 	
-	public ShowListDTO search(String value) throws FindException {
-		List<ShowSearchDTO> list = showDAO.selectByString(value);
-		return new ShowListDTO<>(list.size(), list);
+	public ShowListDTO search(String value, int page) throws FindException {
+		
+		int showCnt = 20;						// 1	2	3	4					
+		int endRn = showCnt * page;				// 20	40	60	80	
+		int startRn = (endRn - showCnt) + 1;	// 1	21	41	61
+			
+		int findShowCnt = showDAO.selectByStringCnt(value);
+		List<ShowSearchDTO> list = showDAO.selectByString(value, startRn, endRn);
+		
+		return new ShowListDTO<>(findShowCnt, list);
 	}
 	
 	public ShowListDTO calendar(String yymm) throws FindException {
