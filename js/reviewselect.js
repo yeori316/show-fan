@@ -1,4 +1,4 @@
-import { backURL } from "./util";
+//import { backURL } from "./util";
 
 $(() => {
   //--모달 시작--
@@ -50,7 +50,8 @@ $(() => {
   const requestParam = location.search.substring(1);
 
   $.ajax({
-    url: `${backURL}/selectreview`,
+    //url: `"${backURL}/selectreview"`,
+    url: "http://127.0.0.1:8888/showfan/selectreview",
     method: "GET",
     data: `showId=${data.showId}`,
     success: (responseJSONObj) => {
@@ -74,7 +75,8 @@ $(() => {
       seatId: 1848,
     };
     $.ajax({
-      url: `${backURL}/insertreview`,
+      // url: `${backURL}/insertreview`,
+      url: "http://127.0.0.1:8888/showfan/insertreview",
       method: "POST",
       data: data,
       success: (responseJSONObj) => {
@@ -100,7 +102,8 @@ $(() => {
       reviewContent: reviewContent,
     };
     $.ajax({
-      url: `${backURL}/update`,
+      // url: `${backURL}/update`,
+      url: "http://127.0.0.1:8888/showfan/updatereview",
       method: "POST",
       data: data,
       success: (responseJSONObj) => {
@@ -118,7 +121,8 @@ $(() => {
   $("#delete").delete((e) => {
     const reviewId = 121;
     $.ajax({
-      url: `${backURL}/insertreview`,
+      // url: `${backURL}/insertreview`,
+      url: "http://127.0.0.1:8888/showfan/deletereview",
       method: "POST",
       data: reviewId,
       success: (responseJSONObj) => {
@@ -143,7 +147,7 @@ $(() => {
       replyId: replyId,
     };
     $.ajax({
-      url: `${backURL}/insertreview`,
+      url: "http://192.168.3.103:8888/showfan/insertreply",
       method: "POST",
       data: data,
       success: (responseJSONObj) => {
@@ -166,7 +170,7 @@ $(() => {
       replyContent: replyContent,
     };
     $.ajax({
-      url: `${backURL}/updatereply`,
+      url: "http://192.168.3.103:8888/showfan/updatereply",
       method: "POST",
       data: data,
       success: (responseJSONObj) => {
@@ -184,7 +188,7 @@ $(() => {
   $("").delete((e) => {
     const replyId = $();
     $.ajax({
-      url: `${backURL}/deletereply`,
+      url: "http://192.168.3.103:8888/showfan/deletereply",
       method: "POST",
       data: replyId,
       success: (responseJSONObj) => {
