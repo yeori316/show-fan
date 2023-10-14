@@ -1,0 +1,31 @@
+div.col-sm-1 {
+  text-align: center;
+}
+
+div.form-check {
+  display: inline-block;
+}
+
+.col-sm-1,
+.col-sm-10 {
+  margin-top: 0.5em;
+}
+
+.form-check-input {
+  margin-top: 0.2em;
+}
+
+div.search-line {
+  margin: 10px 10px;
+  width: 100%;
+
+  border: 1px solid var(--main2-color);
+}
+
+.status {
+  padding: 3px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-color: var(--main2-color);
+}

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- base -->
+    <link rel="icon" href="./images/logo-icon.png" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script
+      src="https://kit.fontawesome.com/d9fe784aec.js"
+      crossorigin="anonymous"
+    ></script>
+    <!--jquery slick for slider-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
+    />
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
+    ></script>
+
+    <link rel="stylesheet" href="./myreview.css" />
+    <script type="module" src="./myreview.js"></script>
+    <link rel="stylesheet" href="../../css/header.css" />
+    <link rel="stylesheet" href="../../css/navigation.css" />
+    <link rel="stylesheet" href="../../css/footer.css" />
+  </head>
+  <body>
+    <header>
+      <div id="header-layout">
+        <a id="header-logo-link" href="../../index.html">
+          <img id="header-logo-icon" src="../../images/logo-icon.png" />
+          <h1>쇼팬</h1>
+        </a>
+        <div id="header-search-container">
+          <input id="header-search-input" type="text" />
+          <button type="button" id="header-search-button">검색</button>
+        </div>
+        <div id="header-menu-container">
+          <a href="#" class="header-menu-link" id="logout">로그아웃</a>
+          <i id="header-menu-line-icon" class="fa-solid fa-slash"></i>
+          <a href="../" class="header-menu-link" id="mypage">마이페이지</a>
+        </div>
+      </div>
+    </header>
+    <nav>
+      <div id="navigation-layout">
+        <ol id="navigation-genre-container">
+          <li class="all"><a href="#">전체</a></li>
+          <li class="concert"><a href="#">콘서트</a></li>
+          <li class="musical"><a href="#">뮤지컬</a></li>
+          <li class="show"><a href="#">연극</a></li>
+          <li class="festival"><a href="#">축제</a></li>
+          <li class="classic"><a href="#">클래식</a></li>
+        </ol>
+        <ol id="navigation-menu-container">
+          <li><a href="#" id="calendar-button">공연 캘린더</a></li>
+        </ol>
+      </div>
+    </nav>
+    <main>
+      <div class="mypage-myreview-main-text">내가 쓴 리뷰</div>
+      <div class="mypage-myreview-review-container">
+        <img
+          src="https://www.kopis.or.kr/upload/pfmPoster/PF_PF223598_230809_130057.gif"
+          alt="review-show-post"
+          class="mypage-myreview-review-post"
+        />
+        <div id="mypage-myreview-review-info">
+          <div id="mypage-myreview-review-show-info">
+            <div>작품 제목</div>
+            <i class="fa-solid fa-slash mypage-myreview-review-line-icon"></i>
+            <div>2023.09.23</div>
+            <i class="fa-solid fa-slash mypage-myreview-review-line-icon"></i>
+            <div>R석(64,000원)</div>
+            <i class="fa-solid fa-slash mypage-myreview-review-line-icon"></i>
+            <div>예술의 전당</div>
+          </div>
+          <div id="mypage-myreview-review-evaluation-info">
+            <i
+              id="mypage-myreview-review-star-icon"
+              class="fa-solid fa-star"
+            ></i>
+            <div>5.0</div>
+            <i class="fa-solid fa-slash mypage-myreview-review-line-icon"></i>
+            <div id="mypage-review-content">
+              진짜 인생 최고의 콘서트였습니다.
+            </div>
+          </div>
+        </div>
+        <div id="mypage-myreview-review-button">
+          <a href="#">수정</a>
+          <i class="fa-solid fa-slash mypage-myreview-review-line-icon"></i>
+          <a href="#">삭제</a>
+        </div>
+      </div>
+      <div class="mypage-myreview-review-line"></div>
+    </main>
+    <footer>
+      <div id="footer-layout">
+        <p>COPYRIGHT ⓒ 쇼팬하이머 ALL RIGHTS RESERVED.</p>
+      </div>
+    </footer>
+  </body>
+</html>
