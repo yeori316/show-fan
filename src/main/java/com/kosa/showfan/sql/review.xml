@@ -51,7 +51,7 @@
         s.seat_price
         FROM review r LEFT JOIN show sh ON r.show_id = sh.show_id
         LEFT JOIN seat s ON r.seat_id = s.seat_id
-        WHERE r.member_id = 3
+        WHERE r.member_id = #{memberId}
         ORDER BY r.review_created_at DESC
     </select>
     <insert id="insertReview" parameterType="ReviewDTO">
