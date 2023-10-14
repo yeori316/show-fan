@@ -10,6 +10,7 @@
       integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
       crossorigin="anonymous"
     />
+    <!-- <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css"> -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
@@ -25,26 +26,8 @@
       crossorigin="anonymous"
     ></script>
 
-    <!--jquery slick for slider-->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
-    />
-    <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
-    ></script>
-
-    <!-- fullcalendar -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.css"
-      rel="stylesheet"
-    />
-    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.js"></script>
-    
-    <link rel="stylesheet" href="../css/search.css" />
-    <script type="module" src="../js/search.js"></script>
+    <link rel="stylesheet" href="search.css" />
+    <script type="module" src="search.js"></script>
   </head>
   <body>
     <header></header>
@@ -61,9 +44,7 @@
                 <input
                   class="form-check-input"
                   type="checkbox"
-                  value="all"
                   id="genreAll"
-                  name="genre"
                 />
                 <label class="form-check-label" for="genreAll"> 전체 </label>
               </div>
@@ -73,7 +54,7 @@
                 <input
                   class="form-check-input"
                   type="checkbox"
-                  value="concert"
+                  value="4"
                   id="concert"
                   name="genre"
                 />
@@ -84,7 +65,7 @@
                 <input
                   class="form-check-input"
                   type="checkbox"
-                  value="musical"
+                  value="2"
                   id="musical"
                   name="genre"
                 />
@@ -95,7 +76,7 @@
                 <input
                   class="form-check-input"
                   type="checkbox"
-                  value="theater"
+                  value="1"
                   id="theater"
                   name="genre"
                 />
@@ -106,7 +87,7 @@
                 <input
                   class="form-check-input"
                   type="checkbox"
-                  value="festival"
+                  value="5"
                   id="festival"
                   name="genre"
                 />
@@ -117,7 +98,7 @@
                 <input
                   class="form-check-input"
                   type="checkbox"
-                  value="classic"
+                  value="3"
                   id="classic"
                   name="genre"
                 />
@@ -132,9 +113,7 @@
                 <input
                   class="form-check-input"
                   type="checkbox"
-                  value="all"
                   id="statusAll"
-                  name="status"
                 />
                 <label class="form-check-label" for="statusAll"> 전체 </label>
               </div>
@@ -144,7 +123,7 @@
                 <input
                   class="form-check-input"
                   type="checkbox"
-                  value="coming"
+                  value="공연예정"
                   id="coming"
                   name="status"
                 />
@@ -155,7 +134,7 @@
                 <input
                   class="form-check-input"
                   type="checkbox"
-                  value="during"
+                  value="공연중"
                   id="during"
                   name="status"
                 />
@@ -166,7 +145,7 @@
                 <input
                   class="form-check-input"
                   type="checkbox"
-                  value="end"
+                  value="공연완료"
                   id="end"
                   name="status"
                 />
@@ -181,9 +160,7 @@
                 <input
                   class="form-check-input"
                   type="checkbox"
-                  value="all"
                   id="localAll"
-                  name="local"
                 />
                 <label class="form-check-label" for="localAll"> 전체 </label>
               </div>
@@ -193,7 +170,7 @@
                 <input
                   class="form-check-input"
                   type="checkbox"
-                  value="seoul"
+                  value="서울"
                   id="seoul"
                   name="local"
                 />
@@ -204,7 +181,7 @@
                 <input
                   class="form-check-input"
                   type="checkbox"
-                  value="sejong"
+                  value="세종"
                   id="sejong"
                   name="local"
                 />
@@ -215,7 +192,7 @@
                 <input
                   class="form-check-input"
                   type="checkbox"
-                  value="incheon"
+                  value="인천"
                   id="incheon"
                   name="local"
                 />
@@ -226,7 +203,7 @@
                 <input
                   class="form-check-input"
                   type="checkbox"
-                  value="daejeon"
+                  value="대전"
                   id="daejeon"
                   name="local"
                 />
@@ -237,7 +214,7 @@
                 <input
                   class="form-check-input"
                   type="checkbox"
-                  value="daegu"
+                  value="대구"
                   id="daegu"
                   name="local"
                 />
@@ -248,7 +225,7 @@
                 <input
                   class="form-check-input"
                   type="checkbox"
-                  value="gwangju"
+                  value="광주"
                   id="gwangju"
                   name="local"
                 />
@@ -259,7 +236,7 @@
                 <input
                   class="form-check-input"
                   type="checkbox"
-                  value="ulsan"
+                  value="울산"
                   id="ulsan"
                   name="local"
                 />
@@ -270,7 +247,7 @@
                 <input
                   class="form-check-input"
                   type="checkbox"
-                  value="busan"
+                  value="부산"
                   id="busan"
                   name="local"
                 />
@@ -281,7 +258,7 @@
                 <input
                   class="form-check-input"
                   type="checkbox"
-                  value="gyeonggi"
+                  value="경기"
                   id="gyeonggi"
                   name="local"
                 />
@@ -292,7 +269,7 @@
                 <input
                   class="form-check-input"
                   type="checkbox"
-                  value="gangwon"
+                  value="강원"
                   id="gangwon"
                   name="local"
                 />
@@ -303,7 +280,7 @@
                 <input
                   class="form-check-input"
                   type="checkbox"
-                  value="gyeongsang"
+                  value="경상"
                   id="gyeongsang"
                   name="local"
                 />
@@ -314,7 +291,7 @@
                 <input
                   class="form-check-input"
                   type="checkbox"
-                  value="chungcheong"
+                  value="충청"
                   id="chungcheong"
                   name="local"
                 />
@@ -325,7 +302,7 @@
                 <input
                   class="form-check-input"
                   type="checkbox"
-                  value="jeolla"
+                  value="전라"
                   id="jeolla"
                   name="local"
                 />
@@ -336,7 +313,7 @@
                 <input
                   class="form-check-input"
                   type="checkbox"
-                  value="jeju"
+                  value="제주"
                   id="jeju"
                   name="local"
                 />
