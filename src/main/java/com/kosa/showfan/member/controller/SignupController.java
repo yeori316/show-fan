@@ -74,7 +74,7 @@ public class SignupController extends HttpServlet {
         
         m.setMemberEmail(email);
         m.setMemberPwd(pwd);
-        m.setMemberNickName(nickname);
+        m.setMemberNickname(nickname);
         m.setMemberEmailAlert(emailr);
         
 //        mg.setGenreId(genreList);

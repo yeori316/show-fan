@@ -74,7 +74,7 @@ public class MemberDAOImpl implements MemberDAO {
 			Map<String, Object> map = new HashMap<>();
 			map.put("email", m.getMemberEmail());
 			map.put("pwd", m.getMemberPwd());
-			map.put("nickname", m.getMemberNickName());
+			map.put("nickname", m.getMemberNickname());
 			map.put("emailr", m.getMemberEmailAlert());
 			session.insert("com.kosa.showfan.MemberMapper.insertMember", map);
 			map.clear();

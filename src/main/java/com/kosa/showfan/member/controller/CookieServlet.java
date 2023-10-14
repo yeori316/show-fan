@@ -54,7 +54,9 @@ public class CookieServlet extends HttpServlet {
 
                 if (ck == true) {
                     String cookieEmail = cookies[i].getValue();
+                    
                     session.setAttribute("loginedEmail", cookieEmail);
+                    
                     map.put("status", 1);
                     map.put("msg", "로그인 성공");
                     break;
