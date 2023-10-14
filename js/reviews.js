@@ -1,4 +1,4 @@
-//import { backURL } from "./util";
+import { backURL } from "./util";
 
 $(() => {
   //--모달 시작--
@@ -31,7 +31,7 @@ $(() => {
   modal.style.display = "none";
   //--모달 끝--
 
-  //--reviewselect start--
+  //--selectreview start--
   const reviewContent = $();
   const reviewGrade = $();
   const nickname = $();
@@ -50,8 +50,7 @@ $(() => {
   const requestParam = location.search.substring(1);
 
   $.ajax({
-    //url: `"${backURL}/selectreview"`,
-    url: "http://127.0.0.1:8888/showfan/selectreview",
+    url: `${backURL}/selectreview`,
     method: "GET",
     data: `showId=${data.showId}`,
     success: (responseJSONObj) => {
@@ -59,7 +58,7 @@ $(() => {
       displayReviews(responseJSONObj);
     },
   });
-  //--reviewselect end--
+  //--selectreview end--
 
   //--insert review, 리뷰쓰기모달의 등록버튼클릭 start--
   $("form#reviewGrade").submit((e) => {
@@ -75,8 +74,7 @@ $(() => {
       seatId: 1848,
     };
     $.ajax({
-      // url: `${backURL}/insertreview`,
-      url: "http://127.0.0.1:8888/showfan/insertreview",
+      url: `${backURL}/insertreview`,
       method: "POST",
       data: data,
       success: (responseJSONObj) => {
@@ -102,8 +100,7 @@ $(() => {
       reviewContent: reviewContent,
     };
     $.ajax({
-      // url: `${backURL}/update`,
-      url: "http://127.0.0.1:8888/showfan/updatereview",
+      url: `${backURL}/updatereview`,
       method: "POST",
       data: data,
       success: (responseJSONObj) => {
@@ -121,8 +118,7 @@ $(() => {
   $("#delete").delete((e) => {
     const reviewId = 121;
     $.ajax({
-      // url: `${backURL}/insertreview`,
-      url: "http://127.0.0.1:8888/showfan/deletereview",
+      url: `${backURL}/deletereview`,
       method: "POST",
       data: reviewId,
       success: (responseJSONObj) => {
@@ -147,7 +143,7 @@ $(() => {
       replyId: replyId,
     };
     $.ajax({
-      url: "http://192.168.3.103:8888/showfan/insertreply",
+      url: `${backURL}/insertreply`,
       method: "POST",
       data: data,
       success: (responseJSONObj) => {
@@ -170,7 +166,7 @@ $(() => {
       replyContent: replyContent,
     };
     $.ajax({
-      url: "http://192.168.3.103:8888/showfan/updatereply",
+      url: `${backURL}/updatereply`,
       method: "POST",
       data: data,
       success: (responseJSONObj) => {
@@ -188,7 +184,7 @@ $(() => {
   $("").delete((e) => {
     const replyId = $();
     $.ajax({
-      url: "http://192.168.3.103:8888/showfan/deletereply",
+      url: `${backURL}/deletereply`,
       method: "POST",
       data: replyId,
       success: (responseJSONObj) => {
@@ -205,7 +201,6 @@ $(() => {
 
 var reviews = [];
 var replies = [];
-// 리뷰 데이터를 화면에 출력하는 함수
 function displayReviews(reviews) {
   for (var i = 0; i < reviews.length; i++) {
     const $reviewContainer = $(
