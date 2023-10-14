@@ -1,4 +1,4 @@
-import { carouselSlider, backURL } from "./util.js";
+import { carouselSlider, backURL } from "../util/util.js";
 
 $(".m11").click(function () {
   let name = $(".m11 > .name").html();

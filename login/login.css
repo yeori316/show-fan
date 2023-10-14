@@ -1,22 +1,21 @@
-@import url('../css/base.css');
+@import url("../util/base.css");
 /* var(--bs-body-font-family) */
-section{
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+section {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-
-#section-layout{
-    width: 40%;
-    margin: auto;
-    margin-top: 50px;
-    padding: 50px;
-    border-style: solid;
-    border-color: var(--main4-color);
+#section-layout {
+  width: 40%;
+  margin: auto;
+  margin-top: 50px;
+  padding: 50px;
+  border-style: solid;
+  border-color: var(--main4-color);
 }
 
 button[type="submit"] {
-    width: 100%;
+  width: 100%;
 }

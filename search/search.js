@@ -1,4 +1,4 @@
-import { handleXhttps, backURL, frontURL } from "../js/util.js";
+import { handleXhttps, backURL, frontURL } from "../util/util.js";
 
 $(() => {
   let queryStr = location.search.substring(1); // q=value&p=1
@@ -10,9 +10,9 @@ $(() => {
   let showCnt;
   let showList = [];
 
-  handleXhttps("GET", "../html/header.html", $("header"));
-  handleXhttps("GET", "../html/navigation.html", $("nav"));
-  handleXhttps("GET", "../html/footer.html", $("footer"));
+  handleXhttps("GET", "../header/index.html", $("header"));
+  handleXhttps("GET", "../navigation/index.html", $("nav"));
+  handleXhttps("GET", "../footer/index.html", $("footer"));
 
   // 회원가입 클릭 시
   $("body").on("click", '.header-menu-link[href="signup.html"]', function (e) {
@@ -127,7 +127,7 @@ $(() => {
 
         // // showList.push(a);
 
-        // console.log(responseJSONObj.show);
+        console.log(responseJSONObj.show);
         // console.log(a);
 
         showListHandler(showCnt, showList);
