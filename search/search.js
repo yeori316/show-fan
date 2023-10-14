@@ -1,12 +1,15 @@
 import { handleXhttps, backURL, frontURL } from "../util/util.js";
 
 $(() => {
-  const queryStr = location.search.substring(1); // q=value&p=1
+  const queryStr = location.search.substring(1); // q=value
+  const value = queryStr.substring(2);
   let cPage = 1;
   let showCnt;
   let showList = [];
 
-  handleXhttps("GET", "../header/index.html", $("header"));
+  // 검색어 저장
+  $("#header-search-input").attr("value", decodeURI(value));
+
   handleXhttps("GET", "../navigation/index.html", $("nav"));
   handleXhttps("GET", "../footer/index.html", $("footer"));
 
@@ -33,24 +36,6 @@ $(() => {
     e.preventDefault();
     handleXhttps("GET", "../html/modify.html", $("main"));
   });
-
-  // console.log(value);
-  // $("#header-search-input").attr("value", value);
-  // $("header").on($("#header-search-input").attr("value", value));
-  // console.log($("#header-search-input").val());
-  // console.dir($("#header-search-input").attr("value"));
-
-  // if ($("#header-search-input").length) {
-  //   console.log("#header-search-input 요소가 존재합니다.");
-  // } else {
-  //   console.log("#header-search-input 요소가 존재하지 않습니다.");
-  // }
-
-  // if ($("header").length) {
-  //   console.log("#header 요소가 존재합니다.");
-  // } else {
-  //   console.log("#header 요소가 존재하지 않습니다.");
-  // }
 
   // 검색 버튼 클릭 시
   $("body").on("click", "#header-search-button", function (e) {
