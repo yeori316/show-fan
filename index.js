@@ -8,13 +8,13 @@ $(() => {
   handleXhttps("GET", "../main/index.html", $("main"));
 
   // 회원가입 클릭 시
-  $("body").on("click", '.header-menu-link[href="signup.html"]', function (e) {
+  $("body").on("click", '.header-menu-link[href="signup"]', function (e) {
     e.preventDefault();
     handleXhttps("GET", "../signup/index.html", $("main"));
   });
 
   // 로그인 클릭 시
-  $("body").on("click", '.header-menu-link[href="login.html"]', function (e) {
+  $("body").on("click", '.header-menu-link[href="login"]', function (e) {
     e.preventDefault();
     handleXhttps("GET", "../login/index.html", $("main"));
   });
