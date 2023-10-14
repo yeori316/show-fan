@@ -113,6 +113,8 @@ $(() => {
     } else {
       $(`input[name=${name}]`).prop("checked", false);
     }
+
+    showListFilterHandler(showList);
   }
 
   // show list 체크 필터
@@ -148,7 +150,7 @@ $(() => {
 
     // 필터된 show list 렌더링
     $("#search-result-container").html(
-      showListHandler(showFilterList.length, showFilterList)
+      showListHandler(showCnt, showFilterList)
     );
   }
 
