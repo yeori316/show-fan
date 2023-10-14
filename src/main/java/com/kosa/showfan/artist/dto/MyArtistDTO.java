@@ -1,4 +1,4 @@
-package com.kosa.showfan.myArtist.dto;
+package com.kosa.showfan.artist.dto;
 
 import lombok.Data;
 

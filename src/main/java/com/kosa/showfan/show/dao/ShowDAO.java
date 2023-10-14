@@ -1,39 +1,70 @@
 package com.kosa.showfan.show.dao;
 
+import com.kosa.showfan.exception.AddException;
+import com.kosa.showfan.exception.FindException;
+import com.kosa.showfan.exception.RemoveException;
+import com.kosa.showfan.show.dto.*;
+
 import java.util.List;
 
-import com.kosa.showfan.exception.FindException;
-import com.kosa.showfan.show.dto.ShowAllInfoDTO;
-import com.kosa.showfan.show.dto.ShowCalendarDTO;
-import com.kosa.showfan.show.dto.ShowDTO;
-import com.kosa.showfan.show.dto.ShowSearchDTO;
-
 public interface ShowDAO {
-	List<ShowAllInfoDTO> selectById(String id) throws Exception;
-	List<ShowDTO> selectAll() throws Exception;
-	
-	/**
-	 * 공연명 검색 시 공연 갯수
-	 * @param value
-	 * @return
-	 */
-	Integer selectByStringCnt(String value) throws FindException;
-	
-	/**
-	 * 공연명 검색
-	 * @param value
-	 * @return
-	 * @throws FindException
-	 */
-	List<ShowSearchDTO> selectByString(String value, int startRn, int endRn) throws FindException;
-	
-	/**
-	 * 캘린더에서 공연일정 조회
-	 * @return
-	 * @throws FindException
-	 */
-	List<ShowCalendarDTO> selectByDate(String yymm) throws FindException;
+    List<ShowAllInfoDTO> selectById(String id) throws Exception;
 
-	List<ShowDTO> selectByConcept(Long genreId) throws Exception;
-	String selectByName(String name) throws FindException;
+    List<ShowDTO> selectAll() throws Exception;
+
+    /**
+     * 공연명 검색 시 공연 갯수
+     *
+     * @param value
+     * @return
+     */
+    Integer selectByStringCnt(String value) throws FindException;
+
+    /**
+     * 공연명 검색
+     *
+     * @param value
+     * @return
+     * @throws FindException
+     */
+    List<ShowSearchDTO> selectByString(String value, int startRn, int endRn) throws FindException;
+
+    /**
+     * 캘린더에서 공연일정 조회
+     *
+     * @return
+     * @throws FindException
+     */
+    List<ShowCalendarDTO> selectByDate(String yymm) throws FindException;
+
+    List<ShowDTO> selectByConcept(Long genreId) throws Exception;
+
+    String selectByName(String name) throws FindException;
+
+    /**
+     * 찜 목록 추가
+     *
+     * @param myShowDTO
+     * @return
+     * @throws AddException
+     */
+    String insertMyShow(MyShowDTO myShowDTO) throws AddException;
+
+    /**
+     * 찜 목록 삭제
+     *
+     * @param myShowDTO
+     * @return
+     * @throws RemoveException
+     */
+    String deleteMyShow(MyShowDTO myShowDTO) throws RemoveException;
+
+    /**
+     * 회원의 찜 목록 검색
+     *
+     * @param memberId
+     * @return 작품 리스트
+     * @throws FindException
+     */
+    List<MyShowDTO> selectMyShowByMemberId(Long memberId) throws FindException;
 }
