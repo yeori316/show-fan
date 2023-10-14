@@ -1,10 +1,14 @@
 import { handleXhttps, backURL, frontURL } from "../js/util.js";
 
 $(() => {
-  const queryStr = location.search.substring(1); // v=value
+  let queryStr = location.search.substring(1); // q=value&p=1
+  let qStr = queryStr.substring(0, queryStr.lastIndexOf("=") + 1); // q=value&p=
+
+  let url = new URL(location);
+  let cPage = url.searchParams.get("p"); // 1
 
   let showCnt;
-  let showList;
+  let showList = [];
 
   handleXhttps("GET", "../html/header.html", $("header"));
   handleXhttps("GET", "../html/navigation.html", $("nav"));
@@ -88,16 +92,44 @@ $(() => {
   });
 
   // 공연 데이터 호출
-  ajaxHandler();
+  ajaxHandler(cPage);
 
   // 공연 데이터 호출
-  function ajaxHandler() {
+  function ajaxHandler(page) {
     $.ajax({
-      url: `${backURL}/search?${queryStr}`,
+      url: `${backURL}/search?${qStr}` + page,
       method: "GET",
       success: (responseJSONObj) => {
         showCnt = responseJSONObj.showCnt;
-        showList = responseJSONObj.show;
+
+        if (showList.length == 0) {
+          showList = responseJSONObj.show;
+        } else {
+          $(responseJSONObj.show).each((index, e) => {
+            showList = showList.push(e);
+          });
+        }
+
+        // const a = {
+        //   showId: "PF221027",
+        //   showPoster:
+        //     "https://showfan.s3.ap-northeast-2.amazonaws.com/PF221027.jpg",
+        //   genreId: 1,
+        //   showName: "내 엄마 수연씨 [대구]",
+        //   showVenues: "천마아트센터",
+        //   showStartDay: "2023.10.21",
+        //   showEndDay: "2023.10.21",
+        //   showAddress: "경상북도 경산시 대학로 280 (대동)",
+        //   showStatus: "공연예정",
+        //   reviewCnt: 0,
+        //   gradeAvg: 0.0,
+        // };
+
+        // // showList.push(a);
+
+        // console.log(responseJSONObj.show);
+        // console.log(a);
+
         showListHandler(showCnt, showList);
       },
       error: (xhr, textStatus) => {
@@ -113,6 +145,7 @@ $(() => {
     } else {
       $(`input[name=${name}]`).prop("checked", false);
     }
+    showListFilterHandler(showList);
   }
 
   // show list 체크 필터
@@ -148,7 +181,7 @@ $(() => {
 
     // 필터된 show list 렌더링
     $("#search-result-container").html(
-      showListHandler(showFilterList.length, showFilterList)
+      showListHandler(showCnt, showFilterList)
     );
   }
 
@@ -224,5 +257,15 @@ $(() => {
       $originShow.hide();
     }
   }
-  // show list handler
+
+  window.onscroll = function (e) {
+    console.log("스크롤 fun");
+    if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+      console.log("데이터 추가 타임");
+      // 데이터 요청
+      ajaxHandler(++cPage);
+
+      // 데이터 추가
+    }
+  };
 });

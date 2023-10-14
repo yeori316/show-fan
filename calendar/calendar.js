@@ -1,4 +1,4 @@
-import { handleXhttps, backURL } from "./util.js";
+import { handleXhttps, backURL } from "../js/util.js";
 
 $(() => {
   const theaterId = 1; // 연극
