@@ -1,3 +1,5 @@
+import { handleXhttps, backURL } from "./util.js";
+
 $(() => {
   
   const $inputEmail = $('input[name=email]'); //이메일 입력칸
@@ -173,9 +175,7 @@ $(() => {
         xhrFields: {
           withCredentials: true
         },
-        url: 'http://192.168.45.107:8888/showfan/signup',
-        // url: 'http://192.168.1.112:8888/showfan/signup',
-        // url: 'http://ec2-52-79-82-77.ap-northeast-2.compute.amazonaws.com:8080/showfan/',
+        url: `${backURL}`, 
         method: 'post',
         data: data,
         success: (responseJSONObj) => {
