@@ -1,29 +1,29 @@
-import { backURL } from "./util";
+import { backURL } from '../util/util';
 
 $(() => {
-  const savedId = localStorage.getItem("savedId");
+  const savedId = localStorage.getItem('savedId');
 
   //로컬 스토리지에 저장한 아이디 값이 있으면
   if (savedId != null) {
     //아이디입력란에 자동 입력
-    $("input[name=email]").val(savedId);
+    $('input[name=email]').val(savedId);
     //아이디 저장 체크박스 체크
-    $("input:checkbox[id=saveemail]").attr("checked", true);
+    $('input:checkbox[id=saveemail]').attr('checked', true);
   }
 
-  const saveEmailCheckbox = $("#saveemail").val();
+  const saveEmailCheckbox = $('#saveemail').val();
   //----form객체에서 submit이벤트가 발생했을 때
-  $("form").submit((e) => {
+  $('form').submit((e) => {
     //아이디 저장 체크시
-    if ($("#saveemail").prop("checked")) {
-      localStorage.setItem("savedId", $("input[name=email]").val());
+    if ($('#saveemail').prop('checked')) {
+      localStorage.setItem('savedId', $('input[name=email]').val());
     } else {
-      localStorage.removeItem("savedId");
+      localStorage.removeItem('savedId');
     }
 
-    const idValue = $("input[name=email]").val(); //입력한 아이디 저장
-    const pwdValue = $("input[name=pwd]").val(); //입력한 비밀번호 저장
-    const autoValue = $("#autologin").is(":checked"); //자동로그인 체크 여부 저장
+    const idValue = $('input[name=email]').val(); //입력한 아이디 저장
+    const pwdValue = $('input[name=pwd]').val(); //입력한 비밀번호 저장
+    const autoValue = $('#autologin').is(':checked'); //자동로그인 체크 여부 저장
 
     const data = `email=${idValue}&pwd=${pwdValue}&autoLogin=${autoValue}`;
 
@@ -32,7 +32,7 @@ $(() => {
         withCredentials: true,
       },
       url: `${backURL}`,
-      method: "POST",
+      method: 'POST',
       data: data,
       success: (responseJSONObj) => {
         if (responseJSONObj.status == 0) {
@@ -40,14 +40,14 @@ $(() => {
           alert(responseJSONObj.msg);
         } else if (responseJSONObj.status == 1) {
           //로그인성공인 경우
-          location.href = "./index.html";
+          location.href = './index.html';
         }
       },
       error: (jqXHR, textStatus) => {
         //( jqXHR jqXHR, String textStatus, String errorThrown )
         // alert(textStatus) //error
         // console.log(jqXHR)
-        alert(jqXHR.readyState + ":" + jqXHR.status + ":" + jqXHR.statusText);
+        alert(jqXHR.readyState + ':' + jqXHR.status + ':' + jqXHR.statusText);
       }, //로그인이 fail났을때(네트워크,url의 문제등) 실패는 아님
     });
     e.preventDefault();
