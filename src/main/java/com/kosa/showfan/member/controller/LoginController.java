@@ -26,7 +26,8 @@ public class LoginController extends HttpServlet {
         //크로스오리진 문제 해결
         response.setHeader("Access-Control-Allow-Origin",
 //                "*");
-    				"http://192.168.1.112:5502");
+//    				"http://192.168.1.112:5502");
+    				"http://192.168.45.107:5502");
         response.setHeader("Access-Control-Allow-Credentials", "true");
 
         //응답출력스트림얻기

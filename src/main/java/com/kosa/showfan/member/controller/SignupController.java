@@ -33,8 +33,9 @@ public class SignupController extends HttpServlet {
         
         //크로스오리진 문제 해결
         response.setHeader("Access-Control-Allow-Origin",
-//        	"*");
-        		"http://192.168.1.112:5502");
+//                "*");
+//    				"http://192.168.1.112:5502");
+    				"http://192.168.45.107:5502");
         response.setHeader("Access-Control-Allow-Credentials", "true");
         
         //응답형식
@@ -53,17 +54,11 @@ public class SignupController extends HttpServlet {
         
         //선호장르 얻어오기
         //MyGenreDTO
-        String[] selectedGenres = request.getParameterValues("genre");
+        String[] selectedGenres = request.getParameter("genre").split(",");
         List<Long> genreList = new ArrayList<>();
         if (selectedGenres != null) {
-
             for (String genre : selectedGenres) {
                 genreList.add(Long.parseLong(genre));
-            }
-            
-            //genreList의 내용 출력하기
-            for (Long genreId : genreList) {
-                System.out.println(genreId);
             }
         }
         
@@ -87,10 +82,15 @@ public class SignupController extends HttpServlet {
         
         try {
 			service.signup(m, genreList);
+			map.put("status", 1);
 		} catch (AddException e) {
 			// TODO Auto-generated catch block
+			map.put("status", 0);
 			e.printStackTrace();
 		}
+        
+        String jsonStr = mapper.writeValueAsString(map);
+        out.print(jsonStr);
         
         
 	}
