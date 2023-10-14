@@ -3,13 +3,13 @@ package com.kosa.showfan.show.dao;
 import java.util.List;
 
 import com.kosa.showfan.exception.FindException;
+import com.kosa.showfan.show.dto.ShowAllInfoDTO;
 import com.kosa.showfan.show.dto.ShowCalendarDTO;
 import com.kosa.showfan.show.dto.ShowDTO;
 import com.kosa.showfan.show.dto.ShowSearchDTO;
-import com.kosa.showfan.show.dto.showAllInfoDTO;
 
 public interface ShowDAO {
-	List<showAllInfoDTO> selectById(String id) throws Exception;
+	List<ShowAllInfoDTO> selectById(String id) throws Exception;
 	List<ShowDTO> selectAll() throws Exception;
 	
 	/**

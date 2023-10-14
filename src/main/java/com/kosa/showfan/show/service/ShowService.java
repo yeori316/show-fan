@@ -5,11 +5,11 @@ import java.util.List;
 import com.kosa.showfan.exception.FindException;
 import com.kosa.showfan.show.dao.ShowDAO;
 import com.kosa.showfan.show.dao.ShowDAOImpl;
+import com.kosa.showfan.show.dto.ShowAllInfoDTO;
 import com.kosa.showfan.show.dto.ShowCalendarDTO;
 import com.kosa.showfan.show.dto.ShowDTO;
 import com.kosa.showfan.show.dto.ShowListDTO;
 import com.kosa.showfan.show.dto.ShowSearchDTO;
-import com.kosa.showfan.show.dto.showAllInfoDTO;
 
 public class ShowService {
 	private static final ShowService instance = new ShowService();
@@ -33,7 +33,7 @@ public class ShowService {
 		return new ShowListDTO<>(list.size(), list);
 	}
 
-	public List<showAllInfoDTO> selectByShowId(String showId) throws Exception {
+	public List<ShowAllInfoDTO> selectByShowId(String showId) throws Exception {
 		return showDAO.selectById(showId);
 	}
 	

@@ -9,10 +9,10 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import com.kosa.showfan.exception.FindException;
+import com.kosa.showfan.show.dto.ShowAllInfoDTO;
 import com.kosa.showfan.show.dto.ShowCalendarDTO;
 import com.kosa.showfan.show.dto.ShowDTO;
 import com.kosa.showfan.show.dto.ShowSearchDTO;
-import com.kosa.showfan.show.dto.showAllInfoDTO;
 
 public class ShowDAOImpl implements ShowDAO {
 	private static final ShowDAO showDAO = new ShowDAOImpl();
@@ -28,19 +28,19 @@ public class ShowDAOImpl implements ShowDAO {
 		try {
 			inputStream = Resources.getResourceAsStream(resource);
 			sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
-			System.out.println(sqlSessionFactory);
+//			System.out.println(sqlSessionFactory);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
 	@Override
-	public List<showAllInfoDTO> selectById(String id) throws Exception {
+	public List<ShowAllInfoDTO> selectById(String id) throws Exception {
 		SqlSession session = null;
 		try {
 			session = sqlSessionFactory.openSession();
 			System.out.println(id);
-			List<showAllInfoDTO> c = session.selectList("com.kosa.show.ShowMapper.selectById", id);
+			List<ShowAllInfoDTO> c = session.selectList("com.kosa.show.ShowMapper.selectById", id);
 			if (c != null) {
 				return c;
 			} else {

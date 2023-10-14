@@ -6,7 +6,7 @@ import java.util.List;
 import com.kosa.showfan.reply.dto.ReplyDTO;
 import com.kosa.showfan.review.dto.ReviewDTO;
 
-public class showAllInfoDTO {
+public class ShowAllInfoDTO {
 	private String showId;
 	private Long genreId;
 	private String showName;
