@@ -3,12 +3,10 @@ package com.kosa.showfan.show.dto;
 import java.sql.Date;
 import java.util.List;
 
-import com.kosa.showfan.review.dto.ReviewResponseDTO;
+import com.kosa.showfan.reply.dto.ReplyDTO;
+import com.kosa.showfan.review.dto.ReviewDTO;
 
-import lombok.Data;
-
-@Data
-public class ShowDTO {
+public class ShowAllInfoDTO {
 	private String showId;
 	private Long genreId;
 	private String showName;
@@ -28,6 +26,19 @@ public class ShowDTO {
 	private Double showLatitude;
 	private Double showLongitude;
 	private String showRuntime;
-	private List<ReviewResponseDTO> showReveiws;
+//	private List<ReviewDTO> showReveiws;
 	private String showPoster;
+	private Long reviewId;
+	private Long memberId;
+	private Integer reviewGrade;
+	private String reviewContent;
+	private Date reviewCreatedAt;
+	private String reviewIsModified;
+	private Long seatId;
+	private String seatName;
+	private Integer seatPrice;
+//	private List<ReplyDTO> reviewReply;
+	private Long artistId;
+	private String artistName;
+	private String artistImage;
 }

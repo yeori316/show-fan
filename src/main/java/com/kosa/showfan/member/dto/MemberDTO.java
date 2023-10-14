@@ -3,20 +3,21 @@ package com.kosa.showfan.member.dto;
 import java.sql.Date;
 
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
-@Data @Getter @Setter
-
+@Data
 public class MemberDTO {
-	private Long MemberId;
-	private String MemberEmail;
-	private String MemberPwd;
-	private String MemberNickName;
-	private String MemberImage;
-	private String MemberEmailAlert;
-	private Date MemberCreatedAt;
-	private Date MemberDeletedAt;
-	private Integer MemberTotalPrice;
-	private Integer MemberStatusId;
+    private Long memberId;
+    private String memberEmail;
+    private String memberPwd;
+    private String memberNickname;
+    private String memberImage;
+    private String memberEmailAlert;
+    private Date memberCreatedAt;
+    private Date memberDeletedAt;
+    private Integer memberTotalPrice;
+    private Integer memberStatusId;
+	
+    public String getMemberPwd() {
+		return this.memberPwd;
+	}
 }

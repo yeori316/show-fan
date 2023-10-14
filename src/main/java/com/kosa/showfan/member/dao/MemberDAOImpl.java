@@ -139,5 +139,21 @@ public class MemberDAOImpl implements MemberDAO {
 	}
     
     
-    
+    @Override
+    public MemberDTO selectByEmail(String email) throws FindException {
+        SqlSession session = null;
+        try {
+            session = sqlSessionFactory.openSession();
+            MemberDTO member = session.selectOne("com.kosa.showfan.MemberMapper.selectByEmail", email);
+            return member;
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new FindException("회원 검색에 실패했습니다");
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+    }
+
 }

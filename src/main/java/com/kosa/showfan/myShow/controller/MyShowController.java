@@ -23,6 +23,9 @@ public class MyShowController implements Controller {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        response.setHeader("Access-Control-Allow-Methods", "GET, POST, DELETE");
+        response.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+
         if (request.getMethod().equals("GET")) {
             PrintWriter out = response.getWriter();
             Gson gson = new Gson();
@@ -54,6 +57,7 @@ public class MyShowController implements Controller {
         } else if (request.getMethod().equals("DELETE")) {
             try {
                 MyShowDTO myShowDTO = new MyShowDTO();
+
                 myShowDTO.setMemberId(Long.valueOf(request.getParameter("memberId")));
                 myShowDTO.setShowId(request.getParameter("showId"));
                 service.delete(myShowDTO);

@@ -33,4 +33,5 @@ public interface MemberDAO {
      */
 	public String selectByNickName(String nickname) throws FindException;
 
+    public MemberDTO selectByEmail(String email) throws FindException;
 }

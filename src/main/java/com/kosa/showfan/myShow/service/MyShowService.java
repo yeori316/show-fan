@@ -1,6 +1,5 @@
 package com.kosa.showfan.myShow.service;
 
-import com.kosa.showfan.controller.Controller;
 import com.kosa.showfan.exception.AddException;
 import com.kosa.showfan.exception.FindException;
 import com.kosa.showfan.exception.RemoveException;
@@ -22,8 +21,8 @@ public class MyShowService {
         myShowDAO.insertMyShow(myShowDTO);
     }
 
-    public void delete(MyShowDTO myShowDTO) throws RemoveException {
-        myShowDAO.deleteMyShow(myShowDTO);
+    public String delete(MyShowDTO myShowDTO) throws RemoveException {
+        return myShowDAO.deleteMyShow(myShowDTO);
     }
 
     public List<MyShowDTO> selectById(Long memberId) throws FindException {
