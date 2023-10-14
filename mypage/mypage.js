@@ -1,4 +1,4 @@
-import { backURL } from '../js/util.js';
+import { backURL, handleXhttps } from '../util/util.js';
 
 $(() => {
   const value = `; ${document.cookie}`;
@@ -132,7 +132,7 @@ $(() => {
 
       // 내 리뷰
       $.ajax({
-        url: backURL + '/memberreview?',
+        url: backURL + '/memberreview',
         method: 'GET',
         data: `memberId=${window.localStorage.getItem('memberId')}`,
         success: (myReviewResponse) => {
@@ -151,12 +151,13 @@ $(() => {
             };
             const $mypageReviewContainers = $('#mypage-review-containers');
 
-            myReviewResponse.forEach((myReview) => {
+            myReviewResponse.forEach((myReview, index) => {
               genreEvalutionCount[myReview.genreId] += 1;
-              const $mypageReviewContainer = $(`
+              if (index < 3) {
+                const $mypageReviewContainer = $(`
                 <div class="mypage-review-container"></div>
                 `);
-              $mypageReviewContainer.append(`
+                $mypageReviewContainer.append(`
                 <img
                   src="${myReview.showPoster}"
                   alt="review-show-post"
@@ -193,10 +194,11 @@ $(() => {
                 </div>
               `);
 
-              $mypageReviewContainers.append($mypageReviewContainer);
-              $mypageReviewContainers.append(`
+                $mypageReviewContainers.append($mypageReviewContainer);
+                $mypageReviewContainers.append(`
                 <div class="mypage-review-line"></div>
               `);
+              }
             });
 
             $mypageReviewContainers.append(`
@@ -223,15 +225,18 @@ $(() => {
         method: 'GET',
         data: `memberId=${window.localStorage.getItem('memberId')}`,
         success: (myShowResponseText) => {
-          let myArtistList = JSON.parse(myShowResponseText);
+          let myArtistList = myShowResponseText;
           // 2회 이상 관람한 아티스트 중 평점, 조회수가 높은 5명을 출력하되 모두 동일하면 DB에 저장된 순서로 출력
           myArtistList = myArtistList.filter(
             (myArtist) => myArtist.myArtistViewCount >= 2
           );
           if (myArtistList.length == 0) {
-            // console.log('선호하는 아티스트가 없습니다.');
+            $('#mypage-my-artist-containers')
+              .prev()
+              .after('<p>선호하는 아티스트가 없습니다</p>');
+            return;
           }
-          if (myArtistList.length > 5) {
+          if (myArtistList.length > 6) {
             myArtistList.sort((a, b) => {
               let bAvg =
                 Math.round((b.myArtistAvgGrade + Number.EPSILON) * 100) / 100;
@@ -244,36 +249,36 @@ $(() => {
               }
             });
           }
-          myArtistList = myArtistList.slice(0, 5);
+          myArtistList = myArtistList.slice(0, 6);
 
           myArtistList.forEach((myArtist) => {
-            console.log(myArtist);
-            $.ajax({
-              url: backURL + '/artist',
-              method: 'GET',
-              data: `memberId=${window.localStorage.getItem('memberId')}`,
-              success: (artistResponseText) => {
-                const $myPageMyArtistContainers = $(
-                  '#mypage-my-artist-containers'
-                );
-                console.log(artistResponseText);
-                const $mypageArtistContainer = $(
-                  `<div class="mypage-my-artist-container">`
-                );
-                if (myArtist.artistImage == undefined) {
-                  $mypageArtistContainer.append(`
+            const $myPageMyArtistContainers = $('#mypage-my-artist-containers');
+            const $mypageArtistContainer = $(
+              `<div class="mypage-my-artist-container">`
+            );
+            if (myArtist.artistImage == undefined) {
+              $mypageArtistContainer.append(`
                     <div class="mypage-artist-icon">
                       <i class="fa-solid fa-user fa-2xl"></i>
                     </div>
                   `);
-                } else {
-                  $mypageArtistContainer.append(
-                    `<img src="${myArtist.artistImage}" alt="artist-image" />`
-                  );
-                }
-                $myPageMyArtistContainers.append($mypageArtistContainer);
-              },
-            });
+            } else {
+              $mypageArtistContainer.append(
+                `<img src="${myArtist.artistImage}" alt="artist-image" />`
+              );
+            }
+            $mypageArtistContainer.append(`
+                <div class="my-artist-info">
+                  <div class="my-artist-count">
+                    <div>${Number(myArtist.myArtistAvgGrade).toFixed(2)}점</div>
+                    <div>&nbsp;|&nbsp;</div>
+                    <div>${myArtist.myArtistViewCount}회</div>
+                  </div>
+                <div class="mypage-my-artist-name">${myArtist.artistName}</div>
+                </div>
+                `);
+
+            $myPageMyArtistContainers.append($mypageArtistContainer);
           });
         },
       });
