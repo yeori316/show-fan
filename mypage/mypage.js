@@ -29,14 +29,18 @@ $(() => {
         $('div.mypage-profile-icon').addClass('hide-image');
       }
       $('#mypage-profile-nickname').text(memberResponseText.memberNickname);
+      $('#member-money-spend').text(
+        memberResponseText.memberTotalPrice.toLocaleString()
+      );
 
+      let showIdList;
       // 찜 목록 출력
       $.ajax({
         url: backURL + '/myshow',
         method: 'GET',
         data: `memberId=${window.localStorage.getItem('memberId')}`,
         success: (myShowResponseText) => {
-          let showIdList = JSON.parse(myShowResponseText);
+          showIdList = JSON.parse(myShowResponseText);
           showIdList = showIdList.map((showId) => showId.showId);
           $('#my-show-count').text(`(${showIdList.length})`);
           const $myShowContainer = $('#my-show-container');
@@ -46,6 +50,7 @@ $(() => {
               method: 'GET',
               data: `showId=${showId}`,
               success: (detailShowResponseText) => {
+                // 찜 목록
                 const myShowName = detailShowResponseText[0].showName;
                 const myShowPoster = detailShowResponseText[0].showPoster;
 
@@ -53,8 +58,6 @@ $(() => {
                   `<li id="my-show-${showId}" class="my-show"></li>`
                 );
                 $liMyShow.css('list-style', 'none');
-                // $liMyShow.css('width', '20%');
-                // $liMyShow.css('max-height', '300px');
 
                 $liMyShow.append(
                   `<button id="my-show-delete-button-${showId}">X</button>`
@@ -69,36 +72,12 @@ $(() => {
                   location.href = `/html/show_detail.html?showname=${myShowName}`;
                 });
 
-                // 찜 목록
+                // 찜 목록 삭제
                 $(`#my-show-${showId}`).mouseenter(() => {
                   $(`#my-show-delete-button-${showId}`).css('display', 'block');
-                  const imageSize = Number(
+                  let imageSize = Number(
                     $('.my-show > img').css('width').replace('px', '')
                   );
-                  let confirmed = false;
-                  let isDelete = false;
-                  $(`#my-show-delete-button-${showId}`).click((e) => {
-                    e.stopPropagation();
-                    if (!confirmed) {
-                      confirmed = true;
-                      console.log(confirmed);
-                      isDelete = confirm('찜한 작품을 삭제하시겠어요?');
-                    }
-                    if (isDelete) {
-                      $.ajax({
-                        url:
-                          backURL +
-                          `/myshow?showId=${showId}&memberId=${window.localStorage.getItem(
-                            'memberId'
-                          )}`,
-                        method: 'DELETE',
-                        success: () => {
-                          alert('삭제되었습니다.');
-                          location.reload();
-                        },
-                      });
-                    }
-                  });
                   $('.my-show > button').css('width', imageSize / 8 + 'px');
                   $('.my-show > button').css('height', imageSize / 8 + 'px');
                   $('.my-show > button').css(
@@ -106,10 +85,28 @@ $(() => {
                     imageSize / 10 + 'px'
                   );
                 });
+
+                $(`#my-show-delete-button-${showId}`).click((e) => {
+                  e.stopPropagation();
+                  if (confirm('찜한 작품을 삭제하시겠어요?')) {
+                    $.ajax({
+                      url:
+                        backURL +
+                        `/myshow?showId=${showId}&memberId=${window.localStorage.getItem(
+                          'memberId'
+                        )}`,
+                      method: 'DELETE',
+                      success: () => {
+                        alert('삭제되었습니다.');
+                        location.reload();
+                      },
+                    });
+                  }
+                });
                 $('.my-show').mouseleave(() => {
                   $('.my-show > button').css('display', 'none');
                 });
-                $;
+
                 if (index == showIdList.length - 1) {
                   $(`my-show-${showId}`).ready(() => {
                     if (showIdList.length > 5) {
@@ -135,14 +132,87 @@ $(() => {
 
       // 내 리뷰
       $.ajax({
-        url: backURL + '/memberreview ',
+        url: backURL + '/memberreview?',
         method: 'GET',
         data: `memberId=${window.localStorage.getItem('memberId')}`,
-        success: (myShowResponseText) => {
-          if (myShowResponseText === '') {
-            // console.log('작성된 리뷰가 없습니다');
+        success: (myReviewResponse) => {
+          if (myReviewResponse === '') {
+            $('#mypage-review-containers')
+              .prev()
+              .after('<p>작성된 리뷰가 없습니다</p>');
           } else {
-            // console.log(JSON.parse(myShowResponseText));
+            let evaluationCount = myReviewResponse.length;
+            let genreEvalutionCount = {
+              1: 0,
+              2: 0,
+              3: 0,
+              4: 0,
+              5: 0,
+            };
+            const $mypageReviewContainers = $('#mypage-review-containers');
+
+            myReviewResponse.forEach((myReview) => {
+              genreEvalutionCount[myReview.genreId] += 1;
+              const $mypageReviewContainer = $(`
+                <div class="mypage-review-container"></div>
+                `);
+              $mypageReviewContainer.append(`
+                <img
+                  src="${myReview.showPoster}"
+                  alt="review-show-post"
+                  class="mypage-review-post"
+                  onclick="location.href='/html/show_detail.html?showname=${
+                    myReview.showName
+                  }'"}
+                />
+                <div class="mypage-review-info">
+                  <div id="mypage-review-show-info">
+                    <div>${myReview.showName}</div>
+                    <i class="fa-solid fa-slash mypage-review-line-icon"></i>
+                    <div>${myReview.reviewCreatedAt}</div>
+                    <i class="fa-solid fa-slash mypage-review-line-icon"></i>
+                    <div>${
+                      myReview.seatName
+                    }(${myReview.seatPrice.toLocaleString()}원)</div>
+                    <i class="fa-solid fa-slash mypage-review-line-icon"></i>
+                    <div>${myReview.showVenues}</div>
+                  </div>
+                  <div class="mypage-review-evaluation-info">
+                    <i id="mypage-review-star-icon" class="fa-solid fa-star"></i>
+                    <div>${myReview.reviewGrade}</div>
+                    <i class="fa-solid fa-slash mypage-review-line-icon"></i>
+                    <div id="mypage-review-content">
+                      ${myReview.reviewContent}
+                    </div>
+                  </div>
+                </div>
+                <div id="mypage-review-button">
+                  <a href="#">수정</a>
+                  <i class="fa-solid fa-slash mypage-review-line-icon"></i>
+                  <a href="#">삭제</a>
+                </div>
+              `);
+
+              $mypageReviewContainers.append($mypageReviewContainer);
+              $mypageReviewContainers.append(`
+                <div class="mypage-review-line"></div>
+              `);
+            });
+
+            $mypageReviewContainers.append(`
+              <a id="mypage-view-more-review" href="/mypage/myreview">리뷰 더보기</a>
+            `);
+
+            $('#mypage-evalution-count-value').text(evaluationCount);
+            for (let i = 1; i <= 5; i++) {
+              $(`#mypage-evalution-count-value-${i}`).text(
+                genreEvalutionCount[i]
+              );
+            }
+
+            $('#mypage-review-info').append(
+              `<div class="mypage-review-show-info">`
+            );
           }
         },
       });

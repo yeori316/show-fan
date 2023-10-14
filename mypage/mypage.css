@@ -175,6 +175,7 @@ div.mypage-line {
 /* my review */
 #mypage-review-containers {
   display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 
@@ -191,6 +192,8 @@ div.mypage-line {
   margin-left: 12px;
   width: 7.5%;
 
+  cursor: pointer;
+
   aspect-ratio: 83/121;
 }
 
@@ -198,7 +201,7 @@ div.mypage-line {
   transform: rotate(51.5deg);
 }
 
-#mypage-review-info {
+.mypage-review-info {
   margin-left: 12px;
   width: 80%;
 }
@@ -213,7 +216,7 @@ div.mypage-line {
   opacity: 0.5;
 }
 
-#mypage-review-evaluation-info {
+.mypage-review-evaluation-info {
   display: flex;
 }
 

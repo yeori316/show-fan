@@ -94,103 +94,64 @@
         <div class="mypage-main-text">나의 평가</div>
         <div id="mypage-evaluation-containers">
           <div class="mypage-evaluation-container">
-            <div class="mypage-evaluation-count-text">0</div>
+            <div
+              id="mypage-evalution-count-value"
+              class="mypage-evaluation-count-text"
+            >
+              0
+            </div>
             <div>평가 수</div>
           </div>
           <i id="mypage-evaluation-line-icon" class="fa-solid fa-slash"></i>
           <div class="mypage-evaluation-container">
-            <div class="mypage-evaluation-count-text">0</div>
+            <div
+              id="mypage-evalution-count-value-4"
+              class="mypage-evaluation-count-text"
+            >
+              0
+            </div>
             <div>콘서트</div>
           </div>
           <div class="mypage-evaluation-container">
-            <div class="mypage-evaluation-count-text">0</div>
+            <div
+              id="mypage-evalution-count-value-2"
+              class="mypage-evaluation-count-text"
+            >
+              0
+            </div>
             <div>뮤지컬</div>
           </div>
           <div class="mypage-evaluation-container">
-            <div class="mypage-evaluation-count-text">0</div>
+            <div
+              id="mypage-evalution-count-value-4"
+              class="mypage-evaluation-count-text"
+            >
+              0
+            </div>
             <div>연극</div>
           </div>
           <div class="mypage-evaluation-container">
-            <div class="mypage-evaluation-count-text">0</div>
+            <div
+              id="mypage-evalution-count-value-5"
+              class="mypage-evaluation-count-text"
+            >
+              0
+            </div>
             <div>축제</div>
           </div>
           <div class="mypage-evaluation-container">
-            <div class="mypage-evaluation-count-text">0</div>
+            <div
+              id="mypage-evalution-count-value-3"
+              class="mypage-evaluation-count-text"
+            >
+              0
+            </div>
             <div>클래식</div>
           </div>
         </div>
         <div class="mypage-line"></div>
         <div class="mypage-main-text">내가 쓴 리뷰</div>
-        <div id="mypage-review-containers">
-          <div class="mypage-review-container">
-            <img
-              src="https://www.kopis.or.kr/upload/pfmPoster/PF_PF223598_230809_130057.gif"
-              alt="review-show-post"
-              class="mypage-review-post"
-            />
-            <div id="mypage-review-info">
-              <div id="mypage-review-show-info">
-                <div>작품 제목</div>
-                <i class="fa-solid fa-slash mypage-review-line-icon"></i>
-                <div>2023.09.23</div>
-                <i class="fa-solid fa-slash mypage-review-line-icon"></i>
-                <div>R석(64,000원)</div>
-                <i class="fa-solid fa-slash mypage-review-line-icon"></i>
-                <div>예술의 전당</div>
-              </div>
-              <div id="mypage-review-evaluation-info">
-                <i id="mypage-review-star-icon" class="fa-solid fa-star"></i>
-                <div>5.0</div>
-                <i class="fa-solid fa-slash mypage-review-line-icon"></i>
-                <div id="mypage-review-content">
-                  진짜 인생 최고의 콘서트였습니다.진짜 인생 최고의
-                  콘서트였습니다.진짜 인생 최고의 콘서트였습니다.진짜 인생
-                  최고의 콘서트였습니다.진짜 인생 최고의 콘서트였습니다.진짜
-                  인생 최고의 콘서트였습니다.진짜 인생 최고의 콘서트였습니다.
-                </div>
-              </div>
-            </div>
-            <div id="mypage-review-button">
-              <a href="#">수정</a>
-              <i class="fa-solid fa-slash mypage-review-line-icon"></i>
-              <a href="#">삭제</a>
-            </div>
-          </div>
-        </div>
-        <div class="mypage-review-line"></div>
-        <div class="mypage-review-container">
-          <img
-            src="https://www.kopis.or.kr/upload/pfmPoster/PF_PF223598_230809_130057.gif"
-            alt="review-show-post"
-            class="mypage-review-post"
-          />
-          <div id="mypage-review-info">
-            <div id="mypage-review-show-info">
-              <div>작품 제목</div>
-              <i class="fa-solid fa-slash mypage-review-line-icon"></i>
-              <div>2023.09.23</div>
-              <i class="fa-solid fa-slash mypage-review-line-icon"></i>
-              <div>R석(64,000원)</div>
-              <i class="fa-solid fa-slash mypage-review-line-icon"></i>
-              <div>예술의 전당</div>
-            </div>
-            <div id="mypage-review-evaluation-info">
-              <i id="mypage-review-star-icon" class="fa-solid fa-star"></i>
-              <div>5.0</div>
-              <i class="fa-solid fa-slash mypage-review-line-icon"></i>
-              <div id="mypage-review-content">
-                진짜 인생 최고의 콘서트였습니다.
-              </div>
-            </div>
-          </div>
-          <div id="mypage-review-button">
-            <a href="#">수정</a>
-            <i class="fa-solid fa-slash mypage-review-line-icon"></i>
-            <a href="#">삭제</a>
-          </div>
-        </div>
-        <div class="mypage-review-line"></div>
-        <a id="mypage-view-more-review" href="#">리뷰 더보기</a>
+        <div id="mypage-review-containers"></div>
         <div class="mypage-line"></div>
         <div class="mypage-main-text">선호하는 출연진</div>
         <div id="mypage-my-artist-containers">
@@ -253,7 +214,8 @@
         </div>
         <div class="mypage-line"></div>
         <div id="mypage-accumulated-amount" class="mypage-main-text">
-          지금까지 작품 관람에 총&nbsp;<span>1,230,000</span>원을 썼어요!
+          지금까지 작품 관람에 총&nbsp;<span id="member-money-spend">0</span
+          >원을 썼어요!
         </div>
       </div>
     </main>
