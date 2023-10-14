@@ -29,3 +29,7 @@ div.search-line {
   left: 0px;
   background-color: var(--main2-color);
 }
+
+#show-review-star-icon {
+  color: var(--yellow-color);
+}
