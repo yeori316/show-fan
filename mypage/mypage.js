@@ -29,33 +29,38 @@ $(() => {
         $('div.mypage-profile-icon').addClass('hide-image');
       }
       $('#mypage-profile-nickname').text(memberResponseText.memberNickname);
+      $('#member-money-spend').text(
+        memberResponseText.memberTotalPrice.toLocaleString()
+      );
 
+      let showIdList;
       // 찜 목록 출력
       $.ajax({
         url: backURL + '/myshow',
         method: 'GET',
         data: `memberId=${window.localStorage.getItem('memberId')}`,
         success: (myShowResponseText) => {
-          let showIdList = JSON.parse(myShowResponseText);
+          showIdList = JSON.parse(myShowResponseText);
           showIdList = showIdList.map((showId) => showId.showId);
           $('#my-show-count').text(`(${showIdList.length})`);
-          showIdList.forEach((showId) => {
+          const $myShowContainer = $('#my-show-container');
+          $.each(showIdList, (index, showId) => {
             $.ajax({
               url: backURL + '/showdetail',
               method: 'GET',
               data: `showId=${showId}`,
               success: (detailShowResponseText) => {
+                // 찜 목록
                 const myShowName = detailShowResponseText[0].showName;
                 const myShowPoster = detailShowResponseText[0].showPoster;
 
-                const $myShowContainer = $('#my-show-container');
                 const $liMyShow = $(
                   `<li id="my-show-${showId}" class="my-show"></li>`
                 );
                 $liMyShow.css('list-style', 'none');
-                $liMyShow.css('max-width', '20%');
+
                 $liMyShow.append(
-                  `<button id="my-show-delete-button-${showId}</button>`
+                  `<button id="my-show-delete-button-${showId}">X</button>`
                 );
                 $liMyShow.append(`<img
                   src=${myShowPoster}
@@ -63,11 +68,14 @@ $(() => {
                 />`);
                 $liMyShow.append(`<div>${myShowName}</div>`);
                 $myShowContainer.append($liMyShow);
+                $liMyShow.click(() => {
+                  location.href = `/html/show_detail.html?showname=${myShowName}`;
+                });
 
-                // 찜 목록
-                $('.my-show').mouseenter(() => {
-                  $('.my-show > button').css('display', 'block');
-                  const imageSize = Number(
+                // 찜 목록 삭제
+                $(`#my-show-${showId}`).mouseenter(() => {
+                  $(`#my-show-delete-button-${showId}`).css('display', 'block');
+                  let imageSize = Number(
                     $('.my-show > img').css('width').replace('px', '')
                   );
                   $('.my-show > button').css('width', imageSize / 8 + 'px');
@@ -76,62 +84,135 @@ $(() => {
                     'font-size',
                     imageSize / 10 + 'px'
                   );
-                  $('.my-show > button').css('margin-left', imageSize + 'px');
+                });
+
+                $(`#my-show-delete-button-${showId}`).click((e) => {
+                  e.stopPropagation();
+                  if (confirm('찜한 작품을 삭제하시겠어요?')) {
+                    $.ajax({
+                      url:
+                        backURL +
+                        `/myshow?showId=${showId}&memberId=${window.localStorage.getItem(
+                          'memberId'
+                        )}`,
+                      method: 'DELETE',
+                      success: () => {
+                        alert('삭제되었습니다.');
+                        location.reload();
+                      },
+                    });
+                  }
                 });
                 $('.my-show').mouseleave(() => {
                   $('.my-show > button').css('display', 'none');
                 });
+
+                if (index == showIdList.length - 1) {
+                  $(`my-show-${showId}`).ready(() => {
+                    if (showIdList.length > 5) {
+                      $('#my-show-left-arrow-icon').css('display', 'block');
+                      $('#my-show-right-arrow-icon').css('display', 'block');
+                      // 찜 목록 슬라이드
+                      initSlick();
+                      $('#my-show-right-arrow-icon').css('padding-left', '8px');
+                    } else {
+                      $('#my-show-container').css('display', 'flex');
+                      $('.my-show').css('display', 'flex');
+                      $('.my-show').css('flex-direction', 'column');
+                      $('.my-show').css('justify-content', 'center');
+                      $('.my-show').css('max-width', '20%');
+                    }
+                  });
+                }
               },
             });
           });
-          if (showIdList.length > 5) {
-            // 찜 목록 슬라이드
-            $('#my-show-container').slick({
-              dots: false,
-              infinite: true,
-              speed: 300,
-              slidesToShow: 5,
-              slidesToScroll: 5,
-              responsive: [
-                {
-                  breakpoint: 1024,
-                  settings: {
-                    slidesToShow: 4,
-                    slidesToScroll: 4,
-                  },
-                },
-                {
-                  breakpoint: 768,
-                  settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 3,
-                  },
-                },
-              ],
-              prevArrow: '#my-show-left-arrow-icon',
-              nextArrow: '#my-show-right-arrow-icon',
-            });
-          } else {
-            $('#my-show-container').css('display', 'flex');
-            $('.my-show').css('display', 'flex');
-            $('.my-show').css('flex-direction', 'column');
-            $('.my-show').css('justify-content', 'center');
-            $('#my-show-left-arrow-icon').css('display', 'none');
-            $('#my-show-right-arrow-icon').css('display', 'none');
-          }
         },
       });
 
       // 내 리뷰
       $.ajax({
-        url: backURL + '/memberreview ',
+        url: backURL + '/memberreview?',
         method: 'GET',
         data: `memberId=${window.localStorage.getItem('memberId')}`,
-        success: (myShowResponseText) => {
-          if (myShowResponseText === '') {
-            // console.log('작성된 리뷰가 없습니다');
+        success: (myReviewResponse) => {
+          if (myReviewResponse === '') {
+            $('#mypage-review-containers')
+              .prev()
+              .after('<p>작성된 리뷰가 없습니다</p>');
           } else {
-            // console.log(JSON.parse(myShowResponseText));
+            let evaluationCount = myReviewResponse.length;
+            let genreEvalutionCount = {
+              1: 0,
+              2: 0,
+              3: 0,
+              4: 0,
+              5: 0,
+            };
+            const $mypageReviewContainers = $('#mypage-review-containers');
+
+            myReviewResponse.forEach((myReview) => {
+              genreEvalutionCount[myReview.genreId] += 1;
+              const $mypageReviewContainer = $(`
+                <div class="mypage-review-container"></div>
+                `);
+              $mypageReviewContainer.append(`
+                <img
+                  src="${myReview.showPoster}"
+                  alt="review-show-post"
+                  class="mypage-review-post"
+                  onclick="location.href='/html/show_detail.html?showname=${
+                    myReview.showName
+                  }'"}
+                />
+                <div class="mypage-review-info">
+                  <div id="mypage-review-show-info">
+                    <div>${myReview.showName}</div>
+                    <i class="fa-solid fa-slash mypage-review-line-icon"></i>
+                    <div>${myReview.reviewCreatedAt}</div>
+                    <i class="fa-solid fa-slash mypage-review-line-icon"></i>
+                    <div>${
+                      myReview.seatName
+                    }(${myReview.seatPrice.toLocaleString()}원)</div>
+                    <i class="fa-solid fa-slash mypage-review-line-icon"></i>
+                    <div>${myReview.showVenues}</div>
+                  </div>
+                  <div class="mypage-review-evaluation-info">
+                    <i id="mypage-review-star-icon" class="fa-solid fa-star"></i>
+                    <div>${myReview.reviewGrade}</div>
+                    <i class="fa-solid fa-slash mypage-review-line-icon"></i>
+                    <div id="mypage-review-content">
+                      ${myReview.reviewContent}
+                    </div>
+                  </div>
+                </div>
+                <div id="mypage-review-button">
+                  <a href="#">수정</a>
+                  <i class="fa-solid fa-slash mypage-review-line-icon"></i>
+                  <a href="#">삭제</a>
+                </div>
+              `);
+
+              $mypageReviewContainers.append($mypageReviewContainer);
+              $mypageReviewContainers.append(`
+                <div class="mypage-review-line"></div>
+              `);
+            });
+
+            $mypageReviewContainers.append(`
+              <a id="mypage-view-more-review" href="/mypage/myreview">리뷰 더보기</a>
+            `);
+
+            $('#mypage-evalution-count-value').text(evaluationCount);
+            for (let i = 1; i <= 5; i++) {
+              $(`#mypage-evalution-count-value-${i}`).text(
+                genreEvalutionCount[i]
+              );
+            }
+
+            $('#mypage-review-info').append(
+              `<div class="mypage-review-show-info">`
+            );
           }
         },
       });
@@ -172,14 +253,25 @@ $(() => {
               method: 'GET',
               data: `memberId=${window.localStorage.getItem('memberId')}`,
               success: (artistResponseText) => {
+                const $myPageMyArtistContainers = $(
+                  '#mypage-my-artist-containers'
+                );
                 console.log(artistResponseText);
-                let mypageArtistContainer = `<div class="mypage-my-artist-container">`;
-                //   if (myArtist.)
-                //     <div class="mypage-artist-icon">
-                //     <i class="fa-solid fa-user fa-2xl"></i>
-                //   </div>`
-                //   $(`<div class="mypage-my-artist-container">
-                //     `);
+                const $mypageArtistContainer = $(
+                  `<div class="mypage-my-artist-container">`
+                );
+                if (myArtist.artistImage == undefined) {
+                  $mypageArtistContainer.append(`
+                    <div class="mypage-artist-icon">
+                      <i class="fa-solid fa-user fa-2xl"></i>
+                    </div>
+                  `);
+                } else {
+                  $mypageArtistContainer.append(
+                    `<img src="${myArtist.artistImage}" alt="artist-image" />`
+                  );
+                }
+                $myPageMyArtistContainers.append($mypageArtistContainer);
               },
             });
           });
@@ -188,3 +280,31 @@ $(() => {
     },
   });
 });
+
+function initSlick() {
+  $('#my-show-container').slick({
+    dots: false,
+    infinite: true,
+    speed: 300,
+    slidesToShow: 5,
+    slidesToScroll: 5,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 4,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+        },
+      },
+    ],
+    prevArrow: '#my-show-left-arrow-icon',
+    nextArrow: '#my-show-right-arrow-icon',
+  });
+}
