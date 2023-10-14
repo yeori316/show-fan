@@ -18,43 +18,44 @@
             <label for="e">이메일 </label><input type="email" name="email" id="e" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required>
             <button type="button" id="certify" class="btn btn-outline-success">인증하기</button><br>
             <span id="timer"></span>
-            <input type="text" class="hide form-control">
-            <button type="button" class="hide btn btn-outline-success">확인</button><br>
+            <input type="text" class="hide form-control" id="ecodeinput">
+            <button type="button" class="hide btn btn-outline-success" id="econdechk">확인</button><br>
     
             <hr class="hr">
-            <small class="form-text text-muted">이메일을 입력하세요</small>
+            <small class="form-text text-muted" id="emailchk">이메일을 입력하세요</small>
+            <br>
             <br>
     
             <label for="p">비밀번호 </label> <input type="password" name="pwd" class="form-control" id="p" placeholder="Password" autocomplete="off" required><br>
             <br>
             <label for="p1">비밀번호 확인 </label> <input type="password" class="form-control" id="p1" placeholder="Password" autocomplete="off" required><br>
 
-            
             <hr class="hr">
-            <small class="form-text text-muted">입력한 비밀번호와 다릅니다</small>
+            <small class="form-text text-muted" id="pwdchk">비밀번호를 입력하세요</small>
+            <br>
             <br>
             
-    
             <label for="n">닉네임 :</label> <input type="text" name="name" class="form-control" id="n" placeholder="닉네임" autocomplete="off" required required>
             <button type="button" id="dupchk" class="btn btn-outline-success">중복확인</button><br>
-            
-    
             <hr class="hr">
+            <small class="form-text text-muted" id="nickchk">닉네임을 입력하세요</small>
+
             <div>선호 장르</div>
             <div>
-                <input type="checkbox" id="concert">콘서트
-                <input type="checkbox" id="musical">뮤지컬
-                <input type="checkbox" id="play">연극
-                <input type="checkbox" id="festival">축제
-                <input type="checkbox" id="classic">클래식
+                <label><input type="checkbox" id="play" name="genre" value="1"> 연극</label>
+                <label><input type="checkbox" id="musical" name="genre" value="2"> 뮤지컬</label>
+                <label><input type="checkbox" id="classic" name="genre" value="3"> 클래식</label>
+                <label><input type="checkbox" id="concert" name="genre" value="4"> 콘서트</label>
+                <label><input type="checkbox" id="festival" name="genre" value="5"> 축제</label>
             </div>
     
             <hr class="hr">
     
             <div>이메일 알림 수신 동의 여부</div>
-            <input type="radio" name="emailchk" class="radio" checked>동의합니다
-            <input type="radio" name="emailchk" class="radio">동의하지 않습니다
-    
+            <input type="radio" name="emailchk" class="radio" value="1" checked>동의합니다
+            <input type="radio" name="emailchk" class="radio" value="0">동의하지 않습니다
+
+
             <hr class="hr">
             <button type="submit" class="btn btn-outline-success">회원가입</button>
         </form>
