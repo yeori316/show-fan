@@ -1,15 +1,15 @@
-package com.kosa.showfan.show.dao;
+package com.kosa.showfan.show.show.dao;
 
 import java.util.List;
 
 import com.kosa.showfan.exception.FindException;
-import com.kosa.showfan.show.dto.ShowCalendarDTO;
-import com.kosa.showfan.show.dto.ShowDTO;
-import com.kosa.showfan.show.dto.ShowSearchDTO;
-import com.kosa.showfan.show.dto.showAllInfoDTO;
+import com.kosa.showfan.show.show.dto.ShowCalendarDTO;
+import com.kosa.showfan.show.show.dto.ShowDTO;
+import com.kosa.showfan.show.show.dto.ShowSearchDTO;
+import com.kosa.showfan.show.show.dto.ShowAllInfoDTO;
 
 public interface ShowDAO {
-	List<showAllInfoDTO> selectById(String id) throws Exception;
+	List<ShowAllInfoDTO> selectById(String id) throws Exception;
 	List<ShowDTO> selectAll() throws Exception;
 	
 	/**

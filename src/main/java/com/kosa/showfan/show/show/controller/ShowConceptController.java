@@ -1,4 +1,4 @@
-package com.kosa.showfan.show.controller;
+package com.kosa.showfan.show.show.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
-import com.kosa.showfan.show.dto.ShowDTO;
+import com.kosa.showfan.show.show.dto.ShowDTO;
 
 public class ShowConceptController extends ShowController {
 

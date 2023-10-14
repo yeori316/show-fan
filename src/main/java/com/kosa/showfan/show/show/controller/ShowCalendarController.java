@@ -1,4 +1,4 @@
-package com.kosa.showfan.show.controller;
+package com.kosa.showfan.show.show.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -9,27 +9,25 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 import com.kosa.showfan.exception.FindException;
-import com.kosa.showfan.show.dto.ShowListDTO;
+import com.kosa.showfan.show.show.dto.ShowListDTO;
 
-public class ShowSearchController extends ShowController {
+public class ShowCalendarController extends ShowController {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-//		response.setHeader("Access-Control-Allow-Origin", "*"); // "http://127.0.0.1:5500"
-//		response.setHeader("Access-Control-Allow-Credentials", "true");
+		response.setHeader("Access-Control-Allow-Origin", "http://127.0.0.1:5501");
 		response.setContentType("application/json;charset=utf-8");
 		
 		PrintWriter out = response.getWriter();	
-		String value = request.getParameter("q");
-//		ObjectMapper mapper = new ObjectMapper();
+		String year = request.getParameter("y");
+		String month = request.getParameter("m");
+
 		Gson gson = new Gson();
 		ShowListDTO showList;
 		
 		try {
-			showList = service.search(value);
-//			String jsonStr = mapper.writeValueAsString(showList);
-//			out.print(jsonStr);
+			showList = service.calendar(year + month);
 			String jsonResult = gson.toJson(showList);
 			out.print(jsonResult);
 		} catch (FindException e) {
@@ -39,7 +37,6 @@ public class ShowSearchController extends ShowController {
 			e.printStackTrace();
 			response.setStatus(500);
 		}
-
 	}
 
 }

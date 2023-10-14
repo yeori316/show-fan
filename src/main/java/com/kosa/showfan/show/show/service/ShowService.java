@@ -1,15 +1,15 @@
-package com.kosa.showfan.show.service;
+package com.kosa.showfan.show.show.service;
 
 import java.util.List;
 
 import com.kosa.showfan.exception.FindException;
-import com.kosa.showfan.show.dao.ShowDAO;
-import com.kosa.showfan.show.dao.ShowDAOImpl;
-import com.kosa.showfan.show.dto.ShowCalendarDTO;
-import com.kosa.showfan.show.dto.ShowDTO;
-import com.kosa.showfan.show.dto.ShowListDTO;
-import com.kosa.showfan.show.dto.ShowSearchDTO;
-import com.kosa.showfan.show.dto.showAllInfoDTO;
+import com.kosa.showfan.show.show.dao.ShowDAO;
+import com.kosa.showfan.show.show.dao.ShowDAOImpl;
+import com.kosa.showfan.show.show.dto.ShowCalendarDTO;
+import com.kosa.showfan.show.show.dto.ShowDTO;
+import com.kosa.showfan.show.show.dto.ShowListDTO;
+import com.kosa.showfan.show.show.dto.ShowSearchDTO;
+import com.kosa.showfan.show.show.dto.ShowAllInfoDTO;
 
 public class ShowService {
 	private static final ShowService instance = new ShowService();
@@ -33,7 +33,7 @@ public class ShowService {
 		return new ShowListDTO<>(list.size(), list);
 	}
 
-	public List<showAllInfoDTO> selectByShowId(String showId) throws Exception {
+	public List<ShowAllInfoDTO> selectByShowId(String showId) throws Exception {
 		return showDAO.selectById(showId);
 	}
 	

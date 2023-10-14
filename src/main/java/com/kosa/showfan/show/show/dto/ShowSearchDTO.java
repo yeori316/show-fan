@@ -1,4 +1,4 @@
-package com.kosa.showfan.show.dto;
+package com.kosa.showfan.show.show.dto;
 
 import lombok.Data;
 
