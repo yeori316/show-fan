@@ -1,6 +1,6 @@
 package com.kosa.showfan.artist.dao;
 
-import com.kosa.showfan.artist.dto.ArtistDTO;
+import com.kosa.showfan.artist.dto.MyArtistDTO;
 import com.kosa.showfan.exception.FindException;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -8,18 +8,18 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import java.io.InputStream;
+import java.util.List;
 
-public class ArtistDAOImpl implements ArtistDAO {
+public class MyArtistDAOImpl implements MyArtistDAO {
+    private static final MyArtistDAO myArtistDAO = new MyArtistDAOImpl();
 
-    private static final ArtistDAO artistDAO = new ArtistDAOImpl();
-
-    public static ArtistDAO getInstance() {
-        return artistDAO;
+    public static MyArtistDAO getInstance() {
+        return myArtistDAO;
     }
 
     private SqlSessionFactory sqlSessionFactory;
 
-    public ArtistDAOImpl() {
+    public MyArtistDAOImpl() {
         String resource = "com/kosa/showfan/sql/mybatis-config.xml";
         InputStream inputStream;
         try {
@@ -31,15 +31,14 @@ public class ArtistDAOImpl implements ArtistDAO {
     }
 
     @Override
-    public ArtistDTO selectById(Long artistId) throws FindException {
+    public List<MyArtistDTO> selectAllByMemberId(Long memberId) throws FindException {
         SqlSession session = null;
         try {
             session = sqlSessionFactory.openSession();
-            ArtistDTO artistDTO = session.selectOne("com.kosa.artist.ArtistMapper.selectById", artistId);
-            return artistDTO;
+            List<MyArtistDTO> myArtistDTOList = session.selectList("com.kosa.show.MyArtistMapper.selectAllByMemberId", memberId);
+            return myArtistDTOList;
         } catch (Exception e) {
-            e.printStackTrace();
-            throw new FindException("아티스트 검색에 실패했습니다");
+            throw new FindException("선호 아티스트 목록 검색에 실패했습니다");
         } finally {
             if (session != null) {
                 session.close();

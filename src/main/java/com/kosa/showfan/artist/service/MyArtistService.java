@@ -1,9 +1,9 @@
-package com.kosa.showfan.myArtist.service;
+package com.kosa.showfan.artist.service;
 
+import com.kosa.showfan.artist.dao.MyArtistDAO;
+import com.kosa.showfan.artist.dao.MyArtistDAOImpl;
+import com.kosa.showfan.artist.dto.MyArtistDTO;
 import com.kosa.showfan.exception.FindException;
-import com.kosa.showfan.myArtist.dao.MyArtistDAO;
-import com.kosa.showfan.myArtist.dao.MyArtistDAOImpl;
-import com.kosa.showfan.myArtist.dto.MyArtistDTO;
 
 import java.util.List;
 
