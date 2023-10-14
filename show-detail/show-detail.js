@@ -105,20 +105,50 @@ $(() => {
     },
   });
 
+  // $('#heart').click((e) => {
+  //   let sendData = {
+  //     showId: window.localStorage.getItem('cntShowId'),
+  //     memberId: getCookie('loginCookie'),
+  //   };
+
+  //   console.log(sendData);
+  //   $.ajax({
+  //     type: 'post',
+  //     url:
+  //       `${backURL}/findshow?showname=` + window.localStorage.getItem('param'),
+  //     dataType: 'json',
+  //     data: sendData,
+  //     success: function (data) {},
+  //   });
+  // });
+
+  // 찜하기 버튼 클릭 시
   $('#heart').click((e) => {
     let sendData = {
       showId: window.localStorage.getItem('cntShowId'),
       memberId: getCookie('loginCookie'),
     };
-
-    console.log(sendData);
     $.ajax({
-      type: 'post',
-      url:
-        `${backURL}/findshow?showname=` + window.localStorage.getItem('param'),
-      dataType: 'json',
-      data: sendData,
-      success: function (data) {},
+      url: `${backURL}/myshow?showId=PF192214&memberId=3`,
+      method: 'POST',
+      success: () => {
+        alert('추가되었습니다.');
+      },
+    });
+  });
+
+  // 찜하기 취소 버튼 클릭 시
+  $('#cancel_heart').click((e) => {
+    let sendData = {
+      showId: window.localStorage.getItem('cntShowId'),
+      memberId: getCookie('loginCookie'),
+    };
+    $.ajax({
+      url: `${backURL}/myshow?showId=PF192214&memberId=3`,
+      method: 'DELETE',
+      success: () => {
+        alert('삭제되었습니다.');
+      },
     });
   });
 });
