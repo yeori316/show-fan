@@ -1,12 +1,10 @@
-package com.kosa.showfan.myShow.controller;
+package com.kosa.showfan.show.controller;
 
 import com.google.gson.Gson;
-import com.kosa.showfan.controller.Controller;
 import com.kosa.showfan.exception.AddException;
 import com.kosa.showfan.exception.FindException;
 import com.kosa.showfan.exception.RemoveException;
-import com.kosa.showfan.myShow.dto.MyShowDTO;
-import com.kosa.showfan.myShow.service.MyShowService;
+import com.kosa.showfan.show.dto.MyShowDTO;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,15 +12,10 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-public class MyShowController implements Controller {
-    protected MyShowService service;
-
-    public MyShowController() {
-        service = MyShowService.getInstance();
-    }
-
+public class MyShowController extends ShowController {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        response.setHeader("Access-Control-Allow-Origin", "*");
         response.setHeader("Access-Control-Allow-Methods", "GET, POST, DELETE");
         response.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 
@@ -31,7 +24,7 @@ public class MyShowController implements Controller {
             Gson gson = new Gson();
             List<MyShowDTO> myShowList;
             try {
-                myShowList = service.selectById(Long.valueOf(request.getParameter("memberId")));
+                myShowList = service.selectMyShowByMemberId(Long.valueOf(request.getParameter("memberId")));
                 String jsonResult = gson.toJson(myShowList);
                 out.print(jsonResult);
             } catch (FindException e) {
@@ -46,7 +39,7 @@ public class MyShowController implements Controller {
                 MyShowDTO myShowDTO = new MyShowDTO();
                 myShowDTO.setMemberId(Long.valueOf(request.getParameter("memberId")));
                 myShowDTO.setShowId(request.getParameter("showId"));
-                service.insert(myShowDTO);
+                service.insertMyShow(myShowDTO);
             } catch (AddException e) {
                 e.printStackTrace();
                 response.setStatus(404);
@@ -60,7 +53,7 @@ public class MyShowController implements Controller {
 
                 myShowDTO.setMemberId(Long.valueOf(request.getParameter("memberId")));
                 myShowDTO.setShowId(request.getParameter("showId"));
-                service.delete(myShowDTO);
+                service.deleteMyShow(myShowDTO);
             } catch (RemoveException e) {
                 e.printStackTrace();
                 response.setStatus(404);

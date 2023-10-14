@@ -1,10 +1,10 @@
-package com.kosa.showfan.myArtist.controller;
+package com.kosa.showfan.artist.controller;
 
 import com.google.gson.Gson;
+import com.kosa.showfan.artist.dto.MyArtistDTO;
+import com.kosa.showfan.artist.service.MyArtistService;
 import com.kosa.showfan.controller.Controller;
 import com.kosa.showfan.exception.FindException;
-import com.kosa.showfan.myArtist.dto.MyArtistDTO;
-import com.kosa.showfan.myArtist.service.MyArtistService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
