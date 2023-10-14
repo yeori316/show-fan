@@ -35,9 +35,10 @@ public class MyArtistDAOImpl implements MyArtistDAO {
         SqlSession session = null;
         try {
             session = sqlSessionFactory.openSession();
-            List<MyArtistDTO> myArtistDTOList = session.selectList("com.kosa.show.MyArtistMapper.selectAllByMemberId", memberId);
+            List<MyArtistDTO> myArtistDTOList = session.selectList("com.kosa.artist.ArtistMapper.selectAllByMemberId", memberId);
             return myArtistDTOList;
         } catch (Exception e) {
+            e.printStackTrace();
             throw new FindException("선호 아티스트 목록 검색에 실패했습니다");
         } finally {
             if (session != null) {
