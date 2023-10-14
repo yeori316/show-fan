@@ -1,7 +1,9 @@
 package com.kosa.showfan.show.dao;
 
 import java.io.InputStream;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -81,14 +83,35 @@ public class ShowDAOImpl implements ShowDAO {
 		return null;
 
 	}
+	
+	public Integer selectByStringCnt(String value) throws FindException {
+		SqlSession session = null;
+		
+		try {
+			session = sqlSessionFactory.openSession();
+			return session.selectOne("com.kosa.show.ShowMapper.selectByStringCnt", value);
+		} catch (Exception e) {
+			throw new FindException("검색된 결과가 없습니다.");
+		} finally {
+			if (session != null) {
+				session.close();
+			}
+		}
+	}
 
 	@Override
-	public List<ShowSearchDTO> selectByString(String value) throws FindException {
+	public List<ShowSearchDTO> selectByString(String value, int startRn, int endRn) throws FindException {
 		SqlSession session = null;
 
 		try {
 			session = sqlSessionFactory.openSession();
-			return session.selectList("com.kosa.show.ShowMapper.selectByString", value);
+			
+			Map<String, Object> map = new HashMap<>();
+			map.put("value", value);
+			map.put("startRn", startRn);
+			map.put("endRn", endRn);
+			
+			return session.selectList("com.kosa.show.ShowMapper.selectByString", map);
 		} catch (Exception e) {
 			throw new FindException("검색된 결과가 없습니다.");
 		} finally {
