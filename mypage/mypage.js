@@ -253,14 +253,25 @@ $(() => {
               method: 'GET',
               data: `memberId=${window.localStorage.getItem('memberId')}`,
               success: (artistResponseText) => {
+                const $myPageMyArtistContainers = $(
+                  '#mypage-my-artist-containers'
+                );
                 console.log(artistResponseText);
-                let mypageArtistContainer = `<div class="mypage-my-artist-container">`;
-                //   if (myArtist.)
-                //     <div class="mypage-artist-icon">
-                //     <i class="fa-solid fa-user fa-2xl"></i>
-                //   </div>`
-                //   $(`<div class="mypage-my-artist-container">
-                //     `);
+                const $mypageArtistContainer = $(
+                  `<div class="mypage-my-artist-container">`
+                );
+                if (myArtist.artistImage == undefined) {
+                  $mypageArtistContainer.append(`
+                    <div class="mypage-artist-icon">
+                      <i class="fa-solid fa-user fa-2xl"></i>
+                    </div>
+                  `);
+                } else {
+                  $mypageArtistContainer.append(
+                    `<img src="${myArtist.artistImage}" alt="artist-image" />`
+                  );
+                }
+                $myPageMyArtistContainers.append($mypageArtistContainer);
               },
             });
           });
