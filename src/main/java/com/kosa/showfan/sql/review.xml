@@ -43,6 +43,7 @@
         sh.show_poster,
         sh.show_name,
         sh.show_venues,
+        sh.genre_id,
         r.review_grade,
         r.review_content,
         r.review_created_at,

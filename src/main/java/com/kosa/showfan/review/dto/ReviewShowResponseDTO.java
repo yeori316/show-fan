@@ -11,6 +11,7 @@ public class ReviewShowResponseDTO {
     private String showPoster;
     private String showName;
     private String showVenues;
+    private Long genreId;
     private Float reviewGrade;
     private String reviewContent;
     private Date reviewCreatedAt;
