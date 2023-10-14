@@ -150,14 +150,15 @@
           <div class="show_name">공연명</div>
           <div class="show_open">공연예정여부</div>
         </div>
-        <div>찜하기</div>
+        <div onclick="heart()">
+          <span id="heart"><i class="fa-solid fa-star"></i>찜하기</span>
+          <span id="cancel_heart">찜하기 취소</span>
+        </div>
       </div>
 
       <div class="show_info_detail">
-        <div>
-          <img src="../images/logo-icon.png" />
-          <div class="reserve">예매하기</div>
-        </div>
+        <img style="width: 50%; height: 100%" src="../images/logo-icon.png" />
+
         <div class="show_info_detail_right">
           <div class="show_start_day">공연 기간 : 2023/01/01 - 2023/02/01</div>
           <div class="show_time">공연 시간 : 12:00 ~</div>
@@ -171,7 +172,11 @@
       <div class="information"></div>
 
       <div class="info_photo">
-        <img class="info_photo_img" src="../images/logo-icon.png" />
+        <img
+          style="height: 100%"
+          class="info_photo_img"
+          src="../images/logo-icon.png"
+        />
       </div>
 
       <div class="title">출연진</div>

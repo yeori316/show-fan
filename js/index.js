@@ -20,34 +20,33 @@ $(() => {
   });
 
   // if 마이페이지 link clicked
-  $('body').on('click', '.header-menu-link[href="mypage.html"]', function(e) {
+  $("body").on("click", '.header-menu-link[href="mypage"]', function (e) {
     e.preventDefault();
-    handleXhttps('GET', '../html/mypage.html', $('main'));
+    location.href = "mypage";
   });
-
 
   // 내 정보 수정 클릭 시
   $("body").on("click", '.mypage-main-text[href="modify.html"]', function (e) {
     e.preventDefault();
     handleXhttps("GET", "../html/modify.html", $("main"));
   });
-});
 
-// 검색 페이지
-export const searchhandleXhttps = () => {
-  handleXhttps("GET", "../html/search.html", $("main"));
-};
+  // 검색 시
+  $("body").on("click", "#header-search-button", function (e) {
+    const value = $("#header-search-input").val();
+    location.href = `../search?q=${value}`;
+  });
 
-// 달력 페이지
-export const calendarhandleXhttps = () => {
-  var calendar = new FullCalendar.Calendar(
-    document.querySelector("#calendar"),
-    {
-      initialView: "dayGridMonth",
-
-      // events: JSON.parse(data),
-      eventClick: function (info) {},
+  // 검색 입력 후 엔터
+  $("body").on("keydown", "#header-search-input", function (e) {
+    if (e.key == "Enter" || e.keyCode == "13") {
+      const value = $("#header-search-input").val();
+      location.href = `../search/index.html?q=${value}`;
     }
-  );
-  calendar.render();
-};
+  });
+
+  // 캘린더 조회 시
+  $("body").on("click", "#navigation-calendar-button", function (e) {
+    location.href = "../calendar/index.html";
+  });
+});
