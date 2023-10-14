@@ -1,19 +1,19 @@
-import { handleXhttps, backURL } from './util.js';
+import { handleXhttps, backURL } from "./util.js";
 
 $(() => {
   function getCookie(name) {
     const value = `; ${document.cookie}`;
     const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop().split(';').shift();
+    if (parts.length === 2) return parts.pop().split(";").shift();
   }
 
   //해당 쿠키값 얻어오기
-  const loginCookie = getCookie('loginCookie');
+  const loginCookie = getCookie("loginCookie");
 
-  const $login = $('#login');
-  const $logout = $('#logout');
-  const $signup = $('#signup');
-  const $mypage = $('#mypage');
+  const $login = $("#login");
+  const $logout = $("#logout");
+  const $signup = $("#signup");
+  const $mypage = $("#mypage");
   // $('#login')
   // $('#logout')
   // $('#signup')
@@ -36,27 +36,27 @@ $(() => {
 
   $logout.click((e) => {
     //로그아웃 alert에서 확인 눌렀을때
-    if (confirm('로그아웃 하시겠어요?') == true) {
+    if (confirm("로그아웃 하시겠어요?") == true) {
       $.ajax({
         xhrFields: {
           withCredentials: true,
         },
         url: `${backURL}`,
-        method: 'get',
+        method: "get",
         success: (responseJSONObj) => {
           responseJSONObj = JSON.parse(responseJSONObj);
           //로그아웃 성공시
           if (responseJSONObj.status == 1) {
-            location.href = './index.html';
+            location.href = "./index.html";
           } else if (responseJSONObj.status == 0) {
-            alert('쿠키 삭제 실패');
+            alert("쿠키 삭제 실패");
           } else {
-            alert('알 수 없는 상태: ' + responseJSONObj.status);
+            alert("알 수 없는 상태: " + responseJSONObj.status);
           }
           //로그아웃 실패시
         },
       });
-      alert('로그아웃 되었습니다.');
+      alert("로그아웃 되었습니다.");
     }
     //로그아웃 alert에서 취소 눌렀을때
     else {
