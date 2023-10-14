@@ -13,12 +13,19 @@ public interface ShowDAO {
 	List<ShowDTO> selectAll() throws Exception;
 	
 	/**
+	 * 공연명 검색 시 공연 갯수
+	 * @param value
+	 * @return
+	 */
+	Integer selectByStringCnt(String value) throws FindException;
+	
+	/**
 	 * 공연명 검색
 	 * @param value
 	 * @return
 	 * @throws FindException
 	 */
-	List<ShowSearchDTO> selectByString(String value) throws FindException;
+	List<ShowSearchDTO> selectByString(String value, int startRn, int endRn) throws FindException;
 	
 	/**
 	 * 캘린더에서 공연일정 조회
