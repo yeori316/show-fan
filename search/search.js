@@ -1,12 +1,15 @@
 import { handleXhttps, backURL, frontURL } from "../util/util.js";
 
 $(() => {
-  const queryStr = location.search.substring(1); // q=value&p=1
+  const queryStr = location.search.substring(1); // q=value
+  const value = queryStr.substring(2);
   let cPage = 1;
   let showCnt;
   let showList = [];
 
-  handleXhttps("GET", "../header/index.html", $("header"));
+  // 검색어 저장
+  $("#header-search-input").attr("value", decodeURI(value));
+
   handleXhttps("GET", "../navigation/index.html", $("nav"));
   handleXhttps("GET", "../footer/index.html", $("footer"));
 
@@ -33,24 +36,6 @@ $(() => {
     e.preventDefault();
     handleXhttps("GET", "../html/modify.html", $("main"));
   });
-
-  // console.log(value);
-  // $("#header-search-input").attr("value", value);
-  // $("header").on($("#header-search-input").attr("value", value));
-  // console.log($("#header-search-input").val());
-  // console.dir($("#header-search-input").attr("value"));
-
-  // if ($("#header-search-input").length) {
-  //   console.log("#header-search-input 요소가 존재합니다.");
-  // } else {
-  //   console.log("#header-search-input 요소가 존재하지 않습니다.");
-  // }
-
-  // if ($("header").length) {
-  //   console.log("#header 요소가 존재합니다.");
-  // } else {
-  //   console.log("#header 요소가 존재하지 않습니다.");
-  // }
 
   // 검색 버튼 클릭 시
   $("body").on("click", "#header-search-button", function (e) {
@@ -177,9 +162,8 @@ $(() => {
     if (showCnt == 0) {
       $("#search-result-count > b").html(`검색 결과 (${showCnt})`);
       $("#showCardList").html(
-        '<div class="col"><a><div class="card h-100"><img class="card-img-top" src="https://showfan.s3.ap-northeast-2.amazonaws.com/PF154190.jpg" alt="..."/><div class="status"><b>공연중</b></div><div class="card-body"><h5 class="card-title">Card title</h5><p class="card-text"><div id="period">2023.01.01 ~ 2023.01.01</div><div id="venues">예술의 전당</div><br><div id="grade">평점 3.5 (리뷰갯수)</div></p></div></div></a></div><div id="search-result-count" class="container text-right"><b>검색된 공연이 없습니다.</b></div>'
+        '<div id="search-result-count" class="container text-right"><b>검색된 공연이 없습니다.</b></div>'
       );
-      $("div.col").first().hide();
     } else {
       $("#search-result-count > b").html(`검색 결과 (${showCnt})`);
 
@@ -236,7 +220,13 @@ $(() => {
         $copyShow.find("#venues").html(showVenues);
         $copyShow
           .find("#grade")
-          .html("별 " + gradeAvg + " (" + reviewCnt + ")");
+          .html(
+            "<i id='show-review-star-icon' class='fa-solid fa-star'></i> " +
+              gradeAvg +
+              " (" +
+              reviewCnt +
+              ")"
+          );
 
         $("#showCardList").append($copyShow);
       });
@@ -285,7 +275,15 @@ $(() => {
       $copyShow.find(".card-title").html(showName);
       $copyShow.find("#period").html(showStartDay + " ~ " + showEndDay);
       $copyShow.find("#venues").html(showVenues);
-      $copyShow.find("#grade").html("별 " + gradeAvg + " (" + reviewCnt + ")");
+      $copyShow
+        .find("#grade")
+        .html(
+          "<i id='show-review-star-icon' class='fa-solid fa-star'></i>  " +
+            gradeAvg +
+            " (" +
+            reviewCnt +
+            ")"
+        );
 
       $("#showCardList").append($copyShow);
     });
