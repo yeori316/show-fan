@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import { backURL, handleXhttps } from '../util/util.js';
-=======
 import { backURL } from "../util/util.js";
->>>>>>> front
 
 $(() => {
   const value = `; ${document.cookie}`;
@@ -136,9 +132,9 @@ $(() => {
 
       // 내 리뷰
       $.ajax({
-        url: backURL + '/memberreview',
-        method: 'GET',
-        data: `memberId=${window.localStorage.getItem('memberId')}`,
+        url: backURL + "/memberreview",
+        method: "GET",
+        data: `memberId=${window.localStorage.getItem("memberId")}`,
         success: (myReviewResponse) => {
           if (myReviewResponse === "") {
             $("#mypage-review-containers")
@@ -235,9 +231,9 @@ $(() => {
             (myArtist) => myArtist.myArtistViewCount >= 2
           );
           if (myArtistList.length == 0) {
-            $('#mypage-my-artist-containers')
+            $("#mypage-my-artist-containers")
               .prev()
-              .after('<p>선호하는 아티스트가 없습니다</p>');
+              .after("<p>선호하는 아티스트가 없습니다</p>");
             return;
           }
           if (myArtistList.length > 6) {
@@ -256,7 +252,7 @@ $(() => {
           myArtistList = myArtistList.slice(0, 6);
 
           myArtistList.forEach((myArtist) => {
-            const $myPageMyArtistContainers = $('#mypage-my-artist-containers');
+            const $myPageMyArtistContainers = $("#mypage-my-artist-containers");
             const $mypageArtistContainer = $(
               `<div class="mypage-my-artist-container">`
             );
