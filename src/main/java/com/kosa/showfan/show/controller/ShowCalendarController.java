@@ -22,7 +22,7 @@ public class ShowCalendarController extends ShowController {
 		PrintWriter out = response.getWriter();	
 		String year = request.getParameter("y");
 		String month = request.getParameter("m");
-
+				
 		Gson gson = new Gson();
 		ShowListDTO showList;
 		
