@@ -283,7 +283,7 @@ $(() => {
 
       $copyShow
         .find("a")
-        .attr("href", `../show_detail/index.html?showId=${showId}`);
+        .attr("href", `../show-detail/index.html?showId=${showId}`);
       $copyShow.find("img").attr("src", showImage).attr("title", showName);
 
       if (showStatus == "공연완료") {
