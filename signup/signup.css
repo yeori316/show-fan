@@ -1,3 +1,5 @@
+@import url("../util/base.css");
+
 section{
     margin: 0 auto;
     display: flex;
@@ -14,7 +16,7 @@ section>input.radio{
     margin-left: 30%;
     margin-top: 50px;
     border-style: solid;
-    border-color: #b0d9b1;
+    border-color: var(--main4-color);
     padding: 50px;
 }
 

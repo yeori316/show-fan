@@ -62,7 +62,7 @@ $(() => {
     showListFilterHandler(showList);
   });
 
-  // 체크박스 필터링
+  // 전체 선택 체크박스
   $("#genreAll").click((e) => {
     allChkHandler($("#genreAll"), "genre");
   });
@@ -73,6 +73,26 @@ $(() => {
 
   $("#localAll").click((e) => {
     allChkHandler($("#localAll"), "local");
+  });
+
+  $(document).ready(function () {
+    $("#btn_top").hide();
+
+    // 스크롤 시 효과 설정
+    $(window).scroll(function () {
+      // 스크롤 시
+      if ($(this).scrollTop() > 1000) {
+        // 스크롤탑이 '1000'보다 클 때
+        $("#btn_top").fadeIn(); // 버튼이 fadein되며 출력
+      } else {
+        // 반대로 '1000'보다 작을 때
+        $("#btn_top").fadeOut(); // 버튼이 fadeout되며 제거
+      }
+    });
+
+    $("#btn_top").click(function () {
+      $("html,body").scrollTop(0);
+    });
   });
 
   // 공연 데이터 호출
@@ -206,7 +226,7 @@ $(() => {
 
         $copyShow
           .find("a")
-          .attr("href", `${frontURL}/show_detail.html?showId=${showId}`);
+          .attr("href", `${frontURL}/show-detail/index.html?showId=${showId}`);
         $copyShow.find("img").attr("src", showImage).attr("title", showName);
 
         if (showStatus == "공연완료") {
@@ -263,7 +283,7 @@ $(() => {
 
       $copyShow
         .find("a")
-        .attr("href", `${frontURL}/show_detail.html?showId=${showId}`);
+        .attr("href", `../show_detail/index.html?showId=${showId}`);
       $copyShow.find("img").attr("src", showImage).attr("title", showName);
 
       if (showStatus == "공연완료") {

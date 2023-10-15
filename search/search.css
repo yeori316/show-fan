@@ -33,3 +33,19 @@ div.search-line {
 #show-review-star-icon {
   color: var(--yellow-color);
 }
+
+#btn_top {
+  position: fixed;
+  right: 40px;
+  bottom: 40px;
+  z-index: 999;
+  opacity: 0.5;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+#btn_top:hover {
+  background-color: black;
+  transition: 0.3s;
+  transform: scale(1.1);
+}
