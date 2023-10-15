@@ -21,6 +21,8 @@ public class MyArtistController implements Controller {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        response.setContentType("application/json;charset=utf-8");
+        
         if (request.getMethod().equals("GET")) {
             PrintWriter out = response.getWriter();
             Gson gson = new Gson();
