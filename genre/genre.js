@@ -56,6 +56,6 @@ $(() => {
   $("#genre-show-container").on("click", "div.col>div.card", (e) => {
     let showId = $(e.currentTarget).attr("id");
     window.localStorage.setItem("param", showId);
-    location.href = "../html/show_detail.html?showname=" + showId;
+    location.href = "../show-detail/index.html?showname=" + showId;
   });
 });
