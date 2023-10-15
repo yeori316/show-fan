@@ -75,6 +75,26 @@ $(() => {
     allChkHandler($("#localAll"), "local");
   });
 
+  $(document).ready(function () {
+    $("#btn_top").hide();
+
+    // 스크롤 시 효과 설정
+    $(window).scroll(function () {
+      // 스크롤 시
+      if ($(this).scrollTop() > 1000) {
+        // 스크롤탑이 '1000'보다 클 때
+        $("#btn_top").fadeIn(); // 버튼이 fadein되며 출력
+      } else {
+        // 반대로 '1000'보다 작을 때
+        $("#btn_top").fadeOut(); // 버튼이 fadeout되며 제거
+      }
+    });
+
+    $("#btn_top").click(function () {
+      $("html,body").scrollTop(0);
+    });
+  });
+
   // 공연 데이터 호출
   ajaxHandler(cPage);
 
