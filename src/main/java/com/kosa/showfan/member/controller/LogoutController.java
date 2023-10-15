@@ -1,6 +1,8 @@
 package com.kosa.showfan.member.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
+import com.kosa.showfan.controller.Controller;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
@@ -12,18 +14,21 @@ import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
-public class LogoutServlet extends HttpServlet {
+public class LogoutController extends HttpServlet implements Controller {
     private static final long serialVersionUID = 1L;
 
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	@Override
+	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//응답형식
+        response.setContentType("application/json;charset=utf-8");
+        
         //크로스오리진 문제 해결
         response.setHeader("Access-Control-Allow-Origin", "*");
         response.setHeader("Access-Control-Allow-Credentials", "true");
 
         //응답출력스트림얻기
         PrintWriter out = response.getWriter();
-        ObjectMapper mapper = new ObjectMapper();
+        Gson gson = new Gson();
 
         Map<String, Object> map = new HashMap<>();
 
@@ -57,9 +62,9 @@ public class LogoutServlet extends HttpServlet {
             map.put("msg", "로그아웃 실패");
         }
 
-        String jsonStr = mapper.writeValueAsString(map);
+        String jsonStr = gson.toJson(map);
         out.print(jsonStr);
-
-    }
+		
+	}
 
 }

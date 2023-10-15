@@ -3,70 +3,40 @@
         "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
-	<servlet>
-		<servlet-name>LoginController</servlet-name>
-		<display-name>LoginController</display-name>
-		<description></description>
-		<servlet-class>com.kosa.showfan.member.service.LoginController</servlet-class>
-	</servlet>
-	<servlet>
-		<servlet-name>Cookie</servlet-name>
-		<display-name>Cookie</display-name>
-		<description></description>
-		<servlet-class>com.kosa.showfan.member.service.Cookie</servlet-class>
-	</servlet>
-	<servlet>
-		<servlet-name>LogoutServlet</servlet-name>
-		<display-name>LogoutServlet</display-name>
-		<description></description>
-		<servlet-class>com.kosa.showfan.member.service.LogoutServlet</servlet-class>
-	</servlet>
-	<servlet>
-		<servlet-name>ShowServlet</servlet-name>
-		<display-name>ShowServlet</display-name>
-		<description></description>
-		<servlet-class>com.kosa.showfan.show.ShowServlet</servlet-class>
-	</servlet>
-	<servlet>
-		<servlet-name>ShowDetailServlet</servlet-name>
-		<display-name>ShowDetailServlet</display-name>
-		<description></description>
-		<servlet-class>com.kosa.showfan.show.ShowDetailServlet</servlet-class>
-	</servlet>
-	<servlet>
+
+    
+    <servlet>
+        <servlet-name>ShowServlet</servlet-name>
+        <display-name>ShowServlet</display-name>
+        <description></description>
+        <servlet-class>com.kosa.showfan.show.ShowServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ShowDetailServlet</servlet-name>
+        <display-name>ShowDetailServlet</display-name>
+        <description></description>
+        <servlet-class>com.kosa.showfan.show.ShowDetailServlet</servlet-class>
+    </servlet>
+    <servlet>
 		<servlet-name>ShowReviewController</servlet-name>
 		<display-name>ShowReviewController</display-name>
 		<description></description>
 		<servlet-class>com.kosa.showfan.review.controller.ShowReviewController</servlet-class>
 	</servlet>
-	<servlet>
-		<servlet-name>MemberReviewController</servlet-name>
-		<display-name>MemberReviewController</display-name>
-		<description></description>
-		<servlet-class>com.kosa.showfan.review.controller.MemberReviewController</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>LoginController</servlet-name>
-		<url-pattern>/loginmem</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>Cookie</servlet-name>
-		<url-pattern>/cookiemem</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>LogoutServlet</servlet-name>
-		<url-pattern>/logoutmem</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>ShowServlet</servlet-name>
-		<url-pattern>/ShowServlet</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>ShowDetailServlet</servlet-name>
-		<url-pattern>/ShowDetailServlet</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
+	
+    
+    <servlet-mapping>
+        <servlet-name>ShowServlet</servlet-name>
+        <url-pattern>/ShowServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShowDetailServlet</servlet-name>
+        <url-pattern>/ShowDetailServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
 		<servlet-name>ShowReviewController</servlet-name>
 		<url-pattern>/showreview</url-pattern>
 	</servlet-mapping>
+    
+
 </web-app>
