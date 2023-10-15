@@ -14,28 +14,32 @@ $(() => {
   handleXhttps("GET", "../navigation/index.html", $("nav"));
   handleXhttps("GET", "../footer/index.html", $("footer"));
 
+
   // 회원가입 클릭 시
-  $("body").on("click", '.header-menu-link[href="signup"]', function (e) {
+  $("body").on("click", '#signup', function (e) {
     e.preventDefault();
+    // location.href = "../signup/index.html";
     handleXhttps("GET", "../signup/index.html", $("main"));
   });
 
   // 로그인 클릭 시
-  $("body").on("click", '.header-menu-link[href="login"]', function (e) {
+  $("body").on("click", '#login', function (e) {
     e.preventDefault();
+    // location.href = "../login/index.html";
     handleXhttps("GET", "../login/index.html", $("main"));
   });
 
   // if 마이페이지 link clicked
-  $("body").on("click", '.header-menu-link[href="mypage"]', function (e) {
+  $("body").on("click", '#mypage', function (e) {
     e.preventDefault();
     location.href = "mypage";
   });
 
   // 내 정보 수정 클릭 시
-  $("body").on("click", '.mypage-main-text[href="modify.html"]', function (e) {
+  $("body").on("click", '#modify', function (e) {
     e.preventDefault();
-    handleXhttps("GET", "../html/modify.html", $("main"));
+    // location.href = "../modify/index.html";
+    handleXhttps("GET", "../modify/index.html", $("main"));
   });
 
   // 검색 버튼 클릭 시
