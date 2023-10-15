@@ -39,7 +39,7 @@ $(() => {
   const seat = $();
   const replyContent = $();
   const data = {
-    showId: "PF223176",
+    showId: showId,
     reviewContent: reviewContent,
     reviewGrade: reviewGrade,
     nickname: nickname,
@@ -69,7 +69,7 @@ $(() => {
     const seatId = $();
     const data = {
       memberId: 3,
-      showId: "PF223176",
+      showId: showId,
       reviewGrade: reviewGrade,
       reviewContent: reviewContent,
       seatId: 1848,
@@ -206,7 +206,8 @@ $(() => {
 var reviews = [];
 var replies = [];
 // 리뷰 데이터를 화면에 출력하는 함수
-function displayReviews(reviews) {
+export function displayReviews(reviews) {
+  console.log("reviews= " + reviews);
   for (var i = 0; i < reviews.length; i++) {
     const $reviewContainer = $(
       '<div class="showdetail-review-container"></div>'
@@ -228,6 +229,7 @@ function displayReviews(reviews) {
   }
 }
 function displayReplies(replies) {
+  console.log("replies= " + replies);
   for (var i = 0; i < replies.length; i++) {
     const $reviewContainer = $(
       '<div class="showdetail-reply-container"></div>'
