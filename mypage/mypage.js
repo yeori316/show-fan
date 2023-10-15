@@ -1,50 +1,50 @@
-import { backURL } from '../util/util.js';
+import { backURL } from "../util/util.js";
 
 $(() => {
   const value = `; ${document.cookie}`;
-  const parts = value.split(`; ${'loginCookie'}=`);
+  const parts = value.split(`; ${"loginCookie"}=`);
   let loginCookie = null;
   if (parts.length === 2) {
-    loginCookie = parts.pop().split(';').shift();
+    loginCookie = parts.pop().split(";").shift();
   }
   if (!loginCookie) {
-    alert('로그인 후 이용 가능합니다.');
+    alert("로그인 후 이용 가능합니다.");
     history.back();
   }
 
   // 회원 정보 출력
   $.ajax({
-    url: backURL + '/member',
-    method: 'GET',
+    url: backURL + "/member",
+    method: "GET",
     data: `email=${loginCookie}`,
     success: (memberResponseText) => {
-      window.localStorage.setItem('memberId', memberResponseText.memberId);
+      window.localStorage.setItem("memberId", memberResponseText.memberId);
       const memberProfileImage = memberResponseText.memberImage;
       if (memberProfileImage !== undefined) {
-        $('img[alt=profile-image]').attr('src', memberProfileImage);
-        $('img[alt=profile-image]').removeClass('hide-image');
-        $('div.mypage-profile-icon').addClass('hide-image');
+        $("img[alt=profile-image]").attr("src", memberProfileImage);
+        $("img[alt=profile-image]").removeClass("hide-image");
+        $("div.mypage-profile-icon").addClass("hide-image");
       }
-      $('#mypage-profile-nickname').text(memberResponseText.memberNickname);
-      $('#member-money-spend').text(
+      $("#mypage-profile-nickname").text(memberResponseText.memberNickname);
+      $("#member-money-spend").text(
         memberResponseText.memberTotalPrice.toLocaleString()
       );
 
       let showIdList;
       // 찜 목록 출력
       $.ajax({
-        url: backURL + '/myshow',
-        method: 'GET',
-        data: `memberId=${window.localStorage.getItem('memberId')}`,
+        url: backURL + "/myshow",
+        method: "GET",
+        data: `memberId=${window.localStorage.getItem("memberId")}`,
         success: (myShowResponseText) => {
           showIdList = JSON.parse(myShowResponseText);
           showIdList = showIdList.map((showId) => showId.showId);
-          $('#my-show-count').text(`(${showIdList.length})`);
-          const $myShowContainer = $('#my-show-container');
+          $("#my-show-count").text(`(${showIdList.length})`);
+          const $myShowContainer = $("#my-show-container");
           $.each(showIdList, (index, showId) => {
             $.ajax({
-              url: backURL + '/showdetail',
-              method: 'GET',
+              url: backURL + "/showdetail",
+              method: "GET",
               data: `showId=${showId}`,
               success: (detailShowResponseText) => {
                 // 찜 목록
@@ -54,7 +54,7 @@ $(() => {
                 const $liMyShow = $(
                   `<li id="my-show-${showId}" class="my-show"></li>`
                 );
-                $liMyShow.css('list-style', 'none');
+                $liMyShow.css("list-style", "none");
 
                 $liMyShow.append(
                   `<button id="my-show-delete-button-${showId}">X</button>`
@@ -71,53 +71,53 @@ $(() => {
 
                 // 찜 목록 삭제
                 $(`#my-show-${showId}`).mouseenter(() => {
-                  $(`#my-show-delete-button-${showId}`).css('display', 'block');
+                  $(`#my-show-delete-button-${showId}`).css("display", "block");
                   let imageSize = Number(
-                    $('.my-show > img').css('width').replace('px', '')
+                    $(".my-show > img").css("width").replace("px", "")
                   );
-                  $('.my-show > button').css('width', imageSize / 8 + 'px');
-                  $('.my-show > button').css('height', imageSize / 8 + 'px');
-                  $('.my-show > button').css(
-                    'font-size',
-                    imageSize / 10 + 'px'
+                  $(".my-show > button").css("width", imageSize / 8 + "px");
+                  $(".my-show > button").css("height", imageSize / 8 + "px");
+                  $(".my-show > button").css(
+                    "font-size",
+                    imageSize / 10 + "px"
                   );
                 });
 
                 $(`#my-show-delete-button-${showId}`).click((e) => {
                   e.stopPropagation();
-                  if (confirm('찜한 작품을 삭제하시겠어요?')) {
+                  if (confirm("찜한 작품을 삭제하시겠어요?")) {
                     $.ajax({
                       url:
                         backURL +
                         `/myshow?showId=${showId}&memberId=${window.localStorage.getItem(
-                          'memberId'
+                          "memberId"
                         )}`,
-                      method: 'DELETE',
+                      method: "DELETE",
                       success: () => {
-                        alert('삭제되었습니다.');
+                        alert("삭제되었습니다.");
                         location.reload();
                       },
                     });
                   }
                 });
-                $('.my-show').mouseleave(() => {
-                  $('.my-show > button').css('display', 'none');
+                $(".my-show").mouseleave(() => {
+                  $(".my-show > button").css("display", "none");
                 });
 
                 if (index == showIdList.length - 1) {
                   $(`my-show-${showId}`).ready(() => {
                     if (showIdList.length > 5) {
-                      $('#my-show-left-arrow-icon').css('display', 'block');
-                      $('#my-show-right-arrow-icon').css('display', 'block');
+                      $("#my-show-left-arrow-icon").css("display", "block");
+                      $("#my-show-right-arrow-icon").css("display", "block");
                       // 찜 목록 슬라이드
                       initSlick();
-                      $('#my-show-right-arrow-icon').css('padding-left', '8px');
+                      $("#my-show-right-arrow-icon").css("padding-left", "8px");
                     } else {
-                      $('#my-show-container').css('display', 'flex');
-                      $('.my-show').css('display', 'flex');
-                      $('.my-show').css('flex-direction', 'column');
-                      $('.my-show').css('justify-content', 'center');
-                      $('.my-show').css('max-width', '20%');
+                      $("#my-show-container").css("display", "flex");
+                      $(".my-show").css("display", "flex");
+                      $(".my-show").css("flex-direction", "column");
+                      $(".my-show").css("justify-content", "center");
+                      $(".my-show").css("max-width", "20%");
                     }
                   });
                 }
@@ -129,14 +129,14 @@ $(() => {
 
       // 내 리뷰
       $.ajax({
-        url: backURL + '/memberreview',
-        method: 'GET',
-        data: `memberId=${window.localStorage.getItem('memberId')}`,
+        url: backURL + "/memberreview",
+        method: "GET",
+        data: `memberId=${window.localStorage.getItem("memberId")}`,
         success: (myReviewResponse) => {
-          if (myReviewResponse === '') {
-            $('#mypage-review-containers')
+          if (myReviewResponse === "") {
+            $("#mypage-review-containers")
               .prev()
-              .after('<p>작성된 리뷰가 없습니다</p>');
+              .after("<p>작성된 리뷰가 없습니다</p>");
           } else {
             let evaluationCount = myReviewResponse.length;
             let genreEvalutionCount = {
@@ -146,7 +146,7 @@ $(() => {
               4: 0,
               5: 0,
             };
-            const $mypageReviewContainers = $('#mypage-review-containers');
+            const $mypageReviewContainers = $("#mypage-review-containers");
 
             myReviewResponse.forEach((myReview, index) => {
               genreEvalutionCount[myReview.genreId] += 1;
@@ -200,14 +200,14 @@ $(() => {
                 <div class="mypage-review-line"></div>
               `);
                 $(`#mypage-review-delete-${myReview.reviewId}`).click((e) => {
-                  console.log('?');
-                  if (confirm('삭제하시겠습니까?')) {
+                  console.log("?");
+                  if (confirm("삭제하시겠습니까?")) {
                     $.ajax({
-                      url: backURL + '/deletereview',
-                      method: 'GET',
+                      url: backURL + "/deletereview",
+                      method: "GET",
                       data: `reviewId=${myReview.reviewId}`,
                       success: () => {
-                        alert('삭제되었습니다');
+                        alert("삭제되었습니다");
                         location.reload();
                       },
                     });
@@ -215,20 +215,20 @@ $(() => {
                 });
                 $(`#mypage-review-edit-${myReview.reviewId}`).click((e) => {
                   e.preventDefault();
-                  $('.popup').removeClass('hidden');
+                  $(".popup").removeClass("hidden");
                   $.ajax({
-                    url: backURL + '/review',
-                    method: 'GET',
+                    url: backURL + "/review",
+                    method: "GET",
                     data: `reviewId=${myReview.reviewId}`,
                     success: (reviewResponse) => {
                       let reviewGrade = Number(reviewResponse.reviewGrade) * 2;
                       $(`#rating${reviewGrade}`).click();
-                      $('.pop-detail').text(reviewResponse.reviewContent);
-                      $('.popup').attr('id', reviewResponse.reviewId);
+                      $(".pop-detail").text(reviewResponse.reviewContent);
+                      $(".popup").attr("id", reviewResponse.reviewId);
 
                       $.ajax({
-                        url: backURL + '/showdetail',
-                        method: 'GET',
+                        url: backURL + "/showdetail",
+                        method: "GET",
                         data: `showId=${myReview.showId}`,
                         success: (showReviewResponse) => {
                           let seatName = {};
@@ -236,22 +236,22 @@ $(() => {
                             if (seatName[showReview.seatId] == undefined) {
                               seatName[showReview.seatId] =
                                 showReview.seatName +
-                                ' (' +
+                                " (" +
                                 showReview.seatPrice.toLocaleString() +
-                                '원)';
+                                "원)";
                             }
                           });
 
-                          $('.pop-title').text(showReviewResponse[0].showName);
+                          $(".pop-title").text(showReviewResponse[0].showName);
                           Object.keys(seatName).forEach((seatId) => {
-                            $('#popup-seat-list').append(
+                            $("#popup-seat-list").append(
                               `<option value=${seatId}>${seatName[seatId]}</option>`
                             );
-                            $('#popup-seat-list').val(reviewResponse.seatId);
+                            $("#popup-seat-list").val(reviewResponse.seatId);
                           });
                         },
                       });
-                      $('.pop-title').text(reviewResponse.r);
+                      $(".pop-title").text(reviewResponse.r);
                     },
                   });
                 });
@@ -262,14 +262,14 @@ $(() => {
               <a id="mypage-view-more-review" href="/mypage/myreview">리뷰 더보기</a>
             `);
 
-            $('#mypage-evalution-count-value').text(evaluationCount);
+            $("#mypage-evalution-count-value").text(evaluationCount);
             for (let i = 1; i <= 5; i++) {
               $(`#mypage-evalution-count-value-${i}`).text(
                 genreEvalutionCount[i]
               );
             }
 
-            $('#mypage-review-info').append(
+            $("#mypage-review-info").append(
               `<div class="mypage-review-show-info">`
             );
           }
@@ -278,9 +278,9 @@ $(() => {
 
       // 선호 아티스트
       $.ajax({
-        url: backURL + '/myartist',
-        method: 'GET',
-        data: `memberId=${window.localStorage.getItem('memberId')}`,
+        url: backURL + "/myartist",
+        method: "GET",
+        data: `memberId=${window.localStorage.getItem("memberId")}`,
         success: (myShowResponseText) => {
           let myArtistList = myShowResponseText;
           // 2회 이상 관람한 아티스트 중 평점, 조회수가 높은 5명을 출력하되 모두 동일하면 DB에 저장된 순서로 출력
@@ -288,9 +288,9 @@ $(() => {
             (myArtist) => myArtist.myArtistViewCount >= 2
           );
           if (myArtistList.length == 0) {
-            $('#mypage-my-artist-containers')
+            $("#mypage-my-artist-containers")
               .prev()
-              .after('<p>선호하는 아티스트가 없습니다</p>');
+              .after("<p>선호하는 아티스트가 없습니다</p>");
             return;
           }
           if (myArtistList.length > 6) {
@@ -309,7 +309,7 @@ $(() => {
           myArtistList = myArtistList.slice(0, 6);
 
           myArtistList.forEach((myArtist) => {
-            const $myPageMyArtistContainers = $('#mypage-my-artist-containers');
+            const $myPageMyArtistContainers = $("#mypage-my-artist-containers");
             const $mypageArtistContainer = $(
               `<div class="mypage-my-artist-container">`
             );
@@ -342,31 +342,46 @@ $(() => {
     },
   });
 
-  $('#close-btn').click(() => {
+  $("#close-btn").click(() => {
     initPopup();
   });
 
-  $('#popup-regist-button').click(() => {
+  $("#popup-regist-button").click(() => {
     $.ajax({
       url:
         backURL +
-        `/updatereview?seatId=${$('#popup-seat-list').val()}&reviewId=${$(
-          '.popup'
-        ).attr('id')}&reviewContent=${$('.pop-detail').val()}&reviewGrade=${$(
+        `/updatereview?seatId=${$("#popup-seat-list").val()}&reviewId=${$(
+          ".popup"
+        ).attr("id")}&reviewContent=${$(".pop-detail").val()}&reviewGrade=${$(
           "input[name='reviewGrade']:checked"
         ).val()}`,
-      method: 'GET',
+      method: "GET",
       success: () => {
-        alert('수정되었습니다');
+        alert("수정되었습니다");
         location.reload();
       },
     });
     initPopup();
   });
+
+  // 검색 버튼 클릭 시
+  $("body").on("click", "#header-search-button", function (e) {
+    // e.preventDefault();
+    const value = $("#header-search-input").val();
+    location.href = `index.html?q=${value}`;
+  });
+
+  // 검색 입력 후 엔터
+  $("body").on("keydown", "#header-search-input", function (e) {
+    if (e.key == "Enter" || e.keyCode == "13") {
+      const value = $("#header-search-input").val();
+      location.href = `index.html?q=${value}`;
+    }
+  });
 });
 
 function initSlick() {
-  $('#my-show-container').slick({
+  $("#my-show-container").slick({
     dots: false,
     infinite: true,
     speed: 300,
@@ -388,13 +403,13 @@ function initSlick() {
         },
       },
     ],
-    prevArrow: '#my-show-left-arrow-icon',
-    nextArrow: '#my-show-right-arrow-icon',
+    prevArrow: "#my-show-left-arrow-icon",
+    nextArrow: "#my-show-right-arrow-icon",
   });
 }
 
 function initPopup() {
-  $('.pop-title').empty();
-  $('#popup-seat-list').empty();
-  $('.popup').addClass('hidden');
+  $(".pop-title").empty();
+  $("#popup-seat-list").empty();
+  $(".popup").addClass("hidden");
 }
