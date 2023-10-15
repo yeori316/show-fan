@@ -21,3 +21,7 @@ div.calendar-line {
 
   border: 1px solid var(--main2-color);
 }
+
+#calendar-container {
+  padding: 10px 10px;
+}
