@@ -8,7 +8,7 @@ $(() => {
   handleXhttps("GET", "../main/index.html", $("main"));
 
   // 회원가입 클릭 시
-  $("body").on("click", '.header-menu-link[href="signup.html"]', function (e) {
+  $("body").on("click", '.header-menu-link[href="signup"]', function (e) {
     e.preventDefault();
     handleXhttps("GET", "./signup/index.html", $("main"));
   });
