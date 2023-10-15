@@ -23,7 +23,7 @@ $(() => {
   // if 마이페이지 link clicked
   $("body").on("click", "#mypage", function (e) {
     e.preventDefault();
-    location.href = "mypage";
+    location.href = "../mypage/index.html";
   });
 
   // 내 정보 수정 클릭 시
