@@ -7,13 +7,15 @@ section {
   align-items: center;
 }
 
-#section-layout {
+main{
   width: 40%;
   margin: auto;
+  margin-left: 30%;
   margin-top: 50px;
   padding: 50px;
   border-style: solid;
   border-color: var(--main4-color);
+  padding: 50px;
 }
 
 button[type="submit"] {
