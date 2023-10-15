@@ -16,7 +16,7 @@ public class ShowCalendarController extends ShowController {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		response.setHeader("Access-Control-Allow-Origin", "http://127.0.0.1:5501");
+//		response.setHeader("Access-Control-Allow-Origin", "*");
 		response.setContentType("application/json;charset=utf-8");
 		
 		PrintWriter out = response.getWriter();	

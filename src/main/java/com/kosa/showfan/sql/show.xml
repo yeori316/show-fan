@@ -56,12 +56,20 @@
     </resultMap>
 
     <select id="selectByDate" resultMap="showCalendarMap" parameterType="string">
+        <!-- 해당 월에 진행하는 공연  
         SELECT a.artist_name, s.show_id, s.genre_id, s.show_name, s.show_venues, s.show_address,
         TO_CHAR(s.show_start_day, 'yyyy-mm-dd') show_start_day, TO_CHAR(s.show_end_day, 'yyyy-mm-dd') show_end_day
         FROM show s LEFT JOIN cast c ON s.show_id = c.show_id
         LEFT JOIN artist a ON c.artist_id = a.artist_id
-        WHERE TO_CHAR(s.show_start_day, 'yymm') = #{yymm} OR TO_CHAR(s.show_end_day, 'yymm') = #{yymm}
+        WHERE (TO_CHAR(s.show_start_day, 'yymm') = #{yymm} OR TO_CHAR(s.show_end_day, 'yymm') = #{yymm}) AND ROWNUM BETWEEN 1 AND 30
         ORDER BY s.show_start_day
+        -->
+        
+        SELECT s.show_status, s.show_id, s.genre_id, s.show_name, s.show_venues, s.show_address, TO_CHAR(s.show_start_day, 'yyyy-mm-dd') show_start_day, TO_CHAR(s.show_end_day, 'yyyy-mm-dd') show_end_day, a.artist_name
+FROM show s LEFT JOIN cast c ON s.show_id = c.show_id
+            LEFT JOIN artist a ON c.artist_id = a.artist_id
+WHERE (TO_CHAR(s.show_start_day, 'yymm') = '2310' OR TO_CHAR(s.show_end_day, 'yymm') = '2310') AND s.show_status != '공연완료'
+ORDER BY s.show_start_day
     </select>
 
     <insert id="insertMyShow" parameterType="MyShowDTO">
