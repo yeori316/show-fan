@@ -1,4 +1,5 @@
 import { handleXhttps, backURL } from "./util.js";
+// import { backURL } from '../util/util';
 
 $(() => {
   
@@ -73,9 +74,7 @@ $(() => {
       xhrFields: {
           withCredentials: true
       },
-      url: 'http://192.168.45.107:8888/showfan/sendmail',
-      // url: 'http://192.168.1.112:8888/showfan/sendmail',
-      // url: 'http://ec2-52-79-82-77.ap-northeast-2.compute.amazonaws.com:8080/showfan/',
+      url: backURL + '/sendmail',
       method: 'post',
       data: $inputEmail,
       success: (responseJSONObj) => {
@@ -114,9 +113,7 @@ $(() => {
       xhrFields: {
         withCredentials: true
       },
-      url: 'http://192.168.45.107:8888/showfan/nicknamedupchk',
-      // url: 'http://192.168.1.112:8888/showfan/nicknamedupchk',
-      // url: 'http://ec2-52-79-82-77.ap-northeast-2.compute.amazonaws.com:8080/showfan/',
+      url: backURL + '/nicknamedupchk',
       method: 'post',
       data: data,
       success: (responseJSONObj) => {
@@ -175,7 +172,7 @@ $(() => {
         xhrFields: {
           withCredentials: true
         },
-        url: `${backURL}`, 
+        url: backURL + '/signup',
         method: 'post',
         data: data,
         success: (responseJSONObj) => {

@@ -1,4 +1,5 @@
-import { backURL } from '../util/util';
+import { handleXhttps, backURL } from "../util/util.js";
+
 
 $(() => {
   const savedId = localStorage.getItem('savedId');
@@ -11,9 +12,9 @@ $(() => {
     $('input:checkbox[id=saveemail]').attr('checked', true);
   }
 
-  const saveEmailCheckbox = $('#saveemail').val();
   //----form객체에서 submit이벤트가 발생했을 때
   $('form').submit((e) => {
+    e.preventDefault();
     //아이디 저장 체크시
     if ($('#saveemail').prop('checked')) {
       localStorage.setItem('savedId', $('input[name=email]').val());
@@ -31,17 +32,20 @@ $(() => {
       xhrFields: {
         withCredentials: true,
       },
-      url: `${backURL}`,
+      url: backURL + '/login',
       method: 'POST',
       data: data,
       success: (responseJSONObj) => {
         if (responseJSONObj.status == 0) {
           //로그인실패인 경우
+          alert("로그인 실패: " + responseJSONObj.status)
           alert(responseJSONObj.msg);
         } else if (responseJSONObj.status == 1) {
           //로그인성공인 경우
+          alert("로그인 성공: " + responseJSONObj.status)
           location.href = './index.html';
         }
+        console.log(responseJSONObj); // 응답을 콘솔에 출력합니다.
       },
       error: (jqXHR, textStatus) => {
         //( jqXHR jqXHR, String textStatus, String errorThrown )
@@ -54,4 +58,3 @@ $(() => {
   });
   //----form객체에서 submit이벤트가 발생했을 때 할 일 END----
 });
-

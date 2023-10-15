@@ -1,13 +1,13 @@
 @import url("../util/base.css");
 /* var(--bs-body-font-family) */
-section {
+form {
   margin: 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-#section-layout {
+main{
   width: 40%;
   margin: auto;
   margin-top: 50px;

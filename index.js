@@ -10,13 +10,14 @@ $(() => {
   // 회원가입 클릭 시
   $("body").on("click", '.header-menu-link[href="signup.html"]', function (e) {
     e.preventDefault();
-    handleXhttps("GET", "../signup/index.html", $("main"));
+    handleXhttps("GET", "./signup/index.html", $("main"));
   });
 
   // 로그인 클릭 시
-  $("body").on("click", '.header-menu-link[href="login.html"]', function (e) {
+  $("body").on("click", '.header-menu-link[href="login"]', function (e) {
     e.preventDefault();
-    handleXhttps("GET", "../login/index.html", $("main"));
+    // location.href = `./login.index.html`
+    handleXhttps("GET", "./login/index.html", $("main"));
   });
 
   // if 마이페이지 link clicked
@@ -28,7 +29,8 @@ $(() => {
   // 내 정보 수정 클릭 시
   $("body").on("click", '.mypage-main-text[href="modify.html"]', function (e) {
     e.preventDefault();
-    handleXhttps("GET", "../modify/index.html", $("main"));
+    location.href = `./modify/index.html`
+    // handleXhttps("GET", "./modify/index.html", $("main"));
   });
 
   // 검색 시

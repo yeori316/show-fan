@@ -41,10 +41,10 @@ $(() => {
         xhrFields: {
           withCredentials: true,
         },
-        url: `${backURL}`,
+        url: backURL + '/logout',
         method: 'get',
         success: (responseJSONObj) => {
-          responseJSONObj = JSON.parse(responseJSONObj);
+          // responseJSONObj = JSON.parse(responseJSONObj);
           //로그아웃 성공시
           if (responseJSONObj.status == 1) {
             location.href = './index.html';
