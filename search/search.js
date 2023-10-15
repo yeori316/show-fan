@@ -16,13 +16,13 @@ $(() => {
   // 회원가입 클릭 시
   $("body").on("click", '.header-menu-link[href="signup"]', function (e) {
     e.preventDefault();
-    handleXhttps("GET", "../signup/index.html", $("main"));
+    location.href = "../signup/index.html";
   });
 
   // 로그인 클릭 시
   $("body").on("click", '.header-menu-link[href="login"]', function (e) {
     e.preventDefault();
-    handleXhttps("GET", "../login/index.html", $("main"));
+    location.href = "../login/index.html";
   });
 
   // if 마이페이지 link clicked
