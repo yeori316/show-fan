@@ -2,6 +2,68 @@ import { handleXhttps, backURL } from "../util/util.js";
 
 
 $(() => {
+
+  handleXhttps("GET", "../header/index.html", $("header"));
+  handleXhttps("GET", "../navigation/index.html", $("nav"));
+  handleXhttps("GET", "../footer/index.html", $("footer"));
+
+  // 회원가입 클릭 시
+  $("body").on("click", '#signup', function (e) {
+    e.preventDefault();
+    location.href = "../signup/index.html";
+    // handleXhttps("GET", "../signup/index.html", $("main"));
+  });
+
+  // 로그인 클릭 시
+  $("body").on("click", '#login', function (e) {
+    e.preventDefault();
+    location.href = "../login/index.html";
+    // handleXhttps("GET", "../login/index.html", $("main"));
+  });
+
+  // if 마이페이지 link clicked
+  $("body").on("click", '#mypage', function (e) {
+    e.preventDefault();
+    location.href = "mypage";
+  });
+
+  // 내 정보 수정 클릭 시
+  $("body").on("click", '#modify', function (e) {
+    e.preventDefault();
+    location.href = "../modify/index.html";
+    // handleXhttps("GET", "../modify/index.html", $("main"));
+  });
+
+  // 검색 버튼 클릭 시
+  $("body").on("click", "#header-search-button", function (e) {
+    // e.preventDefault();
+    const value = $("#header-search-input").val();
+    location.href = `../search/index.html?q=${value}`;
+  });
+
+  // 검색 입력 후 엔터
+  $("body").on("keydown", "#header-search-input", function (e) {
+    if (e.key == "Enter" || e.keyCode == "13") {
+      const value = $("#header-search-input").val();
+      location.href = `../search/index.html?q=${value}`;
+    }
+  });
+
+  // 캘린더 조회 시
+  $("body").on("click", "#navigation-calendar-button", function (e) {
+    location.href = "index.html";
+  });
+
+  // 장르 전체 선택
+  $("#genreAll").click((e) => {
+    if ($("#genreAll").is(":checked")) {
+      $("input[name=genre]").prop("checked", true);
+    } else {
+      $("input[name=genre]").prop("checked", false);
+    }
+  });
+
+
   const savedId = localStorage.getItem('savedId');
 
   //로컬 스토리지에 저장한 아이디 값이 있으면
@@ -38,12 +100,14 @@ $(() => {
       success: (responseJSONObj) => {
         if (responseJSONObj.status == 0) {
           //로그인실패인 경우
-          alert("로그인 실패: " + responseJSONObj.status)
+          alert("로그인 실패!")
+          // alert("로그인 실패: " + responseJSONObj.status)
           alert(responseJSONObj.msg);
         } else if (responseJSONObj.status == 1) {
           //로그인성공인 경우
-          alert("로그인 성공: " + responseJSONObj.status)
-          location.href = './index.html';
+          alert("로그인 성공! 메인 페이지로 이동합니다")
+          // alert("로그인 성공: " + responseJSONObj.status)
+          location.href = '../index.html';
         }
         console.log(responseJSONObj); // 응답을 콘솔에 출력합니다.
       },

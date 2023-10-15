@@ -1,7 +1,66 @@
-import { handleXhttps, backURL } from "./util.js";
-// import { backURL } from '../util/util';
+import { handleXhttps, backURL } from "../util/util.js";
 
 $(() => {
+
+  handleXhttps("GET", "../header/index.html", $("header"));
+  handleXhttps("GET", "../navigation/index.html", $("nav"));
+  handleXhttps("GET", "../footer/index.html", $("footer"));
+
+  // 회원가입 클릭 시
+  $("body").on("click", '#signup', function (e) {
+    e.preventDefault();
+    location.href = "../signup/index.html";
+    // handleXhttps("GET", "../signup/index.html", $("main"));
+  });
+
+  // 로그인 클릭 시
+  $("body").on("click", '#login', function (e) {
+    e.preventDefault();
+    location.href = "../login/index.html";
+    // handleXhttps("GET", "../login/index.html", $("main"));
+  });
+
+  // if 마이페이지 link clicked
+  $("body").on("click", '#mypage', function (e) {
+    e.preventDefault();
+    location.href = "mypage";
+  });
+
+  // 내 정보 수정 클릭 시
+  $("body").on("click", '#modify', function (e) {
+    e.preventDefault();
+    location.href = "../modify/index.html";
+    // handleXhttps("GET", "../modify/index.html", $("main"));
+  });
+
+  // 검색 버튼 클릭 시
+  $("body").on("click", "#header-search-button", function (e) {
+    // e.preventDefault();
+    const value = $("#header-search-input").val();
+    location.href = `../search/index.html?q=${value}`;
+  });
+
+  // 검색 입력 후 엔터
+  $("body").on("keydown", "#header-search-input", function (e) {
+    if (e.key == "Enter" || e.keyCode == "13") {
+      const value = $("#header-search-input").val();
+      location.href = `../search/index.html?q=${value}`;
+    }
+  });
+
+  // 캘린더 조회 시
+  $("body").on("click", "#navigation-calendar-button", function (e) {
+    location.href = "index.html";
+  });
+
+  // 장르 전체 선택
+  $("#genreAll").click((e) => {
+    if ($("#genreAll").is(":checked")) {
+      $("input[name=genre]").prop("checked", true);
+    } else {
+      $("input[name=genre]").prop("checked", false);
+    }
+  });
   
   const $inputEmail = $('input[name=email]'); //이메일 입력칸
   const $btCertifiedObj = $("form.signup>button[id=certify]"); //이메일 인증하기 버튼
@@ -75,13 +134,14 @@ $(() => {
           withCredentials: true
       },
       url: backURL + '/sendmail',
-      method: 'post',
+      method: 'POST',
       data: $inputEmail,
       success: (responseJSONObj) => {
           //메일 보내기 성공시
           if(responseJSONObj.status == 1){
             //이메일 인증 확인 버튼 눌렀을 경우
             $btEmailChkObj.click((e)=>{
+              console.log(responseJSONObj.status)
               if(responseJSONObj.msg == $EmailChkObj.val()){
                 $("#emailchk").text("이메일 인증이 성공하였습니다.");
                 emailchknum = 1
@@ -114,7 +174,7 @@ $(() => {
         withCredentials: true
       },
       url: backURL + '/nicknamedupchk',
-      method: 'post',
+      method: 'POST',
       data: data,
       success: (responseJSONObj) => {
          if(responseJSONObj.status == 1){
@@ -173,25 +233,26 @@ $(() => {
           withCredentials: true
         },
         url: backURL + '/signup',
-        method: 'post',
+        method: 'POST',
         data: data,
         success: (responseJSONObj) => {
            if(responseJSONObj.status == 1){
                 alert("회원가입 성공! 로그인 페이지로 이동합니다")
-                location.href="./index.html"
+                localStorage.removeItem('savedId');
+                location.href="../login/index.html"
            }
             else if(responseJSONObj.status == 0){
                 alert("회원가입 실패")
-                location.href="./index.html"
+                location.href="../index.html"
            }
         }
 
-      })
+      });
     }else{
       e.preventDefault();
-    }
+    };
 
-  })
+  });
   
 
 });

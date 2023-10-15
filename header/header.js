@@ -47,7 +47,7 @@ $(() => {
           // responseJSONObj = JSON.parse(responseJSONObj);
           //로그아웃 성공시
           if (responseJSONObj.status == 1) {
-            location.href = './index.html';
+            location.href = '../index.html';
           } else if (responseJSONObj.status == 0) {
             alert('쿠키 삭제 실패');
           } else {

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import { backURL, handleXhttps } from '../util/util.js';
-=======
 import { backURL } from "../util/util.js";
->>>>>>> front
 
 $(() => {
   const value = `; ${document.cookie}`;
