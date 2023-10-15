@@ -143,6 +143,7 @@ $(() => {
       {
         timeZone: "local",
         initialView: "dayGridMonth",
+        aspectRatio: 1.8,
         dayMaxEvents: true,
 
         // eventDidMount: function (info) {
