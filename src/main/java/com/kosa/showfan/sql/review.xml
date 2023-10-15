@@ -65,7 +65,8 @@
     <!-- 수정됨 추가, 작성시간은 최초 작성시간 -->
     <update id="updateReview" parameterType="ReviewDTO">
         UPDATE review
-        SET review_content = #{reviewContent}, REVIEW_IS_MODIFIED='1', review_grade = #{reviewGrade}
+        SET review_content = #{reviewContent}, REVIEW_IS_MODIFIED='1', review_grade = #{reviewGrade}, seat_id =
+        #{seatId}
         WHERE
         review_id = #{reviewId}
     </update>
