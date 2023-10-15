@@ -16,7 +16,6 @@ public class SelectReviewController extends ReviewController {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setHeader("Access-Control-Allow-Origin", "*");
 		response.setHeader("Access-Control-Allow-Credentials", "true");
 		response.setContentType("application/json;charset=utf-8");
 		PrintWriter out = response.getWriter();
@@ -26,6 +25,7 @@ public class SelectReviewController extends ReviewController {
 			Gson gson = new Gson();
 			String jsonResult = gson.toJson(result);
 			out.print(jsonResult);
+			System.out.println("showId= " + showId);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

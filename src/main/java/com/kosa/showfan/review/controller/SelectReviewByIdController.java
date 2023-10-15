@@ -1,27 +1,25 @@
 package com.kosa.showfan.review.controller;
 
 import com.google.gson.Gson;
-import com.kosa.showfan.review.dto.ReviewShowResponseDTO;
+import com.kosa.showfan.review.dto.ReviewDTO;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 
-public class MemberReviewController extends ReviewController {
-
+public class SelectReviewByIdController extends ReviewController {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setHeader("Access-Control-Allow-Credentials", "true");
         response.setContentType("application/json;charset=utf-8");
 
         PrintWriter out = response.getWriter();
-        Long memberId = Long.parseLong(request.getParameter("memberId"));
+        Long reviewId = Long.parseLong(request.getParameter("reviewId"));
 
         try {
-            List<ReviewShowResponseDTO> result = service.getSelectByMemberId(memberId);
+            ReviewDTO result = service.selectReviewById(reviewId);
             Gson gson = new Gson();
             String jsonResult = gson.toJson(result);
             out.print(jsonResult);

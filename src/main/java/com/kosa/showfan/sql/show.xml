@@ -55,13 +55,12 @@
         <collection column="artist_name" property="artistList" ofType="string"></collection>
     </resultMap>
 
-    <select id="selectByDate" resultMap="showCalendarMap" parameterType="string">
-        SELECT a.artist_name, s.show_id, s.genre_id, s.show_name, s.show_venues, s.show_address,
-        TO_CHAR(s.show_start_day, 'yyyy-mm-dd') show_start_day, TO_CHAR(s.show_end_day, 'yyyy-mm-dd') show_end_day
-        FROM show s LEFT JOIN cast c ON s.show_id = c.show_id
-        LEFT JOIN artist a ON c.artist_id = a.artist_id
-        WHERE TO_CHAR(s.show_start_day, 'yymm') = #{yymm} OR TO_CHAR(s.show_end_day, 'yymm') = #{yymm}
-        ORDER BY s.show_start_day
+    <select id="selectByDate" resultMap="showCalendarMap" parameterType="string">        
+        SELECT a.artist_name, s.show_id, s.genre_id, s.show_name, s.show_venues, s.show_address, TO_CHAR(s.show_start_day, 'yyyy-mm-dd') show_start_day, TO_CHAR(s.show_end_day, 'yyyy-mm-dd') show_end_day
+		FROM show s LEFT JOIN cast c ON s.show_id = c.show_id
+            		LEFT JOIN artist a ON c.artist_id = a.artist_id
+		WHERE TO_CHAR(s.show_start_day, 'yymm') = #{yymm} AND TO_CHAR(s.show_end_day, 'yymm') = #{yymm} AND ROWNUM BETWEEN 1 AND 50
+		ORDER BY s.show_start_day
     </select>
 
     <insert id="insertMyShow" parameterType="MyShowDTO">
