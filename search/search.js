@@ -62,7 +62,7 @@ $(() => {
     showListFilterHandler(showList);
   });
 
-  // 체크박스 필터링
+  // 전체 선택 체크박스
   $("#genreAll").click((e) => {
     allChkHandler($("#genreAll"), "genre");
   });
