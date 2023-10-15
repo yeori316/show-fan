@@ -96,4 +96,22 @@ public class ReviewDAOImpl implements ReviewDAO {
             session.close();
         }
     }
+
+    @Override
+    public ReviewDTO selectReviewById(Long reviewId) throws FindException {
+        SqlSession session = null;
+        try {
+            session = sqlSessionFactory.openSession();
+            ReviewDTO res = session.selectOne("com.kosa.showfan.review.ReviewMapper.selectReviewById", reviewId);
+            session.commit();
+            return res;
+        } catch (Exception e) {
+            session.rollback();
+            throw new FindException(e.getMessage());
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+    }
 }
