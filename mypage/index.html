@@ -43,15 +43,15 @@
     <nav>
       <div id="navigation-layout">
         <ol id="navigation-genre-container">
-          <li class="all"><a href="#">전체</a></li>
-          <li class="concert"><a href="#">콘서트</a></li>
-          <li class="musical"><a href="#">뮤지컬</a></li>
-          <li class="show"><a href="#">연극</a></li>
-          <li class="festival"><a href="#">축제</a></li>
-          <li class="classic"><a href="#">클래식</a></li>
+          <li class="all"><a href="/">전체</a></li>
+          <li class="concert"><a href="/genre">콘서트</a></li>
+          <li class="musical"><a href="/genre">뮤지컬</a></li>
+          <li class="show"><a href="/genre">연극</a></li>
+          <li class="festival"><a href="/genre">축제</a></li>
+          <li class="classic"><a href="/genre">클래식</a></li>
         </ol>
         <ol id="navigation-menu-container">
-          <li><a href="#" id="calendar-button">공연 캘린더</a></li>
+          <li><a href="/calenar" id="calendar-button">공연 캘린더</a></li>
         </ol>
       </div>
     </nav>
@@ -159,6 +159,90 @@
         <div id="mypage-accumulated-amount" class="mypage-main-text">
           지금까지 작품 관람에 총&nbsp;<span id="member-money-spend">0</span
           >원을 썼어요!
+        </div>
+      </div>
+      <div id="popup" class="popup hidden">
+        <div class="background"></div>
+        <div class="popup-box">
+          <i class="fa-solid fa-xmark" id="close-btn"></i>
+          <div id="popup-container">
+            <span class="pop-title">헬로빗의 첫 번째 모험<br /></span>
+            <select>
+              <option value="americano">아메리카노</option>
+              <option value="caffe latte">카페라테</option>
+              <option value="cafe au lait" selected>카페오레</option>
+              <option value="espresso">에스프레소</option>
+            </select>
+            <fieldset class="rate">
+              <input
+                type="radio"
+                id="rating10"
+                name="reviewGrade"
+                value="5"
+              /><label for="rating10" title="5점"></label>
+              <input
+                type="radio"
+                id="rating9"
+                name="reviewGrade"
+                value="4.5"
+              /><label class="half" for="rating9" title="4.5점"></label>
+              <input
+                type="radio"
+                id="rating8"
+                name="reviewGrade"
+                value="4"
+              /><label for="rating8" title="4점"></label>
+              <input
+                type="radio"
+                id="rating7"
+                name="reviewGrade"
+                value="3.5"
+              /><label class="half" for="rating7" title="3.5점"></label>
+              <input
+                type="radio"
+                id="rating6"
+                name="reviewGrade"
+                value="3"
+              /><label for="rating6" title="3점"></label>
+              <input
+                type="radio"
+                id="rating5"
+                name="reviewGrade"
+                value="2.5"
+              /><label class="half" for="rating5" title="2.5점"></label>
+              <input
+                type="radio"
+                id="rating4"
+                name="reviewGrade"
+                value="2"
+              /><label for="rating4" title="2점"></label>
+              <input
+                type="radio"
+                id="rating3"
+                name="reviewGrade"
+                value="1.5"
+              /><label class="half" for="rating3" title="1.5점"></label>
+              <input
+                type="radio"
+                id="rating2"
+                name="reviewGrade"
+                value="1"
+              /><label for="rating2" title="1점"></label>
+              <input
+                type="radio"
+                id="rating1"
+                name="reviewGrade"
+                value="0.5"
+              /><label class="half" for="rating1" title="0.5점"></label>
+            </fieldset>
+          </div>
+          <textarea class="pop-detail">
+            오늘은 헬로빗이 모험을 시작하는 첫 번째 날이에요! <br />헬로빗은
+            숲속을 탐험하며 우물쭈물하지 않고 앞으로 나아갑니다. <br />
+            새로운 친구들을 만나면서, 우리는 함께 재미있는 이야기를 나누었고, 그
+            모든 순간들을 헬로빗의 블로그에 기록하려고 합니다.
+          </textarea>
+          <button id="popup-regist-button">등록</button>
         </div>
       </div>
     </main>
