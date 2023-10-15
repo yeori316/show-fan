@@ -18,7 +18,6 @@ public class ShowSearchController extends ShowController {
 		
 //		response.setHeader("Access-Control-Allow-Origin", "*"); // "http://127.0.0.1:5500"
 		response.setContentType("application/json;charset=utf-8");
-		
 		PrintWriter out = response.getWriter();	
 		String value = request.getParameter("q");
 		String cpage = request.getParameter("p");
