@@ -1,11 +1,10 @@
 package com.kosa.showfan.show.dto;
 
 import java.sql.Date;
-import java.util.List;
 
-import com.kosa.showfan.reply.dto.ReplyDTO;
-import com.kosa.showfan.review.dto.ReviewDTO;
+import lombok.Data;
 
+@Data
 public class ShowAllInfoDTO {
 	private String showId;
 	private Long genreId;
