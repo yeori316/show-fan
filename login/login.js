@@ -51,7 +51,7 @@ $(() => {
 
   // 캘린더 조회 시
   $("body").on("click", "#navigation-calendar-button", function (e) {
-    location.href = "index.html";
+    location.href = "../calendar/index.html";
   });
 
   // 장르 전체 선택
