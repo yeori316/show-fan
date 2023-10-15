@@ -1,6 +1,8 @@
 package com.kosa.showfan.member.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
+import com.kosa.showfan.controller.Controller;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
@@ -10,32 +12,28 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class CookieServlet extends HttpServlet {
+public class CookieController extends HttpServlet implements Controller{
     private static final long serialVersionUID = 1L;
 
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	@Override
+	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         //응답형식
         response.setContentType("application/json;charset=utf-8");
 
         //크로스오리진 문제 해결
-        response.setHeader("Access-Control-Allow-Origin",
-                "*");
+        response.setHeader("Access-Control-Allow-Origin", "*");
         response.setHeader("Access-Control-Allow-Credentials", "true");
 
         //응답출력스트림얻기
         PrintWriter out = response.getWriter();
-
+        Gson gson = new Gson();
 
         ObjectMapper mapper = new ObjectMapper();
         Map<String, Object> map = new HashMap<>();
 
         HttpSession session = request.getSession();
-
-//				if(session.getAttribute("loginedEmail") != null) {
-//					session.removeAttribute("loginedEmail");
-//				}
 
 
         //지정한 쿠키이름
@@ -52,7 +50,9 @@ public class CookieServlet extends HttpServlet {
 
                 if (ck == true) {
                     String cookieEmail = cookies[i].getValue();
+                    
                     session.setAttribute("loginedEmail", cookieEmail);
+                    
                     map.put("status", 1);
                     map.put("msg", "로그인 성공");
                     break;
@@ -65,8 +65,9 @@ public class CookieServlet extends HttpServlet {
             map.put("msg", "로그인 실패");
         }
 
-        String jsonStr = mapper.writeValueAsString(map);
+        String jsonStr =gson.toJson(map);
         out.print(jsonStr);
-    }
+		
+	}
 
 }

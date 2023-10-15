@@ -10,6 +10,8 @@
 
     <typeAliases>
         <typeAlias alias="MemberDTO" type="com.kosa.showfan.member.dto.MemberDTO"/>
+        
+        <typeAlias alias="MyGenreDTO" type="com.kosa.showfan.myGenre.dto.MyGenreDTO"/>
 
         <typeAlias alias="ShowDTO" type="com.kosa.showfan.show.dto.ShowDTO"/>
         <typeAlias alias="ShowAllInfoDTO" type="com.kosa.showfan.show.dto.ShowAllInfoDTO"/>
@@ -25,6 +27,7 @@
         <typeAlias alias="ReplyResponseDTO" type="com.kosa.showfan.reply.dto.ReplyResponseDTO"/>
 
         <typeAlias alias="MyArtistDTO" type="com.kosa.showfan.artist.dto.MyArtistDTO"/>
+
     </typeAliases>
 
     <environments default="development">
@@ -40,11 +43,14 @@
     </environments>
 
     <mappers>
+    
         <mapper resource="com/kosa/showfan/sql/show.xml"/>
         <mapper resource="com/kosa/showfan/sql/review.xml"/>
         <mapper resource="com/kosa/showfan/sql/reply.xml"/>
         <mapper resource="com/kosa/showfan/sql/member.xml"/>
+        <mapper resource="com/kosa/showfan/sql/my-genre.xml"/>
         <mapper resource="com/kosa/showfan/sql/artist.xml"/>
+
     </mappers>
 
 </configuration>
