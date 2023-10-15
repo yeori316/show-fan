@@ -7,11 +7,10 @@ $(() => {
   if (parts.length === 2) {
     loginCookie = parts.pop().split(';').shift();
   }
-  // if (!loginCookie) {
-  //   alert('로그인 후 이용 가능합니다.');
-  //   history.back();
-  // }
-  loginCookie = 'easeon78@gmail.com';
+  if (!loginCookie) {
+    alert('로그인 후 이용 가능합니다.');
+    history.back();
+  }
 
   // 회원 정보 출력
   $.ajax({

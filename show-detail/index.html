@@ -18,7 +18,7 @@
 
     <!-- base -->
     <link rel="icon" href="../images/logo-icon.png" />
-    <link rel="stylesheet" href="util/base.css" />
+    <link rel="stylesheet" href="../util/base.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script
       src="https://kit.fontawesome.com/d9fe784aec.js"
@@ -44,6 +44,8 @@
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.js"></script>
 
     <script type="module" src="../show-detail/show-detail.js"></script>
+    <script type="module" src="../review/review.js"></script>
+    <link rel="stylesheet" href="../review/review.css" />
     <title>쇼팬</title>
     <style>
       .main {
@@ -199,7 +201,7 @@
         </div> -->
       </div>
       <div class="review_title">리뷰</div>
-      <button onclick="createReview()">리뷰 쓰기</button>
+      <button id="create-review">리뷰 쓰기</button>
       <ul id="review-list"></ul>
       <!-- 모달 시작-->
       <div id="myModal" class="modal">
@@ -211,7 +213,7 @@
               <option value="130,000" selected>R석 130,000원</option>
               <option value="80,000">S석 80,000원</option>
             </select>
-            <form id="reviewGrade" name="reviewGrade" method="post">
+            <div id="reviewGrade" name="reviewGrade">
               <fieldset class="rate">
                 <input
                   type="radio"
@@ -283,7 +285,7 @@
                 placeholder="감상평을 자유롭게 남겨주세요"
               ></textarea>
               <button type="submit" id="submitbutton">등록</button>
-            </form>
+            </div>
           </div>
         </div>
       </div>
