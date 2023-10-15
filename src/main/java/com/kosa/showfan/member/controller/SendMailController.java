@@ -35,8 +35,9 @@ public class SendMailController extends HttpServlet implements Controller {
         response.setContentType("application/json;charset=utf-8");
 
         //크로스오리진 문제 해결
-        response.setHeader("Access-Control-Allow-Origin", "*");
-        response.setHeader("Access-Control-Allow-Credentials", "true");
+//      response.setHeader("Access-Control-Allow-Origin", "*");
+//      response.setHeader("Access-Control-Allow-Origin", "http://127.0.0.1:5558");
+      response.setHeader("Access-Control-Allow-Credentials", "true");
 
         //응답출력스트림얻기
         PrintWriter out = response.getWriter();
