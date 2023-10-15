@@ -50,4 +50,6 @@ public interface ReviewDAO {
      * @throws RemoveException
      */
     void deleteReview(Long reviewId) throws RemoveException;
+
+    ReviewDTO selectReviewById(Long reviewId) throws FindException;
 }

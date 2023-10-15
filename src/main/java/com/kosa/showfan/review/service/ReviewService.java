@@ -47,4 +47,8 @@ public class ReviewService {
             e.printStackTrace();
         }
     }
+
+    public ReviewDTO selectReviewById(Long reviewId) throws FindException {
+        return reviewDAO.selectReviewById(reviewId);
+    }
 }
