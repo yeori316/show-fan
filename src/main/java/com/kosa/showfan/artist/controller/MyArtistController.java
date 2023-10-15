@@ -1,10 +1,10 @@
-package com.kosa.showfan.myArtist.controller;
+package com.kosa.showfan.artist.controller;
 
 import com.google.gson.Gson;
+import com.kosa.showfan.artist.dto.MyArtistDTO;
+import com.kosa.showfan.artist.service.MyArtistService;
 import com.kosa.showfan.controller.Controller;
 import com.kosa.showfan.exception.FindException;
-import com.kosa.showfan.myArtist.dto.MyArtistDTO;
-import com.kosa.showfan.myArtist.service.MyArtistService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,6 +21,8 @@ public class MyArtistController implements Controller {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        response.setContentType("application/json;charset=utf-8");
+        
         if (request.getMethod().equals("GET")) {
             PrintWriter out = response.getWriter();
             Gson gson = new Gson();
