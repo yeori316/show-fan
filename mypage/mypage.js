@@ -378,11 +378,6 @@ $(() => {
       location.href = `../search/index.html?q=${value}`;
     }
   });
-
-  // 캘린더 조회 시
-  $("body").on("click", "#navigation-calendar-button", function (e) {
-    location.href = "../calendar/index.html";
-  });
 });
 
 function initSlick() {
