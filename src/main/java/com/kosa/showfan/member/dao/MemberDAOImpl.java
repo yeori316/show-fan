@@ -145,24 +145,33 @@ public class MemberDAOImpl implements MemberDAO {
 			session = sqlSessionFactory.openSession();
 			Map<String, Object> map = new HashMap<>();
 			
+			//memberid를 얻어오기 위한 작업
 			MemberDTO member = selectByEmail(m.getMemberEmail());
+			
 			member.setMemberPwd(m.getMemberPwd());
 			member.setMemberNickname(m.getMemberNickname());
 			member.setMemberEmailAlert(m.getMemberEmailAlert());
 			
+			System.out.println(member.getMemberId());
+			System.out.println(member.getMemberPwd());
+			System.out.println(member.getMemberNickname());
+			System.out.println(member.getMemberEmailAlert());
 			map.put("id", member.getMemberId());
 			map.put("pwd", member.getMemberPwd());
 			map.put("nickname", member.getMemberNickname());
 			map.put("emailr", member.getMemberEmailAlert());
 			session.update("com.kosa.showfan.MemberMapper.updateMember", map);
+			session.commit();
 			map.clear();
 			
+			session.delete("com.kosa.showfan.MyGenreMapper.deleteMyGenre", member.getMemberId());
+			session.commit();
 			//선호장르 테이블 업데이트
 			for (int i = 0; i < genreList.size(); i++) {
 			    Long genreId = genreList.get(i);
 			    map.put("member_id", member.getMemberId());
 			    map.put("genre_id", genreId);
-			    session.update("com.kosa.showfan.MyGenreMapper.updateMyGenre", map);
+			    session.insert("com.kosa.showfan.MyGenreMapper.insertMyGenre", map);
 			    map.clear();
 			}
 			session.commit();

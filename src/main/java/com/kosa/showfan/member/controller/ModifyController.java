@@ -32,7 +32,8 @@ public class ModifyController extends HttpServlet implements Controller{
         response.setContentType("application/json;charset=utf-8");
 
         //크로스오리진 문제 해결
-        response.setHeader("Access-Control-Allow-Origin", "*");
+//        response.setHeader("Access-Control-Allow-Origin", "*");
+        response.setHeader("Access-Control-Allow-Origin", "http://127.0.0.1:5558");
         response.setHeader("Access-Control-Allow-Credentials", "true");
 
         //응답출력스트림얻기
@@ -41,7 +42,10 @@ public class ModifyController extends HttpServlet implements Controller{
         
         Map<String, Object> map = new HashMap<>();
         
+        //프론트에서 쿠키의 이메일값을 얻어와 보낸 값(아이디를 얻기 위함)
         String email = request.getParameter("email");
+        
+        //변경할값
         String pwd = request.getParameter("pwd");
         String nickname = request.getParameter("nickname");
         String emailr = request.getParameter("emailr");
