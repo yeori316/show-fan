@@ -11,15 +11,13 @@ $(() => {
   // 회원가입 클릭 시
   $("body").on("click", "#signup", function (e) {
     e.preventDefault();
-    // location.href = "../signup/index.html";
-    handleXhttps("GET", "../signup/index.html", $("main"));
+    location.href = "../signup/index.html";
   });
 
   // 로그인 클릭 시
   $("body").on("click", "#login", function (e) {
     e.preventDefault();
-    // location.href = "../login/index.html";
-    handleXhttps("GET", "../login/index.html", $("main"));
+    location.href = "../login/index.html";
   });
 
   // if 마이페이지 link clicked
@@ -74,18 +72,14 @@ $(() => {
   });
 
   // 체크박스 필터
-  //   $(".form-check-input").click((e) => {
-  //     eventListFilterHandler(showList);
-  //   });
-  // 체크박스 필터 끝
+  $(".form-check-input").click((e) => {
+    eventListFilterHandler(showList);
+  });
 
   const todate = new Date();
   const toyear = todate.getFullYear();
   const month = todate.getMonth() + 1;
   const year = ("" + toyear).substring(2);
-
-  console.log(year);
-  console.log(month);
 
   calendarAjaxHandler(year, month);
 
@@ -101,7 +95,16 @@ $(() => {
       }
     });
 
-    // calendarAddEventHandler(eventFilterList);
+    // show list 지역체크 필터
+    $("input:checkbox[name=local]").each((index, e) => {
+      if (!$(e).is(":checked")) {
+        eventFilterList = eventFilterList.filter(function (s) {
+          return s.showAddress.indexOf($(e).val()) == -1;
+        });
+      }
+    });
+
+    render(eventFilterList);
   }
 
   function calendarAjaxHandler(year, month) {
@@ -110,9 +113,6 @@ $(() => {
       method: "GET",
       success: (responseJSONObj) => {
         showList = responseJSONObj.show;
-
-        console.log("ajaxHandler call 1");
-        console.log(showList);
 
         calendarHandler();
       },
@@ -128,9 +128,6 @@ $(() => {
       method: "GET",
       success: (responseJSONObj) => {
         showList = responseJSONObj.show;
-
-        console.log("ajaxHandler call 2");
-        console.log(showList);
 
         render(showList);
       },
@@ -183,51 +180,57 @@ $(() => {
     $("button.fc-today-button").click((e) => {
       const cdate = new Date(calendar.getDate());
       const cyear = cdate.getFullYear();
-      const month = cdate.getMonth() + 1;
       const year = ("" + cyear).substring(2);
 
-      console.log(year + " " + month);
-      // $("#calendar-container").html("");
-      // dataAjaxHandler(year, month, date);
-      // render();
+      const cmonth = cdate.getMonth() + 1;
+      let month = "" + cmonth;
 
-      console.log("today bt");
+      if (month.length == 1) {
+        month = "0" + month;
+      }
+
+      dataAjaxHandler(year, month);
+      // console.log("today bt");
     });
 
     $("button.fc-prev-button").click((e) => {
       const cdate = new Date(calendar.getDate());
       const cyear = cdate.getFullYear();
-      const month = cdate.getMonth() + 1;
       const year = ("" + cyear).substring(2);
 
-      console.log(year + "/" + month + "/" + date);
-      // $("#calendar-container").html("");
-      // dataAjaxHandler(year, month, date);
-      // render();
+      const cmonth = cdate.getMonth() + 1;
+      let month = "" + cmonth;
 
-      console.log("pre bt");
+      if (month.length == 1) {
+        month = "0" + month;
+      }
+
+      dataAjaxHandler(year, month);
+      // console.log("pre bt");
     });
 
     $("button.fc-next-button").click((e) => {
       const cdate = new Date(calendar.getDate());
       const cyear = cdate.getFullYear();
-      const month = cdate.getMonth() + 1;
       const year = ("" + cyear).substring(2);
 
-      console.log(year + "/" + month + "/" + date);
-      // $("#calendar-container").html("");
-      // dataAjaxHandler(year, month, date);
-      // render();
+      const cmonth = cdate.getMonth() + 1;
+      let month = "" + cmonth;
 
-      console.log("nxt bt");
+      if (month.length == 1) {
+        month = "0" + month;
+      }
+
+      dataAjaxHandler(year, month);
+      // console.log("nxt bt");
     });
   }
 
   function render(showList) {
     const eventList = showList;
 
+    calendar.removeAllEvents();
     calendar.render(
-      console.log("렌더링"),
       $(eventList).each((index, s) => {
         const showId = s.showId;
         const genreId = s.genreId;
