@@ -7,12 +7,10 @@ $(() => {
   if (parts.length === 2) {
     loginCookie = parts.pop().split(';').shift();
   }
-  // console.log(loginCookie);
   // if (!loginCookie) {
   //   alert('로그인 후 이용 가능합니다.');
   //   history.back();
   // }
-  // loginCookie = 'emaila';
   loginCookie = 'easeon78@gmail.com';
 
   // 회원 정보 출력
@@ -162,8 +160,8 @@ $(() => {
                   src="${myReview.showPoster}"
                   alt="review-show-post"
                   class="mypage-review-post"
-                  onclick="location.href='/html/show_detail.html?showname=${
-                    myReview.showName
+                  onclick="location.href='/show-detail?showId=${
+                    myReview.showId
                   }'"}
                 />
                 <div class="mypage-review-info">
@@ -189,11 +187,11 @@ $(() => {
                 </div>
                 <div id="mypage-review-button">
                   <a id="mypage-review-edit-${
-                    myReview.showId
+                    myReview.reviewId
                   }" href="#">수정</a>
                   <i class="fa-solid fa-slash mypage-review-line-icon"></i>
                   <a id="mypage-review-delete-${
-                    myReview.showId
+                    myReview.reviewId
                   }" href="#">삭제</a>
                 </div>
               `);
@@ -202,12 +200,61 @@ $(() => {
                 $mypageReviewContainers.append(`
                 <div class="mypage-review-line"></div>
               `);
-
+                $(`#mypage-review-delete-${myReview.reviewId}`).click((e) => {
+                  console.log('?');
+                  if (confirm('삭제하시겠습니까?')) {
+                    $.ajax({
+                      url: backURL + '/deletereview',
+                      method: 'GET',
+                      data: `reviewId=${myReview.reviewId}`,
+                      success: () => {
+                        alert('삭제되었습니다');
+                        location.reload();
+                      },
+                    });
+                  }
+                });
                 $(`#mypage-review-edit-${myReview.reviewId}`).click((e) => {
                   e.preventDefault();
                   $('.popup').removeClass('hidden');
-                  $.ajax;
-                  console.log('?');
+                  $.ajax({
+                    url: backURL + '/review',
+                    method: 'GET',
+                    data: `reviewId=${myReview.reviewId}`,
+                    success: (reviewResponse) => {
+                      let reviewGrade = Number(reviewResponse.reviewGrade) * 2;
+                      $(`#rating${reviewGrade}`).click();
+                      $('.pop-detail').text(reviewResponse.reviewContent);
+                      $('.popup').attr('id', reviewResponse.reviewId);
+
+                      $.ajax({
+                        url: backURL + '/showdetail',
+                        method: 'GET',
+                        data: `showId=${myReview.showId}`,
+                        success: (showReviewResponse) => {
+                          let seatName = {};
+                          showReviewResponse.forEach((showReview) => {
+                            if (seatName[showReview.seatId] == undefined) {
+                              seatName[showReview.seatId] =
+                                showReview.seatName +
+                                ' (' +
+                                showReview.seatPrice.toLocaleString() +
+                                '원)';
+                            }
+                          });
+
+                          $('.pop-title').text(showReviewResponse[0].showName);
+                          Object.keys(seatName).forEach((seatId) => {
+                            $('#popup-seat-list').append(
+                              `<option value=${seatId}>${seatName[seatId]}</option>`
+                            );
+                            $('#popup-seat-list').val(reviewResponse.seatId);
+                          });
+                        },
+                      });
+                      $('.pop-title').text(reviewResponse.r);
+                    },
+                  });
                 });
               }
             });
@@ -297,7 +344,25 @@ $(() => {
   });
 
   $('#close-btn').click(() => {
-    $('.popup').addClass('hidden');
+    initPopup();
+  });
+
+  $('#popup-regist-button').click(() => {
+    $.ajax({
+      url:
+        backURL +
+        `/updatereview?seatId=${$('#popup-seat-list').val()}&reviewId=${$(
+          '.popup'
+        ).attr('id')}&reviewContent=${$('.pop-detail').val()}&reviewGrade=${$(
+          "input[name='reviewGrade']:checked"
+        ).val()}`,
+      method: 'GET',
+      success: () => {
+        alert('수정되었습니다');
+        location.reload();
+      },
+    });
+    initPopup();
   });
 });
 
@@ -327,4 +392,10 @@ function initSlick() {
     prevArrow: '#my-show-left-arrow-icon',
     nextArrow: '#my-show-right-arrow-icon',
   });
+}
+
+function initPopup() {
+  $('.pop-title').empty();
+  $('#popup-seat-list').empty();
+  $('.popup').addClass('hidden');
 }
