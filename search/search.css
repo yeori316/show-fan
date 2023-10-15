@@ -36,7 +36,7 @@ div.search-line {
 
 #btn_top {
   position: fixed;
-  right: 20px;
+  right: 40px;
   bottom: 40px;
   z-index: 999;
   opacity: 0.5;

@@ -62,7 +62,7 @@ $(() => {
     showListFilterHandler(showList);
   });
 
-  // 체크박스 필터링
+  // 전체 선택 체크박스
   $("#genreAll").click((e) => {
     allChkHandler($("#genreAll"), "genre");
   });
@@ -226,7 +226,7 @@ $(() => {
 
         $copyShow
           .find("a")
-          .attr("href", `${frontURL}/show_detail.html?showId=${showId}`);
+          .attr("href", `${frontURL}/show-detail/index.html?showId=${showId}`);
         $copyShow.find("img").attr("src", showImage).attr("title", showName);
 
         if (showStatus == "공연완료") {
@@ -283,7 +283,7 @@ $(() => {
 
       $copyShow
         .find("a")
-        .attr("href", `${frontURL}/show_detail.html?showId=${showId}`);
+        .attr("href", `../show_detail/index.html?showId=${showId}`);
       $copyShow.find("img").attr("src", showImage).attr("title", showName);
 
       if (showStatus == "공연완료") {
