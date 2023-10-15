@@ -74,51 +74,20 @@ $(() => {
   //   });
   // 체크박스 필터 끝
 
-  // ajaxHandler("23", "10");
-  calendarHandler();
-
-  // event list 장르체크 필터
-  function eventListFilterGenreHandler(showList, $filterChk, genreId) {
-    var eventFilterList = showList;
-
-    if (!$filterChk.is(":checked")) {
-      eventFilterList = eventFilterList.filter(function (s) {
-        return s.genreId != genreId;
-      });
-    }
-    return eventFilterList;
-  }
-
-  // event list 장르체크 필터 끝
+  ajaxHandler("23", "10");
+  // calendarHandler();
 
   function eventListFilterHandler(showList) {
     var eventFilterList = showList;
 
-    eventFilterList = eventListFilterGenreHandler(
-      eventFilterList,
-      $("#theater"),
-      theaterId
-    );
-    eventFilterList = eventListFilterGenreHandler(
-      eventFilterList,
-      $("#musical"),
-      musicalId
-    );
-    eventFilterList = eventListFilterGenreHandler(
-      eventFilterList,
-      $("#classic"),
-      classicId
-    );
-    eventFilterList = eventListFilterGenreHandler(
-      eventFilterList,
-      $("#concert"),
-      concertId
-    );
-    eventFilterList = eventListFilterGenreHandler(
-      eventFilterList,
-      $("#festival"),
-      festivalId
-    );
+    // event list 장르체크 필터
+    $("input:checkbox[name=genre]").each((index, e) => {
+      if (!$(e).is(":checked")) {
+        eventFilterList = eventFilterList.filter(function (s) {
+          return s.genreId != $(e).val();
+        });
+      }
+    });
 
     // calendarAddEventHandler(eventFilterList);
   }
@@ -147,6 +116,7 @@ $(() => {
       {
         timeZone: "local",
         initialView: "dayGridMonth",
+        dayMaxEvents: true,
 
         // eventDidMount: function (info) {
         //   var tooltip = new Tooltip(info.el, {
@@ -207,7 +177,7 @@ $(() => {
           const showStartDay = s.showStartDay;
           const showEndDay = s.showEndDay;
           const artistList = s.artistList;
-          const showDetailUrl = `../index.html?q=${showId}`;
+          const showDetailUrl = `../show-detail/index.html?showId=${showId}`;
           let showColor;
 
           if (genreId == 1) {
@@ -224,17 +194,11 @@ $(() => {
             showColor = "black"; // 기타
           }
 
-          if (genreId == 1) {
-            $("#theater").prop("checked", true);
-          } else if (genreId == 2) {
-            $("#musical").prop("checked", true);
-          } else if (genreId == 3) {
-            $("#classic").prop("checked", true);
-          } else if (genreId == 4) {
-            $("#concert").prop("checked", true);
-          } else if (genreId == 5) {
-            $("#festival").prop("checked", true);
-          }
+          $("input:checkbox[name=genre]").each((index, e) => {
+            if (genreId == $(e).val()) {
+              $(e).prop("checked", true);
+            }
+          });
 
           calendar.addEvent({
             id: showId,
@@ -266,8 +230,8 @@ $(() => {
       const month = date.getMonth() + 1;
       console.log(year);
       console.log(month);
-      ajaxHandler(year - 2000, month);
-      render();
+      // ajaxHandler(year - 2000, month);
+      // render();
 
       console.log("today bt");
     });
@@ -278,8 +242,8 @@ $(() => {
       const month = date.getMonth() + 1;
       console.log(year);
       console.log(month);
-      ajaxHandler(year - 2000, month);
-      render();
+      // ajaxHandler(year - 2000, month);
+      // render();
 
       console.log("pre bt");
     });
@@ -290,8 +254,8 @@ $(() => {
       const month = date.getMonth() + 1;
       console.log(year);
       console.log(month);
-      ajaxHandler(year - 2000, month);
-      render();
+      // ajaxHandler(year - 2000, month);
+      // render();
 
       console.log("nxt bt");
     });

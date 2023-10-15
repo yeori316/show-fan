@@ -3,6 +3,21 @@
   <head>
     <title>Show Calendar</title>
 
+    <!--bootstrap-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+
+    <!-- fullcalendar -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.js"></script>
+
     <!-- base -->
     <link rel="icon" href="../images/logo-icon.png" />
     <link rel="stylesheet" href="../util/base.css" />
@@ -12,14 +27,6 @@
       crossorigin="anonymous"
     ></script>
 
-    <!-- fullcalendar -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.css"
-      rel="stylesheet"
-    />
-    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.js"></script>
-
-    <link rel="stylesheet" href="../search/search.css" />
     <link rel="stylesheet" href="./calendar.css" />
     <script type="module" src="./calendar.js"></script>
   </head>
@@ -37,9 +44,7 @@
                   <input
                     class="form-check-input"
                     type="checkbox"
-                    value="all"
                     id="genreAll"
-                    name="genre"
                   />
                   <label class="form-check-label" for="genreAll"> 전체 </label>
                 </div>
@@ -49,7 +54,7 @@
                   <input
                     class="form-check-input"
                     type="checkbox"
-                    value="concert"
+                    value="4"
                     id="concert"
                     name="genre"
                   />
@@ -60,7 +65,7 @@
                   <input
                     class="form-check-input"
                     type="checkbox"
-                    value="musical"
+                    value="2"
                     id="musical"
                     name="genre"
                   />
@@ -71,7 +76,7 @@
                   <input
                     class="form-check-input"
                     type="checkbox"
-                    value="theater"
+                    value="1"
                     id="theater"
                     name="genre"
                   />
@@ -82,7 +87,7 @@
                   <input
                     class="form-check-input"
                     type="checkbox"
-                    value="festival"
+                    value="5"
                     id="festival"
                     name="genre"
                   />
@@ -93,7 +98,7 @@
                   <input
                     class="form-check-input"
                     type="checkbox"
-                    value="classic"
+                    value="3"
                     id="classic"
                     name="genre"
                   />
