@@ -41,7 +41,9 @@ public class DispatcherServlet extends HttpServlet {
 
 //        System.out.println("request.getServletPath()=" + request.getServletPath());
 
+
 //        response.setHeader("Access-Control-Allow-Origin", "http://localhost:5558, http://127.0.0.1:5558, 'http://show-fan.s3-website.ap-northeast-2.amazonaws.com");
+
         response.setHeader("Access-Control-Allow-Origin", "http://127.0.0.1:5558");
         response.setHeader("Access-Control-Allow-Credentials", "true");
 

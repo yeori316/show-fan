@@ -23,6 +23,7 @@
 		<description></description>
 		<servlet-class>com.kosa.showfan.review.controller.ShowReviewController</servlet-class>
 	</servlet>
+
 	
     
     <servlet-mapping>
@@ -37,6 +38,7 @@
 		<servlet-name>ShowReviewController</servlet-name>
 		<url-pattern>/showreview</url-pattern>
 	</servlet-mapping>
+
     
 
 </web-app>

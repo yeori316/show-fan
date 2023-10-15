@@ -32,6 +32,8 @@ public interface MemberDAO {
      * @throws FindException
      */
 	public String selectByNickName(String nickname) throws FindException;
+	
+	public void updateMember(MemberDTO m, List<Long> genreList) throws Exception;
 
     public MemberDTO selectByEmail(String email) throws FindException;
 }

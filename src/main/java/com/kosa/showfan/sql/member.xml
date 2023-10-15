@@ -26,5 +26,16 @@
 	from member
 	where member_nickname = #{nickname}
   </select>
+  
+	<update id="updateMember" parameterType="hashmap">
+	   update member 
+	   SET 
+	       member_pwd = #{pwd}, 
+	       member_nickname = #{nickname}, 
+	       member_email_alert = #{emailr}
+	   WHERE member_id = #{id}
+	</update>
+
+  
 
 </mapper>

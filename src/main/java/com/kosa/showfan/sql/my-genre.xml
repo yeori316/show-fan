@@ -11,9 +11,14 @@
   </select>
  
   <insert id="insertMyGenre" parameterType="hashmap">
-  insert into my_genre(member_id, genre_id)
-  values (#{member_id}, #{genre_id})
+  	insert into my_genre(member_id, genre_id)
+ 	values (#{member_id}, #{genre_id})
   </insert>
+  
+  <delete id="deleteMyGenre">
+ 	delete from my_genre
+	where member_id = #{member_id}
+  </delete>
   
 
 </mapper>

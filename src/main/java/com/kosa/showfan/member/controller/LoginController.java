@@ -26,8 +26,7 @@ public class LoginController extends HttpServlet implements Controller {
 		//응답형식
         response.setContentType("application/json;charset=utf-8");
 
-        //크로스오리진 문제 해결
-//        response.setHeader("Access-Control-Allow-Origin", "*");
+
         response.setHeader("Access-Control-Allow-Credentials", "true");
 
         //응답출력스트림얻기
