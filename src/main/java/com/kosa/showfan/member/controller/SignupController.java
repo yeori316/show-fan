@@ -32,12 +32,13 @@ public class SignupController extends HttpServlet implements Controller {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//응답형식
+		response.setContentType("application/json;charset=utf-8");
+		
         //크로스오리진 문제 해결
         response.setHeader("Access-Control-Allow-Origin", "*");
         response.setHeader("Access-Control-Allow-Credentials", "true");
         
-        //응답형식
-        response.setContentType("application/json;charset=utf-8");
         //응답출력스트림얻기
         PrintWriter out = response.getWriter();
         Gson gson = new Gson();
