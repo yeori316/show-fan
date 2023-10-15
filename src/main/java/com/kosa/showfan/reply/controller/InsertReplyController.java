@@ -17,9 +17,10 @@ public class InsertReplyController extends ReplyController {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setHeader("Access-Control-Allow-Origin", "http://192.168.3.103:5500");
+		
 		response.setHeader("Access-Control-Allow-Credentials", "true");
 		response.setContentType("application/json;charset=utf-8");
+		
 		Long reviewId = Long.parseLong(request.getParameter("reviewId"));
 		Long memberId = Long.parseLong(request.getParameter("memberId"));
 		String replyContent = request.getParameter("replyContent");
