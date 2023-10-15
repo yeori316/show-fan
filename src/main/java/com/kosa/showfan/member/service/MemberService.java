@@ -61,7 +61,10 @@ public class MemberService {
 		String num = member.selectByNickName(nickname);
 		return num;
 		
-		
+	}
+	
+	public void modify(MemberDTO m, List<Long> genreList) throws Exception{
+		member.updateMember(m, genreList);
 	}
     
 	

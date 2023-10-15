@@ -137,6 +137,47 @@ public class MemberDAOImpl implements MemberDAO {
 		}
 		
 	}
+	
+	@Override
+	public void updateMember(MemberDTO m, List<Long> genreList) throws Exception {
+		SqlSession session = null;
+		try {
+			session = sqlSessionFactory.openSession();
+			Map<String, Object> map = new HashMap<>();
+			
+			MemberDTO member = selectByEmail(m.getMemberEmail());
+			member.setMemberPwd(m.getMemberPwd());
+			member.setMemberNickname(m.getMemberNickname());
+			member.setMemberEmailAlert(m.getMemberEmailAlert());
+			
+			map.put("id", member.getMemberId());
+			map.put("pwd", member.getMemberPwd());
+			map.put("nickname", member.getMemberNickname());
+			map.put("emailr", member.getMemberEmailAlert());
+			session.update("com.kosa.showfan.MemberMapper.updateMember", map);
+			map.clear();
+			
+			//선호장르 테이블 업데이트
+			for (int i = 0; i < genreList.size(); i++) {
+			    Long genreId = genreList.get(i);
+			    map.put("member_id", member.getMemberId());
+			    map.put("genre_id", genreId);
+			    session.update("com.kosa.showfan.MyGenreMapper.updateMyGenre", map);
+			    map.clear();
+			}
+			session.commit();
+		}catch(Exception e) {
+			e.printStackTrace();
+			session.rollback();
+			throw new Exception("업데이트 하지 못했습니다");
+		}finally {
+			if(session != null) {
+				session.close();
+			}
+		}
+		
+		
+	}
     
     
     @Override
@@ -155,5 +196,7 @@ public class MemberDAOImpl implements MemberDAO {
             }
         }
     }
+
+
 
 }
