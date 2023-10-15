@@ -49,13 +49,16 @@ public class LoginController extends HttpServlet implements Controller {
                 Cookie cookie = new Cookie("loginCookie", (String) session.getAttribute("loginedEmail"));
                 cookie.setMaxAge(60 * 60 * 24 * 7); // 단위는 (초)임으로 7일정도로 유효시간을 설정해 준다.
                 cookie.setPath("/"); //모든 경로에서 접근 가능하도록 설정
+                cookie.setHttpOnly(false);
                 // 쿠키 적용
                 response.addCookie(cookie);
+                
 
             } else { //자동로그인을 체크 안한 경우
                 Cookie cookie = new Cookie("loginCookie", (String) session.getAttribute("loginedEmail"));
 //				cookie.setMaxAge(60*60*24*7); // 단위는 (초)임으로 7일정도로 유효시간을 설정해 준다.
                 cookie.setPath("/"); //모든 경로에서 접근 가능하도록 설정
+                cookie.setHttpOnly(false);
                 // 쿠키 적용
                 response.addCookie(cookie);
             }

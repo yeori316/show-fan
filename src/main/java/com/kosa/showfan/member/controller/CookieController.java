@@ -21,7 +21,6 @@ public class CookieController extends HttpServlet implements Controller{
 
         //응답형식
         response.setContentType("application/json;charset=utf-8");
-
         response.setHeader("Access-Control-Allow-Credentials", "true");
 
         //응답출력스트림얻기
