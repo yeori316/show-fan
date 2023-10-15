@@ -21,29 +21,30 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
+import com.kosa.showfan.controller.Controller;
 
 //sendmail
-public class SendMail extends HttpServlet {
+public class SendMailController extends HttpServlet implements Controller {
 	private static final long serialVersionUID = 1L;
 
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	@Override
+	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//응답형식
         response.setContentType("application/json;charset=utf-8");
 
         //크로스오리진 문제 해결
-        response.setHeader("Access-Control-Allow-Origin",
-//                "*");
-//    				"http://192.168.1.112:5502");
-    				"http://192.168.45.107:5502");
+        response.setHeader("Access-Control-Allow-Origin", "*");
         response.setHeader("Access-Control-Allow-Credentials", "true");
 
         //응답형식
         response.setContentType("application/json;charset=utf-8");
         //응답출력스트림얻기
         PrintWriter out = response.getWriter();
+        Gson gson = new Gson();
         
-        ObjectMapper mapper = new ObjectMapper();
+        
         Map<String, Object> map = new HashMap<>();
         
         
@@ -99,7 +100,6 @@ public class SendMail extends HttpServlet {
             message.setText("이메일 인증을 위한 코드 번호 : ["+code+"]");
  
 
-            System.out.println("메일 보내기 성공");
             map.put("status", 1);
             map.put("msg", code);
             Transport.send(message);    // send message
@@ -113,11 +113,10 @@ public class SendMail extends HttpServlet {
         		map.put("msg", "이메일 전송 실패");
             e.printStackTrace();
         }
-        String jsonStr = mapper.writeValueAsString(map);
-        System.out.println(jsonStr);
+        String jsonStr = gson.toJson(map);
         out.print(jsonStr);
         
-        
+		
 	}
 
 }

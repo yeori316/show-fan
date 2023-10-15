@@ -11,33 +11,33 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
+import com.kosa.showfan.controller.Controller;
 import com.kosa.showfan.exception.FindException;
 import com.kosa.showfan.member.service.MemberService;
 
 
 //nicknamedupchk
-public class NicknameDupChkServlet extends HttpServlet {
+public class NicknameDupChkController extends HttpServlet implements Controller {
 	private static final long serialVersionUID = 1L;
 	private MemberService service;
-	public NicknameDupChkServlet() {
+	public NicknameDupChkController() {
 		service = new MemberService();
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 
+	@Override
+	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//응답형식
+		response.setContentType("application/json;charset=utf-8");
+		
         //크로스오리진 문제 해결
-        response.setHeader("Access-Control-Allow-Origin",
-//                "*");
-//    				"http://192.168.1.112:5502");
-    				"http://192.168.45.107:5502");
+        response.setHeader("Access-Control-Allow-Origin", "*");
         response.setHeader("Access-Control-Allow-Credentials", "true");
         
-        //응답형식
-        response.setContentType("application/json;charset=utf-8");
         //응답출력스트림얻기
         PrintWriter out = response.getWriter();
+        Gson gson = new Gson();
         
-        ObjectMapper mapper = new ObjectMapper();
         Map<String, Object> map = new HashMap<>();
         
         String nickname = request.getParameter("nickname");
@@ -54,9 +54,8 @@ public class NicknameDupChkServlet extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-        String jsonStr = mapper.writeValueAsString(map);
+        String jsonStr = gson.toJson(map);
         out.print(jsonStr);
-		
 		
 	}
 

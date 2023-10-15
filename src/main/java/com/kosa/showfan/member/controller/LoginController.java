@@ -1,6 +1,8 @@
 package com.kosa.showfan.member.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
+import com.kosa.showfan.controller.Controller;
 import com.kosa.showfan.exception.FindException;
 import com.kosa.showfan.member.service.MemberService;
 
@@ -11,7 +13,7 @@ import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
-public class LoginController extends HttpServlet {
+public class LoginController extends HttpServlet implements Controller {
     private static final long serialVersionUID = 1L;
     private MemberService service;
 
@@ -19,29 +21,27 @@ public class LoginController extends HttpServlet {
         service = new MemberService();
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //응답형식
+	@Override
+	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//응답형식
         response.setContentType("application/json;charset=utf-8");
 
         //크로스오리진 문제 해결
-        response.setHeader("Access-Control-Allow-Origin",
-//                "*");
-//    				"http://192.168.1.112:5502");
-    				"http://192.168.45.107:5502");
+        
+        response.setHeader("Access-Control-Allow-Origin", "*");
         response.setHeader("Access-Control-Allow-Credentials", "true");
 
         //응답출력스트림얻기
         PrintWriter out = response.getWriter();
+        Gson gson = new Gson();
 
+        Map<String, Object> map = new HashMap<>();
+        
         String email = request.getParameter("email");
         String pwd = request.getParameter("pwd");
         String auto = request.getParameter("autoLogin");
 
-        ObjectMapper mapper = new ObjectMapper();
-        Map<String, Object> map = new HashMap<>();
-
         HttpSession session = request.getSession();
-        System.out.println("111");
         try {
             service.login(email, pwd);
             map.put("status", 1);
@@ -62,7 +62,6 @@ public class LoginController extends HttpServlet {
                 cookie.setPath("/"); //모든 경로에서 접근 가능하도록 설정
                 // 쿠키 적용
                 response.addCookie(cookie);
-
             }
         } catch (FindException e) {
             // TODO Auto-generated catch block
@@ -71,9 +70,10 @@ public class LoginController extends HttpServlet {
             map.put("status", 0);
             map.put("msg", "로그인 실패");
         }
-        String jsonStr = mapper.writeValueAsString(map);
+        String jsonStr = gson.toJson(map);
         out.print(jsonStr);
 
-    }
+		
+	}
 
 }
