@@ -47,6 +47,10 @@ $(() => {
     alert('로그인 후 이용 가능합니다.');
     history.back();
   }
+  const $login = $('#login');
+  const $logout = $('#logout');
+  const $signup = $('#signup');
+  const $mypage = $('#mypage');
 
   //쿠키값이 있다면 로그인 상태(로그아웃, 마이페이지만 보이게)
   if (loginCookie) {

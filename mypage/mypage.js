@@ -48,6 +48,11 @@ $(() => {
     history.back();
   }
 
+  const $login = $('#login');
+  const $logout = $('#logout');
+  const $signup = $('#signup');
+  const $mypage = $('#mypage');
+
   //쿠키값이 있다면 로그인 상태(로그아웃, 마이페이지만 보이게)
   if (loginCookie) {
     $login.hide();
@@ -147,7 +152,7 @@ $(() => {
                 $liMyShow.append(`<div>${myShowName}</div>`);
                 $myShowContainer.append($liMyShow);
                 $liMyShow.click(() => {
-                  location.href = `/html/show_detail.html?showname=${myShowName}`;
+                  location.href = `/html/show_detail.html?showId=${showId}`;
                 });
 
                 // 찜 목록 삭제
@@ -235,6 +240,7 @@ $(() => {
                 const $mypageReviewContainer = $(`
                 <div class="mypage-review-container"></div>
                 `);
+                console.log(myReview);
                 $mypageReviewContainer.append(`
                 <img
                   src="${myReview.showPoster}"
@@ -242,7 +248,7 @@ $(() => {
                   class="mypage-review-post"
                   onclick="location.href='/show-detail?showName=${
                     myReview.showName
-                  }'"}
+                  }'"
                 />
                 <div class="mypage-review-info">
                   <div id="mypage-review-show-info">
