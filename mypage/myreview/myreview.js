@@ -127,8 +127,8 @@ $(() => {
                   src="${myReview.showPoster}"
                   alt="review-show-post"
                   class="mypage-myreview-review-post"
-                  onclick="location.href='/show-detail?showName=${
-                    myReview.showName
+                  onclick="location.href='/show-detail/index.html?showId=${
+                    myReview.showId
                   }'"}
                 />
                 <div class="mypage-myreview-review-info">
@@ -157,7 +157,7 @@ $(() => {
                     myReview.reviewId
                   }" href="#">수정</a>
                   <i class="fa-solid fa-slash mypage-myreview-review-line-icon"></i>
-                  <a id="mypage-review-delete-${
+                  <a id="mypage-myreview-review-delete-${
                     myReview.reviewId
                   }" href="#">삭제</a>
                 </div>
@@ -169,7 +169,6 @@ $(() => {
               `);
           $(`#mypage-myreview-review-delete-${myReview.reviewId}`).click(
             (e) => {
-              console.log('?');
               if (confirm('삭제하시겠습니까?')) {
                 $.ajax({
                   url: backURL + '/deletereview',
@@ -261,6 +260,21 @@ $(() => {
       },
     });
     initPopup();
+  });
+
+  // 검색 버튼 클릭 시
+  $('body').on('click', '#header-search-button', function (e) {
+    // e.preventDefault();
+    const value = $('#header-search-input').val();
+    location.href = `../../search/index.html?q=${value}`;
+  });
+
+  // 검색 입력 후 엔터
+  $('body').on('keydown', '#header-search-input', function (e) {
+    if (e.key == 'Enter' || e.keyCode == '13') {
+      const value = $('#header-search-input').val();
+      location.href = `../../search/index.html?q=${value}`;
+    }
   });
 });
 

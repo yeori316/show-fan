@@ -152,7 +152,7 @@ $(() => {
                 $liMyShow.append(`<div>${myShowName}</div>`);
                 $myShowContainer.append($liMyShow);
                 $liMyShow.click(() => {
-                  location.href = `/html/show_detail.html?showname=${myShowName}`;
+                  location.href = `/show-detail/index.html?showId${showId}`;
                 });
 
                 // 찜 목록 삭제
@@ -240,14 +240,13 @@ $(() => {
                 const $mypageReviewContainer = $(`
                 <div class="mypage-review-container"></div>
                 `);
-                console.log(myReview)
                 $mypageReviewContainer.append(`
                 <img
                   src="${myReview.showPoster}"
                   alt="review-show-post"
                   class="mypage-review-post"
-                  onclick="location.href='/show-detail?showName=${
-                    myReview.showName
+                  onclick="location.href='/show-detail/index.html?showId=${
+                    myReview.showId
                   }'"
                 />
                 <div class="mypage-review-info">
