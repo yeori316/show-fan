@@ -20,17 +20,11 @@ $(() => {
   });
 
   // if 마이페이지 link clicked
-  $("body").on("click", "#mypage", function (e) {
+  $('body').on('click', '#mypage', function (e) {
     e.preventDefault();
-    location.href = "mypage";
+    location.href = '../mypage/index.html';
   });
 
-  // 내 정보 수정 클릭 시
-  $("body").on("click", "#modify", function (e) {
-    e.preventDefault();
-    location.href = "../modify/index.html";
-    // handleXhttps("GET", "../modify/index.html", $("main"));
-  });
 
   // 검색 버튼 클릭 시
   $("body").on("click", "#header-search-button", function (e) {
