@@ -1,15 +1,15 @@
-import { backURL, handleXhttps } from "../util/util.js";
+import { backURL, handleXhttps } from '../util/util.js';
 
 $(() => {
   function getCookie(name) {
     const value = `; ${document.cookie}`;
     const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop().split(";").shift();
+    if (parts.length === 2) return parts.pop().split(';').shift();
   }
 
-  handleXhttps("GET", "../header/index.html", $("header"));
-  handleXhttps("GET", "../navigation/index.html", $("nav"));
-  handleXhttps("GET", "../footer/index.html", $("footer"));
+  handleXhttps('GET', '../header/index.html', $('header'));
+  handleXhttps('GET', '../navigation/index.html', $('nav'));
+  handleXhttps('GET', '../footer/index.html', $('footer'));
   let showId;
   let memberId;
 
@@ -160,46 +160,46 @@ $(() => {
   });
 
   // 찜하기 버튼 클릭 시
-  $("#heart").click(() => {
+  $('#heart').click(() => {
     $.ajax({
       url: `${backURL}/myshow?showId=${showId}&memberId=${memberId}`,
-      method: "POST",
+      method: 'POST',
       success: () => {
-        alert("추가되었습니다.");
+        alert('추가되었습니다.');
         location.reload();
       },
     });
   });
 
   // 찜하기 취소 버튼 클릭 시
-  $("#cancel_heart").click(() => {
+  $('#cancel_heart').click(() => {
     $.ajax({
       url: `${backURL}/myshow?showId=${showId}&memberId=${memberId}`,
-      method: "DELETE",
+      method: 'DELETE',
       success: () => {
-        alert("삭제되었습니다.");
+        alert('삭제되었습니다.');
         location.reload();
       },
     });
   });
 
   // 검색 버튼 클릭 시
-  $("body").on("click", "#header-search-button", function (e) {
+  $('body').on('click', '#header-search-button', function (e) {
     // e.preventDefault();
-    const value = $("#header-search-input").val();
+    const value = $('#header-search-input').val();
     location.href = `../search/index.html?q=${value}`;
   });
 
   // 검색 입력 후 엔터
-  $("body").on("keydown", "#header-search-input", function (e) {
-    if (e.key == "Enter" || e.keyCode == "13") {
-      const value = $("#header-search-input").val();
+  $('body').on('keydown', '#header-search-input', function (e) {
+    if (e.key == 'Enter' || e.keyCode == '13') {
+      const value = $('#header-search-input').val();
       location.href = `../search/index.html?q=${value}`;
     }
   });
 
   // 캘린더 조회 시
-  $("body").on("click", "#navigation-calendar-button", function (e) {
-    location.href = "../calendar/index.html";
+  $('body').on('click', '#navigation-calendar-button', function (e) {
+    location.href = '../calendar/index.html';
   });
 });
