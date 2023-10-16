@@ -46,28 +46,29 @@ public class LoginController extends HttpServlet implements Controller {
             String loginEmail = (String) session.getAttribute("loginedEmail");
 
             if (auto.equals("true")) {   //자동로그인을 체크한 경우
-//                Cookie cookie = new Cookie("loginCookie", loginEmail);
-//                cookie.setMaxAge(60 * 60 * 24 * 7); // 단위는 (초)임으로 7일정도로 유효시간을 설정해 준다.
-//                cookie.setPath("/"); //모든 경로에서 접근 가능하도록 설정
-//                cookie.setHttpOnly(false);
+               Cookie cookie = new Cookie("loginCookie", loginEmail);
+               cookie.setMaxAge(60 * 60 * 24 * 7); // 단위는 (초)임으로 7일정도로 유효시간을 설정해 준다.
+               cookie.setPath("/"); //모든 경로에서 접근 가능하도록 설정
                 
                 // 쿠키 적용
-//                response.addCookie(cookie);
+               response.addCookie(cookie);
+               
+//               cookie.setHttpOnly(false);
 //            	response.setHeader("Set-Cookie", "loginCookie=" + loginEmail + "; Max-Age=864000; Path=/; Secure; SameSite=None");
-				response.setHeader("Set-Cookie", "loginCookie=" + loginEmail + "; Max-Age=864000; Path=/; Secure=false; SameSite=None");
+//				response.setHeader("Set-Cookie", "loginCookie=" + loginEmail + "; Max-Age=864000; Path=/; Secure=false; SameSite=None");
 
             } else { //자동로그인을 체크 안한 경우
-//                Cookie cookie = new Cookie("loginCookie", loginEmail);
-//				cookie.setMaxAge(60*60*24*7); // 단위는 (초)임으로 7일정도로 유효시간을 설정해 준다.
-//                cookie.setPath("/"); //모든 경로에서 접근 가능하도록 설정
-//                cookie.setHttpOnly(false);
-//                cookie.setPath("/"); //모든 경로에서 접근 가능하도록 설정
+            		Cookie cookie = new Cookie("loginCookie", loginEmail);
+//				cookie.setMaxAge(60*60*24*7); // 자동로그인을 체크하지 않는 경우는 설정하지 않는다
+            		cookie.setPath("/"); //모든 경로에서 접근 가능하도록 설정
+            	
+            		// 쿠키 적용
+            		response.addCookie(cookie);
+            		
 //                cookie.setHttpOnly(false);
 //                cookie.setSecure(false);
-                // 쿠키 적용
              
-//                response.addCookie(cookie);
-            	response.setHeader("Set-Cookie", "loginCookie=" + loginEmail + "; Path=/; Secure=false; SameSite=None");
+//            	response.setHeader("Set-Cookie", "loginCookie=" + loginEmail + "; Path=/; Secure=false; SameSite=None");
             }
         } catch (FindException e) {
             // TODO Auto-generated catch block

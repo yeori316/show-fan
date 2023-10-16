@@ -40,8 +40,12 @@ public class DispatcherServlet extends HttpServlet {
             throws ServletException, IOException {
 
 //        System.out.println("request.getServletPath()=" + request.getServletPath());
-        response.setHeader("Access-Control-Allow-Origin", "http://show-fan.s3-website.ap-northeast-2.amazonaws.com");
-//        response.setHeader("Access-Control-Allow-Origin", "http://127.0.0.1:5558");
+
+
+
+    		response.setHeader("Access-Control-Allow-Origin", "http://192.168.1.112:5559");
+//      response.setHeader("Access-Control-Allow-Origin", "http://show-fan.s3-website.ap-northeast-2.amazonaws.com");
+
         response.setHeader("Access-Control-Allow-Credentials", "true");
 
         // DispatcherServlet의service()입니다
