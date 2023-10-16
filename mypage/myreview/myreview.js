@@ -261,6 +261,21 @@ $(() => {
     });
     initPopup();
   });
+
+  // 검색 버튼 클릭 시
+  $('body').on('click', '#header-search-button', function (e) {
+    // e.preventDefault();
+    const value = $('#header-search-input').val();
+    location.href = `../../search/index.html?q=${value}`;
+  });
+
+  // 검색 입력 후 엔터
+  $('body').on('keydown', '#header-search-input', function (e) {
+    if (e.key == 'Enter' || e.keyCode == '13') {
+      const value = $('#header-search-input').val();
+      location.href = `../../search/index.html?q=${value}`;
+    }
+  });
 });
 
 function initPopup() {
