@@ -29,8 +29,8 @@
   <body>
     <header>
       <div id="header-layout">
-        <a id="header-logo-link" href="../../index.html">
-          <img id="header-logo-icon" src="../../images/logo-icon.png" />
+        <a id="header-logo-link" href="../index.html">
+          <img id="header-logo-icon" src="../images/logo-icon.png" />
           <h1>쇼팬</h1>
         </a>
         <div id="header-search-container">
@@ -38,27 +38,38 @@
           <button type="button" id="header-search-button">검색</button>
         </div>
         <div id="header-menu-container">
+          <a href="../login/index.html" class="header-menu-link" id="login"
+            >로그인</a
+          >
           <a href="#" class="header-menu-link" id="logout">로그아웃</a>
           <i id="header-menu-line-icon" class="fa-solid fa-slash"></i>
-          <a href="../" class="header-menu-link" id="mypage">마이페이지</a>
+          <a href="../signup/index.html" class="header-menu-link" id="signup"
+            >회원가입</a
+          >
+          <a href="../mypage/index.html" class="header-menu-link" id="mypage"
+            >마이페이지</a
+          >
         </div>
       </div>
     </header>
     <nav>
       <div id="navigation-layout">
         <ol id="navigation-genre-container">
-          <li class="all"><a href="#">전체</a></li>
-          <li class="concert"><a href="#">콘서트</a></li>
-          <li class="musical"><a href="#">뮤지컬</a></li>
-          <li class="show"><a href="#">연극</a></li>
-          <li class="festival"><a href="#">축제</a></li>
-          <li class="classic"><a href="#">클래식</a></li>
+          <li class="all"><a href="/">전체</a></li>
+          <li class="concert"><a href="/genre">콘서트</a></li>
+          <li class="musical"><a href="/genre">뮤지컬</a></li>
+          <li class="show"><a href="/genre">연극</a></li>
+          <li class="festival"><a href="/genre">축제</a></li>
+          <li class="classic"><a href="/genre">클래식</a></li>
         </ol>
         <ol id="navigation-menu-container">
-          <li><a href="#" id="calendar-button">공연 캘린더</a></li>
+          <li>
+            <a href="../calendar/index.html" id="calendar-button"
+              >공연 캘린더</a
+            >
+          </li>
         </ol>
       </div>
-    </nav>
     <main>
       <div class="mypage-myreview-main-text">내가 쓴 리뷰</div>
       <div id="mypage-myreview-review-containers"></div>

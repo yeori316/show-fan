@@ -1,5 +1,37 @@
 import { backURL } from '../util/util.js';
 
+document.querySelector('.classic').addEventListener('click', classic);
+document.querySelector('.festival').addEventListener('click', festival);
+document.querySelector('.concert').addEventListener('click', concert);
+document.querySelector('.show').addEventListener('click', show);
+document.querySelector('.musical').addEventListener('click', musical);
+document.querySelector('.all').addEventListener('click', all);
+
+function classic() {
+  console.log('clasic');
+  window.localStorage.setItem('show_genre', 3);
+  location.href = '../genre';
+}
+function festival() {
+  window.localStorage.setItem('show_genre', 5);
+  location.href = '../genre';
+}
+function musical() {
+  window.localStorage.setItem('show_genre', 2);
+  location.href = '../genre';
+}
+function concert() {
+  window.localStorage.setItem('show_genre', 4);
+  location.href = '../genre';
+}
+function show() {
+  window.localStorage.setItem('show_genre', 1);
+  location.href = '../genre';
+}
+function all() {
+  location.href = '../index.html';
+}
+
 $(() => {
   const value = `; ${document.cookie}`;
   const parts = value.split(`; ${'loginCookie'}=`);
@@ -11,6 +43,51 @@ $(() => {
     alert('로그인 후 이용 가능합니다.');
     history.back();
   }
+
+  //쿠키값이 있다면 로그인 상태(로그아웃, 마이페이지만 보이게)
+  if (loginCookie) {
+    $login.hide();
+    $signup.hide();
+    $logout.show();
+    $mypage.show();
+
+    //쿠키값이 없다면 로그인X 상태(로그인, 회원가입 보이게)
+  } else {
+    $logout.hide();
+    $mypage.hide();
+    $login.show();
+    $signup.show();
+  }
+
+  $logout.click((e) => {
+    //로그아웃 alert에서 확인 눌렀을때
+    if (confirm('로그아웃 하시겠어요?') == true) {
+      $.ajax({
+        xhrFields: {
+          withCredentials: true,
+        },
+        url: backURL + '/logout',
+        method: 'get',
+        success: (responseJSONObj) => {
+          // responseJSONObj = JSON.parse(responseJSONObj);
+          //로그아웃 성공시
+          if (responseJSONObj.status == 1) {
+            location.href = '../index.html';
+          } else if (responseJSONObj.status == 0) {
+            alert('쿠키 삭제 실패');
+          } else {
+            alert('알 수 없는 상태: ' + responseJSONObj.status);
+          }
+          //로그아웃 실패시
+        },
+      });
+      alert('로그아웃 되었습니다.');
+    }
+    //로그아웃 alert에서 취소 눌렀을때
+    else {
+      return;
+    }
+  });
 
   // 회원 정보 출력
   $.ajax({
@@ -159,8 +236,8 @@ $(() => {
                   src="${myReview.showPoster}"
                   alt="review-show-post"
                   class="mypage-review-post"
-                  onclick="location.href='/show-detail?showId=${
-                    myReview.showId
+                  onclick="location.href='/show-detail?showName=${
+                    myReview.showName
                   }'"}
                 />
                 <div class="mypage-review-info">
@@ -362,6 +439,21 @@ $(() => {
       },
     });
     initPopup();
+  });
+
+  // 검색 버튼 클릭 시
+  $('body').on('click', '#header-search-button', function (e) {
+    // e.preventDefault();
+    const value = $('#header-search-input').val();
+    location.href = `../search/index.html?q=${value}`;
+  });
+
+  // 검색 입력 후 엔터
+  $('body').on('keydown', '#header-search-input', function (e) {
+    if (e.key == 'Enter' || e.keyCode == '13') {
+      const value = $('#header-search-input').val();
+      location.href = `../search/index.html?q=${value}`;
+    }
   });
 });
 
