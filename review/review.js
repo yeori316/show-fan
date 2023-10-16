@@ -50,7 +50,7 @@ $(() => {
     method: 'GET',
     data: `email=${loginCookie}`,
     success: (memberResponseText) => {
-      memberId = memberResponseText.memberId;
+      if (memberResponseText != null) memberId = memberResponseText.memberId;
     },
   });
   //--모달 시작--
