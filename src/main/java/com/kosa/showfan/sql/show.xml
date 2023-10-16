@@ -15,9 +15,14 @@
     </select>
 
     <select id="selectByConcept"
-            resultType="ShowDTO"
-            parameterType="java.util.List">
-        SELECT * FROM SHOW WHERE GENRE_ID = #{GENRE} and <![CDATA[ rownum <= 30 ]]>
+            resultType="ShowGenreDTO"
+            parameterType="hashmap">
+        <!-- SELECT * FROM SHOW WHERE GENRE_ID = #{GENRE} and <![CDATA[ rownum <= 30 ]]> -->
+        SELECT *
+		FROM (SELECT ROWNUM rn, s.show_id, s.show_poster, s.genre_id, s.show_name, s.show_status
+      		  FROM SHOW s 
+      		  WHERE GENRE_ID = #{genreId}) a
+		WHERE rn BETWEEN #{startRn} AND #{endRn}
     </select>
 
     <select id="selectByName"

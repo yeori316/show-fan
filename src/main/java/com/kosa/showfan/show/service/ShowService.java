@@ -1,13 +1,19 @@
 package com.kosa.showfan.show.service;
 
+import java.util.List;
+
 import com.kosa.showfan.exception.AddException;
 import com.kosa.showfan.exception.FindException;
 import com.kosa.showfan.exception.RemoveException;
 import com.kosa.showfan.show.dao.ShowDAO;
 import com.kosa.showfan.show.dao.ShowDAOImpl;
-import com.kosa.showfan.show.dto.*;
-
-import java.util.List;
+import com.kosa.showfan.show.dto.MyShowDTO;
+import com.kosa.showfan.show.dto.ShowAllInfoDTO;
+import com.kosa.showfan.show.dto.ShowCalendarDTO;
+import com.kosa.showfan.show.dto.ShowDTO;
+import com.kosa.showfan.show.dto.ShowGenreDTO;
+import com.kosa.showfan.show.dto.ShowListDTO;
+import com.kosa.showfan.show.dto.ShowSearchDTO;
 
 public class ShowService {
     private static final ShowService instance = new ShowService();
@@ -42,8 +48,13 @@ public class ShowService {
         return showDAO.selectById(showId);
     }
 
-    public List<ShowDTO> selectByConcept(Long genreId) throws Exception {
-        return showDAO.selectByConcept(genreId);
+    public List<ShowGenreDTO> selectByConcept(Long genreId, int page) throws Exception {
+    	
+    	int showCnt = 30;                       
+        int endRn = showCnt * page;             
+        int startRn = (endRn - showCnt) + 1;    
+        
+        return showDAO.selectByConcept(genreId, startRn, endRn);
     }
 
     public String selectByName(String name) throws FindException {

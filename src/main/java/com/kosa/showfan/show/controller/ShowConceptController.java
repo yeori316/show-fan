@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
-import com.kosa.showfan.show.dto.ShowDTO;
+import com.kosa.showfan.show.dto.ShowGenreDTO;
 
 public class ShowConceptController extends ShowController {
 
@@ -20,11 +20,11 @@ public class ShowConceptController extends ShowController {
 		response.setContentType("application/json;charset=utf-8");
 		
 		PrintWriter out = response.getWriter();
-		
 		Long genreId = Long.parseLong(request.getParameter("genreId"));
+		int page = Integer.parseInt(request.getParameter("p"));
+		
 		try {
-			List<ShowDTO> result = service.selectByConcept(genreId);
-			System.out.println("asd");
+			List<ShowGenreDTO> result = service.selectByConcept(genreId, page);
 			Gson gson = new Gson();
 			String jsonResult = gson.toJson(result);
 			out.print(jsonResult);

@@ -15,6 +15,7 @@
 
         <typeAlias alias="ShowDTO" type="com.kosa.showfan.show.dto.ShowDTO"/>
         <typeAlias alias="ShowAllInfoDTO" type="com.kosa.showfan.show.dto.ShowAllInfoDTO"/>
+        <typeAlias alias="ShowGenreDTO" type="com.kosa.showfan.show.dto.ShowGenreDTO"/>        
         <typeAlias alias="MyShowDTO" type="com.kosa.showfan.show.dto.MyShowDTO"/>
 
         <typeAlias alias="ShowSearchDTO" type="com.kosa.showfan.show.dto.ShowSearchDTO"/>

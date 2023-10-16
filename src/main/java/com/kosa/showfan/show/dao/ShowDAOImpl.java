@@ -1,18 +1,24 @@
 package com.kosa.showfan.show.dao;
 
-import com.kosa.showfan.exception.AddException;
-import com.kosa.showfan.exception.FindException;
-import com.kosa.showfan.exception.RemoveException;
-import com.kosa.showfan.show.dto.*;
+import java.io.InputStream;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-import java.io.InputStream;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.kosa.showfan.exception.AddException;
+import com.kosa.showfan.exception.FindException;
+import com.kosa.showfan.exception.RemoveException;
+import com.kosa.showfan.show.dto.MyShowDTO;
+import com.kosa.showfan.show.dto.ShowAllInfoDTO;
+import com.kosa.showfan.show.dto.ShowCalendarDTO;
+import com.kosa.showfan.show.dto.ShowDTO;
+import com.kosa.showfan.show.dto.ShowGenreDTO;
+import com.kosa.showfan.show.dto.ShowSearchDTO;
 
 public class ShowDAOImpl implements ShowDAO {
     private static final ShowDAO showDAO = new ShowDAOImpl();
@@ -125,8 +131,6 @@ public class ShowDAOImpl implements ShowDAO {
 
         try {
             session = sqlSessionFactory.openSession();
-//			System.out.println(value);
-            System.out.println(name);
             return session.selectOne("com.kosa.show.ShowMapper.selectByName", name);
         } catch (Exception e) {
             throw new FindException("검색된 결과가 없습니다.");
@@ -154,14 +158,21 @@ public class ShowDAOImpl implements ShowDAO {
     }
 
     @Override
-    public List<ShowDTO> selectByConcept(Long genreId) throws Exception {
+    public List<ShowGenreDTO> selectByConcept(Long genreId, int startRn, int endRn) throws Exception {
         SqlSession session = null;
         System.out.println(genreId);
         try {
             session = sqlSessionFactory.openSession();
-            return session.selectList("com.kosa.show.ShowMapper.selectByConcept", genreId);
+            
+            Map<String, Object> map = new HashMap<>();
+            map.put("genreId", genreId);
+            map.put("startRn", startRn);
+            map.put("endRn", endRn);
+            
+            return session.selectList("com.kosa.show.ShowMapper.selectByConcept", map);
 
         } catch (Exception e) {
+        	e.printStackTrace();
             throw new FindException("검색된 결과가 없습니다.");
         } finally {
             if (session != null) {
