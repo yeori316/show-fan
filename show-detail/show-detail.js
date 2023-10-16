@@ -88,54 +88,26 @@ $(() => {
         url: backURL + `/myshow?memberId=${memberId}`, //찜하기 되어있는지 확인하는 url
         dataType: "json",
         success: function (data) {
-
-          if (data[0].genreId == 5) {
-            $(".show_type").text("콘서트");
-          } else if (data[0].genreId == 4) {
-            $(".show_type").text("클래식");
-          } else if (data[0].genreId == 3) {
-            $(".show_type").text("축제");
-          } else if (data[0].genreId == 2) {
-            $(".show_type").text("연극");
-          } else if (data[0].genreId == 1) {
-            $(".show_type").text("뮤지컬");
-          }
-          $(".show_info_detail > img").attr("src", data[0].showPoster);
-          $(".show_name").text(data[0].showName);
-          $(".show_open").text(data[0].showStatus);
-
-          $(".show_start_day").text("공연일시 : " + data[0].showStartDay);
-          $(".show_time").text("공연시간 : " + data[0].showTime);
-          $(".show_place").text("공연장소 : " + data[0].showVenues);
-          $(".show_age").text("관람가능연령 : " + data[0].showAge + "세 이상");
-          $(".show_price").text("가격 : " + data[0].seatPrice + "원");
-          $(".show_run_time").text("런타임 : " + data[0].showRuntime);
-          $(".info_photo_img").attr("src", data[0].showImage1);
-          let total = 0;
-          $.each(data, function (key, value) {
-            if (total == 3 || value.artistName == null) {
-              return false;
-
           const isMyShow = data.filter((d) => d.showId == showId).length == 1;
-          if (loginCookie) {
-            if (isMyShow) {
-              $("#heart").hide();
+            if (loginCookie) {
+              if (isMyShow) {
+                $("#heart").hide();
+              } else {
+                $("#cancel_heart").hide();
+              }
             } else {
               $("#cancel_heart").hide();
-
+              $("#heart").hide();
             }
-          } else {
-            $("#cancel_heart").hide();
-            $("#heart").hide();
-          }
-        },
-      });
-    },
-    error: function () {
-      $("#cancel_heart").hide();
-      $("#heart").hide();
-    },
-  });
+          },
+        });
+      },
+    
+      error: function () {
+        $("#cancel_heart").hide();
+        $("#heart").hide();
+      },
+   });
 
   $.ajax({
     type: "get",
