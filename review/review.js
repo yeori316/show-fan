@@ -16,7 +16,6 @@ $(() => {
     data: `showId=${window.location.search.replace("?showId=", "")}`,
     success: (responseJSONObj) => {
       displayReviews(responseJSONObj);
-      console.log(window.location.search.replace("?showId=", ""));
     },
   });
 
@@ -100,11 +99,10 @@ function displayReviews(reviews) {
     $reviewContainer.append(`<div>${reviews[i].seatName}</div>`);
     $reviewContainer.append(`<div>${reviews[i].reviewContent}</div>`);
     $reviewContainer.append(`<div>_____________________________</div>`);
+    $("#review-list").append($reviewContainer);
   }
 }
 function displayReplies(replies) {
-  console.log("replies= " + replies);
-  console.log(replies);
   for (var i = 0; i < replies.length; i++) {
     const $reviewContainer = $(
       '<div class="showdetail-reply-container"></div>'

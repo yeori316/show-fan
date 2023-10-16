@@ -1,10 +1,9 @@
-@import url('../../util/base.css');
+@import url("../../util/base.css");
 
 #mypage-myreview-review-containers {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
 }
 
 .mypage-myreview-review-container {
@@ -171,7 +170,7 @@
 #rating fieldset legend {
   text-align: right;
 }
-#rating input[type='radio'] {
+#rating input[type="radio"] {
   display: none;
 }
 #rating label {
@@ -185,7 +184,7 @@
 #rating label:hover ~ label {
   text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
 }
-#rating input[type='radio']:checked ~ label {
+#rating input[type="radio"]:checked ~ label {
   text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
 }
 .rate {
@@ -207,10 +206,10 @@
   margin: 0;
   cursor: pointer;
   font-family: FontAwesome;
-  content: '\f005 ';
+  content: "\f005 ";
 }
 .rate .half:before {
-  content: '\f089 ';
+  content: "\f089 ";
   position: absolute;
   padding-right: 0;
 }
