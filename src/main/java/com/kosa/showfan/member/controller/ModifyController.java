@@ -30,7 +30,6 @@ public class ModifyController extends HttpServlet implements Controller{
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//응답형식
         response.setContentType("application/json;charset=utf-8");
-
         response.setHeader("Access-Control-Allow-Credentials", "true");
 
         //응답출력스트림얻기

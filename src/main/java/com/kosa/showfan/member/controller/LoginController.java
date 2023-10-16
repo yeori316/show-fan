@@ -1,6 +1,5 @@
 package com.kosa.showfan.member.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.kosa.showfan.controller.Controller;
 import com.kosa.showfan.exception.FindException;
@@ -21,12 +20,10 @@ public class LoginController extends HttpServlet implements Controller {
         service = new MemberService();
     }
 
-	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//응답형식
+    @Override
+    public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //응답형식
         response.setContentType("application/json;charset=utf-8");
-
-
         response.setHeader("Access-Control-Allow-Credentials", "true");
 
         //응답출력스트림얻기
@@ -34,7 +31,7 @@ public class LoginController extends HttpServlet implements Controller {
         Gson gson = new Gson();
 
         Map<String, Object> map = new HashMap<>();
-        
+
         String email = request.getParameter("email");
         String pwd = request.getParameter("pwd");
         String auto = request.getParameter("autoLogin");
@@ -46,20 +43,31 @@ public class LoginController extends HttpServlet implements Controller {
             map.put("msg", "로그인 성공");
             session.setAttribute("loginedEmail", email);
             session.setAttribute("loginedPwd", pwd);
+            String loginEmail = (String) session.getAttribute("loginedEmail");
 
             if (auto.equals("true")) {   //자동로그인을 체크한 경우
-                Cookie cookie = new Cookie("loginCookie", (String) session.getAttribute("loginedEmail"));
-                cookie.setMaxAge(60 * 60 * 24 * 7); // 단위는 (초)임으로 7일정도로 유효시간을 설정해 준다.
-                cookie.setPath("/"); //모든 경로에서 접근 가능하도록 설정
+//                Cookie cookie = new Cookie("loginCookie", loginEmail);
+//                cookie.setMaxAge(60 * 60 * 24 * 7); // 단위는 (초)임으로 7일정도로 유효시간을 설정해 준다.
+//                cookie.setPath("/"); //모든 경로에서 접근 가능하도록 설정
+//                cookie.setHttpOnly(false);
+                
                 // 쿠키 적용
-                response.addCookie(cookie);
+//                response.addCookie(cookie);
+//            	response.setHeader("Set-Cookie", "loginCookie=" + loginEmail + "; Max-Age=864000; Path=/; Secure; SameSite=None");
+				response.setHeader("Set-Cookie", "loginCookie=" + loginEmail + "; Max-Age=864000; Path=/; Secure=false; SameSite=None");
 
             } else { //자동로그인을 체크 안한 경우
-                Cookie cookie = new Cookie("loginCookie", (String) session.getAttribute("loginedEmail"));
+//                Cookie cookie = new Cookie("loginCookie", loginEmail);
 //				cookie.setMaxAge(60*60*24*7); // 단위는 (초)임으로 7일정도로 유효시간을 설정해 준다.
-                cookie.setPath("/"); //모든 경로에서 접근 가능하도록 설정
+//                cookie.setPath("/"); //모든 경로에서 접근 가능하도록 설정
+//                cookie.setHttpOnly(false);
+//                cookie.setPath("/"); //모든 경로에서 접근 가능하도록 설정
+//                cookie.setHttpOnly(false);
+//                cookie.setSecure(false);
                 // 쿠키 적용
-                response.addCookie(cookie);
+             
+//                response.addCookie(cookie);
+            	response.setHeader("Set-Cookie", "loginCookie=" + loginEmail + "; Path=/; Secure=false; SameSite=None");
             }
         } catch (FindException e) {
             // TODO Auto-generated catch block
@@ -71,7 +79,7 @@ public class LoginController extends HttpServlet implements Controller {
         String jsonStr = gson.toJson(map);
         out.print(jsonStr);
 
-		
-	}
+
+    }
 
 }
