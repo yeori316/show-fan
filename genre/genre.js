@@ -62,7 +62,7 @@ $(() => {
     });
   }
 
-  function addShowList() {
+  function addShowList(cpage) {
     $.ajax({
       type: "get",
       url:
@@ -70,7 +70,35 @@ $(() => {
         window.localStorage.getItem("show_genre") +
         `&p=${cpage}`,
       dataType: "json",
-      success: function (data) {},
+      success: function (data) {
+        $.each(data, function (key, value) {
+          console.log(data);
+          let div1 = document.createElement("div");
+          let div2 = document.createElement("div");
+
+          div1.setAttribute("class", "col " + key);
+          div2.setAttribute("class", "card h-100 " + key);
+          div2.setAttribute("id", value.showId);
+          document.getElementById("genre-show-container").append(div1);
+          let img1 = document.createElement("img");
+          img1.setAttribute("class", "card-img-top img" + key);
+
+          let div3 = document.createElement("div");
+          div3.setAttribute("class", "card-body " + key);
+
+          div2.append(div3);
+
+          let h = document.createElement("span");
+          h.setAttribute("class", "card-title card_title" + key);
+
+          div1.append(div2);
+          div2.append(img1);
+          $(".img" + key).attr("src", value.showPoster);
+          div2.append(div3);
+          div3.append(h);
+          $(".card_title" + key).text(value.showName);
+        });
+      },
     });
   }
 
@@ -100,7 +128,7 @@ $(() => {
   window.onscroll = function (e) {
     if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
       console.log("무한 스크롤 데이터 호출 필요");
-      ajaxHandler(++cpage);
+      addShowList(++cpage);
     }
   };
 
