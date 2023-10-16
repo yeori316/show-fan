@@ -25,7 +25,7 @@ $(() => {
     method: "GET",
     data: `email=${loginCookie}`,
     success: (memberResponseText) => {
-      memberId = memberResponseText.memberId;
+      if (memberResponseText != null) memberId = memberResponseText.memberId;
     },
   });
   //--모달 시작--
@@ -100,7 +100,6 @@ function displayReviews(reviews) {
     $reviewContainer.append(`<div>${reviews[i].seatName}</div>`);
     $reviewContainer.append(`<div>${reviews[i].reviewContent}</div>`);
     $reviewContainer.append(`<div>_____________________________</div>`);
-    $("#showdetail-review").append($reviewContainer);
   }
 }
 function displayReplies(replies) {
