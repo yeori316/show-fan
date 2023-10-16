@@ -1,5 +1,9 @@
 import { backURL } from '../util/util.js';
 
+const $login = $('#login');
+const $logout = $('#logout');
+const $signup = $('#signup');
+const $mypage = $('#mypage');
 document.querySelector('.classic').addEventListener('click', classic);
 document.querySelector('.festival').addEventListener('click', festival);
 document.querySelector('.concert').addEventListener('click', concert);
