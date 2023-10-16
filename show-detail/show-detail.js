@@ -35,13 +35,13 @@ $(() => {
       $(".show_name").text(data[0].showName);
       $(".show_open").text(data[0].showStatus);
 
-      $(".show_start_day").text("공연일시 : " + data[0].showStartDay);
-      $(".show_time").text("공연시간 : " + data[0].showTime);
-      $(".show_place").text("공연장소 : " + data[0].showVenues);
-      $(".show_age").text("관람가능연령 : " + data[0].showAge + "세 이상");
-      $(".show_price").text("가격 : " + data[0].seatPrice + "원");
-      $(".show_run_time").text("런타임 : " + data[0].showRuntime);
-      $(".info_photo_img").attr("src", data[0].showImage1);
+      $('.show_start_day').text('공연일시 : ' + data[0].showStartDay);
+      $('.show_time').text('공연시간 : ' + data[0].showTime);
+      $('.show_place').text('공연장소 : ' + data[0].showVenues);
+      $('.show_age').text('관람가능연령 : ' + data[0].showAge + '세 이상');
+      $('.show_price').text('가격 : ' + data[0].seatPrice + '원 부터');
+      $('.show_run_time').text('런타임 : ' + data[0].showRuntime);
+      $('.info_photo_img').attr('src', data[0].showImage1);
       let total = 0;
       $.each(data, function (key, value) {
         if (total == 3) {
@@ -89,24 +89,25 @@ $(() => {
         dataType: "json",
         success: function (data) {
           const isMyShow = data.filter((d) => d.showId == showId).length == 1;
-          if (loginCookie) {
-            if (isMyShow) {
-              $("#heart").hide();
+            if (loginCookie) {
+              if (isMyShow) {
+                $("#heart").hide();
+              } else {
+                $("#cancel_heart").hide();
+              }
             } else {
               $("#cancel_heart").hide();
+              $("#heart").hide();
             }
-          } else {
-            $("#cancel_heart").hide();
-            $("#heart").hide();
-          }
-        },
-      });
-    },
-    error: function () {
-      $("#cancel_heart").hide();
-      $("#heart").hide();
-    },
-  });
+          },
+        });
+      },
+    
+      error: function () {
+        $("#cancel_heart").hide();
+        $("#heart").hide();
+      },
+   });
 
   $.ajax({
     type: "get",
