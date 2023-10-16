@@ -127,8 +127,8 @@ $(() => {
                   src="${myReview.showPoster}"
                   alt="review-show-post"
                   class="mypage-myreview-review-post"
-                  onclick="location.href='/show-detail?showName=${
-                    myReview.showName
+                  onclick="location.href='/show-detail?showId=${
+                    myReview.showId
                   }'"}
                 />
                 <div class="mypage-myreview-review-info">
