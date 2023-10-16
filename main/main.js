@@ -1,254 +1,254 @@
 import { carouselSlider, backURL } from "../util/util.js";
 
 $(".m11").click(function () {
-  let name = $(".m11 > .name").html();
+  let name = $(".m11").attr("id");
   window.localStorage.setItem("param", name);
   location.href = "../show-detail/index.html?showname=" + name;
 });
 $(".m12").click(function () {
-  let name = $(".m12 > .name").html();
+  let name = $(".m12").attr("id");
   window.localStorage.setItem("param", name);
   location.href = "../show-detail/index.html?showname=" + name;
 });
 $(".m13").click(function () {
-  let name = $(".m13 > .name").html();
+  let name = $(".m13").attr("id");
   window.localStorage.setItem("param", name);
   location.href = "../show-detail/index.html?showname=" + name;
 });
 $(".m14").click(function () {
-  let name = $(".m14 > .name").html();
+  let name = $(".m14").attr("id");
   window.localStorage.setItem("param", name);
   location.href = "../show-detail/index.html?showname=" + name;
 });
 $(".m15").click(function () {
-  let name = $(".m15 > .name").html();
+  let name = $(".m15").attr("id");
   window.localStorage.setItem("param", name);
   location.href = "../show-detail/index.html?showname=" + name;
 });
 $(".m16").click(function () {
-  let name = $(".m16 > .name").html();
+  let name = $(".m16").attr("id");
   window.localStorage.setItem("param", name);
   location.href = "../show-detail/index.html?showname=" + name;
 });
 $(".m17").click(function () {
-  let name = $(".m17 > .name").html();
+  let name = $(".m17").attr("id");
   window.localStorage.setItem("param", name);
   location.href = "../show-detail/index.html?showname=" + name;
 });
 $(".m18").click(function () {
-  let name = $(".m18 > .name").html();
+  let name = $(".m18").attr("id");
   window.localStorage.setItem("param", name);
   location.href = "../show-detail/index.html?showname=" + name;
 });
 $(".m19").click(function () {
-  let name = $(".m19 > .name").html();
+  let name = $(".m19").attr("id");
   window.localStorage.setItem("param", name);
   location.href = "../show-detail/index.html?showname=" + name;
 });
 $(".m110").click(function () {
-  let name = $(".m110 > .name").html();
+  let name = $(".m110").attr("id");
   window.localStorage.setItem("param", name);
   location.href = "../show-detail/index.html?showname=" + name;
 });
 $(".m21").click(function () {
-  let name = $(".m21 > .name").html();
+  let name = $(".m21").attr("id");
   window.localStorage.setItem("param", name);
   location.href = "../show-detail/index.html?showname=" + name;
 });
 $(".m22").click(function () {
-  let name = $(".m22 > .name").html();
+  let name = $(".m22").attr("id");
   window.localStorage.setItem("param", name);
   location.href = "../show-detail/index.html?showname=" + name;
 });
 $(".m23").click(function () {
-  let name = $(".m23 > .name").html();
+  let name = $(".m23").attr("id");
   window.localStorage.setItem("param", name);
   location.href = "../show-detail/index.html?showname=" + name;
 });
 $(".m24").click(function () {
-  let name = $(".m24 > .name").html();
+  let name = $(".m24").attr("id");
   window.localStorage.setItem("param", name);
   location.href = "../show-detail/index.html?showname=" + name;
 });
 $(".m25").click(function () {
-  let name = $(".m25 > .name").html();
+  let name = $(".m25").attr("id");
   window.localStorage.setItem("param", name);
   location.href = "../show-detail/index.html?showname=" + name;
 });
 $(".m26").click(function () {
-  let name = $(".m26> .name").html();
+  let name = $(".m26").attr("id");
   window.localStorage.setItem("param", name);
   location.href = "../show-detail/index.html?showname=" + name;
 });
 $(".m27").click(function () {
-  let name = $(".m27 > .name").html();
+  let name = $(".m27").attr("id");
   window.localStorage.setItem("param", name);
   location.href = "../show-detail/index.html?showname=" + name;
 });
 $(".m28").click(function () {
-  let name = $(".m28 > .name").html();
+  let name = $(".m28").attr("id");
   window.localStorage.setItem("param", name);
   location.href = "../show-detail/index.html?showname=" + name;
 });
 $(".m29").click(function () {
-  let name = $(".m29 > .name").html();
+  let name = $(".m29").attr("id");
   window.localStorage.setItem("param", name);
   location.href = "../show-detail/index.html?showname=" + name;
 });
 $(".m210").click(function () {
-  let name = $(".m210 > .name").html();
+  let name = $(".m210").attr("id");
   window.localStorage.setItem("param", name);
   location.href = "../show-detail/index.html?showname=" + name;
 });
 $(".m31").click(function () {
-  let name = $(".m31 > .name").html();
+  let name = $(".m31").attr("id");
   window.localStorage.setItem("param", name);
   location.href = "../show-detail/index.html?showname=" + name;
 });
 $(".m32").click(function () {
-  let name = $(".m32 > .name").html();
+  let name = $(".m32").attr("id");
   window.localStorage.setItem("param", name);
   location.href = "../show-detail/index.html?showname=" + name;
 });
 $(".m33").click(function () {
-  let name = $(".m33 > .name").html();
+  let name = $(".m33").attr("id");
   window.localStorage.setItem("param", name);
   location.href = "../show-detail/index.html?showname=" + name;
 });
 $(".m34").click(function () {
-  let name = $(".m34 > .name").html();
+  let name = $(".m34").attr("id");
   window.localStorage.setItem("param", name);
   location.href = "../show-detail/index.html?showname=" + name;
 });
 $(".m35").click(function () {
-  let name = $(".m35 > .name").html();
+  let name = $(".m35").attr("id");
   window.localStorage.setItem("param", name);
   location.href = "../show-detail/index.html?showname=" + name;
 });
 $(".m36").click(function () {
-  let name = $(".m36 > .name").html();
+  let name = $(".m36").attr("id");
   window.localStorage.setItem("param", name);
   location.href = "../show-detail/index.html?showname=" + name;
 });
 $(".m37").click(function () {
-  let name = $(".m37 > .name").html();
+  let name = $(".m37").attr("id");
   window.localStorage.setItem("param", name);
   location.href = "../show-detail/index.html?showname=" + name;
 });
 $(".m38").click(function () {
-  let name = $(".m38 > .name").html();
+  let name = $(".m38").attr("id");
   window.localStorage.setItem("param", name);
   location.href = "../show-detail/index.html?showname=" + name;
 });
 $(".m39").click(function () {
-  let name = $(".m39 > .name").html();
+  let name = $(".m39").attr("id");
   window.localStorage.setItem("param", name);
   location.href = "../show-detail/index.html?showname=" + name;
 });
 $(".m310").click(function () {
-  let name = $(".m310 > .name").html();
+  let name = $(".m310").attr("id");
   window.localStorage.setItem("param", name);
   location.href = "../show-detail/index.html?showname=" + name;
 });
 $(".m41").click(function () {
-  let name = $(".m41 > .name").html();
+  let name = $(".m41").attr("id");
   window.localStorage.setItem("param", name);
   location.href = "../show-detail/index.html?showname=" + name;
 });
 $(".m42").click(function () {
-  let name = $(".m42 > .name").html();
+  let name = $(".m42").attr("id");
   window.localStorage.setItem("param", name);
   location.href = "../show-detail/index.html?showname=" + name;
 });
 $(".m43").click(function () {
-  let name = $(".m43 > .name").html();
+  let name = $(".m43").attr("id");
   window.localStorage.setItem("param", name);
   location.href = "../show-detail/index.html?showname=" + name;
 });
 $(".m44").click(function () {
-  let name = $(".m44 > .name").html();
+  let name = $(".m44").attr("id");
   window.localStorage.setItem("param", name);
   location.href = "../show-detail/index.html?showname=" + name;
 });
 $(".m45").click(function () {
-  let name = $(".m45 > .name").html();
+  let name = $(".m45").attr("id");
   window.localStorage.setItem("param", name);
   location.href = "../show-detail/index.html?showname=" + name;
 });
 $(".m46").click(function () {
-  let name = $(".m46 > .name").html();
+  let name = $(".m46").attr("id");
   window.localStorage.setItem("param", name);
   location.href = "../show-detail/index.html?showname=" + name;
 });
 $(".m47").click(function () {
-  let name = $(".m47 > .name").html();
+  let name = $(".m47").attr("id");
   window.localStorage.setItem("param", name);
   location.href = "../show-detail/index.html?showname=" + name;
 });
 $(".m48").click(function () {
-  let name = $(".m48 > .name").html();
+  let name = $(".m48").attr("id");
   window.localStorage.setItem("param", name);
   location.href = "../show-detail/index.html?showname=" + name;
 });
 $(".m49").click(function () {
-  let name = $(".m49 > .name").html();
+  let name = $(".m49").attr("id");
   window.localStorage.setItem("param", name);
   location.href = "../show-detail/index.html?showname=" + name;
 });
 $(".m410").click(function () {
-  let name = $(".m410 > .name").html();
+  let name = $(".m410").attr("id");
   window.localStorage.setItem("param", name);
   location.href = "../show-detail/index.html?showname=" + name;
 });
 $(".m51").click(function () {
-  let name = $(".m51 > .name").html();
+  let name = $(".m51").attr("id");
   window.localStorage.setItem("param", name);
-  location.href = "../show-detail/index.html?showname=" + name;
+  location.href = "../show-detail/index.html?showId=" + name;
 });
 $(".m52").click(function () {
-  let name = $(".m52 > .name").html();
+  let name = $(".m52").attr("id");
   window.localStorage.setItem("param", name);
-  location.href = "../show-detail/index.html?showname=" + name;
+  location.href = "../show-detail/index.html?showId=" + name;
 });
 $(".m53").click(function () {
-  let name = $(".m53 > .name").html();
+  let name = $(".m53").attr("id");
   window.localStorage.setItem("param", name);
-  location.href = "../show-detail/index.html?showname=" + name;
+  location.href = "../show-detail/index.html?showId=" + name;
 });
 $(".m54").click(function () {
-  let name = $(".m54 > .name").html();
+  let name = $(".m54").attr("id");
   window.localStorage.setItem("param", name);
-  location.href = "../show-detail/index.html?showname=" + name;
+  location.href = "../show-detail/index.html?showId=" + name;
 });
 $(".m55").click(function () {
-  let name = $(".m55 > .name").html();
+  let name = $(".m55").attr("id");
   window.localStorage.setItem("param", name);
-  location.href = "../show-detail/index.html?showname=" + name;
+  location.href = "../show-detail/index.html?showId=" + name;
 });
 $(".m56").click(function () {
-  let name = $(".m56 > .name").html();
+  let name = $(".m56").attr("id");
   window.localStorage.setItem("param", name);
-  location.href = "../show-detail/index.html?showname=" + name;
+  location.href = "../show-detail/index.html?showId=" + name;
 });
 $(".m57").click(function () {
-  let name = $(".m57 > .name").html();
+  let name = $(".m57").attr("id");
   window.localStorage.setItem("param", name);
-  location.href = "../show-detail/index.html?showname=" + name;
+  location.href = "../show-detail/index.html?showId=" + name;
 });
 $(".m58").click(function () {
-  let name = $(".m58 > .name").html();
+  let name = $(".m58").attr("id");
   window.localStorage.setItem("param", name);
-  location.href = "../show-detail/index.html?showname=" + name;
+  location.href = "../show-detail/index.html?showId=" + name;
 });
 $(".m59").click(function () {
-  let name = $(".m59 > .name").html();
+  let name = $(".m59").attr("id");
   window.localStorage.setItem("param", name);
-  location.href = "../show-detail/index.html?showname=" + name;
+  location.href = "../show-detail/index.html?showId=" + name;
 });
 $(".m510").click(function () {
-  let name = $(".m510 > .name").html();
+  let name = $(".m510").attr("id");
   window.localStorage.setItem("param", name);
-  location.href = "../show-detail/index.html?showname=" + name;
+  location.href = "../show-detail/index.html?showId=" + name;
 });
 
 $(() => {
@@ -292,10 +292,9 @@ $(() => {
       let idx_one = 1;
       let totalCnt = 0;
       $.each(data, function (key, value) {
-        window.localStorage.setItem(value.showName, value.showId);
         if (value.genreId == 5) {
-          console.log("sed");
           $(".show_name" + value.genreId + "" + idx_five).text(value.showName);
+          $(".m" + value.genreId + "" + idx_five).attr("id", value.showId);
           $(".my-show-img" + value.genreId + "" + idx_five).attr(
             "src",
             value.showPoster
@@ -306,6 +305,7 @@ $(() => {
           }
         } else if (value.genreId == 4) {
           $(".show_name" + value.genreId + "" + idx_four).text(value.showName);
+          $(".m" + value.genreId + "" + idx_four).attr("id", value.showId);
           $(".my-show-img" + value.genreId + "" + idx_four).attr(
             "src",
             value.showPoster
@@ -316,6 +316,7 @@ $(() => {
           }
         } else if (value.genreId == 3) {
           $(".show_name" + value.genreId + "" + idx_three).text(value.showName);
+          $(".m" + value.genreId + "" + idx_three).attr("id", value.showId);
           $(".my-show-img" + value.genreId + "" + idx_three).attr(
             "src",
             value.showPoster
@@ -326,6 +327,7 @@ $(() => {
           }
         } else if (value.genreId == 2) {
           $(".show_name" + value.genreId + "" + idx_two).text(value.showName);
+          $(".m" + value.genreId + "" + idx_two).attr("id", value.showId);
           $(".my-show-img" + value.genreId + "" + idx_two).attr(
             "src",
             value.showPoster
@@ -336,6 +338,7 @@ $(() => {
           }
         } else if (value.genreId == 1) {
           $(".show_name" + value.genreId + "" + idx_one).text(value.showName);
+          $(".m" + value.genreId + "" + idx_one).attr("id", value.showId);
           $(".my-show-img" + value.genreId + "" + idx_one).attr(
             "src",
             value.showPoster

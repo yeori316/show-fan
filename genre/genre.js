@@ -10,15 +10,13 @@ $(() => {
       window.localStorage.getItem("show_genre"),
     dataType: "json",
     success: function (data) {
-      console.log(window.localStorage.getItem("show_genre"));
       $.each(data, function (key, value) {
         let div1 = document.createElement("div");
         let div2 = document.createElement("div");
 
         div1.setAttribute("class", "col " + key);
         div2.setAttribute("class", "card h-100 " + key);
-        div2.setAttribute("id", value.showName);
-        console.log(value.showId);
+        div2.setAttribute("id", value.showId);
         document.getElementById("genre-show-container").append(div1);
         let img1 = document.createElement("img");
         img1.setAttribute("class", "card-img-top img" + key);
