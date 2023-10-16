@@ -106,7 +106,7 @@ $(() => {
   $("#genre-show-container").on("click", "div.col>div.card", (e) => {
     let showId = $(e.currentTarget).attr("id");
     window.localStorage.setItem("param", showId);
-    location.href = "../show-detail/index.html?showname=" + showId;
+    location.href = "../show-detail/index.html?showId=" + showId;
   });
 
   // 검색 버튼 클릭 시

@@ -21,7 +21,6 @@ $(() => {
     url: backURL + "/showdetail?showId=" + showId,
     dataType: "json",
     success: function (data) {
-      console.log(data);
 
       if (data[0].genreId == 5) {
         $(".show_type").text("콘서트");
@@ -85,26 +84,27 @@ $(() => {
     method: "GET",
     data: `email=${loginCookie}`,
     success: (memberResponseText) => {
-      memberId = memberResponseText.memberId;
-
-      $.ajax({
-        type: "get",
-        url: backURL + `/myshow?memberId=${memberId}`, //찜하기 되어있는지 확인하는 url
-        dataType: "json",
-        success: function (data) {
-          const isMyShow = data.filter((d) => d.showId == showId).length == 1;
-          if (loginCookie) {
-            if (isMyShow) {
-              $("#heart").hide();
+      if(memberResponseText != null) {
+        memberId = memberResponseText.memberId;
+        $.ajax({
+          type: "get",
+          url: backURL + `/myshow?memberId=${memberId}`, //찜하기 되어있는지 확인하는 url
+          dataType: "json",
+          success: function (data) {
+            const isMyShow = data.filter((d) => d.showId == showId).length == 1;
+            if (loginCookie) {
+              if (isMyShow) {
+                $("#heart").hide();
+              } else {
+                $("#cancel_heart").hide();
+              }
             } else {
               $("#cancel_heart").hide();
+              $("#heart").hide();
             }
-          } else {
-            $("#cancel_heart").hide();
-            $("#heart").hide();
-          }
-        },
-      });
+          },
+        });
+      }
     },
 
     error: function () {

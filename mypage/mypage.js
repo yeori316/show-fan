@@ -299,6 +299,7 @@ $(() => {
                     });
                   }
                 });
+                console.log(myReview.reviewId)
                 $(`#mypage-review-edit-${myReview.reviewId}`).click((e) => {
                   e.preventDefault();
                   $('.popup').removeClass('hidden');
@@ -307,6 +308,7 @@ $(() => {
                     method: 'GET',
                     data: `reviewId=${myReview.reviewId}`,
                     success: (reviewResponse) => {
+                      console.log(reviewResponse)
                       let reviewGrade = Number(reviewResponse.reviewGrade) * 2;
                       $(`#rating${reviewGrade}`).click();
                       $('.pop-detail').text(reviewResponse.reviewContent);

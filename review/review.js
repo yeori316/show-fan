@@ -17,6 +17,9 @@ $(() => {
     success: (responseJSONObj) => {
       displayReviews(responseJSONObj);
     },
+    error: (e) => {
+      console.log(e)
+    }
   });
 
   $.ajax({
@@ -124,6 +127,7 @@ $("#create-review").click(() => {
     method: "GET",
     data: `showId=${showId}`,
     success: (showReviewResponse) => {
+      console.log(showReviewResponse)
       //seatid, name, price다 가져옴
       let seatName = {};
       showReviewResponse.forEach((showReview) => {
@@ -136,9 +140,15 @@ $("#create-review").click(() => {
         }
       });
       Object.keys(seatName).forEach((seatId) => {
-        $("#seat").append(
-          `<option value=${seatId}>${seatName[seatId]}</option>`
-        );
+        if (!String(seatName[seatId].includes('undefined'))) {
+          $("#seat").append(
+            `<option value=${seatId}>${seatName[seatId]}</option>`
+          );
+        } else {
+          $("#seat").append(
+            `<option value=${seatId}>전석 (0원)</option>`
+          );
+        }
       });
       $(".review-form > h2").text(showReviewResponse[0].showName);
     },

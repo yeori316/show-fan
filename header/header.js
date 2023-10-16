@@ -10,8 +10,6 @@ $(() => {
   //해당 쿠키값 얻어오기
   const loginCookie = getCookie("loginCookie");
 
-  console.log(loginCookie);
-
   const $login = $("#login");
   const $logout = $("#logout");
   const $signup = $("#signup");

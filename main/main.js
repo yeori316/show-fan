@@ -3,202 +3,202 @@ import { carouselSlider, backURL } from "../util/util.js";
 $(".m11").click(function () {
   let name = $(".m11").attr("id");
   window.localStorage.setItem("param", name);
-  location.href = "../show-detail/index.html?showname=" + name;
+  location.href = "../show-detail/index.html?showId=" + name;
 });
 $(".m12").click(function () {
   let name = $(".m12").attr("id");
   window.localStorage.setItem("param", name);
-  location.href = "../show-detail/index.html?showname=" + name;
+  location.href = "../show-detail/index.html?showId=" + name;
 });
 $(".m13").click(function () {
   let name = $(".m13").attr("id");
   window.localStorage.setItem("param", name);
-  location.href = "../show-detail/index.html?showname=" + name;
+  location.href = "../show-detail/index.html?showId=" + name;
 });
 $(".m14").click(function () {
   let name = $(".m14").attr("id");
   window.localStorage.setItem("param", name);
-  location.href = "../show-detail/index.html?showname=" + name;
+  location.href = "../show-detail/index.html?showId=" + name;
 });
 $(".m15").click(function () {
   let name = $(".m15").attr("id");
   window.localStorage.setItem("param", name);
-  location.href = "../show-detail/index.html?showname=" + name;
+  location.href = "../show-detail/index.html?showId=" + name;
 });
 $(".m16").click(function () {
   let name = $(".m16").attr("id");
   window.localStorage.setItem("param", name);
-  location.href = "../show-detail/index.html?showname=" + name;
+  location.href = "../show-detail/index.html?showId=" + name;
 });
 $(".m17").click(function () {
   let name = $(".m17").attr("id");
   window.localStorage.setItem("param", name);
-  location.href = "../show-detail/index.html?showname=" + name;
+  location.href = "../show-detail/index.html?showId=" + name;
 });
 $(".m18").click(function () {
   let name = $(".m18").attr("id");
   window.localStorage.setItem("param", name);
-  location.href = "../show-detail/index.html?showname=" + name;
+  location.href = "../show-detail/index.html?showId=" + name;
 });
 $(".m19").click(function () {
   let name = $(".m19").attr("id");
   window.localStorage.setItem("param", name);
-  location.href = "../show-detail/index.html?showname=" + name;
+  location.href = "../show-detail/index.html?showId=" + name;
 });
 $(".m110").click(function () {
   let name = $(".m110").attr("id");
   window.localStorage.setItem("param", name);
-  location.href = "../show-detail/index.html?showname=" + name;
+  location.href = "../show-detail/index.html?showId=" + name;
 });
 $(".m21").click(function () {
   let name = $(".m21").attr("id");
   window.localStorage.setItem("param", name);
-  location.href = "../show-detail/index.html?showname=" + name;
+  location.href = "../show-detail/index.html?showId=" + name;
 });
 $(".m22").click(function () {
   let name = $(".m22").attr("id");
   window.localStorage.setItem("param", name);
-  location.href = "../show-detail/index.html?showname=" + name;
+  location.href = "../show-detail/index.html?showId=" + name;
 });
 $(".m23").click(function () {
   let name = $(".m23").attr("id");
   window.localStorage.setItem("param", name);
-  location.href = "../show-detail/index.html?showname=" + name;
+  location.href = "../show-detail/index.html?showId=" + name;
 });
 $(".m24").click(function () {
   let name = $(".m24").attr("id");
   window.localStorage.setItem("param", name);
-  location.href = "../show-detail/index.html?showname=" + name;
+  location.href = "../show-detail/index.html?showId=" + name;
 });
 $(".m25").click(function () {
   let name = $(".m25").attr("id");
   window.localStorage.setItem("param", name);
-  location.href = "../show-detail/index.html?showname=" + name;
+  location.href = "../show-detail/index.html?showId=" + name;
 });
 $(".m26").click(function () {
   let name = $(".m26").attr("id");
   window.localStorage.setItem("param", name);
-  location.href = "../show-detail/index.html?showname=" + name;
+  location.href = "../show-detail/index.html?showId=" + name;
 });
 $(".m27").click(function () {
   let name = $(".m27").attr("id");
   window.localStorage.setItem("param", name);
-  location.href = "../show-detail/index.html?showname=" + name;
+  location.href = "../show-detail/index.html?showId=" + name;
 });
 $(".m28").click(function () {
   let name = $(".m28").attr("id");
   window.localStorage.setItem("param", name);
-  location.href = "../show-detail/index.html?showname=" + name;
+  location.href = "../show-detail/index.html?showId=" + name;
 });
 $(".m29").click(function () {
   let name = $(".m29").attr("id");
   window.localStorage.setItem("param", name);
-  location.href = "../show-detail/index.html?showname=" + name;
+  location.href = "../show-detail/index.html?showId=" + name;
 });
 $(".m210").click(function () {
   let name = $(".m210").attr("id");
   window.localStorage.setItem("param", name);
-  location.href = "../show-detail/index.html?showname=" + name;
+  location.href = "../show-detail/index.html?showId=" + name;
 });
 $(".m31").click(function () {
   let name = $(".m31").attr("id");
   window.localStorage.setItem("param", name);
-  location.href = "../show-detail/index.html?showname=" + name;
+  location.href = "../show-detail/index.html?showId=" + name;
 });
 $(".m32").click(function () {
   let name = $(".m32").attr("id");
   window.localStorage.setItem("param", name);
-  location.href = "../show-detail/index.html?showname=" + name;
+  location.href = "../show-detail/index.html?showId=" + name;
 });
 $(".m33").click(function () {
   let name = $(".m33").attr("id");
   window.localStorage.setItem("param", name);
-  location.href = "../show-detail/index.html?showname=" + name;
+  location.href = "../show-detail/index.html?showId=" + name;
 });
 $(".m34").click(function () {
   let name = $(".m34").attr("id");
   window.localStorage.setItem("param", name);
-  location.href = "../show-detail/index.html?showname=" + name;
+  location.href = "../show-detail/index.html?showId=" + name;
 });
 $(".m35").click(function () {
   let name = $(".m35").attr("id");
   window.localStorage.setItem("param", name);
-  location.href = "../show-detail/index.html?showname=" + name;
+  location.href = "../show-detail/index.html?showId=" + name;
 });
 $(".m36").click(function () {
   let name = $(".m36").attr("id");
   window.localStorage.setItem("param", name);
-  location.href = "../show-detail/index.html?showname=" + name;
+  location.href = "../show-detail/index.html?showId=" + name;
 });
 $(".m37").click(function () {
   let name = $(".m37").attr("id");
   window.localStorage.setItem("param", name);
-  location.href = "../show-detail/index.html?showname=" + name;
+  location.href = "../show-detail/index.html?showId=" + name;
 });
 $(".m38").click(function () {
   let name = $(".m38").attr("id");
   window.localStorage.setItem("param", name);
-  location.href = "../show-detail/index.html?showname=" + name;
+  location.href = "../show-detail/index.html?showId=" + name;
 });
 $(".m39").click(function () {
   let name = $(".m39").attr("id");
   window.localStorage.setItem("param", name);
-  location.href = "../show-detail/index.html?showname=" + name;
+  location.href = "../show-detail/index.html?showId=" + name;
 });
 $(".m310").click(function () {
   let name = $(".m310").attr("id");
   window.localStorage.setItem("param", name);
-  location.href = "../show-detail/index.html?showname=" + name;
+  location.href = "../show-detail/index.html?showId=" + name;
 });
 $(".m41").click(function () {
   let name = $(".m41").attr("id");
   window.localStorage.setItem("param", name);
-  location.href = "../show-detail/index.html?showname=" + name;
+  location.href = "../show-detail/index.html?showId=" + name;
 });
 $(".m42").click(function () {
   let name = $(".m42").attr("id");
   window.localStorage.setItem("param", name);
-  location.href = "../show-detail/index.html?showname=" + name;
+  location.href = "../show-detail/index.html?showId=" + name;
 });
 $(".m43").click(function () {
   let name = $(".m43").attr("id");
   window.localStorage.setItem("param", name);
-  location.href = "../show-detail/index.html?showname=" + name;
+  location.href = "../show-detail/index.html?showId=" + name;
 });
 $(".m44").click(function () {
   let name = $(".m44").attr("id");
   window.localStorage.setItem("param", name);
-  location.href = "../show-detail/index.html?showname=" + name;
+  location.href = "../show-detail/index.html?showId=" + name;
 });
 $(".m45").click(function () {
   let name = $(".m45").attr("id");
   window.localStorage.setItem("param", name);
-  location.href = "../show-detail/index.html?showname=" + name;
+  location.href = "../show-detail/index.html?showId=" + name;
 });
 $(".m46").click(function () {
   let name = $(".m46").attr("id");
   window.localStorage.setItem("param", name);
-  location.href = "../show-detail/index.html?showname=" + name;
+  location.href = "../show-detail/index.html?showId=" + name;
 });
 $(".m47").click(function () {
   let name = $(".m47").attr("id");
   window.localStorage.setItem("param", name);
-  location.href = "../show-detail/index.html?showname=" + name;
+  location.href = "../show-detail/index.html?showId=" + name;
 });
 $(".m48").click(function () {
   let name = $(".m48").attr("id");
   window.localStorage.setItem("param", name);
-  location.href = "../show-detail/index.html?showname=" + name;
+  location.href = "../show-detail/index.html?showId=" + name;
 });
 $(".m49").click(function () {
   let name = $(".m49").attr("id");
   window.localStorage.setItem("param", name);
-  location.href = "../show-detail/index.html?showname=" + name;
+  location.href = "../show-detail/index.html?showId=" + name;
 });
 $(".m410").click(function () {
   let name = $(".m410").attr("id");
   window.localStorage.setItem("param", name);
-  location.href = "../show-detail/index.html?showname=" + name;
+  location.href = "../show-detail/index.html?showId=" + name;
 });
 $(".m51").click(function () {
   let name = $(".m51").attr("id");

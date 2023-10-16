@@ -241,7 +241,7 @@ $(() => {
         const showStartDay = s.showStartDay;
         const showEndDay = s.showEndDay;
         const artistList = s.artistList;
-        const showDetailUrl = `../show-detail/index.html?showName=${showName}`;
+        const showDetailUrl = `../show-detail/index.html?showId=${showId}`;
         let showColor;
 
         if (genreId == 1) {
