@@ -152,7 +152,7 @@ $(() => {
                 $liMyShow.append(`<div>${myShowName}</div>`);
                 $myShowContainer.append($liMyShow);
                 $liMyShow.click(() => {
-                  location.href = `/show-detail/index.html?showId${showId}`;
+                  location.href = `/show-detail/index.html?showId=${showId}`;
                 });
 
                 // 찜 목록 삭제

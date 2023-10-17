@@ -146,7 +146,7 @@ $("#create-review").click(() => {
           );
         } else {
           $("#seat").append(
-            `<option value=${seatId}>전석 (0원)</option>`
+            `<option value=${seatId}>${seatName[seatId]}</option>`
           );
         }
       });
