@@ -24,7 +24,7 @@ public class ReviewRepository implements ReviewRepositoryInterface {
     private SqlSessionFactory sqlSessionFactory;
 
     public ReviewRepository() {
-        String resource = "com/kosa/showfan/sql/mybatis-config.xml";
+        String resource = "mybatis-config.xml";
         InputStream inputStream;
         try {
             inputStream = Resources.getResourceAsStream(resource);

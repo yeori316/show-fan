@@ -19,7 +19,7 @@ public class ReplyRepository implements ReplyRepositoryInterface {
 	private SqlSessionFactory sqlSessionFactory;
 
 	public ReplyRepository() {
-		String resource = "com/kosa/showfan/sql/mybatis-config.xml";
+		String resource = "mybatis-config.xml";
 		InputStream inputStream;
 		try {
 			inputStream = Resources.getResourceAsStream(resource);
